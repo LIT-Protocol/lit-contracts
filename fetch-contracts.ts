@@ -1,5 +1,4 @@
 import * as fs from "fs";
-import fetch from "node-fetch";
 
 if (!process.env.LIT_ABI_SOURCE) {
   throw new Error("❌ LIT_ABI_SOURCE is not defined");
@@ -22,6 +21,7 @@ type ABISource = {
     habanero: string;
     datilDev: string;
     datilTest: string;
+    datilProd: string;
   };
 };
 
@@ -59,6 +59,8 @@ const LIT_ABI_SOURCE = {
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-dev/deployed-lit-node-contracts-temp.json",
       datilTest:
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-test/deployed-lit-node-contracts-temp.json",
+      datilProd:
+        "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-prod/deployed-lit-node-contracts-temp.json",
     },
   },
   prod: {
@@ -93,6 +95,8 @@ const LIT_ABI_SOURCE = {
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-dev/deployed-lit-node-contracts-temp.json",
       datilTest:
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-test/deployed-lit-node-contracts-temp.json",
+      datilProd:
+        "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-prod/deployed-lit-node-contracts-temp.json",
     },
   },
 };
@@ -113,7 +117,8 @@ type LitNetwork =
   | "manzano"
   | "habanero"
   | "datil-dev"
-  | "datil-test";
+  | "datil-test"
+  | "datil";
 
 const TOKEN = process.env.GH_LIT_ASSETS_READ_ONLY_API;
 const USERNAME = "LIT-Protocol";
@@ -252,6 +257,11 @@ async function updateContractsCache(network: LitNetwork): Promise<void> {
       API = source.deployedContract.datilTest;
       lastModified = await getLastModified(filePath, network);
       break;
+    case "datil":
+      filePath = extractPathAfterMain(source.deployedContract.datilProd);
+      API = source.deployedContract.datilProd;
+      lastModified = await getLastModified(filePath, network);
+      break;
   }
 
   let diamonData: any;
@@ -386,6 +396,7 @@ const litNetworks: LitNetwork[] = [
   "habanero",
   "datil-dev",
   "datil-test",
+  "datil",
 ];
 
 // Initial update for all items
