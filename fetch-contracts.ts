@@ -5,8 +5,8 @@ if (!process.env.LIT_ABI_SOURCE) {
   throw new Error("❌ LIT_ABI_SOURCE is not defined");
 }
 
-if (!process.env.GITHUB_LIT_ASSETS_READ_ONLY_API) {
-  throw new Error("❌ GITHUB_LIT_ASSETS_READ_ONLY_API is not defined");
+if (!process.env.GH_LIT_ASSETS_READ_ONLY_API) {
+  throw new Error("❌ GH_LIT_ASSETS_READ_ONLY_API is not defined");
 }
 
 type ABISource = {
@@ -115,7 +115,7 @@ type LitNetwork =
   | "datil-dev"
   | "datil-test";
 
-const TOKEN = process.env.GITHUB_LIT_ASSETS_READ_ONLY_API;
+const TOKEN = process.env.GH_LIT_ASSETS_READ_ONLY_API;
 const USERNAME = "LIT-Protocol";
 const REPO_NAME = source.repoName;
 

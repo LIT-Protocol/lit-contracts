@@ -33,7 +33,7 @@ jobs:
           # prod (stable) - gets data from /networks
           # dev (always updating) - gets data from /lit-assets
           LIT_ABI_SOURCE: prod
-          GITHUB_LIT_ASSETS_READ_ONLY_API: ${{ secrets.GITHUB_LIT_ASSETS_READ_ONLY_API }}
+          GH_LIT_ASSETS_READ_ONLY_API: ${{ secrets.GH_LIT_ASSETS_READ_ONLY_API }}
         run: $HOME/.bun/bin/bun run fetch-contracts.ts
 
       - name: Commit and push changes
