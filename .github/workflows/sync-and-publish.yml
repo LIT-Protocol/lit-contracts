@@ -1,0 +1,46 @@
+name: Sync and Publish
+
+on:
+  repository_dispatch:
+    types:
+      - sync_trigger
+
+jobs:
+  sync-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      - name: Install dependencies
+        run: npm install -g bun
+
+      - name: Run fetch-contracts.ts
+        env:
+
+          # prod (stable) - gets data from /networks
+          # dev (always updating) - gets data from /lit-assets
+          LIT_ABI_SOURCE: prod
+          GITHUB_LIT_ASSETS_READ_ONLY_API: ${{ secrets.GITHUB_LIT_ASSETS_READ_ONLY_API }}
+        run: bun run fetch-contracts.ts
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: Update contracts data"
+          git push origin master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - name: Publish npm package
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

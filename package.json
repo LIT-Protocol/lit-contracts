@@ -1,0 +1,14 @@
+{
+  "name": "lit-contracts",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "fetch": "bun run fetch-contracts.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
