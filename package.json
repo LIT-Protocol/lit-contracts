@@ -13,9 +13,7 @@
     "typescript": "^5.0.0"
   },
   "exports": {
-    ".": "./dist/index.ts",
-    "./prod/*": "./dist/prod/*",
-    "./dev/*": "./dist/dev/*"
+    ".": "./dist/index.ts"
   },
   "types": "./dist/index.ts",
   "publishConfig": {
