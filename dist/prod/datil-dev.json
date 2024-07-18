@@ -13,7 +13,7 @@
       "contracts": [
         {
           "network": "datil-dev",
-          "address_hash": "dummy",
+          "address_hash": "0x8b9c78E6069e674966Be213BB9fBc6cd759F4E5C",
           "inserted_at": "2024-06-28T17:45:50Z",
           "ABI": [
             {
