@@ -13,7 +13,7 @@
     "typescript": "^5.0.0"
   },
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/index.ts",
     "./prod/*": "./dist/prod/*",
     "./dev/*": "./dist/dev/*"
   },
