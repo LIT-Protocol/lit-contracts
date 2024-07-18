@@ -17,6 +17,7 @@
     "./prod/*": "./dist/prod/*",
     "./dev/*": "./dist/dev/*"
   },
+  "types": "./dist/index.ts",
   "publishConfig": {
     "access": "public"
   }
