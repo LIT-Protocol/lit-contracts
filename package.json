@@ -1,6 +1,6 @@
 {
   "name": "@lit-protocol/contracts",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "module": "index.ts",
   "type": "module",
   "scripts": {
