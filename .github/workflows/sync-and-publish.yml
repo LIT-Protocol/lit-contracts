@@ -42,6 +42,9 @@ jobs:
           GH_LIT_ASSETS_READ_ONLY_API: ${{ secrets.GH_LIT_ASSETS_READ_ONLY_API }}
         run: $HOME/.bun/bin/bun run fetch-contracts.ts
 
+      - name: Bump version
+        run: npm version patch
+
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
@@ -51,9 +54,6 @@ jobs:
           git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-
-      - name: Bump version
-        run: npm version patch
 
       - name: Publish npm package
         run: npm publish --access public
