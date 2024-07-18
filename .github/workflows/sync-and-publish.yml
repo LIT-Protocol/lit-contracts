@@ -28,11 +28,17 @@ jobs:
       - name: Install dependencies
         run: $HOME/.bun/bin/bun install
 
-      - name: Run fetch-contracts.ts
+      # prod (stable) - gets data from /networks
+      - name: Run (prod) fetch-contracts.ts
         env:
-          # prod (stable) - gets data from /networks
-          # dev (always updating) - gets data from /lit-assets
           LIT_ABI_SOURCE: prod
+          GH_LIT_ASSETS_READ_ONLY_API: ${{ secrets.GH_LIT_ASSETS_READ_ONLY_API }}
+        run: $HOME/.bun/bin/bun run fetch-contracts.ts
+
+      # dev (always updating) - gets data from /lit-assets
+      - name: Run (dev) fetch-contracts.ts
+        env:
+          LIT_ABI_SOURCE: dev
           GH_LIT_ASSETS_READ_ONLY_API: ${{ secrets.GH_LIT_ASSETS_READ_ONLY_API }}
         run: $HOME/.bun/bin/bun run fetch-contracts.ts
 
