@@ -362,6 +362,21 @@ async function updateContractsCache(network: LitNetwork): Promise<void> {
     `${dir}/${network}.json`,
     JSON.stringify(cache[network], null, 2)
   );
+
+  // find '-', remove it and capitalize the next letter
+  let networkName = network
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join("");
+
+  // lower case the first letter
+  networkName = networkName.charAt(0).toLowerCase() + networkName.slice(1);
+
+  // also write a .ts file for the cache, like export const networkName
+  fs.writeFileSync(
+    `${dir}/${network}.ts`,
+    `export const ${networkName} = ${JSON.stringify(cache[network], null, 2)}`
+  );
 }
 
 const litNetworks: LitNetwork[] = [

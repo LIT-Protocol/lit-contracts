@@ -1,15 +1,15 @@
 // dev
-export { default as _cayenne } from "./dev/cayenne.json";
-export { default as _datilDev } from "./dev/datil-dev.json";
-export { default as _datilTest } from "./dev/datil-test.json";
-export { default as _habanero } from "./dev/habanero.json";
-export { default as _internalDev } from "./dev/internalDev.json";
-export { default as _manzano } from "./dev/manzano.json";
+export { cayenne as _cayenne } from "./dev/cayenne";
+export { datilDev as _datilDev } from "./dev/datil-dev";
+export { datilTest as _datilTest } from "./dev/datil-test";
+export { habanero as _habanero } from "./dev/habanero";
+export { internalDev as _internalDev } from "./dev/internalDev";
+export { manzano as _manzano } from "./dev/manzano";
 
 // prod
-export { default as cayenne } from "./prod/cayenne.json";
-export { default as datilDev } from "./prod/datil-dev.json";
-export { default as datilTest } from "./prod/datil-test.json";
-export { default as habanero } from "./prod/habanero.json";
-export { default as internalDev } from "./prod/internalDev.json";
-export { default as manzano } from "./prod/manzano.json";
+export { cayenne } from "./prod/cayenne";
+export { datilDev } from "./prod/datil-dev";
+export { datilTest } from "./prod/datil-test";
+export { habanero } from "./prod/habanero";
+export { internalDev } from "./prod/internalDev";
+export { manzano } from "./prod/manzano";
