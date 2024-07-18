@@ -5,7 +5,7 @@
       "contracts": [
         {
           "network": "cayenne",
-          "address_hash": "0x523642999938B5e9085E1e7dF38Eac96DC3fdD91",
+          "address_hash": "dummy",
           "inserted_at": "2024-05-02T21:29:06Z",
           "ABI": [
             {
