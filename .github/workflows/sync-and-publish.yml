@@ -42,6 +42,13 @@ jobs:
           GH_LIT_ASSETS_READ_ONLY_API: ${{ secrets.GH_LIT_ASSETS_READ_ONLY_API }}
         run: $HOME/.bun/bin/bun run fetch-contracts.ts
 
+      - name: Verify Git status
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "Git working directory not clean."
+            exit 1
+          fi
+
       - name: Bump version
         run: npm version patch
 
