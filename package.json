@@ -12,6 +12,10 @@
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
+  "exports": {
+    "./prod/*": "./dist/prod/*",
+    "./dev/*": "./dist/dev/*"
+  },
   "publishConfig": {
     "access": "public"
   }
