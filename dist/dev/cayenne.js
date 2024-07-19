@@ -11605,4 +11605,4 @@ export const cayenne = {
       ]
     }
   ]
-} as const
+}

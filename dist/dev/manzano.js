@@ -11613,4 +11613,4 @@ export const manzano = {
       ]
     }
   ]
-} as const
+}
