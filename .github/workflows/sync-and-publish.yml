@@ -4,6 +4,9 @@ on:
   repository_dispatch:
     types:
       - sync_trigger
+  push:
+    branches:
+      - main
 
 jobs:
   sync-and-publish:
