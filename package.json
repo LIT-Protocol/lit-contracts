@@ -77,59 +77,73 @@
     },
     "./prod/manzano.js": {
       "require": "./dist/prod/manzano.js",
-      "import": "./dist/prod/manzano.js"
+      "import": "./dist/prod/manzano.js",
+      "types": "./dist/prod/manzano.ts"
     },
     "./prod/habanero.js": {
       "require": "./dist/prod/habanero.js",
-      "import": "./dist/prod/habanero.js"
+      "import": "./dist/prod/habanero.js",
+      "types": "./dist/prod/habanero.ts"
     },
     "./prod/datil-test.js": {
       "require": "./dist/prod/datil-test.js",
-      "import": "./dist/prod/datil-test.js"
+      "import": "./dist/prod/datil-test.js",
+      "types": "./dist/prod/datil-test.ts"
     },
     "./prod/internalDev.js": {
       "require": "./dist/prod/internalDev.js",
-      "import": "./dist/prod/internalDev.js"
+      "import": "./dist/prod/internalDev.js",
+      "types": "./dist/prod/internalDev.ts"
     },
     "./prod/datil-dev.js": {
       "require": "./dist/prod/datil-dev.js",
-      "import": "./dist/prod/datil-dev.js"
+      "import": "./dist/prod/datil-dev.js",
+      "types": "./dist/prod/datil-dev.ts"
     },
     "./prod/datil.js": {
       "require": "./dist/prod/datil.js",
-      "import": "./dist/prod/datil.js"
+      "import": "./dist/prod/datil.js",
+      "types": "./dist/prod/datil.ts"
     },
     "./prod/cayenne.js": {
       "require": "./dist/prod/cayenne.js",
-      "import": "./dist/prod/cayenne.js"
+      "import": "./dist/prod/cayenne.js",
+      "types": "./dist/prod/cayenne.ts"
     },
     "./dev/manzano.js": {
       "require": "./dist/dev/manzano.js",
-      "import": "./dist/dev/manzano.js"
+      "import": "./dist/dev/manzano.js",
+      "types": "./dist/dev/manzano.ts"
     },
     "./dev/habanero.js": {
       "require": "./dist/dev/habanero.js",
-      "import": "./dist/dev/habanero.js"
+      "import": "./dist/dev/habanero.js",
+      "types": "./dist/dev/habanero.ts"
     },
     "./dev/datil-test.js": {
       "require": "./dist/dev/datil-test.js",
-      "import": "./dist/dev/datil-test.js"
+      "import": "./dist/dev/datil-test.js",
+      "types": "./dist/dev/datil-test.ts"
     },
     "./dev/internalDev.js": {
       "require": "./dist/dev/internalDev.js",
-      "import": "./dist/dev/internalDev.js"
+      "import": "./dist/dev/internalDev.js",
+      "types": "./dist/dev/internalDev.ts"
     },
     "./dev/datil-dev.js": {
       "require": "./dist/dev/datil-dev.js",
-      "import": "./dist/dev/datil-dev.js"
+      "import": "./dist/dev/datil-dev.js",
+      "types": "./dist/dev/datil-dev.ts"
     },
     "./dev/datil.js": {
       "require": "./dist/dev/datil.js",
-      "import": "./dist/dev/datil.js"
+      "import": "./dist/dev/datil.js",
+      "types": "./dist/dev/datil.ts"
     },
     "./dev/cayenne.js": {
       "require": "./dist/dev/cayenne.js",
-      "import": "./dist/dev/cayenne.js"
+      "import": "./dist/dev/cayenne.js",
+      "types": "./dist/dev/cayenne.ts"
     }
   },
   "types": "./dist/index.ts",
