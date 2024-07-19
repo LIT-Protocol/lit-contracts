@@ -28,6 +28,9 @@ jobs:
       - name: Install dependencies
         run: $HOME/.bun/bin/bun install
 
+      - name: Install esbuild
+        run: npm install -g esbuild
+
       # prod (stable) - gets data from /networks
       - name: Run (prod) fetch-contracts.ts
         env:
