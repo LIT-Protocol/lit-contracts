@@ -58,7 +58,7 @@ jobs:
       - name: Bump version
         run: npm version patch
 
-       - name: Commit and push version bump
+      - name: Commit and push version bump
         run: |
           git add package.json
           git commit -m "chore: bump version" || echo "No version bump to commit"
