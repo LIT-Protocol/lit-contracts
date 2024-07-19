@@ -1,19 +1,25 @@
 {
   "name": "@lit-protocol/contracts",
   "version": "0.0.20",
-  "module": "index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "type": "module",
   "scripts": {
-    "fetch": "bun run fetch-contracts.ts"
+    "fetch": "bun run fetch-contracts.ts && tsc && esbuild dist/index.ts --outfile=dist/index.js"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "typescript": "^5.0.0",
+    "esbuild": "^0.14.0",
+    "esbuild-node-externals": "^1.0.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "exports": {
-    ".": "./dist/index.ts"
+    ".": {
+      "import": "./dist/index.js"
+    }
   },
   "types": "./dist/index.ts",
   "publishConfig": {

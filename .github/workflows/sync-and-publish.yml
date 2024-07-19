@@ -33,14 +33,14 @@ jobs:
         env:
           LIT_ABI_SOURCE: prod
           GH_LIT_ASSETS_READ_ONLY_API: ${{ secrets.GH_LIT_ASSETS_READ_ONLY_API }}
-        run: $HOME/.bun/bin/bun run fetch-contracts.ts
+        run: $HOME/.bun/bin/bun run fetch
 
       # dev (always updating) - gets data from /lit-assets
       - name: Run (dev) fetch-contracts.ts
         env:
           LIT_ABI_SOURCE: dev
           GH_LIT_ASSETS_READ_ONLY_API: ${{ secrets.GH_LIT_ASSETS_READ_ONLY_API }}
-        run: $HOME/.bun/bin/bun run fetch-contracts.ts
+        run: $HOME/.bun/bin/bun run fetch
 
       - name: Commit and push changes
         run: |
