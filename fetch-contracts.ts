@@ -385,7 +385,7 @@ async function updateContractsCache(network: LitNetwork): Promise<void> {
   // also write a .ts file for the cache, like export const networkName
   fs.writeFileSync(
     `${dir}/${network}.ts`,
-    `export const ${networkName} = ${JSON.stringify(cache[network], null, 2)}`
+    `export const ${networkName} = ${JSON.stringify(cache[network], null, 2)} as const`
   );
 }
 
