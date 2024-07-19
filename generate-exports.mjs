@@ -18,6 +18,9 @@ const addFilesToExports = (dir, exports, extension) => {
       exports[exportPath] = {
         require: relativePath,
         import: relativePath,
+        ...(extension === ".js"
+          ? { types: relativePath.replace(extension, ".ts") }
+          : {}),
       };
     }
   });
