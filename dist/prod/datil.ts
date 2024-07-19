@@ -11454,4 +11454,4 @@ export const datil = {
       ]
     }
   ]
-}
+} as const

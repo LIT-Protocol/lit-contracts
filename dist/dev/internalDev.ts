@@ -12381,4 +12381,4 @@ export const internalDev = {
       ]
     }
   ]
-}
+} as const

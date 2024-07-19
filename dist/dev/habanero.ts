@@ -11613,4 +11613,4 @@ export const habanero = {
       ]
     }
   ]
-}
+} as const
