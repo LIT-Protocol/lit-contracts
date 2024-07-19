@@ -5,13 +5,11 @@
   "module": "./dist/index.js",
   "type": "module",
   "scripts": {
-    "fetch": "bun run fetch-contracts.ts && tsc && esbuild dist/index.ts --outfile=dist/index.js"
+    "fetch": "bun run fetch-contracts.ts"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "typescript": "^5.0.0",
-    "esbuild": "^0.14.0",
-    "esbuild-node-externals": "^1.0.0"
+    "typescript": "^5.0.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

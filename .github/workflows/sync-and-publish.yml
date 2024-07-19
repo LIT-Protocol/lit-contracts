@@ -31,9 +31,6 @@ jobs:
       - name: Install dependencies
         run: $HOME/.bun/bin/bun install
 
-      - name: Install esbuild
-        run: npm install -g esbuild
-
       # prod (stable) - gets data from /networks
       - name: Run (prod) fetch-contracts.ts
         env:
@@ -47,10 +44,6 @@ jobs:
           LIT_ABI_SOURCE: dev
           GH_LIT_ASSETS_READ_ONLY_API: ${{ secrets.GH_LIT_ASSETS_READ_ONLY_API }}
         run: $HOME/.bun/bin/bun run fetch-contracts.ts
-
-       # && tsc && esbuild dist/index.ts --outfile=dist/index.js
-      - name: esBuild
-        run: tsc && esbuild dist/index.ts --outfile=dist/index.js
 
       - name: Commit and push changes
         run: |
