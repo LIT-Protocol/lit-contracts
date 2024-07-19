@@ -20,7 +20,7 @@ const addFilesToExports = (dir, exports, extension) => {
         import: relativePath,
         ...(extension === ".js"
           ? { types: relativePath.replace(extension, ".ts") }
-          : {}),
+          : { types: "./json.d.ts" }),
       };
     }
   });
