@@ -160,7 +160,7 @@
       "types": "./dist/dev/cayenne.ts"
     }
   },
-  "types": "./dist/index.ts",
+  "types": "./index.d.ts",
   "publishConfig": {
     "access": "public"
   }
