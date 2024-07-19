@@ -19,17 +19,21 @@
       "require": "./dist/index.js",
       "import": "./dist/index.js"
     },
-    "./prod/cayenne.json": {
-      "require": "./dist/prod/cayenne.json",
-      "import": "./dist/prod/cayenne.json"
+    "./prod/manzano.json": {
+      "require": "./dist/prod/manzano.json",
+      "import": "./dist/prod/manzano.json"
     },
     "./prod/internalDev.json": {
       "require": "./dist/prod/internalDev.json",
       "import": "./dist/prod/internalDev.json"
     },
-    "./prod/manzano.json": {
-      "require": "./dist/prod/manzano.json",
-      "import": "./dist/prod/manzano.json"
+    "./prod/datil-test.json": {
+      "require": "./dist/prod/datil-test.json",
+      "import": "./dist/prod/datil-test.json"
+    },
+    "./prod/datil-dev.json": {
+      "require": "./dist/prod/datil-dev.json",
+      "import": "./dist/prod/datil-dev.json"
     },
     "./prod/datil.json": {
       "require": "./dist/prod/datil.json",
@@ -39,25 +43,25 @@
       "require": "./dist/prod/habanero.json",
       "import": "./dist/prod/habanero.json"
     },
-    "./prod/datil-dev.json": {
-      "require": "./dist/prod/datil-dev.json",
-      "import": "./dist/prod/datil-dev.json"
+    "./prod/cayenne.json": {
+      "require": "./dist/prod/cayenne.json",
+      "import": "./dist/prod/cayenne.json"
     },
-    "./prod/datil-test.json": {
-      "require": "./dist/prod/datil-test.json",
-      "import": "./dist/prod/datil-test.json"
-    },
-    "./dev/cayenne.json": {
-      "require": "./dist/dev/cayenne.json",
-      "import": "./dist/dev/cayenne.json"
+    "./dev/manzano.json": {
+      "require": "./dist/dev/manzano.json",
+      "import": "./dist/dev/manzano.json"
     },
     "./dev/internalDev.json": {
       "require": "./dist/dev/internalDev.json",
       "import": "./dist/dev/internalDev.json"
     },
-    "./dev/manzano.json": {
-      "require": "./dist/dev/manzano.json",
-      "import": "./dist/dev/manzano.json"
+    "./dev/datil-test.json": {
+      "require": "./dist/dev/datil-test.json",
+      "import": "./dist/dev/datil-test.json"
+    },
+    "./dev/datil-dev.json": {
+      "require": "./dist/dev/datil-dev.json",
+      "import": "./dist/dev/datil-dev.json"
     },
     "./dev/datil.json": {
       "require": "./dist/dev/datil.json",
@@ -67,25 +71,13 @@
       "require": "./dist/dev/habanero.json",
       "import": "./dist/dev/habanero.json"
     },
-    "./dev/datil-dev.json": {
-      "require": "./dist/dev/datil-dev.json",
-      "import": "./dist/dev/datil-dev.json"
+    "./dev/cayenne.json": {
+      "require": "./dist/dev/cayenne.json",
+      "import": "./dist/dev/cayenne.json"
     },
-    "./dev/datil-test.json": {
-      "require": "./dist/dev/datil-test.json",
-      "import": "./dist/dev/datil-test.json"
-    },
-    "./prod/internalDev.js": {
-      "require": "./dist/prod/internalDev.js",
-      "import": "./dist/prod/internalDev.js"
-    },
-    "./prod/cayenne.js": {
-      "require": "./dist/prod/cayenne.js",
-      "import": "./dist/prod/cayenne.js"
-    },
-    "./prod/datil-dev.js": {
-      "require": "./dist/prod/datil-dev.js",
-      "import": "./dist/prod/datil-dev.js"
+    "./prod/manzano.js": {
+      "require": "./dist/prod/manzano.js",
+      "import": "./dist/prod/manzano.js"
     },
     "./prod/habanero.js": {
       "require": "./dist/prod/habanero.js",
@@ -95,25 +87,25 @@
       "require": "./dist/prod/datil-test.js",
       "import": "./dist/prod/datil-test.js"
     },
-    "./prod/manzano.js": {
-      "require": "./dist/prod/manzano.js",
-      "import": "./dist/prod/manzano.js"
+    "./prod/internalDev.js": {
+      "require": "./dist/prod/internalDev.js",
+      "import": "./dist/prod/internalDev.js"
+    },
+    "./prod/datil-dev.js": {
+      "require": "./dist/prod/datil-dev.js",
+      "import": "./dist/prod/datil-dev.js"
     },
     "./prod/datil.js": {
       "require": "./dist/prod/datil.js",
       "import": "./dist/prod/datil.js"
     },
-    "./dev/internalDev.js": {
-      "require": "./dist/dev/internalDev.js",
-      "import": "./dist/dev/internalDev.js"
+    "./prod/cayenne.js": {
+      "require": "./dist/prod/cayenne.js",
+      "import": "./dist/prod/cayenne.js"
     },
-    "./dev/cayenne.js": {
-      "require": "./dist/dev/cayenne.js",
-      "import": "./dist/dev/cayenne.js"
-    },
-    "./dev/datil-dev.js": {
-      "require": "./dist/dev/datil-dev.js",
-      "import": "./dist/dev/datil-dev.js"
+    "./dev/manzano.js": {
+      "require": "./dist/dev/manzano.js",
+      "import": "./dist/dev/manzano.js"
     },
     "./dev/habanero.js": {
       "require": "./dist/dev/habanero.js",
@@ -123,13 +115,21 @@
       "require": "./dist/dev/datil-test.js",
       "import": "./dist/dev/datil-test.js"
     },
-    "./dev/manzano.js": {
-      "require": "./dist/dev/manzano.js",
-      "import": "./dist/dev/manzano.js"
+    "./dev/internalDev.js": {
+      "require": "./dist/dev/internalDev.js",
+      "import": "./dist/dev/internalDev.js"
+    },
+    "./dev/datil-dev.js": {
+      "require": "./dist/dev/datil-dev.js",
+      "import": "./dist/dev/datil-dev.js"
     },
     "./dev/datil.js": {
       "require": "./dist/dev/datil.js",
       "import": "./dist/dev/datil.js"
+    },
+    "./dev/cayenne.js": {
+      "require": "./dist/dev/cayenne.js",
+      "import": "./dist/dev/cayenne.js"
     }
   },
   "types": "./dist/index.ts",
