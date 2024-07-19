@@ -45,6 +45,9 @@ jobs:
           GH_LIT_ASSETS_READ_ONLY_API: ${{ secrets.GH_LIT_ASSETS_READ_ONLY_API }}
         run: $HOME/.bun/bin/bun run fetch-contracts.ts
 
+      - name: Run general-exports.ts
+        run: $HOME/.bun/bin/bun run generate-exports.mjs
+
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
