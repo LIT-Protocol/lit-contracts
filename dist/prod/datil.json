@@ -13,8 +13,8 @@
       "contracts": [
         {
           "network": "datil",
-          "address_hash": "0x8c721aDbeDE042DB520e12d81F540F13CD8b3503",
-          "inserted_at": "2024-07-18T21:54:40Z",
+          "address_hash": "0x9c9D147dad75D8B9Bd327405098D65C727296B54",
+          "inserted_at": "2024-07-22T17:12:58Z",
           "ABI": [
             {
               "inputs": [
@@ -1238,8 +1238,8 @@
       "contracts": [
         {
           "network": "datil",
-          "address_hash": "0xAA8bdc4436FE17F9F9F79905ABFEebc82d86024E",
-          "inserted_at": "2024-07-18T21:54:40Z",
+          "address_hash": "0x21d636d95eE71150c0c3Ffa79268c989a329d1CE",
+          "inserted_at": "2024-07-22T17:12:58Z",
           "ABI": [
             {
               "inputs": [
@@ -3658,8 +3658,8 @@
       "contracts": [
         {
           "network": "datil",
-          "address_hash": "0xDaD54780BE73c189C6d78eb04B7E45a4FD41A2dE",
-          "inserted_at": "2024-07-18T21:54:40Z",
+          "address_hash": "0xB87CcFf487B84b60c09DBE15337a46bf5a9e0680",
+          "inserted_at": "2024-07-22T17:12:58Z",
           "ABI": [
             {
               "anonymous": false,
@@ -3773,8 +3773,8 @@
       "contracts": [
         {
           "network": "datil",
-          "address_hash": "0x2a13708Bd54D77F24AFFEd84a2f965ecDc2254Fa",
-          "inserted_at": "2024-07-18T21:54:40Z",
+          "address_hash": "0x4aC036FB0eC21C2F9e2f27abF02750fe3140b124",
+          "inserted_at": "2024-07-22T17:12:58Z",
           "ABI": [
             {
               "inputs": [
@@ -4827,8 +4827,8 @@
       "contracts": [
         {
           "network": "datil",
-          "address_hash": "0x72c53c8a813Dfda1F1EA1C2d78335c17df0Cb777",
-          "inserted_at": "2024-07-18T21:54:40Z",
+          "address_hash": "0xF182d6bEf16Ba77e69372dD096D8B70Bc3d5B475",
+          "inserted_at": "2024-07-22T17:12:58Z",
           "ABI": [
             {
               "inputs": [
@@ -5719,8 +5719,8 @@
       "contracts": [
         {
           "network": "datil",
-          "address_hash": "0xb2C52356C307Dd4e088a0589db47a4865a74392c",
-          "inserted_at": "2024-07-18T21:54:40Z",
+          "address_hash": "0x487A9D096BB4B7Ac1520Cb12370e31e677B175EA",
+          "inserted_at": "2024-07-22T17:12:58Z",
           "ABI": [
             {
               "inputs": [
@@ -6919,8 +6919,8 @@
       "contracts": [
         {
           "network": "datil",
-          "address_hash": "0xd2Ffd259fE13aBa79AF3221992B7F2BE1bD8eb91",
-          "inserted_at": "2024-07-18T21:54:40Z",
+          "address_hash": "0x01205d94Fee4d9F59A4aB24bf80D11d4DdAf6Eed",
+          "inserted_at": "2024-07-22T17:12:58Z",
           "ABI": [
             {
               "inputs": [
@@ -8314,8 +8314,8 @@
       "contracts": [
         {
           "network": "datil",
-          "address_hash": "0x474d0e52133862CB5D85545dF3FC3654e335eBf7",
-          "inserted_at": "2024-07-18T21:54:40Z",
+          "address_hash": "0x5B55ee57C459a31072145F2Fc00b35de20520adD",
+          "inserted_at": "2024-07-22T17:12:58Z",
           "ABI": [
             {
               "inputs": [
@@ -9169,8 +9169,8 @@
       "contracts": [
         {
           "network": "datil",
-          "address_hash": "0x2455bFC063196c84D86399e6A803f14A08eB8A21",
-          "inserted_at": "2024-07-18T21:54:40Z",
+          "address_hash": "0x213Db6E1446928E19588269bEF7dFc9187c4829A",
+          "inserted_at": "2024-07-22T17:12:58Z",
           "ABI": [
             {
               "inputs": [
@@ -10441,8 +10441,8 @@
       "contracts": [
         {
           "network": "datil",
-          "address_hash": "0xa08Fe9feCc9aE586AF1d4718B935f85512e64A53",
-          "inserted_at": "2024-07-18T21:54:40Z",
+          "address_hash": "0x4BB8681d3a24F130cC746C7DC31167C93D72d32b",
+          "inserted_at": "2024-07-22T17:12:58Z",
           "ABI": [
             {
               "inputs": [
@@ -10605,8 +10605,8 @@
       "contracts": [
         {
           "network": "datil",
-          "address_hash": "0xa71968d18d024e107419b69bD2B6eE67E1d39511",
-          "inserted_at": "2024-07-18T21:54:40Z",
+          "address_hash": "0xE393BCD2a9099C903D28949Bac2C4cEd21E55415",
+          "inserted_at": "2024-07-22T17:12:58Z",
           "ABI": [
             {
               "inputs": [],
@@ -10842,8 +10842,8 @@
       "contracts": [
         {
           "network": "datil",
-          "address_hash": "0xAA55D08232aA631c5FAcce2805CAACa816d6b5Ed",
-          "inserted_at": "2024-07-18T21:54:40Z",
+          "address_hash": "0xF19ea8634969730cB51BFEe2E2A5353062053C14",
+          "inserted_at": "2024-07-22T17:12:58Z",
           "ABI": [
             {
               "inputs": [
