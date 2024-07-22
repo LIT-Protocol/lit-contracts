@@ -1,8 +1,8 @@
 export const datilDev = {
   "config": {
-    "chainId": "2311",
-    "rpcUrl": "https://vesuvius-rpc.litprotocol.com",
-    "chainName": "vesuvius",
+    "chainId": "175188",
+    "rpcUrl": "https://yellowstone-rpc.litprotocol.com",
+    "chainName": "yellowstone",
     "litNodeDomainName": "127.0.0.1",
     "litNodePort": 7470,
     "rocketPort": 7470
@@ -13,8 +13,8 @@ export const datilDev = {
       "contracts": [
         {
           "network": "datil-dev",
-          "address_hash": "0x8b9c78E6069e674966Be213BB9fBc6cd759F4E5C",
-          "inserted_at": "2024-06-28T17:45:50Z",
+          "address_hash": "0x77F277D4858Ae589b2263FEfd50CaD7838fE4741",
+          "inserted_at": "2024-07-22T19:02:33Z",
           "ABI": [
             {
               "inputs": [
@@ -1238,8 +1238,8 @@ export const datilDev = {
       "contracts": [
         {
           "network": "datil-dev",
-          "address_hash": "0x687bc6ae828177A895038A73673f407559B6993F",
-          "inserted_at": "2024-06-28T17:45:50Z",
+          "address_hash": "0xD4507CD392Af2c80919219d7896508728f6A623F",
+          "inserted_at": "2024-07-22T19:02:33Z",
           "ABI": [
             {
               "inputs": [
@@ -3658,8 +3658,8 @@ export const datilDev = {
       "contracts": [
         {
           "network": "datil-dev",
-          "address_hash": "0x8373D5791bdbe3765Bc8cf54D6c73A445cCE52D6",
-          "inserted_at": "2024-06-28T17:45:50Z",
+          "address_hash": "0x116eBFb474C6aa13e1B8b19253fd0E3f226A982f",
+          "inserted_at": "2024-07-22T19:02:33Z",
           "ABI": [
             {
               "anonymous": false,
@@ -3773,8 +3773,8 @@ export const datilDev = {
       "contracts": [
         {
           "network": "datil-dev",
-          "address_hash": "0x165DfE2671774581EE26D6f16e7C8dD22a0Eb601",
-          "inserted_at": "2024-06-28T17:45:50Z",
+          "address_hash": "0x81d8f0e945E3Bdc735dA3E19C4Df77a8B91046Cd",
+          "inserted_at": "2024-07-22T19:02:33Z",
           "ABI": [
             {
               "inputs": [
@@ -4827,8 +4827,8 @@ export const datilDev = {
       "contracts": [
         {
           "network": "datil-dev",
-          "address_hash": "0x331715139cd88eD6D50e714c78683fd224B0Fd3B",
-          "inserted_at": "2024-06-28T17:45:50Z",
+          "address_hash": "0xbc01f21C58Ca83f25b09338401D53D4c2344D1d9",
+          "inserted_at": "2024-07-22T19:02:33Z",
           "ABI": [
             {
               "inputs": [
@@ -5719,8 +5719,8 @@ export const datilDev = {
       "contracts": [
         {
           "network": "datil-dev",
-          "address_hash": "0x5526d5309Bb6caa560261aB37c1C28cC2ebe33c4",
-          "inserted_at": "2024-06-28T17:45:50Z",
+          "address_hash": "0x02C4242F72d62c8fEF2b2DB088A35a9F4ec741C7",
+          "inserted_at": "2024-07-22T19:02:33Z",
           "ABI": [
             {
               "inputs": [
@@ -6919,8 +6919,8 @@ export const datilDev = {
       "contracts": [
         {
           "network": "datil-dev",
-          "address_hash": "0x1ef122e184D1a22938662C57db8EEc5C7C4F1129",
-          "inserted_at": "2024-06-28T17:45:50Z",
+          "address_hash": "0x1A12D5B3D6A52B3bDe0468900795D35ce994ac2b",
+          "inserted_at": "2024-07-22T19:02:33Z",
           "ABI": [
             {
               "inputs": [
@@ -8314,8 +8314,8 @@ export const datilDev = {
       "contracts": [
         {
           "network": "datil-dev",
-          "address_hash": "0x5598d7Df72249e9aBAEd83c425F89D1A1Cd575Ca",
-          "inserted_at": "2024-06-28T17:45:50Z",
+          "address_hash": "0xCa9C62fB4ceA8831eBb6fD9fE747Cc372515CF7f",
+          "inserted_at": "2024-07-22T19:02:33Z",
           "ABI": [
             {
               "inputs": [
@@ -9169,8 +9169,8 @@ export const datilDev = {
       "contracts": [
         {
           "network": "datil-dev",
-          "address_hash": "0x252b8c38bb8e6d94D36014FD14961694374539Cd",
-          "inserted_at": "2024-06-28T17:45:50Z",
+          "address_hash": "0xf64638F1eb3b064f5443F7c9e2Dc050ed535D891",
+          "inserted_at": "2024-07-22T19:02:33Z",
           "ABI": [
             {
               "inputs": [
@@ -10441,8 +10441,8 @@ export const datilDev = {
       "contracts": [
         {
           "network": "datil-dev",
-          "address_hash": "0x4aDF8d9ae825Fc9a0F9Ee6970D80F503a57Ec120",
-          "inserted_at": "2024-06-28T17:45:50Z",
+          "address_hash": "0x784A743bBBB5f5225CeC7979A3304179be17D66d",
+          "inserted_at": "2024-07-22T19:02:33Z",
           "ABI": [
             {
               "inputs": [
@@ -10605,8 +10605,8 @@ export const datilDev = {
       "contracts": [
         {
           "network": "datil-dev",
-          "address_hash": "0xd84CE97B97BC9F4BC028DccFFb8ba315067128bB",
-          "inserted_at": "2024-06-28T17:45:50Z",
+          "address_hash": "0xC60051658E346554C1F572ef3Aa4bD8596E026b6",
+          "inserted_at": "2024-07-22T19:02:33Z",
           "ABI": [
             {
               "inputs": [],
@@ -10842,8 +10842,8 @@ export const datilDev = {
       "contracts": [
         {
           "network": "datil-dev",
-          "address_hash": "0xdE1cE69f08deB911847148F2a8C32Cffd3d54bb1",
-          "inserted_at": "2024-06-28T17:45:50Z",
+          "address_hash": "0xbB23168855efe735cE9e6fD6877bAf13E02c410f",
+          "inserted_at": "2024-07-22T19:02:33Z",
           "ABI": [
             {
               "inputs": [
