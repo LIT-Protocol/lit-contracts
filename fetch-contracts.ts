@@ -393,6 +393,11 @@ async function updateContractsCache(network: LitNetwork): Promise<void> {
     `${dir}/${network}.js`,
     `export const ${networkName} = ${JSON.stringify(cache[network], null, 2)}`
   );
+
+  fs.writeFileSync(
+    `${dir}/${network}.cjs`,
+    `"use strict";\n\nmodule.exports = ${JSON.stringify(cache[network], null, 2)};`
+  );
 }
 
 const litNetworks: LitNetwork[] = [
