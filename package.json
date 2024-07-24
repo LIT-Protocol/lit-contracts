@@ -1,7 +1,7 @@
 {
   "name": "@lit-protocol/contracts",
   "version": "0.0.37",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "type": "module",
   "scripts": {
@@ -16,7 +16,7 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/index.js",
+      "require": "./dist/index.cjs",
       "import": "./dist/index.js"
     },
     "./prod/manzano.json": {
