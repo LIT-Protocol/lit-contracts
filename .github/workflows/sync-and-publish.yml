@@ -29,17 +29,33 @@ jobs:
             DEV_BRANCH_NAME=${BRANCH_NAME#dev-}
             echo "DEV_BRANCH=$DEV_BRANCH_NAME" >> $GITHUB_ENV
             echo "PUBLISH_ALLOWED=true" >> $GITHUB_ENV
+            # Create TAG_NAME by replacing slashes with dashes
+            TAG_NAME=$(echo "$BRANCH_NAME" | sed 's/\//-/g')
+            echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
           else
             echo "DEV_BRANCH=no_publish" >> $GITHUB_ENV
             echo "PUBLISH_ALLOWED=false" >> $GITHUB_ENV
           fi
         shell: bash
 
+      # Example output
+      # BRANCH_NAME is dev-feature/get-node-info-in-one-contract-call
+      # DEV_BRANCH is feature/get-node-info-in-one-contract-call
+      # PUBLISH_ALLOWED is true
+      # TAG_NAME is feature-get-node-info-in-one-contract-call
       - name: Display environment variables
         run: |
           echo "BRANCH_NAME is $BRANCH_NAME"
           echo "DEV_BRANCH is $DEV_BRANCH"
           echo "PUBLISH_ALLOWED is $PUBLISH_ALLOWED"
+          echo "TAG_NAME is $TAG_NAME"
+
+
+      # DEBUG ONLY
+      # - name: Stop CI
+      #   run: |
+      #     echo "Stopping CI after displaying environment variables"
+      #     exit 1
 
       # Display message for non-dev and non-main branches
       - name: Display message for other branches
@@ -97,8 +113,9 @@ jobs:
             NEW_VERSION=$(node -p "require('./package.json').version")
           else
             CURRENT_VERSION=$(node -p "require('./package.json').version")
+            BASE_VERSION=$(echo $CURRENT_VERSION | sed -E 's/-[0-9a-f]+$//')
             SHORT_HASH=$(git rev-parse --short HEAD)
-            NEW_VERSION="${CURRENT_VERSION}-${SHORT_HASH}"
+            NEW_VERSION="${BASE_VERSION}-${SHORT_HASH}"
             npm version ${NEW_VERSION} --no-git-tag-version
           fi
           echo "NEW_VERSION=${NEW_VERSION}" >> $GITHUB_ENV
@@ -123,6 +140,5 @@ jobs:
           if [[ "$BRANCH_NAME" == "main" ]]; then
             npm publish --access public --tag latest
           else
-            TAG_NAME=${BRANCH_NAME#dev-}
             npm publish --access public --tag $TAG_NAME
           fi
