@@ -33,7 +33,8 @@ jobs:
       - name: Set environment variable for dev branches
         if: startsWith(github.ref, 'refs/heads/dev-')
         run: |
-          BRANCH_NAME=${${GITHUB_REF#refs/heads/}#dev-}
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          BRANCH_NAME=${BRANCH_NAME#dev-}
           DEV_BRANCH_NAME=${BRANCH_NAME#dev-}
           echo "DEV_BRANCH=$DEV_BRANCH_NAME" >> $GITHUB_ENV
 
