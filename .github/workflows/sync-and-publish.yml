@@ -7,7 +7,7 @@ on:
   push:
     branches:
       - main
-      - "dev-*" # Match branches starting with dev-
+      - '**'  # Match any branch
 
 jobs:
   sync-and-publish:
