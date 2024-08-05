@@ -1155,29 +1155,6 @@ module.exports = {
               "type": "function"
             },
             {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "account",
-                  "type": "address"
-                },
-                {
-                  "internalType": "address",
-                  "name": "sender",
-                  "type": "address"
-                }
-              ],
-              "name": "stakeForValidator",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
               "inputs": [],
               "name": "totalStaked",
               "outputs": [
@@ -1651,7 +1628,76 @@ module.exports = {
             },
             {
               "inputs": [],
+              "name": "ActiveValidatorsCannotLeave",
+              "type": "error"
+            },
+            {
+              "inputs": [],
               "name": "CallerNotOwner",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "CannotKickBelowCurrentValidatorThreshold",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "stakingAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "CannotRejoinUntilNextEpochBecauseKicked",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "senderPubKey",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "receiverPubKey",
+                  "type": "uint256"
+                }
+              ],
+              "name": "CannotReuseCommsKeys",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "CannotStakeZero",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "CannotVoteTwice",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "CannotWithdrawZero",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "nodeAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "CouldNotMapNodeAddressToStakerAddress",
               "type": "error"
             },
             {
@@ -1673,7 +1719,195 @@ module.exports = {
                   "type": "uint8"
                 }
               ],
+              "name": "MustBeInActiveOrUnlockedState",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "enum LibStakingStorage.States",
+                  "name": "state",
+                  "type": "uint8"
+                }
+              ],
+              "name": "MustBeInNextValidatorSetLockedOrReadyForNextEpochOrRestoreState",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "enum LibStakingStorage.States",
+                  "name": "state",
+                  "type": "uint8"
+                }
+              ],
               "name": "MustBeInNextValidatorSetLockedOrReadyForNextEpochState",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "enum LibStakingStorage.States",
+                  "name": "state",
+                  "type": "uint8"
+                }
+              ],
+              "name": "MustBeInNextValidatorSetLockedState",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "enum LibStakingStorage.States",
+                  "name": "state",
+                  "type": "uint8"
+                }
+              ],
+              "name": "MustBeInReadyForNextEpochState",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "MustBeValidatorInNextEpochToKick",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "currentTimestamp",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "epochEndTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "timeout",
+                  "type": "uint256"
+                }
+              ],
+              "name": "NotEnoughTimeElapsedForTimeoutSinceLastEpoch",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "currentTimestamp",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "epochEndTime",
+                  "type": "uint256"
+                }
+              ],
+              "name": "NotEnoughTimeElapsedSinceLastEpoch",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "validatorCount",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "minimumValidatorCount",
+                  "type": "uint256"
+                }
+              ],
+              "name": "NotEnoughValidatorsInNextEpoch",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "currentReadyValidatorCount",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "nextReadyValidatorCount",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "minimumValidatorCountToBeReady",
+                  "type": "uint256"
+                }
+              ],
+              "name": "NotEnoughValidatorsReadyForNextEpoch",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "currentEpochNumber",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "receivedEpochNumber",
+                  "type": "uint256"
+                }
+              ],
+              "name": "SignaledReadyForWrongEpochNumber",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "StakerNotPermitted",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "yourBalance",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "requestedWithdrawlAmount",
+                  "type": "uint256"
+                }
+              ],
+              "name": "TryingToWithdrawMoreThanStaked",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "validator",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address[]",
+                  "name": "validatorsInNextEpoch",
+                  "type": "address[]"
+                }
+              ],
+              "name": "ValidatorIsNotInNextEpoch",
               "type": "error"
             },
             {
@@ -1835,6 +2069,70 @@ module.exports = {
               "anonymous": false,
               "inputs": [
                 {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "staker",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "epochNumber",
+                  "type": "uint256"
+                }
+              ],
+              "name": "ReadyForNextEpoch",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "token",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "amount",
+                  "type": "uint256"
+                }
+              ],
+              "name": "Recovered",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "staker",
+                  "type": "address"
+                }
+              ],
+              "name": "RequestToJoin",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "staker",
+                  "type": "address"
+                }
+              ],
+              "name": "RequestToLeave",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
                   "indexed": false,
                   "internalType": "address",
                   "name": "newResolverContractAddress",
@@ -1842,6 +2140,19 @@ module.exports = {
                 }
               ],
               "name": "ResolverContractAddressSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newDuration",
+                  "type": "uint256"
+                }
+              ],
+              "name": "RewardsDurationUpdated",
               "type": "event"
             },
             {
@@ -1903,6 +2214,37 @@ module.exports = {
               "type": "event"
             },
             {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "reporter",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "validatorStakerAddress",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "internalType": "uint256",
+                  "name": "reason",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "bytes",
+                  "name": "data",
+                  "type": "bytes"
+                }
+              ],
+              "name": "VotedToKickValidatorInNextEpoch",
+              "type": "event"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "address",
@@ -1954,19 +2296,104 @@ module.exports = {
               "type": "function"
             },
             {
+              "inputs": [],
+              "name": "advanceEpoch",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "exit",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getReward",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "address",
-                  "name": "staker",
+                  "name": "validatorStakerAddress",
                   "type": "address"
                 },
                 {
                   "internalType": "uint256",
-                  "name": "amount",
+                  "name": "reason",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "data",
+                  "type": "bytes"
+                }
+              ],
+              "name": "kickValidatorInNextEpoch",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "lockValidatorsForNextEpoch",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint32",
+                  "name": "ip",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "uint128",
+                  "name": "ipv6",
+                  "type": "uint128"
+                },
+                {
+                  "internalType": "uint32",
+                  "name": "port",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "address",
+                  "name": "nodeAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "senderPubKey",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "receiverPubKey",
                   "type": "uint256"
                 }
               ],
-              "name": "adminStakeForValidator",
+              "name": "requestToJoin",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "requestToLeave",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "requestToLeaveAsNode",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -2144,503 +2571,6 @@ module.exports = {
             {
               "inputs": [
                 {
-                  "internalType": "uint256",
-                  "name": "reason",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "newKickPenaltyPercent",
-                  "type": "uint256"
-                }
-              ],
-              "name": "setKickPenaltyPercent",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "ActiveValidatorsCannotLeave",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "CannotKickBelowCurrentValidatorThreshold",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "stakingAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "CannotRejoinUntilNextEpochBecauseKicked",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "senderPubKey",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "receiverPubKey",
-                  "type": "uint256"
-                }
-              ],
-              "name": "CannotReuseCommsKeys",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "CannotStakeZero",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "stakerAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "CannotVoteTwice",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "CannotWithdrawZero",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "nodeAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "CouldNotMapNodeAddressToStakerAddress",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "enum LibStakingStorage.States",
-                  "name": "state",
-                  "type": "uint8"
-                }
-              ],
-              "name": "MustBeInActiveOrUnlockedState",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "enum LibStakingStorage.States",
-                  "name": "state",
-                  "type": "uint8"
-                }
-              ],
-              "name": "MustBeInNextValidatorSetLockedOrReadyForNextEpochOrRestoreState",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "enum LibStakingStorage.States",
-                  "name": "state",
-                  "type": "uint8"
-                }
-              ],
-              "name": "MustBeInNextValidatorSetLockedState",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "enum LibStakingStorage.States",
-                  "name": "state",
-                  "type": "uint8"
-                }
-              ],
-              "name": "MustBeInReadyForNextEpochState",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "stakerAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "MustBeValidatorInNextEpochToKick",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "currentTimestamp",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "epochEndTime",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "timeout",
-                  "type": "uint256"
-                }
-              ],
-              "name": "NotEnoughTimeElapsedForTimeoutSinceLastEpoch",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "currentTimestamp",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "epochEndTime",
-                  "type": "uint256"
-                }
-              ],
-              "name": "NotEnoughTimeElapsedSinceLastEpoch",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "validatorCount",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "minimumValidatorCount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "NotEnoughValidatorsInNextEpoch",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "currentReadyValidatorCount",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "nextReadyValidatorCount",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "minimumValidatorCountToBeReady",
-                  "type": "uint256"
-                }
-              ],
-              "name": "NotEnoughValidatorsReadyForNextEpoch",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "currentEpochNumber",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "receivedEpochNumber",
-                  "type": "uint256"
-                }
-              ],
-              "name": "SignaledReadyForWrongEpochNumber",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "stakerAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "StakerNotPermitted",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "yourBalance",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "requestedWithdrawlAmount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "TryingToWithdrawMoreThanStaked",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "validator",
-                  "type": "address"
-                },
-                {
-                  "internalType": "address[]",
-                  "name": "validatorsInNextEpoch",
-                  "type": "address[]"
-                }
-              ],
-              "name": "ValidatorIsNotInNextEpoch",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "string",
-                  "name": "valueName",
-                  "type": "string"
-                }
-              ],
-              "name": "ValueMustBeNonzero",
-              "type": "error"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "epochNumber",
-                  "type": "uint256"
-                }
-              ],
-              "name": "ReadyForNextEpoch",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "token",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "Recovered",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                }
-              ],
-              "name": "RequestToJoin",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                }
-              ],
-              "name": "RequestToLeave",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newDuration",
-                  "type": "uint256"
-                }
-              ],
-              "name": "RewardsDurationUpdated",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "reporter",
-                  "type": "address"
-                },
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "validatorStakerAddress",
-                  "type": "address"
-                },
-                {
-                  "indexed": true,
-                  "internalType": "uint256",
-                  "name": "reason",
-                  "type": "uint256"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "bytes",
-                  "name": "data",
-                  "type": "bytes"
-                }
-              ],
-              "name": "VotedToKickValidatorInNextEpoch",
-              "type": "event"
-            },
-            {
-              "inputs": [],
-              "name": "advanceEpoch",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "exit",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "getReward",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "validatorStakerAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "reason",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "bytes",
-                  "name": "data",
-                  "type": "bytes"
-                }
-              ],
-              "name": "kickValidatorInNextEpoch",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "lockValidatorsForNextEpoch",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint32",
-                  "name": "ip",
-                  "type": "uint32"
-                },
-                {
-                  "internalType": "uint128",
-                  "name": "ipv6",
-                  "type": "uint128"
-                },
-                {
-                  "internalType": "uint32",
-                  "name": "port",
-                  "type": "uint32"
-                },
-                {
-                  "internalType": "address",
-                  "name": "nodeAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "senderPubKey",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "receiverPubKey",
-                  "type": "uint256"
-                }
-              ],
-              "name": "requestToJoin",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "requestToLeave",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "requestToLeaveAsNode",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
                   "internalType": "uint32",
                   "name": "ip",
                   "type": "uint32"
@@ -2672,6 +2602,24 @@ module.exports = {
                 }
               ],
               "name": "setIpPortNodeAddressAndCommunicationPubKeys",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "reason",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "newKickPenaltyPercent",
+                  "type": "uint256"
+                }
+              ],
+              "name": "setKickPenaltyPercent",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -3214,10 +3162,65 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "receiverPubKey",
                       "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct LibStakingStorage.Validator[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getActiveUnkickedValidatorStructsAndCounts",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "uint32",
+                      "name": "ip",
+                      "type": "uint32"
+                    },
+                    {
+                      "internalType": "uint128",
+                      "name": "ipv6",
+                      "type": "uint128"
+                    },
+                    {
+                      "internalType": "uint32",
+                      "name": "port",
+                      "type": "uint32"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "nodeAddress",
+                      "type": "address"
                     },
                     {
                       "internalType": "uint256",
-                      "name": "lastActiveEpoch",
+                      "name": "reward",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "senderPubKey",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "receiverPubKey",
                       "type": "uint256"
                     }
                   ],
@@ -3410,11 +3413,6 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "receiverPubKey",
                       "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "lastActiveEpoch",
-                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -3465,11 +3463,6 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "receiverPubKey",
                       "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "lastActiveEpoch",
-                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -3519,11 +3512,6 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "receiverPubKey",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "lastActiveEpoch",
                       "type": "uint256"
                     }
                   ],
@@ -3610,25 +3598,6 @@ module.exports = {
             {
               "inputs": [],
               "name": "isReadyForNextEpoch",
-              "outputs": [
-                {
-                  "internalType": "bool",
-                  "name": "",
-                  "type": "bool"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "account",
-                  "type": "address"
-                }
-              ],
-              "name": "isRecentValidator",
               "outputs": [
                 {
                   "internalType": "bool",
@@ -3786,11 +3755,6 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "receiverPubKey",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "lastActiveEpoch",
                       "type": "uint256"
                     }
                   ],
