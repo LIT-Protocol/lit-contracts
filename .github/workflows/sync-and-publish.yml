@@ -7,7 +7,7 @@ on:
   push:
     branches:
       - main
-      - 'dev-*'  # Match branches starting with dev-
+      - '**'  # Match any branch
 
 jobs:
   sync-and-publish:
@@ -16,6 +16,30 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+
+      - name: Set environment variables
+        run: echo "Setting environment variables based on branch"
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+          DEV_BRANCH: ${{ steps.set-env.outputs.DEV_BRANCH }}
+        shell: bash
+
+      # Production
+      - name: Set environment variable for main branch
+        if: github.ref == 'refs/heads/main'
+        run: echo "DEV_BRANCH=production_value" >> $GITHUB_ENV
+
+      # Development - All other branches start with `dev-` prefixes
+      - name: Set environment variable for dev branches
+        if: startsWith(github.ref, 'refs/heads/dev-')
+        run: |
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+          BRANCH_NAME=${BRANCH_NAME#dev-}
+          DEV_BRANCH_NAME=${BRANCH_NAME#dev-}
+          echo "DEV_BRANCH=$DEV_BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Display environment variable
+        run: echo "DEV_BRANCH is $DEV_BRANCH"
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -75,8 +99,11 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           BRANCH_NAME=${GITHUB_REF##*/}
+          echo "Branch name: $BRANCH_NAME"
           if [[ "$BRANCH_NAME" == "main" ]]; then
-            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc && npm publish --access public --tag latest
-          elif [[ "$BRANCH_NAME" == dev-* ]]; then
-            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc && npm publish --access public --tag $BRANCH_NAME
+            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+            npm publish --access public --tag latest
+          else
+            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+            npm publish --access public --tag $BRANCH_NAME
           fi
