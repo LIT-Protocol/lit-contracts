@@ -7,7 +7,7 @@ on:
   push:
     branches:
       - main
-      - 'dev-*'  # Match branches starting with dev-
+      - "dev-*" # Match branches starting with dev-
 
 jobs:
   sync-and-publish:
@@ -75,8 +75,11 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           BRANCH_NAME=${GITHUB_REF##*/}
+          echo "Branch name: $BRANCH_NAME"
           if [[ "$BRANCH_NAME" == "main" ]]; then
-            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc && npm publish --access public --tag latest
+            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+            npm publish --access public --tag latest
           elif [[ "$BRANCH_NAME" == dev-* ]]; then
-            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc && npm publish --access public --tag $BRANCH_NAME
+            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+            npm publish --access public --tag $BRANCH_NAME
           fi
