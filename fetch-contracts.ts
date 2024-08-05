@@ -8,9 +8,12 @@ if (!process.env.GH_LIT_ASSETS_READ_ONLY_API) {
   throw new Error("❌ GH_LIT_ASSETS_READ_ONLY_API is not defined");
 }
 
+const DEV_BRANCH = process.env.DEV_BRANCH || "develop";
+
 type ABISource = {
   repoName: string;
   path: string;
+  branch: string;
   fileExtensionToRemove: string;
   abiSourceInJson: any[];
   contractNameMap: any;
@@ -29,6 +32,7 @@ const LIT_ABI_SOURCE = {
   dev: {
     repoName: "lit-assets",
     path: "rust/lit-core/lit-blockchain/abis",
+    branch: DEV_BRANCH,
     fileExtensionToRemove: ".json",
     abiSourceInJson: ["abi"],
     contractNameMap: {
@@ -65,6 +69,7 @@ const LIT_ABI_SOURCE = {
   },
   prod: {
     repoName: "networks",
+    branch: "main",
     path: "abis",
     fileExtensionToRemove: ".abi",
     abiSourceInJson: [],
@@ -124,8 +129,8 @@ const TOKEN = process.env.GH_LIT_ASSETS_READ_ONLY_API;
 const USERNAME = "LIT-Protocol";
 const REPO_NAME = source.repoName;
 
-const createPath = (PATH: string) => {
-  return `https://api.github.com/repos/${USERNAME}/${REPO_NAME}/contents/${PATH}`;
+const createPath = (PATH: string, BRANCH: string) => {
+  return `https://api.github.com/repos/${USERNAME}/${REPO_NAME}/contents/${PATH}?ref=${BRANCH}`;
 };
 
 function extractPathAfterMain(urlString: string): string {
@@ -171,7 +176,7 @@ let cache: { [key in LitNetwork]?: any } = {};
 async function getLitContractABIs(network: LitNetwork) {
   const contractsData = [];
 
-  const path = createPath(source.path);
+  const path = createPath(source.path, source.branch);
   console.log("path:", path);
 
   const filesRes = await fetch(path, HEADER);
@@ -385,7 +390,11 @@ async function updateContractsCache(network: LitNetwork): Promise<void> {
   // also write a .ts file for the cache, like export const networkName
   fs.writeFileSync(
     `${dir}/${network}.ts`,
-    `export const ${networkName} = ${JSON.stringify(cache[network], null, 2)} as const`
+    `export const ${networkName} = ${JSON.stringify(
+      cache[network],
+      null,
+      2
+    )} as const`
   );
 
   // also write a .js file for the cache, like export const networkName
@@ -396,7 +405,11 @@ async function updateContractsCache(network: LitNetwork): Promise<void> {
 
   fs.writeFileSync(
     `${dir}/${network}.cjs`,
-    `"use strict";\n\nmodule.exports = ${JSON.stringify(cache[network], null, 2)};`
+    `"use strict";\n\nmodule.exports = ${JSON.stringify(
+      cache[network],
+      null,
+      2
+    )};`
   );
 }
 
