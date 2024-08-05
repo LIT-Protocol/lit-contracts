@@ -38,6 +38,11 @@ jobs:
           fi
         shell: bash
 
+      # Example output
+      # BRANCH_NAME is dev-feature/get-node-info-in-one-contract-call
+      # DEV_BRANCH is feature/get-node-info-in-one-contract-call
+      # PUBLISH_ALLOWED is true
+      # TAG_NAME is feature-get-node-info-in-one-contract-call
       - name: Display environment variables
         run: |
           echo "BRANCH_NAME is $BRANCH_NAME"
@@ -47,10 +52,10 @@ jobs:
 
 
       # DEBUG ONLY
-      - name: Stop CI
-        run: |
-          echo "Stopping CI after displaying environment variables"
-          exit 1
+      # - name: Stop CI
+      #   run: |
+      #     echo "Stopping CI after displaying environment variables"
+      #     exit 1
 
       # Display message for non-dev and non-main branches
       - name: Display message for other branches
