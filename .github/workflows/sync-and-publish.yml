@@ -21,9 +21,11 @@ jobs:
         run: |
           echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "DEV_BRANCH=production_value" >> $GITHUB_ENV
+            echo "DEV_BRANCH=develop" >> $GITHUB_ENV
             echo "PUBLISH_ALLOWED=true" >> $GITHUB_ENV
           elif [[ "${{ github.ref }}" == refs/heads/dev-* ]]; then
+            BRANCH_NAME=${GITHUB_REF#refs/heads/}
+            BRANCH_NAME=${BRANCH_NAME#dev-}
             DEV_BRANCH_NAME=${BRANCH_NAME#dev-}
             echo "DEV_BRANCH=$DEV_BRANCH_NAME" >> $GITHUB_ENV
             echo "PUBLISH_ALLOWED=true" >> $GITHUB_ENV
@@ -109,5 +111,6 @@ jobs:
           if [[ "$BRANCH_NAME" == "main" ]]; then
             npm publish --access public --tag latest
           else
-            npm publish --access public --tag $BRANCH_NAME
+            TAG_NAME=${BRANCH_NAME#dev-}
+            npm publish --access public --tag $TAG_NAME
           fi
