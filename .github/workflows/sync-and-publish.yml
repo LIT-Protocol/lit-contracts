@@ -7,7 +7,7 @@ on:
   push:
     branches:
       - main
-      - 'dev-*'  # Match branches starting with dev-
+      - "**" # Match any branch
 
 jobs:
   sync-and-publish:
@@ -16,6 +16,34 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+
+      - name: Set environment variables
+        run: |
+          echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "DEV_BRANCH=production_value" >> $GITHUB_ENV
+            echo "PUBLISH_ALLOWED=true" >> $GITHUB_ENV
+          elif [[ "${{ github.ref }}" == refs/heads/dev-* ]]; then
+            DEV_BRANCH_NAME=${BRANCH_NAME#dev-}
+            echo "DEV_BRANCH=$DEV_BRANCH_NAME" >> $GITHUB_ENV
+            echo "PUBLISH_ALLOWED=true" >> $GITHUB_ENV
+          else
+            echo "DEV_BRANCH=no_publish" >> $GITHUB_ENV
+            echo "PUBLISH_ALLOWED=false" >> $GITHUB_ENV
+          fi
+        shell: bash
+
+      - name: Display environment variables
+        run: |
+          echo "BRANCH_NAME is $BRANCH_NAME"
+          echo "DEV_BRANCH is $DEV_BRANCH"
+          echo "PUBLISH_ALLOWED is $PUBLISH_ALLOWED"
+
+      # Display message for non-dev and non-main branches
+      - name: Display message for other branches
+        if: env.PUBLISH_ALLOWED == 'false'
+        run: |
+          echo "::warning::This branch (${{ env.BRANCH_NAME }}) does not have the 'dev-' prefix and is not the main branch. It will not be published."
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -60,9 +88,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Bump version
+        if: env.PUBLISH_ALLOWED == 'true'
         run: npm version patch
 
       - name: Commit and push version bump
+        if: env.PUBLISH_ALLOWED == 'true'
         run: |
           git add package.json
           git commit -m "chore: bump version" || echo "No version bump to commit"
@@ -71,12 +101,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Publish npm package
+        if: env.PUBLISH_ALLOWED == 'true'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          BRANCH_NAME=${GITHUB_REF##*/}
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
           if [[ "$BRANCH_NAME" == "main" ]]; then
-            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc && npm publish --access public --tag latest
-          elif [[ "$BRANCH_NAME" == dev-* ]]; then
-            echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc && npm publish --access public --tag $BRANCH_NAME
+            npm publish --access public --tag latest
+          else
+            npm publish --access public --tag $BRANCH_NAME
           fi
