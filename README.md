@@ -11,6 +11,9 @@ eg.
 
 ```
 LIT_ABI_SOURCE=prod GH_LIT_ASSETS_READ_ONLY_API=xxx bun run fetch-contracts.ts
+
+// for specific branch
+DEV_BRANCH=develop LIT_ABI_SOURCE=prod GH_LIT_ASSETS_READ_ONLY_API=xxx bun run fetch-contracts.ts
 ```
 
 # To trigger build
