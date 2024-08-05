@@ -26,7 +26,7 @@ jobs:
 
       # Production
       - name: Set environment variable for main branch
-        if: startsWith(github.ref, 'refs/heads/main')
+        if: github.ref == 'refs/heads/main'
         run: echo "DEV_BRANCH=production_value" >> $GITHUB_ENV
 
       # Development - All other branches start with `dev-` prefixes
