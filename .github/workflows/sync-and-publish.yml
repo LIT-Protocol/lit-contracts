@@ -79,7 +79,7 @@ jobs:
           if [[ "$BRANCH_NAME" == "main" ]]; then
             echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
             npm publish --access public --tag latest
-          elif [[ "$BRANCH_NAME" == dev-* ]]; then
+          else
             echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
             npm publish --access public --tag $BRANCH_NAME
           fi
