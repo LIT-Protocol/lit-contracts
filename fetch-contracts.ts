@@ -8,7 +8,8 @@ if (!process.env.GH_LIT_ASSETS_READ_ONLY_API) {
   throw new Error("❌ GH_LIT_ASSETS_READ_ONLY_API is not defined");
 }
 
-const DEV_BRANCH = "feature/get-node-info-in-one-contract-call";
+const DEV_BRANCH = process.env.DEV_BRANCH; 
+// || "feature/get-node-info-in-one-contract-call"
 
 type ABISource = {
   repoName: string;
