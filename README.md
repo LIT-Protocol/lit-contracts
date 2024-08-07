@@ -71,6 +71,10 @@ console.log("datilTest:", _datilTest);
 console.log("datil:", _datil);
 ```
 
+# Branching & dev strategy
+
+![](https://i.ibb.co/Gsvqx4B/image.png)
+
 # CI Workflow
 
 ![](https://www.plantuml.com/plantuml/png/TP6nSl8m48HxFSMLvf-11p35Ju0KAI0COM1I2ljiYyWdpKaYuUqZ2Po9YtIQtTMdqzx2USa-z5haWoWFhDeM6Kw6FnfjFkT2DL0Cwk5cyVy4V8S4nIwuRY9GEuHYZzOuvGtVOAsSbRvA5jMg4UKRUdYcgs93FPA7esGbpnhTdRraILKtHc-aeea0o7SRmv04k2Vd-SbqiyRhzDyejiRhA0N5QmJoA9EL8VLhnc1XQsgSNHn8gc4PQ2xA5ugzQ1t1DYQHAfN6BlU1eC7uoMbboBEil9jv1vPD_RSRntsOBHAoz3Z5BsiuklqbKLUcxvNFhwTkOTL9QeUQTk6iLHIVTDmArZzLlQFBtrk6ti8HsIaJ1mSOQ0y9af_r0UGDR7UReQUjoPIqF2rlS99CYjgX7-UD5Oju3ht-1W00)
