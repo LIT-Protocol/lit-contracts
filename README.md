@@ -73,7 +73,7 @@ console.log("datil:", _datil);
 
 # Branching & dev strategy
 
-![](https://i.ibb.co/Gsvqx4B/image.png)
+![](https://i.ibb.co/Z136p20/image.png)
 
 # CI Workflow
 
