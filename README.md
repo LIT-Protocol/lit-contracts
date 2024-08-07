@@ -33,13 +33,42 @@ yarn add @lit-protocol/contracts
 
 # Usage
 
+## for "main" branch
+
+### Production (Getting data from `networks` repo )
+
 ```
 import { datilDev, datilTest, datil } from "@lit-protocol/contracts";
 
 console.log("datilDev:", datilDev);
 console.log("datilTest:", datilTest);
 console.log("datil:", datil);
+```
 
+### Development (Getting data from `lit-assets` repo `develop` branch )
+
+```
+import { _datilDev, _datilTest, _datil } from "@lit-protocol/contracts";
+
+console.log("datilDev:", _datilDev);
+console.log("datilTest:", _datilTest);
+console.log("datil:", _datil);
+```
+
+## for any other branches with `dev-` prefix
+
+### Development (Getting data from `lit-assets` repo with whatever the branch name is)
+
+eg. if your branch here is called `dev-datil` then it will pull data from lit-assets `datil` branch
+
+the `dev-` prefix is to allow GitHub action to publish to npm.
+
+```
+import { _datilDev, _datilTest, _datil } from "@lit-protocol/contracts";
+
+console.log("datilDev:", _datilDev);
+console.log("datilTest:", _datilTest);
+console.log("datil:", _datil);
 ```
 
 # CI Workflow
