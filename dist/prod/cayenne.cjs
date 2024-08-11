@@ -3177,9 +3177,36 @@ module.exports = {
               "name": "getActiveUnkickedValidatorStructsAndCounts",
               "outputs": [
                 {
-                  "internalType": "uint256",
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "epochLength",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "number",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "endTime",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "retries",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "timeout",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct LibStakingStorage.Epoch",
                   "name": "",
-                  "type": "uint256"
+                  "type": "tuple"
                 },
                 {
                   "internalType": "uint256",
@@ -11513,6 +11540,13 @@ module.exports = {
                 }
               ],
               "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "setDefaultRestriction",
+              "outputs": [],
+              "stateMutability": "nonpayable",
               "type": "function"
             },
             {
