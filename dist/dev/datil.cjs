@@ -1946,6 +1946,19 @@ module.exports = {
             {
               "inputs": [
                 {
+                  "internalType": "address[]",
+                  "name": "validators",
+                  "type": "address[]"
+                }
+              ],
+              "name": "adminSetValidatorsInCurrentEpoch",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "address",
                   "name": "validatorStakerAddress",
                   "type": "address"
@@ -5477,6 +5490,36 @@ module.exports = {
                 }
               ],
               "name": "adminResetRootKeys",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "stakingContract",
+                  "type": "address"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "bytes",
+                      "name": "pubkey",
+                      "type": "bytes"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "keyType",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct IPubkeyRouter.RootKey[]",
+                  "name": "rootKeys",
+                  "type": "tuple[]"
+                }
+              ],
+              "name": "adminSetRootKeys",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -11409,6 +11452,11 @@ module.exports = {
                 {
                   "components": [
                     {
+                      "internalType": "uint128",
+                      "name": "totalMaxPrice",
+                      "type": "uint128"
+                    },
+                    {
                       "internalType": "uint256",
                       "name": "requestsPerPeriod",
                       "type": "uint256"
@@ -11491,6 +11539,11 @@ module.exports = {
                 {
                   "components": [
                     {
+                      "internalType": "uint128",
+                      "name": "totalMaxPrice",
+                      "type": "uint128"
+                    },
+                    {
                       "internalType": "uint256",
                       "name": "requestsPerPeriod",
                       "type": "uint256"
@@ -11521,6 +11574,11 @@ module.exports = {
               "outputs": [
                 {
                   "components": [
+                    {
+                      "internalType": "uint128",
+                      "name": "totalMaxPrice",
+                      "type": "uint128"
+                    },
                     {
                       "internalType": "uint256",
                       "name": "requestsPerPeriod",
@@ -11563,6 +11621,11 @@ module.exports = {
               "inputs": [
                 {
                   "components": [
+                    {
+                      "internalType": "uint128",
+                      "name": "totalMaxPrice",
+                      "type": "uint128"
+                    },
                     {
                       "internalType": "uint256",
                       "name": "requestsPerPeriod",

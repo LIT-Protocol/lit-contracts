@@ -1944,6 +1944,19 @@ export const datilDev = {
             {
               "inputs": [
                 {
+                  "internalType": "address[]",
+                  "name": "validators",
+                  "type": "address[]"
+                }
+              ],
+              "name": "adminSetValidatorsInCurrentEpoch",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "address",
                   "name": "validatorStakerAddress",
                   "type": "address"
@@ -5475,6 +5488,36 @@ export const datilDev = {
                 }
               ],
               "name": "adminResetRootKeys",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "stakingContract",
+                  "type": "address"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "bytes",
+                      "name": "pubkey",
+                      "type": "bytes"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "keyType",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct IPubkeyRouter.RootKey[]",
+                  "name": "rootKeys",
+                  "type": "tuple[]"
+                }
+              ],
+              "name": "adminSetRootKeys",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -11407,6 +11450,11 @@ export const datilDev = {
                 {
                   "components": [
                     {
+                      "internalType": "uint128",
+                      "name": "totalMaxPrice",
+                      "type": "uint128"
+                    },
+                    {
                       "internalType": "uint256",
                       "name": "requestsPerPeriod",
                       "type": "uint256"
@@ -11489,6 +11537,11 @@ export const datilDev = {
                 {
                   "components": [
                     {
+                      "internalType": "uint128",
+                      "name": "totalMaxPrice",
+                      "type": "uint128"
+                    },
+                    {
                       "internalType": "uint256",
                       "name": "requestsPerPeriod",
                       "type": "uint256"
@@ -11519,6 +11572,11 @@ export const datilDev = {
               "outputs": [
                 {
                   "components": [
+                    {
+                      "internalType": "uint128",
+                      "name": "totalMaxPrice",
+                      "type": "uint128"
+                    },
                     {
                       "internalType": "uint256",
                       "name": "requestsPerPeriod",
@@ -11561,6 +11619,11 @@ export const datilDev = {
               "inputs": [
                 {
                   "components": [
+                    {
+                      "internalType": "uint128",
+                      "name": "totalMaxPrice",
+                      "type": "uint128"
+                    },
                     {
                       "internalType": "uint256",
                       "name": "requestsPerPeriod",

@@ -1,8 +1,8 @@
 export const internalDev = {
   "config": {
-    "chainId": "2311",
-    "rpcUrl": "https://vesuvius-rpc.litprotocol.com",
-    "chainName": "vesuvius",
+    "chainId": "175188",
+    "rpcUrl": "https://yellowstone-rpc.litprotocol.com",
+    "chainName": "yellowstone",
     "litNodeDomainName": "127.0.0.1",
     "litNodePort": 7470,
     "rocketPort": 7470
@@ -13,8 +13,8 @@ export const internalDev = {
       "contracts": [
         {
           "network": "internalDev",
-          "address_hash": "0xF92E8f50327073148200Ce13e63ED161D070b1d5",
-          "inserted_at": "2024-07-16T00:37:34Z",
+          "address_hash": "0xf41A8442e0eb46a7be8045a13488A41EE20fEe5C",
+          "inserted_at": "2024-09-10T03:02:08Z",
           "ABI": [
             {
               "inputs": [
@@ -1261,8 +1261,8 @@ export const internalDev = {
       "contracts": [
         {
           "network": "internalDev",
-          "address_hash": "0x1EEA3659708Fbd005E633BD89Fb80801164b0Cb3",
-          "inserted_at": "2024-07-16T00:37:34Z",
+          "address_hash": "0xeF93C40238e26db9F9972D21c55b50E8C717D99b",
+          "inserted_at": "2024-09-10T03:02:08Z",
           "ABI": [
             {
               "inputs": [
@@ -1937,6 +1937,19 @@ export const internalDev = {
             {
               "inputs": [],
               "name": "adminResetEpoch",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "validators",
+                  "type": "address[]"
+                }
+              ],
+              "name": "adminSetValidatorsInCurrentEpoch",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -3817,8 +3830,8 @@ export const internalDev = {
       "contracts": [
         {
           "network": "internalDev",
-          "address_hash": "0x392Acd82790b44e9fBd432d8a5d3ea9E131B2fe8",
-          "inserted_at": "2024-07-16T00:37:34Z",
+          "address_hash": "0xC65E40237680a4618FC07e0e9ce1D1b6e9B01aF4",
+          "inserted_at": "2024-09-10T03:02:08Z",
           "ABI": [
             {
               "anonymous": false,
@@ -3932,8 +3945,8 @@ export const internalDev = {
       "contracts": [
         {
           "network": "internalDev",
-          "address_hash": "0x9BD16182c115e1BE9520f7d0FCfa04Edb3eDD829",
-          "inserted_at": "2024-07-16T00:37:34Z",
+          "address_hash": "0xd78089bAAe410f5d0eae31D0D56157c73a3Ff98B",
+          "inserted_at": "2024-09-10T03:02:08Z",
           "ABI": [
             {
               "inputs": [
@@ -4986,8 +4999,8 @@ export const internalDev = {
       "contracts": [
         {
           "network": "internalDev",
-          "address_hash": "0x630D15768185f4216C384b28BFa10818c7c473bc",
-          "inserted_at": "2024-07-16T00:37:34Z",
+          "address_hash": "0x020438D3CfBDdA5E2b092BE06A8ad3C4d5022A31",
+          "inserted_at": "2024-09-10T03:02:08Z",
           "ABI": [
             {
               "inputs": [
@@ -5482,6 +5495,36 @@ export const internalDev = {
             {
               "inputs": [
                 {
+                  "internalType": "address",
+                  "name": "stakingContract",
+                  "type": "address"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "bytes",
+                      "name": "pubkey",
+                      "type": "bytes"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "keyType",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct IPubkeyRouter.RootKey[]",
+                  "name": "rootKeys",
+                  "type": "tuple[]"
+                }
+              ],
+              "name": "adminSetRootKeys",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "components": [
                     {
                       "internalType": "bytes32",
@@ -5878,8 +5921,8 @@ export const internalDev = {
       "contracts": [
         {
           "network": "internalDev",
-          "address_hash": "0xc66EbF1C19e0C564A33a3Ad377377C9B52a751f2",
-          "inserted_at": "2024-07-16T00:37:34Z",
+          "address_hash": "0xEe1a5dE4555F289f47e4a35c88631fC3D29a96D7",
+          "inserted_at": "2024-09-10T03:02:08Z",
           "ABI": [
             {
               "inputs": [
@@ -7078,8 +7121,8 @@ export const internalDev = {
       "contracts": [
         {
           "network": "internalDev",
-          "address_hash": "0x4a4a1ecb8923916e52f26D67206cdE7A00410AB8",
-          "inserted_at": "2024-07-16T00:37:34Z",
+          "address_hash": "0x4445e6E35F16B563B7566350126566E4aDabB09e",
+          "inserted_at": "2024-09-10T03:02:08Z",
           "ABI": [
             {
               "inputs": [
@@ -8473,8 +8516,8 @@ export const internalDev = {
       "contracts": [
         {
           "network": "internalDev",
-          "address_hash": "0xaB78ED074698C0cAdf964E52c87eA6ac2837113a",
-          "inserted_at": "2024-07-16T00:37:34Z",
+          "address_hash": "0xb8D56a5E4E616c32b1794097aaa04da29da5bC0b",
+          "inserted_at": "2024-09-10T03:02:08Z",
           "ABI": [
             {
               "inputs": [
@@ -9328,8 +9371,8 @@ export const internalDev = {
       "contracts": [
         {
           "network": "internalDev",
-          "address_hash": "0x1F382D8712cECB43Abb9De7E5a904dC32Fc5bA45",
-          "inserted_at": "2024-07-16T00:37:34Z",
+          "address_hash": "0x911d860a8dfaC731C9E8A5040C01dF484E013eB0",
+          "inserted_at": "2024-09-10T03:02:08Z",
           "ABI": [
             {
               "inputs": [
@@ -10600,8 +10643,8 @@ export const internalDev = {
       "contracts": [
         {
           "network": "internalDev",
-          "address_hash": "0x7B5b67FDededaE94631d62782dd78e4f6d64F7a7",
-          "inserted_at": "2024-07-16T00:37:34Z",
+          "address_hash": "0x2adF917cAaf2fD9F903FaF7beb7035d259E45638",
+          "inserted_at": "2024-09-10T03:02:08Z",
           "ABI": [
             {
               "inputs": [
@@ -10764,8 +10807,8 @@ export const internalDev = {
       "contracts": [
         {
           "network": "internalDev",
-          "address_hash": "0x8679e07ABA19cD9BEbAb0AA4837ef8F8dC4F5240",
-          "inserted_at": "2024-07-16T00:37:34Z",
+          "address_hash": "0x042F177B6b11Ad0FCcc4BA37f2B656B9b781E28B",
+          "inserted_at": "2024-09-10T03:02:08Z",
           "ABI": [
             {
               "inputs": [],
@@ -11001,8 +11044,8 @@ export const internalDev = {
       "contracts": [
         {
           "network": "internalDev",
-          "address_hash": "0x6986990CC613Ba7dc13dad2FEd934F109Af4804f",
-          "inserted_at": "2024-07-16T00:37:34Z",
+          "address_hash": "0xe144704b530B2EB23342960037334265C7FE44f4",
+          "inserted_at": "2024-09-10T03:02:08Z",
           "ABI": [
             {
               "inputs": [
@@ -11406,6 +11449,11 @@ export const internalDev = {
                 },
                 {
                   "components": [
+                    {
+                      "internalType": "uint128",
+                      "name": "totalMaxPrice",
+                      "type": "uint128"
+                    },
                     {
                       "internalType": "uint256",
                       "name": "requestsPerPeriod",
@@ -11489,6 +11537,11 @@ export const internalDev = {
                 {
                   "components": [
                     {
+                      "internalType": "uint128",
+                      "name": "totalMaxPrice",
+                      "type": "uint128"
+                    },
+                    {
                       "internalType": "uint256",
                       "name": "requestsPerPeriod",
                       "type": "uint256"
@@ -11519,6 +11572,11 @@ export const internalDev = {
               "outputs": [
                 {
                   "components": [
+                    {
+                      "internalType": "uint128",
+                      "name": "totalMaxPrice",
+                      "type": "uint128"
+                    },
                     {
                       "internalType": "uint256",
                       "name": "requestsPerPeriod",
@@ -11561,6 +11619,11 @@ export const internalDev = {
               "inputs": [
                 {
                   "components": [
+                    {
+                      "internalType": "uint128",
+                      "name": "totalMaxPrice",
+                      "type": "uint128"
+                    },
                     {
                       "internalType": "uint256",
                       "name": "requestsPerPeriod",
@@ -11606,774 +11669,6 @@ export const internalDev = {
               "name": "undelegatePaymentsBatch",
               "outputs": [],
               "stateMutability": "nonpayable",
-              "type": "function"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "PriceFeed",
-      "contracts": [
-        {
-          "network": "internalDev",
-          "address_hash": "0x268D567667E982Ec22b432F871646Ed794bc3c4C",
-          "inserted_at": "2024-07-16T00:37:34Z",
-          "ABI": [
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotAddFunctionToDiamondThatAlreadyExists",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4[]",
-                  "name": "_selectors",
-                  "type": "bytes4[]"
-                }
-              ],
-              "name": "CannotAddSelectorsToZeroAddress",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotRemoveFunctionThatDoesNotExist",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotRemoveImmutableFunction",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotReplaceFunctionThatDoesNotExists",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotReplaceFunctionWithTheSameFunctionFromTheSameFacet",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4[]",
-                  "name": "_selectors",
-                  "type": "bytes4[]"
-                }
-              ],
-              "name": "CannotReplaceFunctionsFromFacetWithZeroAddress",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotReplaceImmutableFunction",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint8",
-                  "name": "_action",
-                  "type": "uint8"
-                }
-              ],
-              "name": "IncorrectFacetCutAction",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_initializationContractAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "bytes",
-                  "name": "_calldata",
-                  "type": "bytes"
-                }
-              ],
-              "name": "InitializationFunctionReverted",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_contractAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "string",
-                  "name": "_message",
-                  "type": "string"
-                }
-              ],
-              "name": "NoBytecodeAtAddress",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_facetAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "NoSelectorsProvidedForFacetForCut",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_user",
-                  "type": "address"
-                },
-                {
-                  "internalType": "address",
-                  "name": "_contractOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "NotContractOwner",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_facetAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "RemoveFacetAddressMustBeZeroAddress",
-              "type": "error"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "components": [
-                    {
-                      "internalType": "address",
-                      "name": "facetAddress",
-                      "type": "address"
-                    },
-                    {
-                      "internalType": "enum IDiamond.FacetCutAction",
-                      "name": "action",
-                      "type": "uint8"
-                    },
-                    {
-                      "internalType": "bytes4[]",
-                      "name": "functionSelectors",
-                      "type": "bytes4[]"
-                    }
-                  ],
-                  "indexed": false,
-                  "internalType": "struct IDiamond.FacetCut[]",
-                  "name": "_diamondCut",
-                  "type": "tuple[]"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "_init",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "bytes",
-                  "name": "_calldata",
-                  "type": "bytes"
-                }
-              ],
-              "name": "DiamondCut",
-              "type": "event"
-            },
-            {
-              "inputs": [
-                {
-                  "components": [
-                    {
-                      "internalType": "address",
-                      "name": "facetAddress",
-                      "type": "address"
-                    },
-                    {
-                      "internalType": "enum IDiamond.FacetCutAction",
-                      "name": "action",
-                      "type": "uint8"
-                    },
-                    {
-                      "internalType": "bytes4[]",
-                      "name": "functionSelectors",
-                      "type": "bytes4[]"
-                    }
-                  ],
-                  "internalType": "struct IDiamond.FacetCut[]",
-                  "name": "_diamondCut",
-                  "type": "tuple[]"
-                },
-                {
-                  "internalType": "address",
-                  "name": "_init",
-                  "type": "address"
-                },
-                {
-                  "internalType": "bytes",
-                  "name": "_calldata",
-                  "type": "bytes"
-                }
-              ],
-              "name": "diamondCut",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_functionSelector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "facetAddress",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "facetAddress_",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "facetAddresses",
-              "outputs": [
-                {
-                  "internalType": "address[]",
-                  "name": "facetAddresses_",
-                  "type": "address[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_facet",
-                  "type": "address"
-                }
-              ],
-              "name": "facetFunctionSelectors",
-              "outputs": [
-                {
-                  "internalType": "bytes4[]",
-                  "name": "_facetFunctionSelectors",
-                  "type": "bytes4[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "facets",
-              "outputs": [
-                {
-                  "components": [
-                    {
-                      "internalType": "address",
-                      "name": "facetAddress",
-                      "type": "address"
-                    },
-                    {
-                      "internalType": "bytes4[]",
-                      "name": "functionSelectors",
-                      "type": "bytes4[]"
-                    }
-                  ],
-                  "internalType": "struct IDiamondLoupe.Facet[]",
-                  "name": "facets_",
-                  "type": "tuple[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_interfaceId",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "supportsInterface",
-              "outputs": [
-                {
-                  "internalType": "bool",
-                  "name": "",
-                  "type": "bool"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "previousOwner",
-                  "type": "address"
-                },
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "newOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "OwnershipTransferred",
-              "type": "event"
-            },
-            {
-              "inputs": [],
-              "name": "owner",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "owner_",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_newOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "transferOwnership",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "CallerNotOwner",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "MustBeLessThan100",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "MustBeNonzero",
-              "type": "error"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newPrice",
-                  "type": "uint256"
-                }
-              ],
-              "name": "BaseNetworkPriceSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newPrice",
-                  "type": "uint256"
-                }
-              ],
-              "name": "MaxNetworkPriceSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "stakingAddress",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "usagePercent",
-                  "type": "uint256"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256[]",
-                  "name": "newPrices",
-                  "type": "uint256[]"
-                }
-              ],
-              "name": "UsageSet",
-              "type": "event"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "productIds",
-                  "type": "uint256[]"
-                }
-              ],
-              "name": "baseNetworkPrices",
-              "outputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "",
-                  "type": "uint256[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "productIds",
-                  "type": "uint256[]"
-                }
-              ],
-              "name": "getNodesForRequest",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                },
-                {
-                  "components": [
-                    {
-                      "components": [
-                        {
-                          "internalType": "uint32",
-                          "name": "ip",
-                          "type": "uint32"
-                        },
-                        {
-                          "internalType": "uint128",
-                          "name": "ipv6",
-                          "type": "uint128"
-                        },
-                        {
-                          "internalType": "uint32",
-                          "name": "port",
-                          "type": "uint32"
-                        },
-                        {
-                          "internalType": "address",
-                          "name": "nodeAddress",
-                          "type": "address"
-                        },
-                        {
-                          "internalType": "uint256",
-                          "name": "reward",
-                          "type": "uint256"
-                        },
-                        {
-                          "internalType": "uint256",
-                          "name": "senderPubKey",
-                          "type": "uint256"
-                        },
-                        {
-                          "internalType": "uint256",
-                          "name": "receiverPubKey",
-                          "type": "uint256"
-                        },
-                        {
-                          "internalType": "uint256",
-                          "name": "lastActiveEpoch",
-                          "type": "uint256"
-                        }
-                      ],
-                      "internalType": "struct LibStakingStorage.Validator",
-                      "name": "validator",
-                      "type": "tuple"
-                    },
-                    {
-                      "internalType": "uint256[]",
-                      "name": "prices",
-                      "type": "uint256[]"
-                    }
-                  ],
-                  "internalType": "struct LibPriceFeedStorage.NodeInfoAndPrices[]",
-                  "name": "",
-                  "type": "tuple[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "getStakingAddress",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "productIds",
-                  "type": "uint256[]"
-                }
-              ],
-              "name": "maxNetworkPrices",
-              "outputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "",
-                  "type": "uint256[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "node",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256[]",
-                  "name": "productIds",
-                  "type": "uint256[]"
-                }
-              ],
-              "name": "price",
-              "outputs": [
-                {
-                  "components": [
-                    {
-                      "internalType": "address",
-                      "name": "stakerAddress",
-                      "type": "address"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "price",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "productId",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "timestamp",
-                      "type": "uint256"
-                    }
-                  ],
-                  "internalType": "struct LibPriceFeedStorage.NodePriceData[]",
-                  "name": "",
-                  "type": "tuple[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "productId",
-                  "type": "uint256"
-                }
-              ],
-              "name": "prices",
-              "outputs": [
-                {
-                  "components": [
-                    {
-                      "internalType": "address",
-                      "name": "stakerAddress",
-                      "type": "address"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "price",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "productId",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "timestamp",
-                      "type": "uint256"
-                    }
-                  ],
-                  "internalType": "struct LibPriceFeedStorage.NodePriceData[]",
-                  "name": "",
-                  "type": "tuple[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "newPrice",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256[]",
-                  "name": "productIds",
-                  "type": "uint256[]"
-                }
-              ],
-              "name": "setBaseNetworkPrices",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "newPrice",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256[]",
-                  "name": "productIds",
-                  "type": "uint256[]"
-                }
-              ],
-              "name": "setMaxNetworkPrices",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "usagePercent",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256[]",
-                  "name": "productIds",
-                  "type": "uint256[]"
-                }
-              ],
-              "name": "setUsage",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "usagePercent",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256[]",
-                  "name": "productIds",
-                  "type": "uint256[]"
-                }
-              ],
-              "name": "usagePercentToPrices",
-              "outputs": [
-                {
-                  "internalType": "uint256[]",
-                  "name": "",
-                  "type": "uint256[]"
-                }
-              ],
-              "stateMutability": "view",
               "type": "function"
             }
           ]
