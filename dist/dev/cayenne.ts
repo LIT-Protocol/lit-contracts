@@ -1653,6 +1653,11 @@ export const cayenne = {
               "type": "error"
             },
             {
+              "inputs": [],
+              "name": "CallerNotOwnerOrDevopsAdmin",
+              "type": "error"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "enum LibStakingStorage.States",
@@ -1769,6 +1774,19 @@ export const cayenne = {
                 }
               ],
               "name": "ConfigSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "newDevopsAdmin",
+                  "type": "address"
+                }
+              ],
+              "name": "DevopsAdminSet",
               "type": "event"
             },
             {
@@ -2096,6 +2114,19 @@ export const cayenne = {
                 }
               ],
               "name": "setContractResolver",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newDevopsAdmin",
+                  "type": "address"
+                }
+              ],
+              "name": "setDevopsAdmin",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -3175,6 +3206,11 @@ export const cayenne = {
                       "internalType": "uint256",
                       "name": "timeout",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "startTime",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Epoch",
@@ -3269,6 +3305,11 @@ export const cayenne = {
                     {
                       "internalType": "uint256",
                       "name": "timeout",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "startTime",
                       "type": "uint256"
                     }
                   ],
@@ -10205,6 +10246,30 @@ export const cayenne = {
                   "internalType": "address",
                   "name": "",
                   "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "authMethodType",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "id",
+                  "type": "bytes"
+                }
+              ],
+              "name": "getPKPPubKeysByAuthMethod",
+              "outputs": [
+                {
+                  "internalType": "bytes[]",
+                  "name": "",
+                  "type": "bytes[]"
                 }
               ],
               "stateMutability": "view",

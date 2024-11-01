@@ -1663,6 +1663,11 @@ module.exports = {
               "type": "error"
             },
             {
+              "inputs": [],
+              "name": "CallerNotOwnerOrDevopsAdmin",
+              "type": "error"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "enum LibStakingStorage.States",
@@ -1779,6 +1784,19 @@ module.exports = {
                 }
               ],
               "name": "ConfigSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "newDevopsAdmin",
+                  "type": "address"
+                }
+              ],
+              "name": "DevopsAdminSet",
               "type": "event"
             },
             {
@@ -2106,6 +2124,19 @@ module.exports = {
                 }
               ],
               "name": "setContractResolver",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newDevopsAdmin",
+                  "type": "address"
+                }
+              ],
+              "name": "setDevopsAdmin",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -3185,6 +3216,11 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "timeout",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "startTime",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Epoch",
@@ -3279,6 +3315,11 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "timeout",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "startTime",
                       "type": "uint256"
                     }
                   ],
@@ -10215,6 +10256,30 @@ module.exports = {
                   "internalType": "address",
                   "name": "",
                   "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "authMethodType",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "id",
+                  "type": "bytes"
+                }
+              ],
+              "name": "getPKPPubKeysByAuthMethod",
+              "outputs": [
+                {
+                  "internalType": "bytes[]",
+                  "name": "",
+                  "type": "bytes[]"
                 }
               ],
               "stateMutability": "view",
