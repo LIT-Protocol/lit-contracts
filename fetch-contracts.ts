@@ -53,6 +53,7 @@ const LIT_ABI_SOURCE = {
       allowlistContractAddress: "Allowlist",
       paymentDelegationContractAddress: "PaymentDelegation",
       priceFeedContractAddress: "PriceFeed",
+      cloneNetContractAddress: "CloneNet",
     },
     deployedContract: {
       internalDev:
@@ -90,6 +91,7 @@ const LIT_ABI_SOURCE = {
       multisenderContractAddress: "Multisender",
       allowlistContractAddress: "Allowlist",
       paymentDelegationContractAddress: "PaymentDelegation",
+      cloneNetContractAddress: "CloneNet",
     },
     deployedContract: {
       internalDev:
