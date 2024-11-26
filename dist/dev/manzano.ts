@@ -2487,6 +2487,31 @@ export const manzano = {
                   "type": "address"
                 },
                 {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "attestedAddress",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "internalType": "uint256",
+                  "name": "attestedPubKey",
+                  "type": "uint256"
+                }
+              ],
+              "name": "AttestedWalletRegistered",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "staker",
+                  "type": "address"
+                },
+                {
                   "indexed": false,
                   "internalType": "uint256",
                   "name": "epochNumber",
@@ -2632,6 +2657,29 @@ export const manzano = {
             {
               "inputs": [],
               "name": "lockValidatorsForNextEpoch",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "attestedAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "attestedPubKey",
+                  "type": "uint256"
+                }
+              ],
+              "name": "registerAttestedWallet",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -3415,6 +3463,37 @@ export const manzano = {
                   "internalType": "address[]",
                   "name": "",
                   "type": "address[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "addresses",
+                  "type": "address[]"
+                }
+              ],
+              "name": "getNodeAttestedPubKeyMappings",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "nodeAddress",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "pubKey",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct LibStakingStorage.PubKeyMapping[]",
+                  "name": "",
+                  "type": "tuple[]"
                 }
               ],
               "stateMutability": "view",
@@ -6676,6 +6755,11 @@ export const manzano = {
                   "internalType": "struct IPubkeyRouter.Signature[]",
                   "name": "signatures",
                   "type": "tuple[]"
+                },
+                {
+                  "internalType": "address",
+                  "name": "stakingContractAddress",
+                  "type": "address"
                 }
               ],
               "name": "claimAndMint",
@@ -9019,6 +9103,126 @@ export const manzano = {
               "type": "function"
             },
             {
+              "inputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "keyType",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "bytes32",
+                      "name": "derivedKeyId",
+                      "type": "bytes32"
+                    },
+                    {
+                      "components": [
+                        {
+                          "internalType": "bytes32",
+                          "name": "r",
+                          "type": "bytes32"
+                        },
+                        {
+                          "internalType": "bytes32",
+                          "name": "s",
+                          "type": "bytes32"
+                        },
+                        {
+                          "internalType": "uint8",
+                          "name": "v",
+                          "type": "uint8"
+                        }
+                      ],
+                      "internalType": "struct IPubkeyRouter.Signature[]",
+                      "name": "signatures",
+                      "type": "tuple[]"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "stakingContractAddress",
+                      "type": "address"
+                    }
+                  ],
+                  "internalType": "struct LibPKPNFTStorage.ClaimMaterialV2",
+                  "name": "claimMaterial",
+                  "type": "tuple"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "keyType",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "bytes[]",
+                      "name": "permittedIpfsCIDs",
+                      "type": "bytes[]"
+                    },
+                    {
+                      "internalType": "uint256[][]",
+                      "name": "permittedIpfsCIDScopes",
+                      "type": "uint256[][]"
+                    },
+                    {
+                      "internalType": "address[]",
+                      "name": "permittedAddresses",
+                      "type": "address[]"
+                    },
+                    {
+                      "internalType": "uint256[][]",
+                      "name": "permittedAddressScopes",
+                      "type": "uint256[][]"
+                    },
+                    {
+                      "internalType": "uint256[]",
+                      "name": "permittedAuthMethodTypes",
+                      "type": "uint256[]"
+                    },
+                    {
+                      "internalType": "bytes[]",
+                      "name": "permittedAuthMethodIds",
+                      "type": "bytes[]"
+                    },
+                    {
+                      "internalType": "bytes[]",
+                      "name": "permittedAuthMethodPubkeys",
+                      "type": "bytes[]"
+                    },
+                    {
+                      "internalType": "uint256[][]",
+                      "name": "permittedAuthMethodScopes",
+                      "type": "uint256[][]"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "addPkpEthAddressAsPermittedAddress",
+                      "type": "bool"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "sendPkpToItself",
+                      "type": "bool"
+                    }
+                  ],
+                  "internalType": "struct PKPHelper.AuthMethodData",
+                  "name": "authMethodData",
+                  "type": "tuple"
+                }
+              ],
+              "name": "claimAndMintNextAndAddAuthMethodsWithTypesV2",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "payable",
+              "type": "function"
+            },
+            {
               "inputs": [],
               "name": "contractResolver",
               "outputs": [
@@ -9110,6 +9314,19 @@ export const manzano = {
                   "internalType": "bytes32",
                   "name": "",
                   "type": "bytes32"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getStakingAddress",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
                 }
               ],
               "stateMutability": "view",
