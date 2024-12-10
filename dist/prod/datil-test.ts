@@ -4250,105 +4250,115 @@ export const datilTest = {
               "inputs": [],
               "name": "getAllActiveUnkickedValidatorStructsAndCounts",
               "outputs": [
-      {
-        "components": [
-          {
-            "internalType": "address",
-            "name": "stakingContractAddress",
-            "type": "address"
-          },
-          {
-            "components": [
-              {
-                "components": [
-                  {
-                    "internalType": "uint256",
-                    "name": "epochLength",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "number",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "endTime",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "retries",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "timeout",
-                    "type": "uint256"
-                  }
-                ],
-                "internalType": "struct LibStakingStorage.Epoch",
-                "name": "epoch",
-                "type": "tuple"
-              },
-              {
-                "internalType": "uint256",
-                "name": "currentValidatorCountForConsensus",
-                "type": "uint256"
-              },
-              {
-                "components": [
-                  {
-                    "internalType": "uint32",
-                    "name": "ip",
-                    "type": "uint32"
-                  },
-                  {
-                    "internalType": "uint128",
-                    "name": "ipv6",
-                    "type": "uint128"
-                  },
-                  {
-                    "internalType": "uint32",
-                    "name": "port",
-                    "type": "uint32"
-                  },
-                  {
-                    "internalType": "address",
-                    "name": "nodeAddress",
-                    "type": "address"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "reward",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "senderPubKey",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "receiverPubKey",
-                    "type": "uint256"
-                  }
-                ],
-                "internalType": "struct LibStakingStorage.Validator[]",
-                "name": "activeUnkickedValidators",
-                "type": "tuple[]"
-              }
-            ],
-            "internalType": "struct LibStakingStorage.StakingAggregateDetails",
-            "name": "details",
-            "type": "tuple"
-          }
-        ],
-        "internalType": "struct LibStakingStorage.KeyedStakingAggregateDetails[]",
-        "name": "",
-        "type": "tuple[]"
-      }
-    ],
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "stakingContractAddress",
+                      "type": "address"
+                    },
+                    {
+                      "components": [
+                        {
+                          "components": [
+                            {
+                              "internalType": "uint256",
+                              "name": "epochLength",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "number",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "endTime",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "retries",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "timeout",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "startTime",
+                              "type": "uint256"
+                            }
+                          ],
+                          "internalType": "struct LibStakingStorage.Epoch",
+                          "name": "epoch",
+                          "type": "tuple"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "currentValidatorCountForConsensus",
+                          "type": "uint256"
+                        },
+                        {
+                          "components": [
+                            {
+                              "internalType": "uint32",
+                              "name": "ip",
+                              "type": "uint32"
+                            },
+                            {
+                              "internalType": "uint128",
+                              "name": "ipv6",
+                              "type": "uint128"
+                            },
+                            {
+                              "internalType": "uint32",
+                              "name": "port",
+                              "type": "uint32"
+                            },
+                            {
+                              "internalType": "address",
+                              "name": "nodeAddress",
+                              "type": "address"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "reward",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "senderPubKey",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "receiverPubKey",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "lastActiveEpoch",
+                              "type": "uint256"
+                            }
+                          ],
+                          "internalType": "struct LibStakingStorage.Validator[]",
+                          "name": "activeUnkickedValidators",
+                          "type": "tuple[]"
+                        }
+                      ],
+                      "internalType": "struct LibStakingStorage.StakingAggregateDetails",
+                      "name": "details",
+                      "type": "tuple"
+                    }
+                  ],
+                  "internalType": "struct LibStakingStorage.KeyedStakingAggregateDetails[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
               "stateMutability": "view",
               "type": "function"
             },
