@@ -3264,11 +3264,6 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "timeout",
                       "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "startTime",
-                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Epoch",
@@ -3363,11 +3358,6 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "timeout",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "startTime",
                       "type": "uint256"
                     }
                   ],
