@@ -158,6 +158,26 @@
       "require": "./dist/dev/cayenne.js",
       "import": "./dist/dev/cayenne.js",
       "types": "./dist/dev/cayenne.ts"
+    },
+    "./prod/nagaDev.json": {
+      "require": "./dist/prod/nagaDev.json",
+      "import": "./dist/prod/nagaDev.json",
+      "types": "./json.d.ts"
+    },
+    "./dev/nagaDev.json": {
+      "require": "./dist/dev/nagaDev.json",
+      "import": "./dist/dev/nagaDev.json",
+      "types": "./json.d.ts"
+    },
+    "./prod/nagaDev.js": {
+      "require": "./dist/prod/nagaDev.js",
+      "import": "./dist/prod/nagaDev.js",
+      "types": "./dist/prod/nagaDev.ts"
+    },
+    "./dev/nagaDev.js": {
+      "require": "./dist/dev/nagaDev.js",
+      "import": "./dist/dev/nagaDev.js",
+      "types": "./dist/dev/nagaDev.ts"
     }
   },
   "types": "./dist/index.ts",
