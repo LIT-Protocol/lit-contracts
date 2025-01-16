@@ -135,7 +135,7 @@ type LitNetwork =
   | "datil-dev"
   | "datil-test"
   | "datil"
-  | "nagaDev";
+  | "naga-dev";
 
 const TOKEN = process.env.GH_LIT_ASSETS_READ_ONLY_API;
 const USERNAME = "LIT-Protocol";
@@ -279,7 +279,7 @@ async function updateContractsCache(network: LitNetwork): Promise<void> {
       API = source.deployedContract.datilProd;
       lastModified = await getLastModified(filePath, network);
       break;
-    case "nagaDev":
+    case "naga-dev":
       filePath = extractPathAfterMain(source.deployedContract.nagaDev);
       API = source.deployedContract.nagaDev;
       lastModified = await getLastModified(filePath, network);
@@ -438,7 +438,7 @@ const litNetworks: LitNetwork[] = [
   "datil-dev",
   "datil-test",
   "datil",
-  "nagaDev",
+  "naga-dev",
 ];
 
 // Initial update for all items

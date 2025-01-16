@@ -6,6 +6,7 @@ const _cayenne = require("./dev/cayenne.cjs");
 const _habanero = require("./dev/habanero.cjs");
 const _internalDev = require("./dev/internalDev.cjs");
 const _manzano = require("./dev/manzano.cjs");
+const _nagaDev = require("./dev/naga-dev.cjs");
 
 // prod
 const datil = require("./prod/datil.cjs");
@@ -15,6 +16,7 @@ const datilTest = require("./prod/datil-test.cjs");
 const habanero = require("./prod/habanero.cjs");
 const internalDev = require("./prod/internalDev.cjs");
 const manzano = require("./prod/manzano.cjs");
+const nagaDev = require("./prod/naga-dev.cjs");
 
 module.exports = {
   _datil,
@@ -24,6 +26,7 @@ module.exports = {
   _habanero,
   _internalDev,
   _manzano,
+  _nagaDev,
   datil,
   cayenne,
   datilDev,
@@ -31,4 +34,5 @@ module.exports = {
   habanero,
   internalDev,
   manzano,
+  nagaDev,
 };

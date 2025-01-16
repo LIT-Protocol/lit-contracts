@@ -159,25 +159,25 @@
       "import": "./dist/dev/cayenne.js",
       "types": "./dist/dev/cayenne.ts"
     },
-    "./prod/nagaDev.json": {
-      "require": "./dist/prod/nagaDev.json",
-      "import": "./dist/prod/nagaDev.json",
+    "./prod/naga-dev.json": {
+      "require": "./dist/prod/naga-dev.json",
+      "import": "./dist/prod/naga-dev.json",
       "types": "./json.d.ts"
     },
-    "./dev/nagaDev.json": {
-      "require": "./dist/dev/nagaDev.json",
-      "import": "./dist/dev/nagaDev.json",
+    "./dev/naga-dev.json": {
+      "require": "./dist/dev/naga-dev.json",
+      "import": "./dist/dev/naga-dev.json",
       "types": "./json.d.ts"
     },
-    "./prod/nagaDev.js": {
-      "require": "./dist/prod/nagaDev.js",
-      "import": "./dist/prod/nagaDev.js",
-      "types": "./dist/prod/nagaDev.ts"
+    "./prod/naga-dev.js": {
+      "require": "./dist/prod/naga-dev.js",
+      "import": "./dist/prod/naga-dev.js",
+      "types": "./dist/prod/naga-dev.ts"
     },
-    "./dev/nagaDev.js": {
-      "require": "./dist/dev/nagaDev.js",
-      "import": "./dist/dev/nagaDev.js",
-      "types": "./dist/dev/nagaDev.ts"
+    "./dev/naga-dev.js": {
+      "require": "./dist/dev/naga-dev.js",
+      "import": "./dist/dev/naga-dev.js",
+      "types": "./dist/dev/naga-dev.ts"
     }
   },
   "types": "./dist/index.ts",
