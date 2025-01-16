@@ -6,6 +6,7 @@ export { cayenne as _cayenne } from "./dev/cayenne.js";
 export { habanero as _habanero } from "./dev/habanero.js";
 export { internalDev as _internalDev } from "./dev/internalDev.js";
 export { manzano as _manzano } from "./dev/manzano.js";
+export { nagaDev as _nagaDev } from "./dev/nagaDev.js";
 
 // prod
 export { datil } from "./prod/datil.js";
@@ -15,3 +16,4 @@ export { datilTest } from "./prod/datil-test.js";
 export { habanero } from "./prod/habanero.js";
 export { internalDev } from "./prod/internalDev.js";
 export { manzano } from "./prod/manzano.js";
+export { nagaDev } from "./prod/nagaDev.js";
