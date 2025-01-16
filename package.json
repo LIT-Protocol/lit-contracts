@@ -178,6 +178,16 @@
       "require": "./dist/dev/naga-dev.js",
       "import": "./dist/dev/naga-dev.js",
       "types": "./dist/dev/naga-dev.ts"
+    },
+    "./dev/nagaDev.json": {
+      "require": "./dist/dev/nagaDev.json",
+      "import": "./dist/dev/nagaDev.json",
+      "types": "./json.d.ts"
+    },
+    "./dev/nagaDev.js": {
+      "require": "./dist/dev/nagaDev.js",
+      "import": "./dist/dev/nagaDev.js",
+      "types": "./dist/dev/nagaDev.ts"
     }
   },
   "types": "./dist/index.ts",
