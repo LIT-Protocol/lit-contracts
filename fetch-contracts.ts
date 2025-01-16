@@ -29,6 +29,7 @@ type ABISource = {
     datilDev: string;
     datilTest: string;
     datilProd: string;
+    nagaDev: string;
   };
 };
 
@@ -133,7 +134,8 @@ type LitNetwork =
   | "habanero"
   | "datil-dev"
   | "datil-test"
-  | "datil";
+  | "datil"
+  | "nagaDev";
 
 const TOKEN = process.env.GH_LIT_ASSETS_READ_ONLY_API;
 const USERNAME = "LIT-Protocol";
@@ -275,6 +277,11 @@ async function updateContractsCache(network: LitNetwork): Promise<void> {
     case "datil":
       filePath = extractPathAfterMain(source.deployedContract.datilProd);
       API = source.deployedContract.datilProd;
+      lastModified = await getLastModified(filePath, network);
+      break;
+    case "nagaDev":
+      filePath = extractPathAfterMain(source.deployedContract.nagaDev);
+      API = source.deployedContract.nagaDev;
       lastModified = await getLastModified(filePath, network);
       break;
   }
@@ -431,6 +438,7 @@ const litNetworks: LitNetwork[] = [
   "datil-dev",
   "datil-test",
   "datil",
+  "nagaDev",
 ];
 
 // Initial update for all items
