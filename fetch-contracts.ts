@@ -70,6 +70,8 @@ const LIT_ABI_SOURCE = {
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-test/deployed-lit-node-contracts-temp.json",
       datilProd:
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-prod/deployed-lit-node-contracts-temp.json",
+      nagaDev:
+        "https://raw.githubusercontent.com/LIT-Protocol/networks/main/naga-dev/deployed-lit-node-contracts-temp.json",
     },
   },
   prod: {
@@ -108,6 +110,8 @@ const LIT_ABI_SOURCE = {
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-test/deployed-lit-node-contracts-temp.json",
       datilProd:
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-prod/deployed-lit-node-contracts-temp.json",
+      nagaDev:
+        "https://raw.githubusercontent.com/LIT-Protocol/networks/main/naga-dev/deployed-lit-node-contracts-temp.json",
     },
   },
 };
