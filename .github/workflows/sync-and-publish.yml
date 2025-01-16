@@ -6,8 +6,8 @@ on:
       - sync_trigger
   push:
     branches:
-      - main
-      - "**" # Match any branch
+      # - main
+      # - "**" # Match any branch
 
 jobs:
   sync-and-publish:
