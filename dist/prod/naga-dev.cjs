@@ -15,8 +15,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x23b1C54cd840E714d57406568D6A982c88Bc5eaA",
-          "inserted_at": "2025-01-15T21:52:30Z",
+          "address_hash": "0x7cA42eE181C8f033c2C800b32F97373a2C931343",
+          "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
             {
               "inputs": [
@@ -1240,8 +1240,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x4E70449215B0A8D947750777022c3Ba0dEDDE34A",
-          "inserted_at": "2025-01-15T21:52:30Z",
+          "address_hash": "0x1aD7Ad65Dd04dab562205d2e5FE58066BfDa822e",
+          "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
             {
               "inputs": [
@@ -3810,8 +3810,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0xaEFf2767d7E97E73C75F98b6FEC34b68cfD74797",
-          "inserted_at": "2025-01-15T21:52:30Z",
+          "address_hash": "0x2b1d47417a06989252889f80f89c264960DF09b4",
+          "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
             {
               "anonymous": false,
@@ -3926,7 +3926,7 @@ module.exports = {
         {
           "network": "naga-dev",
           "address_hash": "0xd78089bAAe410f5d0eae31D0D56157c73a3Ff98B",
-          "inserted_at": "2025-01-15T21:52:30Z",
+          "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
             {
               "inputs": [
@@ -4979,8 +4979,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x03974A7245C1371Ae59eE5052e57b1772BB7F579",
-          "inserted_at": "2025-01-15T21:52:30Z",
+          "address_hash": "0xDfBF547B76101025A9280a6F21778619313605C2",
+          "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
             {
               "inputs": [
@@ -5871,8 +5871,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x3C155B546d9F09204Ee4C79B4985C10149Bf1D70",
-          "inserted_at": "2025-01-15T21:52:30Z",
+          "address_hash": "0x10d0223524e5d599C11758cbB091F840ed2f49a6",
+          "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
             {
               "inputs": [
@@ -7071,8 +7071,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0xa1ab369611cBF3E72BBF46B09B27d4cB59FB44cb",
-          "inserted_at": "2025-01-15T21:52:30Z",
+          "address_hash": "0xE5dABAbBdFC0eAa31834606022b0859dC204F39d",
+          "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
             {
               "inputs": [
@@ -8466,8 +8466,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x5B6cBbe135F29f9b609DC7EC31A04a63efb51944",
-          "inserted_at": "2025-01-15T21:52:30Z",
+          "address_hash": "0x0c2f4Deb242f14379C809BCc70DDE5e7c9B24Cb0",
+          "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
             {
               "inputs": [
@@ -9321,8 +9321,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x5a78cBdbF3fb927d516986C343EfcBe59b5A8e32",
-          "inserted_at": "2025-01-15T21:52:30Z",
+          "address_hash": "0x04938BF1d2D3Ec15Dd519e01EAfb0324F6589BBe",
+          "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
             {
               "inputs": [
@@ -10593,8 +10593,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x06d6aEd8aebFD1a62D56fC02D732C21f68ce4Aad",
-          "inserted_at": "2025-01-15T21:52:30Z",
+          "address_hash": "0x7DC22567Ac489F2C579d9174fBEA0CDF4C3F3D2B",
+          "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
             {
               "inputs": [
@@ -10757,8 +10757,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x4B426b0C023b7914a83d7f2749311DD0ed178aA1",
-          "inserted_at": "2025-01-15T21:52:30Z",
+          "address_hash": "0x5bb7A9D6c00803c4C555D977a7c4b7cB51FC8aeB",
+          "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
             {
               "inputs": [],
@@ -10994,8 +10994,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0xb3d2F6BCA22f12C017379a2d378B687BB9049cb7",
-          "inserted_at": "2025-01-15T21:52:30Z",
+          "address_hash": "0x63ecEea73cfA9D4B2cD4bbB0892A0fFcb62910a2",
+          "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
             {
               "inputs": [
