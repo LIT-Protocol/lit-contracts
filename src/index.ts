@@ -18,7 +18,49 @@ import { METHODS_TO_EXTRACT } from "./config/methods";
  */
 function generateAbiSignatures(networkData: NetworkCache) {
   console.log("\n📝 Generating ABI signatures...");
-  const signatures = extractAbiMethods(networkData, METHODS_TO_EXTRACT);
+  const methodsByContract = new Map<string, string[]>();
+  
+  // Group methods by contract
+  METHODS_TO_EXTRACT.forEach(methodString => {
+    const [contractName, methodName] = methodString.split('.');
+    if (!methodsByContract.has(contractName)) {
+      methodsByContract.set(contractName, []);
+    }
+    methodsByContract.get(contractName)!.push(methodName);
+  });
+
+  // Extract methods for each contract
+  const signatures: Record<string, { 
+    address: string; 
+    methods: Record<string, any>;
+    events: any[];
+  }> = {};
+  
+  networkData.data.forEach(contractGroup => {
+    const contractName = contractGroup.name;
+    if (methodsByContract.has(contractName)) {
+      const methods = methodsByContract.get(contractName)!;
+      const contractMethods = extractAbiMethods(networkData, methods);
+      
+      if (Object.keys(contractMethods).length > 0) {
+        const address = contractGroup.contracts[0].address_hash;
+        const events = contractGroup.contracts[0].ABI
+          .filter(item => item.type === 'event');
+        
+        signatures[contractName] = {
+          address,
+          methods: Object.fromEntries(
+            Object.entries(contractMethods).map(([methodName, data]) => [
+              methodName,
+              data.abi
+            ])
+          ),
+          events
+        };
+      }
+    }
+  });
+
   return signatures;
 }
 

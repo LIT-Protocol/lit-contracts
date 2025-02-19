@@ -1,27 +1,44 @@
 // List of methods to extract signatures for
 export const METHODS_TO_EXTRACT = [
   // Permissions Read:
-  "getPermittedActions",
-  "getPermittedAddresses",
-  "isPermittedAction",
-  "isPermittedAddress",
+  "PKPPermissions.getPermittedActions",
+  "PKPPermissions.getPermittedAddresses",
+  "PKPPermissions.isPermittedAction",
+  "PKPPermissions.isPermittedAddress",
 
   // Permissions Write:
-  "addPermittedAction",
-  "addPermittedAddress",
-  "removePermittedAction",
-  "removePermittedAddress",
+  "PKPPermissions.addPermittedAction",
+  "PKPPermissions.addPermittedAddress",
+  "PKPPermissions.removePermittedAction",
+  "PKPPermissions.removePermittedAddress",
 
   // PKP Read:
-  "tokenOfOwnerByIndex",
-  "mintCost",
+  "PKPNFT.tokenOfOwnerByIndex",
+  "PKPNFT.mintCost",
 
   // PKP Write:
-  "claimAndMint",
-  "claimAndMintNextAndAddAuthMethodsWithTypes",
-  "mintNextAndAddAuthMethods",
+  "PKPNFT.claimAndMint",
+  "PKPHelper.claimAndMintNextAndAddAuthMethodsWithTypes",
+  "PKPHelper.mintNextAndAddAuthMethods",
 
   // Staking:
-  "getActiveUnkickedValidatorStructsAndCounts",
-  "getNodesForRequest",
-];
+  "Staking.getActiveUnkickedValidatorStructsAndCounts",
+  "Staking.getNodesForRequest",
+
+  "PubkeyRouter.deriveEthAddressFromPubkey",
+  "PubkeyRouter.ethAddressToPkpId",
+  "PubkeyRouter.getPubkey",
+  "PubkeyRouter.getEthAddress",
+] as const;
+
+// Type for contract names
+export type ContractName =
+  | "PKPPermissions"
+  | "PKPNFT"
+  | "PKPHelper"
+  | "Staking"
+  | "PubkeyRouter";
+
+// Helper type to extract method name from "ContractName.methodName" format
+export type ExtractMethodName<T extends string> =
+  T extends `${ContractName}.${infer Method}` ? Method : never;

@@ -17,7 +17,8 @@ import { Interface } from "ethers";
 interface ContractMethod {
   contractName: string;
   address: string;
-  signature: string;
+  // signature: string;
+  abi: any;
 }
 
 /**
@@ -58,7 +59,8 @@ export function extractAbiMethods(
             result[abiItem.name] = {
               contractName,
               address,
-              signature: functionSignature,
+              // signature: functionSignature,
+              abi: abiItem,
             };
           } catch (error) {
             console.warn(
