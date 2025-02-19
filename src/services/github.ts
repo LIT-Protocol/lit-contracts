@@ -2,8 +2,15 @@
  * GitHub Service
  * Handles all GitHub API interactions
  */
-import { GITHUB_API_BASE, USERNAME, NETWORKS_REPO } from '../config/networks';
-import type { NetworkPaths } from '../types/contracts';
+import {
+  GITHUB_API_BASE,
+  USERNAME,
+  NETWORK_PATHS,
+  NETWORKS_REPO,
+  LIT_ASSETS_REPO,
+} from "../config/networks";
+import type { NetworkName } from "../config/networks";
+import type { NetworkPaths } from "../types/contracts";
 
 export class GitHubService {
   public readonly headers: HeadersInit;
@@ -12,32 +19,38 @@ export class GitHubService {
   constructor(apiKey: string) {
     this.headers = {
       Authorization: `token ${apiKey}`,
-      Accept: 'application/vnd.github.v3+json',
+      Accept: "application/vnd.github.v3+json",
     };
   }
 
   /**
    * Creates the GitHub API path for fetching contract data
    */
-  createGitHubPath(path: string, branch: string, network: string, isProd: boolean): string {
-    const repoName = isProd ? NETWORKS_REPO : 'lit-assets';
-    let githubPath: string;
+  createGitHubPath(
+    contentPath: string,
+    branch: string,
+    network: NetworkName | "develop",
+    isProd: boolean
+  ): string {
+    const repoName = isProd ? NETWORKS_REPO : LIT_ASSETS_REPO;
 
-    if (isProd) {
-      const networkPath = network === 'datil' ? 'datil-prod' : network;
-      githubPath = `${GITHUB_API_BASE}/${USERNAME}/${repoName}/contents/${networkPath}/${path}?ref=${branch}`;
-    } else {
-      githubPath = `${GITHUB_API_BASE}/${USERNAME}/${repoName}/contents/${path}?ref=${branch}`;
-    }
+    // Get the full content path based on environment and network
+    const fullPath = isProd
+      ? NETWORK_PATHS.prod.getContentPath(network as NetworkName, contentPath)
+      : NETWORK_PATHS.dev.getContentPath(network, contentPath);
+    const githubPath = `${GITHUB_API_BASE}/${USERNAME}/${repoName}/contents/${fullPath}?ref=${branch}`;
 
-    this.trackNetworkPath(network, 'abis', githubPath);
+    this.trackNetworkPath(network, "abis", githubPath);
     return githubPath;
   }
 
   /**
    * Fetches the last modified date for a file from GitHub
    */
-  async getLastModified(filePath: string, network: string): Promise<string | null> {
+  async getLastModified(
+    filePath: string,
+    network: NetworkName | "develop"
+  ): Promise<string | null> {
     console.log(`📅 [${network}] Fetching last modified date for: ${filePath}`);
 
     try {
@@ -46,13 +59,17 @@ export class GitHubService {
       const commits: any = await response.json();
 
       if (!commits.length) {
-        console.error(`❌ [${network}] No commit history found for ${filePath}`);
+        console.error(
+          `❌ [${network}] No commit history found for ${filePath}`
+        );
         return null;
       }
 
       return commits[0].commit.author.date;
     } catch (error: any) {
-      console.error(`❌ [${network}] Failed to fetch last modified date: ${error.message}`);
+      console.error(
+        `❌ [${network}] Failed to fetch last modified date: ${error.message}`
+      );
       return null;
     }
   }
@@ -60,12 +77,16 @@ export class GitHubService {
   /**
    * Tracks network paths for summary
    */
-  trackNetworkPath(network: string, type: keyof Omit<NetworkPaths, 'error' | 'status'>, path: string): void {
+  trackNetworkPath(
+    network: string,
+    type: keyof Omit<NetworkPaths, "error" | "status">,
+    path: string
+  ): void {
     if (!this.networkPaths[network]) {
       this.networkPaths[network] = {
-        abis: '',
-        deployedContracts: '',
-        status: 'success',
+        abis: "",
+        deployedContracts: "",
+        status: "success",
       };
     }
     this.networkPaths[network][type] = path;
@@ -77,13 +98,13 @@ export class GitHubService {
   trackNetworkError(network: string, error: string): void {
     if (!this.networkPaths[network]) {
       this.networkPaths[network] = {
-        abis: '',
-        deployedContracts: '',
-        status: 'error',
+        abis: "",
+        deployedContracts: "",
+        status: "error",
       };
     }
     this.networkPaths[network].error = error;
-    this.networkPaths[network].status = 'error';
+    this.networkPaths[network].status = "error";
   }
 
   /**
@@ -92,4 +113,4 @@ export class GitHubService {
   getNetworkPaths(): Record<string, NetworkPaths> {
     return this.networkPaths;
   }
-} 
+}
