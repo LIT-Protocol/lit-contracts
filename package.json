@@ -7,6 +7,7 @@
   "scripts": {
     "start": "bun run ./src/index.ts",
     "test": "./test/run-tests.sh",
+    "test:extract-methods": "bun run ./src/test-extract-methods.ts",
     "clean": "rimraf dist"
   },
   "devDependencies": {
@@ -28,20 +29,40 @@
       "require": "./dist/prod/datil.cjs",
       "types": "./dist/prod/datil.ts"
     },
+    "./signatures/datil": {
+      "import": "./dist/signatures/datil.js",
+      "require": "./dist/signatures/datil.cjs",
+      "types": "./dist/signatures/datil.ts"
+    },
     "./prod/datil-dev": {
       "import": "./dist/prod/datil-dev.js",
       "require": "./dist/prod/datil-dev.cjs",
       "types": "./dist/prod/datil-dev.ts"
+    },
+    "./signatures/datil-dev": {
+      "import": "./dist/signatures/datil-dev.js",
+      "require": "./dist/signatures/datil-dev.cjs",
+      "types": "./dist/signatures/datil-dev.ts"
     },
     "./prod/datil-test": {
       "import": "./dist/prod/datil-test.js",
       "require": "./dist/prod/datil-test.cjs",
       "types": "./dist/prod/datil-test.ts"
     },
+    "./signatures/datil-test": {
+      "import": "./dist/signatures/datil-test.js",
+      "require": "./dist/signatures/datil-test.cjs",
+      "types": "./dist/signatures/datil-test.ts"
+    },
     "./dev/develop": {
       "import": "./dist/dev/develop.js",
       "require": "./dist/dev/develop.cjs",
       "types": "./dist/dev/develop.ts"
+    },
+    "./signatures/develop": {
+      "import": "./dist/signatures/develop.js",
+      "require": "./dist/signatures/develop.cjs",
+      "types": "./dist/signatures/develop.ts"
     }
   },
   "types": "./dist/index.ts",
@@ -50,6 +71,8 @@
   },
   "dependencies": {
     "@t3-oss/env-core": "^0.12.0",
+    "ethers": "^6.13.5",
+    "viem": "^2.23.3",
     "zod": "^3.24.2"
   }
 }

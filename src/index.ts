@@ -9,6 +9,18 @@ import { ContractService } from "./services/contracts";
 import * as fs from "fs";
 import { formatNetworkName } from "./utils/format";
 import { env } from "./config/env";
+import { extractAbiMethods } from "./utils/abi-extractor";
+import type { NetworkCache } from "./types/contracts";
+import { METHODS_TO_EXTRACT } from "./config/methods";
+
+/**
+ * Generates ABI signatures for specified methods
+ */
+function generateAbiSignatures(networkData: NetworkCache) {
+  console.log("\n📝 Generating ABI signatures...");
+  const signatures = extractAbiMethods(networkData, METHODS_TO_EXTRACT);
+  return signatures;
+}
 
 /**
  * Updates the package.json exports field with the correct paths for all formats
@@ -38,6 +50,11 @@ function updatePackageJsonExports(networks: {
       require: `./dist/prod/${network}.cjs`,
       types: `./dist/prod/${network}.ts`,
     };
+    exports[`./signatures/${network}`] = {
+      import: `./dist/signatures/${network}.js`,
+      require: `./dist/signatures/${network}.cjs`,
+      types: `./dist/signatures/${network}.ts`,
+    };
   });
 
   // Add development network exports
@@ -47,6 +64,11 @@ function updatePackageJsonExports(networks: {
       require: `./dist/dev/${network}.cjs`,
       types: `./dist/dev/${network}.ts`,
     };
+    exports[`./signatures/${network}`] = {
+      import: `./dist/signatures/${network}.js`,
+      require: `./dist/signatures/${network}.cjs`,
+      types: `./dist/signatures/${network}.ts`,
+    };
   });
 
   // Update package.json
@@ -55,10 +77,7 @@ function updatePackageJsonExports(networks: {
   packageJson.module = "./dist/index.js";
 
   // Write updated package.json
-  fs.writeFileSync(
-    packageJsonPath,
-    JSON.stringify(packageJson, null, 2) + "\n"
-  );
+  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + "\n");
   console.log("✅ Successfully updated package.json exports");
 }
 
@@ -69,8 +88,14 @@ function generateIndexFiles(failedNetworks: string[] = []): void {
   console.log("\n📝 Generating index files...");
 
   const exports: string[] = [];
+  const signatureExports: string[] = [];
 
-  // Add production exports
+  // Create signatures directory if it doesn't exist
+  if (!fs.existsSync("./dist/signatures")) {
+    fs.mkdirSync("./dist/signatures", { recursive: true });
+  }
+
+  // Add production exports and generate signatures
   NETWORKS.prod.networks.forEach((network) => {
     const formattedName = formatNetworkName(network);
     const exportLine = `export { ${formattedName} } from "./prod/${network}";`;
@@ -78,10 +103,55 @@ function generateIndexFiles(failedNetworks: string[] = []): void {
       exports.push(`// ${exportLine} // Network failed to generate`);
     } else {
       exports.push(exportLine);
+      // Add signature export
+      signatureExports.push(`export { signatures as ${formattedName}Signatures } from "./signatures/${network}";`);
+
+      // Generate signatures for this network
+      try {
+        const networkData = require(`../dist/prod/${network}`);
+        const signatures = generateAbiSignatures(networkData[formattedName]);
+
+        // Generate signature files for this network
+        const tsSignatures = `/**
+ * Generated Contract Method Signatures for ${network}
+ * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
+ */
+
+export const signatures = ${JSON.stringify(signatures, null, 2)} as const;
+export type Signatures = typeof signatures;
+`;
+
+        const jsSignatures = `/**
+ * Generated Contract Method Signatures for ${network}
+ * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
+ */
+
+export const signatures = ${JSON.stringify(signatures, null, 2)};
+`;
+
+        const cjsSignatures = `/**
+ * Generated Contract Method Signatures for ${network}
+ * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
+ */
+
+const signatures = ${JSON.stringify(signatures, null, 2)};
+
+module.exports = {
+  signatures
+};
+`;
+
+        // Write signature files for this network
+        fs.writeFileSync(`./dist/signatures/${network}.ts`, tsSignatures);
+        fs.writeFileSync(`./dist/signatures/${network}.js`, jsSignatures);
+        fs.writeFileSync(`./dist/signatures/${network}.cjs`, cjsSignatures);
+      } catch (error) {
+        console.warn(`Failed to generate signatures for ${network}:`, error);
+      }
     }
   });
 
-  // Add development exports
+  // Add development exports and generate signatures
   NETWORKS.dev.networks.forEach((network) => {
     const formattedName = formatNetworkName(network);
     const exportLine = `export { ${formattedName} } from "./dev/${network}";`;
@@ -89,57 +159,150 @@ function generateIndexFiles(failedNetworks: string[] = []): void {
       exports.push(`// ${exportLine} // Network failed to generate`);
     } else {
       exports.push(exportLine);
+      // Add signature export
+      signatureExports.push(`export { signatures as ${formattedName}Signatures } from "./signatures/${network}";`);
+
+      // Generate signatures for this network
+      try {
+        const networkData = require(`../dist/dev/${network}`);
+        const signatures = generateAbiSignatures(networkData[formattedName]);
+
+        // Generate signature files for this network
+        const tsSignatures = `/**
+ * Generated Contract Method Signatures for ${network}
+ * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
+ */
+
+export const signatures = ${JSON.stringify(signatures, null, 2)} as const;
+export type Signatures = typeof signatures;
+`;
+
+        const jsSignatures = `/**
+ * Generated Contract Method Signatures for ${network}
+ * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
+ */
+
+export const signatures = ${JSON.stringify(signatures, null, 2)};
+`;
+
+        const cjsSignatures = `/**
+ * Generated Contract Method Signatures for ${network}
+ * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
+ */
+
+const signatures = ${JSON.stringify(signatures, null, 2)};
+
+module.exports = {
+  signatures
+};
+`;
+
+        // Write signature files for this network
+        fs.writeFileSync(`./dist/signatures/${network}.ts`, tsSignatures);
+        fs.writeFileSync(`./dist/signatures/${network}.js`, jsSignatures);
+        fs.writeFileSync(`./dist/signatures/${network}.cjs`, cjsSignatures);
+      } catch (error) {
+        console.warn(`Failed to generate signatures for ${network}:`, error);
+      }
     }
   });
 
   // Generate TypeScript index
   const tsContent = `/**
  * Generated Exports
- * This file is auto-generated. DO NOT EDIT BY HAND.
+ * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
  */
 
 ${exports.join("\n")}
+
+${signatureExports.join("\n")}
 `;
 
   // Generate ES Module index
   const jsContent = `/**
  * Generated Exports
- * This file is auto-generated. DO NOT EDIT BY HAND.
+ * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
  */
 
-${exports.map(line => {
-  // If line is already commented out, keep it as is
-  if (line.startsWith('//')) return line;
-  
-  const [exportPart, importPart] = line.split(" from ");
-  const importPath = importPart.replace(';', '').replace(/["']/g, '').replace('.ts', '');
-  return `${exportPart} from "${importPath}.js";`;
-}).join("\n")}
+${exports
+  .map((line) => {
+    // If line is already commented out, keep it as is
+    if (line.startsWith("//")) return line;
+
+    const [exportPart, importPart] = line.split(" from ");
+    const importPath = importPart
+      .replace(";", "")
+      .replace(/["']/g, "")
+      .replace(".ts", "");
+    return `${exportPart} from "${importPath}.js";`;
+  })
+  .join("\n")}
+
+${signatureExports
+  .map((line) => {
+    const [exportPart, importPart] = line.split(" from ");
+    const importPath = importPart
+      .replace(";", "")
+      .replace(/["']/g, "")
+      .replace(".ts", "");
+    return `${exportPart} from "${importPath}.js";`;
+  })
+  .join("\n")}
 `;
 
   // Generate CommonJS index
+  const moduleNames = [
+    ...exports
+      .filter(line => !line.startsWith("//"))
+      .map(line => line
+        .split(" from ")[0]
+        .replace("export { ", "")
+        .replace(" }", "")
+        .trim()),
+    ...signatureExports
+      .map(line => line
+        .split(" from ")[0]
+        .replace("export { signatures as ", "")
+        .replace(" }", "")
+        .trim())
+  ];
+
   const cjsContent = `/**
  * Generated Exports
- * This file is auto-generated. DO NOT EDIT BY HAND.
+ * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
  */
 
-${exports.map(line => {
-  // If line is already commented out, keep it as is
-  if (line.startsWith('//')) return line;
+${exports
+  .map((line) => {
+    // If line is already commented out, keep it as is
+    if (line.startsWith("//")) return line;
 
-  const [exportPart, importPart] = line.split(" from ");
-  const varName = exportPart.replace('export { ', '').replace(' }', '');
-  const importPath = importPart.replace(';', '').replace(/["']/g, '').replace('.ts', '');
-  return `const ${varName} = require("${importPath}.cjs");`;
-}).join("\n")}
+    const [exportPart, importPart] = line.split(" from ");
+    const varName = exportPart.replace("export { ", "").replace(" }", "");
+    const importPath = importPart
+      .replace(";", "")
+      .replace(/["']/g, "")
+      .replace(".ts", "");
+    return `const ${varName} = require("${importPath}.cjs");`;
+  })
+  .join("\n")}
+
+${signatureExports
+  .map((line) => {
+    const [exportPart, importPart] = line.split(" from ");
+    const varName = exportPart
+      .replace("export { signatures as ", "")
+      .replace(" }", "");
+    const importPath = importPart
+      .replace(";", "")
+      .replace(/["']/g, "")
+      .replace(".ts", "");
+    return `const ${varName} = require("${importPath}.cjs").signatures;`;
+  })
+  .join("\n")}
 
 module.exports = {
-${exports
-  .filter(line => !line.startsWith('//')) // Only include non-commented exports
-  .map(line => {
-    const varName = line.split(" from ")[0].replace('export { ', '').replace(' }', '');
-    return `  ${varName}`;
-  }).join(",\n")}
+${moduleNames.map(name => `  ${name},`).join("\n")}
 };
 `;
 
@@ -150,8 +313,12 @@ ${exports
 
   // Update package.json exports
   updatePackageJsonExports({
-    prod: NETWORKS.prod.networks.filter(network => !failedNetworks.includes(network)),
-    dev: NETWORKS.dev.networks.filter(network => !failedNetworks.includes(network)),
+    prod: NETWORKS.prod.networks.filter(
+      (network) => !failedNetworks.includes(network)
+    ),
+    dev: NETWORKS.dev.networks.filter(
+      (network) => !failedNetworks.includes(network)
+    ),
   });
 
   console.log("✅ Successfully generated index files (ts, js, cjs)");
