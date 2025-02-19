@@ -15077,5 +15077,13 @@ export const develop = {
         }
       ]
     }
-  ]
+  ],
+  "config": {
+    "chainId": "175188",
+    "rpcUrl": "https://yellowstone-rpc.litprotocol.com",
+    "chainName": "yellowstone",
+    "litNodeDomainName": "127.0.0.1",
+    "litNodePort": 7470,
+    "rocketPort": 7470
+  }
 } as const;
