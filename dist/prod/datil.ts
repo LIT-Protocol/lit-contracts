@@ -1,12 +1,4 @@
 export const datil = {
-  "config": {
-    "chainId": "175188",
-    "rpcUrl": "https://yellowstone-rpc.litprotocol.com",
-    "chainName": "yellowstone",
-    "litNodeDomainName": "127.0.0.1",
-    "litNodePort": 7470,
-    "rocketPort": 7470
-  },
   "data": [
     {
       "name": "StakingBalances",
@@ -7814,6 +7806,19 @@ export const datil = {
               "inputs": [
                 {
                   "internalType": "address",
+                  "name": "owner",
+                  "type": "address"
+                }
+              ],
+              "name": "pruneExpired",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
                   "name": "from",
                   "type": "address"
                 },
@@ -10078,6 +10083,30 @@ export const datil = {
               "inputs": [
                 {
                   "internalType": "uint256",
+                  "name": "authMethodType",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "id",
+                  "type": "bytes"
+                }
+              ],
+              "name": "getPKPPubKeysByAuthMethod",
+              "outputs": [
+                {
+                  "internalType": "bytes[]",
+                  "name": "",
+                  "type": "bytes[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
                   "name": "tokenId",
                   "type": "uint256"
                 }
@@ -11610,5 +11639,13 @@ export const datil = {
         }
       ]
     }
-  ]
-} as const
+  ],
+  "config": {
+    "chainId": "175188",
+    "rpcUrl": "https://yellowstone-rpc.litprotocol.com",
+    "chainName": "yellowstone",
+    "litNodeDomainName": "127.0.0.1",
+    "litNodePort": 7470,
+    "rocketPort": 7470
+  }
+} as const;
