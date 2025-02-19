@@ -6,5 +6,5 @@
 export { datil } from "./prod/datil.js";
 export { datilDev } from "./prod/datil-dev.js";
 export { datilTest } from "./prod/datil-test.js";
-// export { nagaDev } from "./prod/naga-dev.js";
+// export { nagaDev } from "./prod/naga-dev"; // Network failed to generate
 export { develop } from "./dev/develop.js";

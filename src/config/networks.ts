@@ -19,7 +19,7 @@ export const PATH_BY_NETWORK = {
 
 // Network types derived from PATH_BY_NETWORK
 export type NetworkName = keyof typeof PATH_BY_NETWORK;
-export type NetworkPath = typeof PATH_BY_NETWORK[NetworkName];
+export type NetworkPath = (typeof PATH_BY_NETWORK)[NetworkName];
 
 /**
  * Network path configuration for GitHub API requests

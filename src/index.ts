@@ -65,7 +65,7 @@ function updatePackageJsonExports(networks: {
 /**
  * Generates index files for different module formats (TypeScript, ES Modules, and CommonJS)
  */
-function generateIndexFiles(): void {
+function generateIndexFiles(failedNetworks: string[] = []): void {
   console.log("\n📝 Generating index files...");
 
   const exports: string[] = [];
@@ -73,13 +73,23 @@ function generateIndexFiles(): void {
   // Add production exports
   NETWORKS.prod.networks.forEach((network) => {
     const formattedName = formatNetworkName(network);
-    exports.push(`export { ${formattedName} } from "./prod/${network}";`);
+    const exportLine = `export { ${formattedName} } from "./prod/${network}";`;
+    if (failedNetworks.includes(network)) {
+      exports.push(`// ${exportLine} // Network failed to generate`);
+    } else {
+      exports.push(exportLine);
+    }
   });
 
   // Add development exports
   NETWORKS.dev.networks.forEach((network) => {
     const formattedName = formatNetworkName(network);
-    exports.push(`export { ${formattedName} } from "./dev/${network}";`);
+    const exportLine = `export { ${formattedName} } from "./dev/${network}";`;
+    if (failedNetworks.includes(network)) {
+      exports.push(`// ${exportLine} // Network failed to generate`);
+    } else {
+      exports.push(exportLine);
+    }
   });
 
   // Generate TypeScript index
@@ -97,16 +107,14 @@ ${exports.join("\n")}
  * This file is auto-generated. DO NOT EDIT BY HAND.
  */
 
-${exports
-  .map((line) => {
-    const [exportPart, importPart] = line.split(" from ");
-    const importPath = importPart
-      .replace(";", "")
-      .replace(/["']/g, "")
-      .replace(".ts", "");
-    return `${exportPart} from "${importPath}.js";`;
-  })
-  .join("\n")}
+${exports.map(line => {
+  // If line is already commented out, keep it as is
+  if (line.startsWith('//')) return line;
+  
+  const [exportPart, importPart] = line.split(" from ");
+  const importPath = importPart.replace(';', '').replace(/["']/g, '').replace('.ts', '');
+  return `${exportPart} from "${importPath}.js";`;
+}).join("\n")}
 `;
 
   // Generate CommonJS index
@@ -115,28 +123,23 @@ ${exports
  * This file is auto-generated. DO NOT EDIT BY HAND.
  */
 
-${exports
-  .map((line) => {
-    const [exportPart, importPart] = line.split(" from ");
-    const varName = exportPart.replace("export { ", "").replace(" }", "");
-    const importPath = importPart
-      .replace(";", "")
-      .replace(/["']/g, "")
-      .replace(".ts", "");
-    return `const ${varName} = require("${importPath}.cjs");`;
-  })
-  .join("\n")}
+${exports.map(line => {
+  // If line is already commented out, keep it as is
+  if (line.startsWith('//')) return line;
+
+  const [exportPart, importPart] = line.split(" from ");
+  const varName = exportPart.replace('export { ', '').replace(' }', '');
+  const importPath = importPart.replace(';', '').replace(/["']/g, '').replace('.ts', '');
+  return `const ${varName} = require("${importPath}.cjs");`;
+}).join("\n")}
 
 module.exports = {
 ${exports
-  .map((line) => {
-    const varName = line
-      .split(" from ")[0]
-      .replace("export { ", "")
-      .replace(" }", "");
+  .filter(line => !line.startsWith('//')) // Only include non-commented exports
+  .map(line => {
+    const varName = line.split(" from ")[0].replace('export { ', '').replace(' }', '');
     return `  ${varName}`;
-  })
-  .join(",\n")}
+  }).join(",\n")}
 };
 `;
 
@@ -147,8 +150,8 @@ ${exports
 
   // Update package.json exports
   updatePackageJsonExports({
-    prod: NETWORKS.prod.networks,
-    dev: NETWORKS.dev.networks,
+    prod: NETWORKS.prod.networks.filter(network => !failedNetworks.includes(network)),
+    dev: NETWORKS.dev.networks.filter(network => !failedNetworks.includes(network)),
   });
 
   console.log("✅ Successfully generated index files (ts, js, cjs)");
@@ -232,8 +235,14 @@ async function main() {
     console.log(`📋 Processing development branch`);
     await contractService.updateDevCache();
 
-    // Generate index files
-    generateIndexFiles();
+    // Collect failed networks
+    const networkPaths = githubService.getNetworkPaths();
+    const failedNetworks = Object.entries(networkPaths)
+      .filter(([_, paths]) => paths.status === "error")
+      .map(([network]) => network);
+
+    // Generate index files with failed networks excluded
+    generateIndexFiles(failedNetworks);
 
     // Print network summary
     printNetworkSummary(githubService);

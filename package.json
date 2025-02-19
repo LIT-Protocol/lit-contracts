@@ -6,10 +6,12 @@
   "type": "module",
   "scripts": {
     "start": "bun run ./src/index.ts",
-    "test": "./test/run-tests.sh"
+    "test": "./test/run-tests.sh",
+    "clean": "rimraf dist"
   },
   "devDependencies": {
     "@types/bun": "latest",
+    "rimraf": "^6.0.1",
     "typescript": "^5.0.0"
   },
   "peerDependencies": {
@@ -35,11 +37,6 @@
       "import": "./dist/prod/datil-test.js",
       "require": "./dist/prod/datil-test.cjs",
       "types": "./dist/prod/datil-test.ts"
-    },
-    "./prod/naga-dev": {
-      "import": "./dist/prod/naga-dev.js",
-      "require": "./dist/prod/naga-dev.cjs",
-      "types": "./dist/prod/naga-dev.ts"
     },
     "./dev/develop": {
       "import": "./dist/dev/develop.js",
