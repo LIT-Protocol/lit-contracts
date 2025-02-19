@@ -14,6 +14,7 @@ export const METHODS_TO_EXTRACT = [
 
   // PKP Read:
   "tokenOfOwnerByIndex",
+  "mintCost",
 
   // PKP Write:
   "claimAndMint",
