@@ -9,7 +9,7 @@ import {
   NETWORKS_REPO,
   LIT_ASSETS_REPO,
 } from "../config/networks";
-import type { NetworkName } from "../config/networks";
+import type { NetworkName, ProdNetworkName, DevNetworkName } from "../config/networks";
 import type { NetworkPaths } from "../types/contracts";
 
 export class GitHubService {
@@ -29,15 +29,15 @@ export class GitHubService {
   createGitHubPath(
     contentPath: string,
     branch: string,
-    network: NetworkName | "develop",
+    network: NetworkName,
     isProd: boolean
   ): string {
     const repoName = isProd ? NETWORKS_REPO : LIT_ASSETS_REPO;
 
     // Get the full content path based on environment and network
     const fullPath = isProd
-      ? NETWORK_PATHS.prod.getContentPath(network as NetworkName, contentPath)
-      : NETWORK_PATHS.dev.getContentPath(network, contentPath);
+      ? NETWORK_PATHS.prod.getContentPath(network as ProdNetworkName, contentPath)
+      : NETWORK_PATHS.dev.getContentPath(network as DevNetworkName, contentPath);
     const githubPath = `${GITHUB_API_BASE}/${USERNAME}/${repoName}/contents/${fullPath}?ref=${branch}`;
 
     this.trackNetworkPath(network, "abis", githubPath);

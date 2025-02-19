@@ -10,16 +10,23 @@ export const NETWORKS_REPO = "networks";
 export const LIT_ASSETS_REPO = "lit-assets";
 
 // Network path mapping - single source of truth
-export const PATH_BY_NETWORK = {
+export const PROD_PATH_BY_NETWORK = {
   datil: "datil-prod",
   "datil-dev": "datil-dev",
   "datil-test": "datil-test",
   "naga-dev": "naga-dev",
 } as const;
 
-// Network types derived from PATH_BY_NETWORK
-export type NetworkName = keyof typeof PATH_BY_NETWORK;
-export type NetworkPath = (typeof PATH_BY_NETWORK)[NetworkName];
+export const DEV_PATH_BY_NETWORK = {
+  develop: "develop",
+  // "datil-clone": "datil-clone",
+} as const;
+
+// Network types derived from path mappings
+export type ProdNetworkName = keyof typeof PROD_PATH_BY_NETWORK;
+export type DevNetworkName = keyof typeof DEV_PATH_BY_NETWORK;
+export type NetworkName = ProdNetworkName | DevNetworkName;
+export type NetworkPath = typeof PROD_PATH_BY_NETWORK[ProdNetworkName] | typeof DEV_PATH_BY_NETWORK[DevNetworkName];
 
 /**
  * Network path configuration for GitHub API requests
@@ -38,31 +45,36 @@ export const NETWORK_PATHS = {
      * Maps network names to their directory names
      * Example: "datil" -> "datil-prod", "datil-dev" -> "datil-dev"
      */
-    networkToPath: PATH_BY_NETWORK,
+    networkToPath: PROD_PATH_BY_NETWORK,
     /**
      * Constructs the full path for production networks
      * Format: <network-directory>/<content-path>
      * Example: "datil-prod/abis"
      */
-    getContentPath: (network: NetworkName, contentPath: string) => {
-      const networkDir = PATH_BY_NETWORK[network];
+    getContentPath: (network: ProdNetworkName, contentPath: string) => {
+      const networkDir = PROD_PATH_BY_NETWORK[network];
       return `${networkDir}/${contentPath}`;
     },
   },
   dev: {
     /**
+     * Maps network names to their directory names
+     * Example: "develop" -> "develop"
+     */
+    networkToPath: DEV_PATH_BY_NETWORK,
+    /**
      * Constructs the full path for development
      * Uses the content path directly without network subdirectory
      * Example: "rust/lit-core/blockchain/abis"
      */
-    getContentPath: (network: string, contentPath: string) => contentPath,
+    getContentPath: (network: DevNetworkName, contentPath: string) => contentPath,
   },
 } as const;
 
 // Network Configurations
 export const NETWORKS = {
   prod: {
-    networks: Object.keys(PATH_BY_NETWORK) as NetworkName[],
+    networks: Object.keys(PROD_PATH_BY_NETWORK) as ProdNetworkName[],
     deployedContracts: {
       "datil-dev":
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-dev/deployed-lit-node-contracts-temp.json",
@@ -75,10 +87,12 @@ export const NETWORKS = {
     },
   },
   dev: {
-    networks: ["develop"] as const,
+    networks: Object.keys(DEV_PATH_BY_NETWORK) as DevNetworkName[],
     deployedContracts: {
       develop:
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/naga-dev/deployed-lit-node-contracts-temp.json",
+      "datil-clone":
+        "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-clone/deployed-lit-node-contracts-temp.json",
     },
   },
 } as const;
