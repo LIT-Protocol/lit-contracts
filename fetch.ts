@@ -1,35 +1,27 @@
 /**
  * Lit Protocol Contract Fetcher
- *
  * This script fetches and caches contract ABIs and addresses from Lit Protocol repositories.
- *
- * Environment Variables Required:
- * - GH_LIT_ASSETS_READ_ONLY_API: GitHub API token
- * - DEV_BRANCH: Branch name for development
  */
-
 import * as fs from "fs";
+import { createEnv } from "@t3-oss/env-core";
+import { z } from "zod";
+
+// Environment validation
+const env = createEnv({
+  server: {
+    GH_API_KEY: z.string().min(1, "GitHub API token is required"),
+    DEV_BRANCH: z
+      .string()
+      .min(1, "Development branch name is required")
+      .default("develop"),
+  },
+  runtimeEnv: process.env,
+});
 
 // Constants
 const GITHUB_API_BASE = "https://api.github.com/repos";
 const USERNAME = "LIT-Protocol";
 const NETWORKS_REPO = "networks";
-
-// Environment validation
-const requiredEnvVars = {
-  GH_LIT_ASSETS_READ_ONLY_API: process.env.GH_LIT_ASSETS_READ_ONLY_API,
-  DEV_BRANCH: process.env.DEV_BRANCH,
-};
-
-Object.entries(requiredEnvVars).forEach(([name, value]) => {
-  if (!value) {
-    throw new Error(`❌ ${name} is not defined`);
-  }
-});
-
-// Types
-type LitNetwork = "datil-dev" | "datil-test" | "datil" | "naga-dev";
-type NetworkMode = "prod" | "dev";
 
 // Network configurations
 const NETWORKS = {
@@ -55,21 +47,30 @@ const NETWORKS = {
   },
 } as const;
 
-type ContractAddressKey =
-  | "litTokenContractAddress"
-  | "pkpNftContractAddress"
-  | "pkpHelperContractAddress"
-  | "pkpPermissionsContractAddress"
-  | "pkpNftMetadataContractAddress"
-  | "pubkeyRouterContractAddress"
-  | "rateLimitNftContractAddress"
-  | "stakingBalancesContractAddress"
-  | "stakingContractAddress"
-  | "multisenderContractAddress"
-  | "allowlistContractAddress"
-  | "paymentDelegationContractAddress"
-  | "priceFeedContractAddress"
-  | "cloneNetContractAddress";
+// Infer types from constants
+type ProdNetwork = (typeof NETWORKS.prod.networks)[number];
+type DevNetwork = (typeof NETWORKS.dev.networks)[number];
+type LitNetwork = ProdNetwork | DevNetwork;
+
+// Contract name mapping constants
+const CONTRACT_NAME_MAP = {
+  litTokenContractAddress: "LITToken",
+  pkpNftContractAddress: "PKPNFT",
+  pkpHelperContractAddress: "PKPHelper",
+  pkpPermissionsContractAddress: "PKPPermissions",
+  pkpNftMetadataContractAddress: "PKPNFTMetadata",
+  pubkeyRouterContractAddress: "PubkeyRouter",
+  rateLimitNftContractAddress: "RateLimitNFT",
+  stakingBalancesContractAddress: "StakingBalances",
+  stakingContractAddress: "Staking",
+  multisenderContractAddress: "Multisender",
+  allowlistContractAddress: "Allowlist",
+  paymentDelegationContractAddress: "PaymentDelegation",
+  priceFeedContractAddress: "PriceFeed",
+  cloneNetContractAddress: "CloneNet",
+} as const;
+
+type ContractAddressKey = keyof typeof CONTRACT_NAME_MAP;
 
 type ContractConfig = {
   chainId?: string;
@@ -93,33 +94,15 @@ interface NetworkCache {
   }>;
 }
 
-type ABISource = {
-  repoName: string;
-  path: string;
-  branch: string;
-  fileExtensionToRemove: string;
-  abiSourceInJson: any[];
-  contractNameMap: Record<string, string>;
-  deployedContract: Record<LitNetwork, string>;
+// Network path tracking
+type NetworkPaths = {
+  abis: string;
+  deployedContracts: string;
+  error?: string;
+  status: "success" | "error";
 };
 
-// Source configurations
-const contractNameMap = {
-  litTokenContractAddress: "LITToken",
-  pkpNftContractAddress: "PKPNFT",
-  pkpHelperContractAddress: "PKPHelper",
-  pkpPermissionsContractAddress: "PKPPermissions",
-  pkpNftMetadataContractAddress: "PKPNFTMetadata",
-  pubkeyRouterContractAddress: "PubkeyRouter",
-  rateLimitNftContractAddress: "RateLimitNFT",
-  stakingBalancesContractAddress: "StakingBalances",
-  stakingContractAddress: "Staking",
-  multisenderContractAddress: "Multisender",
-  allowlistContractAddress: "Allowlist",
-  paymentDelegationContractAddress: "PaymentDelegation",
-  priceFeedContractAddress: "PriceFeed",
-  cloneNetContractAddress: "CloneNet",
-};
+const networkPaths: Record<string, NetworkPaths> = {};
 
 // Production configuration
 const prodConfig = {
@@ -128,45 +111,43 @@ const prodConfig = {
   path: "abis",
   fileExtensionToRemove: ".abi",
   abiSourceInJson: [],
-  contractNameMap,
+  contractNameMap: CONTRACT_NAME_MAP,
   deployedContract: NETWORKS.prod.deployedContracts,
-};
+} as const;
 
 // Development configuration
 const devConfig = {
   repoName: "lit-assets",
   path: "rust/lit-core/lit-blockchain/abis",
-  branch: process.env.DEV_BRANCH!,
+  branch: env.DEV_BRANCH,
   fileExtensionToRemove: ".json",
   abiSourceInJson: ["abi"],
-  contractNameMap,
+  contractNameMap: CONTRACT_NAME_MAP,
   deployedContract: NETWORKS.dev.deployedContracts,
-};
+} as const;
 
 // GitHub API configuration
 const GITHUB_HEADERS = {
   headers: {
-    Authorization: `token ${process.env.GH_LIT_ASSETS_READ_ONLY_API}`,
+    Authorization: `token ${env.GH_API_KEY}`,
     Accept: "application/vnd.github.v3+json",
   },
-};
-
-// Network path tracking
-type NetworkPaths = {
-  abis: string;
-  deployedContracts: string;
-  error?: string;
-  status: 'success' | 'error';
-};
-
-const networkPaths: Record<string, NetworkPaths> = {};
+} as const;
 
 /**
  * Tracks network paths for summary
  */
-function trackNetworkPath(network: string, type: keyof Omit<NetworkPaths, 'error' | 'status'>, path: string) {
+function trackNetworkPath(
+  network: string,
+  type: keyof Omit<NetworkPaths, "error" | "status">,
+  path: string
+) {
   if (!networkPaths[network]) {
-    networkPaths[network] = { abis: '', deployedContracts: '', status: 'success' };
+    networkPaths[network] = {
+      abis: "",
+      deployedContracts: "",
+      status: "success",
+    };
   }
   networkPaths[network][type] = path;
 }
@@ -176,10 +157,14 @@ function trackNetworkPath(network: string, type: keyof Omit<NetworkPaths, 'error
  */
 function trackNetworkError(network: string, error: string) {
   if (!networkPaths[network]) {
-    networkPaths[network] = { abis: '', deployedContracts: '', status: 'error' };
+    networkPaths[network] = {
+      abis: "",
+      deployedContracts: "",
+      status: "error",
+    };
   }
   networkPaths[network].error = error;
-  networkPaths[network].status = 'error';
+  networkPaths[network].status = "error";
 }
 
 /**
@@ -201,7 +186,7 @@ function createGitHubPath(
     githubPath = `${GITHUB_API_BASE}/${USERNAME}/${repoName}/contents/${path}?ref=${branch}`;
   }
 
-  trackNetworkPath(network, 'abis', githubPath);
+  trackNetworkPath(network, "abis", githubPath);
   return githubPath;
 }
 
@@ -388,13 +373,13 @@ async function getDevContractABIs() {
 /**
  * Updates the contract cache for a production network
  */
-async function updateProdCache(network: LitNetwork): Promise<void> {
+async function updateProdCache(network: ProdNetwork): Promise<void> {
   console.log(`\n🔄 Starting production cache update for network: ${network}`);
 
   try {
     // Get contract data
-    const deployedContractUrl = prodConfig.deployedContract[network];
-    trackNetworkPath(network, 'deployedContracts', deployedContractUrl);
+    const deployedContractUrl = NETWORKS.prod.deployedContracts[network];
+    trackNetworkPath(network, "deployedContracts", deployedContractUrl);
     console.log(`\n📍 [${network}] Contract Addresses Source:`);
     console.log(`   URL: ${deployedContractUrl}`);
 
@@ -521,7 +506,7 @@ async function updateDevCache(): Promise<void> {
 
     // Fetch deployed contracts
     const deployedContractUrl = devConfig.deployedContract["develop"];
-    trackNetworkPath("develop", 'deployedContracts', deployedContractUrl);
+    trackNetworkPath("develop", "deployedContracts", deployedContractUrl);
     console.log(`\n📍 [develop] Contract Addresses Source:`);
     console.log(`   URL: ${deployedContractUrl}`);
 
@@ -624,17 +609,17 @@ function formatNetworkName(network: string): string {
  */
 function generateIndexFile() {
   console.log("\n📝 Generating index.ts file...");
-  
+
   const exports: string[] = [];
-  
+
   // Add production exports
-  NETWORKS.prod.networks.forEach(network => {
+  NETWORKS.prod.networks.forEach((network) => {
     const formattedName = formatNetworkName(network);
     exports.push(`export { ${formattedName} } from "./prod/${network}";`);
   });
 
   // Add development exports
-  NETWORKS.dev.networks.forEach(network => {
+  NETWORKS.dev.networks.forEach((network) => {
     const formattedName = formatNetworkName(network);
     exports.push(`export { ${formattedName} } from "./dev/${network}";`);
   });
@@ -689,7 +674,7 @@ function printNetworkSummary() {
   const failedNetworks: string[] = [];
 
   Object.entries(networkPaths).forEach(([network, paths]) => {
-    if (paths.status === 'error') {
+    if (paths.status === "error") {
       failedNetworks.push(network);
     } else {
       successfulNetworks.push(network);
@@ -698,7 +683,7 @@ function printNetworkSummary() {
 
   if (successfulNetworks.length > 0) {
     console.log("\n✅ Successfully Processed Networks:");
-    successfulNetworks.forEach(network => {
+    successfulNetworks.forEach((network) => {
       const paths = networkPaths[network];
       console.log(`\n🌐 Network: ${network}`);
       console.log("  📁 ABIs Source:");
@@ -710,7 +695,7 @@ function printNetworkSummary() {
 
   if (failedNetworks.length > 0) {
     console.log("\n❌ Failed Networks:");
-    failedNetworks.forEach(network => {
+    failedNetworks.forEach((network) => {
       const paths = networkPaths[network];
       console.log(`\n🌐 Network: ${network}`);
       console.log(`  ❌ Error: ${paths.error}`);

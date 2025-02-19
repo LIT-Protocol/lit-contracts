@@ -1,5 +1,55 @@
 # Fetch Lit contracts and have the same format as general-worker
 
+```mermaid
+flowchart TB
+    subgraph Main Process
+        main["main()"] --> procProd["Process Production Networks"]
+        main --> procDev["Process Development Networks"]
+        main --> genIndex["Generate Index File"]
+        main --> summary["Print Network Summary"]
+    end
+
+    subgraph Production Flow
+        procProd --> |"For each network"| updateProdCache["updateProdCache()"]
+        updateProdCache --> getProdABIs["getProdContractABIs()"]
+        updateProdCache --> getLastMod["getLastModified()"]
+        updateProdCache --> writeCache["Write Cache File"]
+    end
+
+    subgraph Development Flow
+        procDev --> updateDevCache["updateDevCache()"]
+        updateDevCache --> getDevABIs["getDevContractABIs()"]
+        updateDevCache --> getLastMod
+        updateDevCache --> writeCache
+    end
+
+    subgraph File Generation
+        genIndex --> |"Generate"| indexTS["dist/index.ts"]
+        writeCache --> |"Generate"| prodTS["dist/prod/*.ts"]
+        writeCache --> |"Generate"| devTS["dist/dev/*.ts"]
+    end
+
+    subgraph Configuration
+        config["Constants & Config"]
+        networks["Network Definitions"]
+        contractMap["Contract Name Mappings"]
+        config --> main
+        networks --> main
+        contractMap --> updateProdCache
+        contractMap --> updateDevCache
+    end
+
+    subgraph GitHub API
+        getProdABIs --> |"Fetch"| ghAPI["GitHub API"]
+        getDevABIs --> |"Fetch"| ghAPI
+        getLastMod --> |"Fetch"| ghAPI
+    end
+
+    style main fill:#f9f,stroke:#333,stroke-width:4px
+    style ghAPI fill:#b8d4ff,stroke:#333
+    style config fill:#d4ffb8,stroke:#333
+```
+
 To run locally, use the following command:
 
 Ensure you have a fine-grain read-only personal access token for the `lit-assets` repository (`GH_LIT_ASSETS_READ_ONLY_API`). For the `LIT_ABI_SOURCE` environment variable, you can set it to either `prod` or `dev`.
