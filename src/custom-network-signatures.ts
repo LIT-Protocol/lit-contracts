@@ -122,41 +122,53 @@ function convertToNetworkCache(
 }
 
 /**
- * Generates signatures from the networkContext data
- * @param networkCache - The network cache object from networkContext.json
- * @returns Object containing the extracted method signatures
+ * Generates ABI signatures in the standard format for Lit Protocol
+ * @param networkData - The network cache object
+ * @returns Signatures object with contract-organized structure
  */
-function generateSignatures(networkCache: NetworkCache): Record<string, any> {
-  // Extract method names from METHODS_TO_EXTRACT
-  const methodNames = METHODS_TO_EXTRACT.map((methodString) => {
-    const [_, methodName] = methodString.split(".");
-    return methodName;
+function generateAbiSignatures(networkData: NetworkCache) {
+  const methodsByContract = new Map<string, string[]>();
+  
+  // Group methods by contract
+  METHODS_TO_EXTRACT.forEach(methodString => {
+    const [contractName, methodName] = methodString.split('.');
+    if (!methodsByContract.has(contractName)) {
+      methodsByContract.set(contractName, []);
+    }
+    methodsByContract.get(contractName)!.push(methodName);
   });
 
-  // Extract ABI methods
-  const extractedMethods = extractAbiMethods(networkCache, methodNames);
-
-  // Convert to signatures format
-  const signatures: Record<string, any> = {};
-
-  for (const [methodName, methodData] of Object.entries(extractedMethods)) {
-    try {
-      const { contractName, address, abi } = methodData;
-
-      // Create interface for method signature
-      const iface = new Interface([abi]);
-      const functionSignature = iface.getFunction(methodName)?.format("full");
-
-      signatures[methodName] = {
-        contractName,
-        address,
-        abi,
-        signature: functionSignature,
-      };
-    } catch (error) {
-      console.warn(`Warning: Could not process method ${methodName}:`, error);
+  // Extract methods for each contract
+  const signatures: Record<string, { 
+    address: string; 
+    methods: Record<string, any>;
+    events: any[];
+  }> = {};
+  
+  networkData.data.forEach(contractGroup => {
+    const contractName = contractGroup.name;
+    if (methodsByContract.has(contractName)) {
+      const methods = methodsByContract.get(contractName)!;
+      const contractMethods = extractAbiMethods(networkData, methods);
+      
+      if (Object.keys(contractMethods).length > 0) {
+        const address = contractGroup.contracts[0].address_hash;
+        const events = contractGroup.contracts[0].ABI
+          .filter(item => item.type === 'event');
+        
+        signatures[contractName] = {
+          address,
+          methods: Object.fromEntries(
+            Object.entries(contractMethods).map(([methodName, data]) => [
+              methodName,
+              data.abi
+            ])
+          ),
+          events
+        };
+      }
     }
-  }
+  });
 
   return signatures;
 }
@@ -174,14 +186,12 @@ export async function generateSignaturesFromContext(
     networkName = "custom-network",
     outputDir = "./dist/signatures",
     useScriptDirectory = false,
-    callerPath = import.meta.url,
+    callerPath,
   } = options;
-  console.log("callerPath:", callerPath);
+
   try {
     if (useScriptDirectory && !callerPath) {
-      console.warn(
-        "Warning: useScriptDirectory is true but callerPath is not provided. Paths may not resolve correctly."
-      );
+      throw new Error("callerPath (import.meta.url) is required when useScriptDirectory is true");
     }
 
     const baseDir = getBaseDirectory(useScriptDirectory, callerPath);
@@ -204,43 +214,54 @@ export async function generateSignaturesFromContext(
     // Convert to NetworkCache format
     const jsonData = convertToNetworkCache(rawJsonData, networkName);
 
-    // Generate signatures
+    // Generate signatures using the standard format
     console.log("📊 Generating signatures...");
-    const signatures = generateSignatures(jsonData);
+    const signatures = generateAbiSignatures(jsonData);
 
     // Write signatures to file
     const outputPath = path.join(resolvedOutputDir, `${networkName}.js`);
     const outputPathCjs = path.join(resolvedOutputDir, `${networkName}.cjs`);
     const outputPathTs = path.join(resolvedOutputDir, `${networkName}.ts`);
 
+    // Write TS version with the standard format
+    fs.writeFileSync(
+      outputPathTs,
+      `/**
+ * Generated Contract Method Signatures for ${networkName}
+ * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
+ */
+
+export const signatures = ${JSON.stringify(signatures, null, 2)} as const;
+export type Signatures = typeof signatures;
+`
+    );
+
     // Write ESM version
     fs.writeFileSync(
       outputPath,
-      `// Generated signatures for ${networkName} network\n\nexport const signatures = ${JSON.stringify(
-        signatures,
-        null,
-        2
-      )};\n`
+      `/**
+ * Generated Contract Method Signatures for ${networkName}
+ * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
+ */
+
+export const signatures = ${JSON.stringify(signatures, null, 2)};
+`
     );
 
     // Write CJS version
     fs.writeFileSync(
       outputPathCjs,
-      `// Generated signatures for ${networkName} network\n\nmodule.exports = { signatures: ${JSON.stringify(
-        signatures,
-        null,
-        2
-      )} };\n`
-    );
+      `/**
+ * Generated Contract Method Signatures for ${networkName}
+ * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
+ */
 
-    // Write TS version
-    fs.writeFileSync(
-      outputPathTs,
-      `// Generated signatures for ${networkName} network\n\nexport const signatures: Record<string, { contractName: string; address: string; abi: any, signature: string }> = ${JSON.stringify(
-        signatures,
-        null,
-        2
-      )};\n`
+const signatures = ${JSON.stringify(signatures, null, 2)};
+
+module.exports = {
+  signatures
+};
+`
     );
 
     console.log(`✅ Signatures successfully generated and written to:`);
