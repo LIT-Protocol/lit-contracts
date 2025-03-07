@@ -233,7 +233,7 @@ export async function generateSignaturesFromContext(
     // Write TS version
     fs.writeFileSync(
       outputPathTs,
-      `// Generated signatures for ${networkName} network\n\nexport const signatures: Record<string, { contractName: string; address: string; abi: any }> = ${JSON.stringify(
+      `// Generated signatures for ${networkName} network\n\nexport const signatures: Record<string, { contractName: string; address: string; abi: any, signature: string }> = ${JSON.stringify(
         signatures,
         null,
         2
