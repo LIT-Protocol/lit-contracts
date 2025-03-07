@@ -79,12 +79,13 @@ function getBaseDirectory(
 
 /**
  * Resolves a path relative to the base directory
- * @param relativePath - The relative path to resolve
- * @param baseDir - The base directory to resolve from
+ * @param relativePath - The path to resolve (can be absolute or relative)
+ * @param baseDir - The base directory to resolve from (only used for relative paths)
+ * @param forceRelative - If true, always resolve relative to baseDir even if path is absolute
  * @returns The resolved absolute path
  */
-function resolvePath(relativePath: string, baseDir: string): string {
-  if (path.isAbsolute(relativePath)) {
+function resolvePath(relativePath: string, baseDir: string, forceRelative: boolean = false): string {
+  if (path.isAbsolute(relativePath) && !forceRelative) {
     return relativePath;
   }
   return path.resolve(baseDir, relativePath);
@@ -184,8 +185,10 @@ export async function generateSignaturesFromContext(
     }
 
     const baseDir = getBaseDirectory(useScriptDirectory, callerPath);
+    // Don't force relative for jsonFilePath (allow absolute paths)
     const resolvedJsonPath = resolvePath(jsonFilePath, baseDir);
-    const resolvedOutputDir = resolvePath(outputDir, baseDir);
+    // Force relative for outputDir (always relative to script)
+    const resolvedOutputDir = resolvePath(outputDir, baseDir, true);
 
     // Ensure output directory exists
     if (!fs.existsSync(resolvedOutputDir)) {
