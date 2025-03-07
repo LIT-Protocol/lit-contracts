@@ -5,6 +5,8 @@ export const METHODS_TO_EXTRACT = [
   "PKPPermissions.getPermittedAddresses",
   "PKPPermissions.isPermittedAction",
   "PKPPermissions.isPermittedAddress",
+  "PKPPermissions.getPermittedAuthMethods",
+  "PKPPermissions.getPermittedAuthMethodScopes",
 
   // Permissions Write:
   "PKPPermissions.addPermittedAction",
