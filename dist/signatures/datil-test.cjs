@@ -1429,6 +1429,76 @@ const signatures = {
         "stateMutability": "view",
         "type": "function"
       },
+      "getPermittedAuthMethodScopes": {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "authMethodType",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes",
+            "name": "id",
+            "type": "bytes"
+          },
+          {
+            "internalType": "uint256",
+            "name": "maxScopeId",
+            "type": "uint256"
+          }
+        ],
+        "name": "getPermittedAuthMethodScopes",
+        "outputs": [
+          {
+            "internalType": "bool[]",
+            "name": "",
+            "type": "bool[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      "getPermittedAuthMethods": {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "name": "getPermittedAuthMethods",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "authMethodType",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bytes",
+                "name": "id",
+                "type": "bytes"
+              },
+              {
+                "internalType": "bytes",
+                "name": "userPubkey",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibPKPPermissionsStorage.AuthMethod[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
       "isPermittedAction": {
         "inputs": [
           {

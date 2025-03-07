@@ -1,6 +1,6 @@
 {
   "name": "@lit-protocol/contracts",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "type": "module",
@@ -53,6 +53,16 @@
       "import": "./dist/signatures/datil-test.js",
       "require": "./dist/signatures/datil-test.cjs",
       "types": "./dist/signatures/datil-test.ts"
+    },
+    "./prod/naga-dev": {
+      "import": "./dist/prod/naga-dev.js",
+      "require": "./dist/prod/naga-dev.cjs",
+      "types": "./dist/prod/naga-dev.ts"
+    },
+    "./signatures/naga-dev": {
+      "import": "./dist/signatures/naga-dev.js",
+      "require": "./dist/signatures/naga-dev.cjs",
+      "types": "./dist/signatures/naga-dev.ts"
     },
     "./dev/develop": {
       "import": "./dist/dev/develop.js",

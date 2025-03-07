@@ -1684,6 +1684,25 @@ export const develop = {
                   "type": "address"
                 }
               ],
+              "name": "getCurrentRealmIdForStakerAddress",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                }
+              ],
               "name": "getRealmIdForStakerAddress",
               "outputs": [
                 {
@@ -1763,12 +1782,12 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeAmountNeedingAttribution",
+                      "name": "delegatedStakeAmount",
                       "type": "uint256"
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeWeightNeedingAttribution",
+                      "name": "delegatedStakeWeight",
                       "type": "uint256"
                     }
                   ],
@@ -1949,12 +1968,12 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeAmountNeedingAttribution",
+                      "name": "delegatedStakeAmount",
                       "type": "uint256"
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeWeightNeedingAttribution",
+                      "name": "delegatedStakeWeight",
                       "type": "uint256"
                     }
                   ],
@@ -1982,6 +2001,11 @@ export const develop = {
               "type": "error"
             },
             {
+              "inputs": [],
+              "name": "InvalidSlashPercentage",
+              "type": "error"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "enum LibStakingStorage.States",
@@ -1990,6 +2014,22 @@ export const develop = {
                 }
               ],
               "name": "MustBeInNextValidatorSetLockedOrReadyForNextEpochState",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "validator",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address[]",
+                  "name": "validatorsInNextEpoch",
+                  "type": "address[]"
+                }
+              ],
+              "name": "ValidatorIsNotInNextEpoch",
               "type": "error"
             },
             {
@@ -2374,6 +2414,32 @@ export const develop = {
                 }
               ],
               "name": "StateChanged",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "staker",
+                  "type": "address"
+                }
+              ],
+              "name": "ValidatorBanned",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "staker",
+                  "type": "address"
+                }
+              ],
+              "name": "ValidatorKickedFromNextEpoch",
               "type": "event"
             },
             {
@@ -2974,17 +3040,12 @@ export const develop = {
             {
               "inputs": [
                 {
-                  "internalType": "address",
-                  "name": "stakerAddress",
-                  "type": "address"
-                },
-                {
                   "internalType": "uint256",
-                  "name": "rate",
+                  "name": "newTotalSupply",
                   "type": "uint256"
                 }
               ],
-              "name": "setValidatorComissionRate",
+              "name": "setTokenTotalSupplyStandIn",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -3144,6 +3205,11 @@ export const develop = {
             {
               "inputs": [],
               "name": "TimeLockNotMet",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "TooSoonToWithdraw",
               "type": "error"
             },
             {
@@ -3348,6 +3414,11 @@ export const develop = {
                 {
                   "internalType": "uint256",
                   "name": "stakeRecordId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "maxNumberOfEpochsToClaim",
                   "type": "uint256"
                 }
               ],
@@ -3558,7 +3629,7 @@ export const develop = {
                 },
                 {
                   "internalType": "uint256",
-                  "name": "amount",
+                  "name": "additionalAmount",
                   "type": "uint256"
                 }
               ],
@@ -3581,7 +3652,7 @@ export const develop = {
                 },
                 {
                   "internalType": "uint256",
-                  "name": "newTimeLock",
+                  "name": "additionalTimeLock",
                   "type": "uint256"
                 }
               ],
@@ -3645,23 +3716,12 @@ export const develop = {
               "inputs": [
                 {
                   "internalType": "uint256",
-                  "name": "percentage",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "stakerAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "slashValidator",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
+                  "name": "rate",
                   "type": "uint256"
                 }
               ],
+              "name": "setValidatorCommissionRate",
+              "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
             },
@@ -3725,19 +3785,6 @@ export const develop = {
                 }
               ],
               "name": "unfreezeStake",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "realmId",
-                  "type": "uint256"
-                }
-              ],
-              "name": "updateRewardEpoch",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -4024,6 +4071,17 @@ export const develop = {
                   "internalType": "address",
                   "name": "staker",
                   "type": "address"
+                }
+              ],
+              "name": "ValidatorAlreadyInNextValidatorSet",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "staker",
+                  "type": "address"
                 },
                 {
                   "internalType": "uint256",
@@ -4038,16 +4096,11 @@ export const develop = {
               "inputs": [
                 {
                   "internalType": "address",
-                  "name": "validator",
+                  "name": "staker",
                   "type": "address"
-                },
-                {
-                  "internalType": "address[]",
-                  "name": "validatorsInNextEpoch",
-                  "type": "address[]"
                 }
               ],
-              "name": "ValidatorIsNotInNextEpoch",
+              "name": "ValidatorNotInNextEpoch",
               "type": "error"
             },
             {
@@ -4266,25 +4319,6 @@ export const develop = {
                 }
               ],
               "name": "RewardsDurationUpdated",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "amountBurned",
-                  "type": "uint256"
-                }
-              ],
-              "name": "ValidatorKickedFromNextEpoch",
               "type": "event"
             },
             {
@@ -4899,11 +4933,6 @@ export const develop = {
               "type": "error"
             },
             {
-              "inputs": [],
-              "name": "StakeNotFound",
-              "type": "error"
-            },
-            {
               "inputs": [
                 {
                   "components": [
@@ -5228,12 +5257,12 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeAmountNeedingAttribution",
+                      "name": "delegatedStakeAmount",
                       "type": "uint256"
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeWeightNeedingAttribution",
+                      "name": "delegatedStakeWeight",
                       "type": "uint256"
                     }
                   ],
@@ -5371,12 +5400,12 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeAmountNeedingAttribution",
+                      "name": "delegatedStakeAmount",
                       "type": "uint256"
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeWeightNeedingAttribution",
+                      "name": "delegatedStakeWeight",
                       "type": "uint256"
                     }
                   ],
@@ -5397,6 +5426,19 @@ export const develop = {
                 }
               ],
               "name": "getActiveUnkickedValidators",
+              "outputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "",
+                  "type": "address[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getAllValidators",
               "outputs": [
                 {
                   "internalType": "address[]",
@@ -5500,6 +5542,11 @@ export const develop = {
                       "internalType": "bool",
                       "name": "frozen",
                       "type": "bool"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "attributionAddress",
+                      "type": "address"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.StakeRecord",
@@ -5514,6 +5561,24 @@ export const develop = {
               "inputs": [],
               "name": "getLitCirc",
               "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getLowestRewardEpochNumber",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                },
                 {
                   "internalType": "uint256",
                   "name": "",
@@ -5725,6 +5790,11 @@ export const develop = {
                       "internalType": "bool",
                       "name": "frozen",
                       "type": "bool"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "attributionAddress",
+                      "type": "address"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.StakeRecord",
@@ -5820,6 +5890,11 @@ export const develop = {
                       "internalType": "bool",
                       "name": "frozen",
                       "type": "bool"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "attributionAddress",
+                      "type": "address"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.StakeRecord[]",
@@ -5917,6 +5992,11 @@ export const develop = {
                       "internalType": "bool",
                       "name": "frozen",
                       "type": "bool"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "attributionAddress",
+                      "type": "address"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.StakeRecord",
@@ -6019,6 +6099,11 @@ export const develop = {
                       "internalType": "bool",
                       "name": "frozen",
                       "type": "bool"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "attributionAddress",
+                      "type": "address"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.StakeRecord",
@@ -6245,12 +6330,12 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeAmountNeedingAttribution",
+                      "name": "delegatedStakeAmount",
                       "type": "uint256"
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeWeightNeedingAttribution",
+                      "name": "delegatedStakeWeight",
                       "type": "uint256"
                     }
                   ],
@@ -6336,12 +6421,12 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeAmountNeedingAttribution",
+                      "name": "delegatedStakeAmount",
                       "type": "uint256"
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeWeightNeedingAttribution",
+                      "name": "delegatedStakeWeight",
                       "type": "uint256"
                     }
                   ],
@@ -6427,12 +6512,12 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeAmountNeedingAttribution",
+                      "name": "delegatedStakeAmount",
                       "type": "uint256"
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeWeightNeedingAttribution",
+                      "name": "delegatedStakeWeight",
                       "type": "uint256"
                     }
                   ],
@@ -7109,12 +7194,12 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeAmountNeedingAttribution",
+                      "name": "delegatedStakeAmount",
                       "type": "uint256"
                     },
                     {
                       "internalType": "uint256",
-                      "name": "delegatedStakeWeightNeedingAttribution",
+                      "name": "delegatedStakeWeight",
                       "type": "uint256"
                     }
                   ],
@@ -9801,6 +9886,19 @@ export const develop = {
               "inputs": [
                 {
                   "indexed": false,
+                  "internalType": "address",
+                  "name": "newTrustedForwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "TrustedForwarderSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
                   "internalType": "uint256",
                   "name": "amount",
                   "type": "uint256"
@@ -10059,6 +10157,19 @@ export const develop = {
             {
               "inputs": [],
               "name": "getStakingAddress",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getTrustedForwarder",
               "outputs": [
                 {
                   "internalType": "address",
@@ -10330,6 +10441,19 @@ export const develop = {
                 }
               ],
               "name": "setMintCost",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "forwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "setTrustedForwarder",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -12408,6 +12532,19 @@ export const develop = {
               "type": "event"
             },
             {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "newTrustedForwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "TrustedForwarderSet",
+              "type": "event"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "uint256",
@@ -12809,6 +12946,19 @@ export const develop = {
               "type": "function"
             },
             {
+              "inputs": [],
+              "name": "getTrustedForwarder",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "uint256",
@@ -13062,6 +13212,19 @@ export const develop = {
                 }
               ],
               "name": "setRootHash",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "forwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "setTrustedForwarder",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -14790,12 +14953,12 @@ export const develop = {
                         },
                         {
                           "internalType": "uint256",
-                          "name": "delegatedStakeAmountNeedingAttribution",
+                          "name": "delegatedStakeAmount",
                           "type": "uint256"
                         },
                         {
                           "internalType": "uint256",
-                          "name": "delegatedStakeWeightNeedingAttribution",
+                          "name": "delegatedStakeWeight",
                           "type": "uint256"
                         }
                       ],

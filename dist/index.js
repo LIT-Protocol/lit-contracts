@@ -6,10 +6,11 @@
 export { datil } from "./prod/datil.js";
 export { datilDev } from "./prod/datil-dev.js";
 export { datilTest } from "./prod/datil-test.js";
-// export { nagaDev } from "./prod/naga-dev"; // Network failed to generate
+export { nagaDev } from "./prod/naga-dev.js";
 export { develop } from "./dev/develop.js";
 
 export { signatures as datilSignatures } from "./signatures/datil.js";
 export { signatures as datilDevSignatures } from "./signatures/datil-dev.js";
 export { signatures as datilTestSignatures } from "./signatures/datil-test.js";
+export { signatures as nagaDevSignatures } from "./signatures/naga-dev.js";
 export { signatures as developSignatures } from "./signatures/develop.js";

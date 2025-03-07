@@ -1,12 +1,10 @@
-"use strict";
-
-module.exports = {
+export const nagaDev = {
   "data": [
     {
       "name": "StakingBalances",
       "contracts": [
         {
-          "network": "develop",
+          "network": "naga-dev",
           "address_hash": "0x7cA42eE181C8f033c2C800b32F97373a2C931343",
           "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
@@ -1254,7 +1252,7 @@ module.exports = {
       "name": "Staking",
       "contracts": [
         {
-          "network": "develop",
+          "network": "naga-dev",
           "address_hash": "0x1aD7Ad65Dd04dab562205d2e5FE58066BfDa822e",
           "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
@@ -2000,11 +1998,6 @@ module.exports = {
             {
               "inputs": [],
               "name": "InvalidNewSharePrice",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "InvalidSlashPercentage",
               "type": "error"
             },
             {
@@ -3040,19 +3033,6 @@ module.exports = {
               "type": "function"
             },
             {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "newTotalSupply",
-                  "type": "uint256"
-                }
-              ],
-              "name": "setTokenTotalSupplyStandIn",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
               "inputs": [],
               "name": "CallerNotContract",
               "type": "error"
@@ -3417,11 +3397,6 @@ module.exports = {
                   "internalType": "uint256",
                   "name": "stakeRecordId",
                   "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "maxNumberOfEpochsToClaim",
-                  "type": "uint256"
                 }
               ],
               "name": "claimStakeRewards",
@@ -3631,7 +3606,7 @@ module.exports = {
                 },
                 {
                   "internalType": "uint256",
-                  "name": "additionalAmount",
+                  "name": "amount",
                   "type": "uint256"
                 }
               ],
@@ -3654,7 +3629,7 @@ module.exports = {
                 },
                 {
                   "internalType": "uint256",
-                  "name": "additionalTimeLock",
+                  "name": "newTimeLock",
                   "type": "uint256"
                 }
               ],
@@ -4321,6 +4296,25 @@ module.exports = {
                 }
               ],
               "name": "RewardsDurationUpdated",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "staker",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "amountBurned",
+                  "type": "uint256"
+                }
+              ],
+              "name": "ValidatorKickedFromNextEpoch",
               "type": "event"
             },
             {
@@ -7221,7 +7215,7 @@ module.exports = {
       "name": "Multisender",
       "contracts": [
         {
-          "network": "develop",
+          "network": "naga-dev",
           "address_hash": "0x2b1d47417a06989252889f80f89c264960DF09b4",
           "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
@@ -7336,7 +7330,7 @@ module.exports = {
       "name": "LITToken",
       "contracts": [
         {
-          "network": "develop",
+          "network": "naga-dev",
           "address_hash": "0xd78089bAAe410f5d0eae31D0D56157c73a3Ff98B",
           "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
@@ -8390,7 +8384,7 @@ module.exports = {
       "name": "PubkeyRouter",
       "contracts": [
         {
-          "network": "develop",
+          "network": "naga-dev",
           "address_hash": "0xDfBF547B76101025A9280a6F21778619313605C2",
           "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
@@ -9356,7 +9350,7 @@ module.exports = {
       "name": "PKPNFT",
       "contracts": [
         {
-          "network": "develop",
+          "network": "naga-dev",
           "address_hash": "0x10d0223524e5d599C11758cbB091F840ed2f49a6",
           "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
@@ -9888,19 +9882,6 @@ module.exports = {
               "inputs": [
                 {
                   "indexed": false,
-                  "internalType": "address",
-                  "name": "newTrustedForwarder",
-                  "type": "address"
-                }
-              ],
-              "name": "TrustedForwarderSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
                   "internalType": "uint256",
                   "name": "amount",
                   "type": "uint256"
@@ -10159,19 +10140,6 @@ module.exports = {
             {
               "inputs": [],
               "name": "getStakingAddress",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "getTrustedForwarder",
               "outputs": [
                 {
                   "internalType": "address",
@@ -10450,19 +10418,6 @@ module.exports = {
             {
               "inputs": [
                 {
-                  "internalType": "address",
-                  "name": "forwarder",
-                  "type": "address"
-                }
-              ],
-              "name": "setTrustedForwarder",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
                   "internalType": "bytes4",
                   "name": "interfaceId",
                   "type": "bytes4"
@@ -10605,7 +10560,7 @@ module.exports = {
       "name": "RateLimitNFT",
       "contracts": [
         {
-          "network": "develop",
+          "network": "naga-dev",
           "address_hash": "0xE5dABAbBdFC0eAa31834606022b0859dC204F39d",
           "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
@@ -10989,7 +10944,7 @@ module.exports = {
       "name": "PKPHelper",
       "contracts": [
         {
-          "network": "develop",
+          "network": "naga-dev",
           "address_hash": "0x0c2f4Deb242f14379C809BCc70DDE5e7c9B24Cb0",
           "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
@@ -11977,7 +11932,7 @@ module.exports = {
       "name": "PKPPermissions",
       "contracts": [
         {
-          "network": "develop",
+          "network": "naga-dev",
           "address_hash": "0x04938BF1d2D3Ec15Dd519e01EAfb0324F6589BBe",
           "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
@@ -12534,19 +12489,6 @@ module.exports = {
               "type": "event"
             },
             {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "newTrustedForwarder",
-                  "type": "address"
-                }
-              ],
-              "name": "TrustedForwarderSet",
-              "type": "event"
-            },
-            {
               "inputs": [
                 {
                   "internalType": "uint256",
@@ -12948,19 +12890,6 @@ module.exports = {
               "type": "function"
             },
             {
-              "inputs": [],
-              "name": "getTrustedForwarder",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
               "inputs": [
                 {
                   "internalType": "uint256",
@@ -13221,19 +13150,6 @@ module.exports = {
             {
               "inputs": [
                 {
-                  "internalType": "address",
-                  "name": "forwarder",
-                  "type": "address"
-                }
-              ],
-              "name": "setTrustedForwarder",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
                   "internalType": "uint256",
                   "name": "tokenId",
                   "type": "uint256"
@@ -13312,7 +13228,7 @@ module.exports = {
       "name": "PKPNFTMetadata",
       "contracts": [
         {
-          "network": "develop",
+          "network": "naga-dev",
           "address_hash": "0x7DC22567Ac489F2C579d9174fBEA0CDF4C3F3D2B",
           "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
@@ -13476,7 +13392,7 @@ module.exports = {
       "name": "Allowlist",
       "contracts": [
         {
-          "network": "develop",
+          "network": "naga-dev",
           "address_hash": "0x5bb7A9D6c00803c4C555D977a7c4b7cB51FC8aeB",
           "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
@@ -13713,7 +13629,7 @@ module.exports = {
       "name": "PaymentDelegation",
       "contracts": [
         {
-          "network": "develop",
+          "network": "naga-dev",
           "address_hash": "0x63ecEea73cfA9D4B2cD4bbB0892A0fFcb62910a2",
           "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
@@ -14349,7 +14265,7 @@ module.exports = {
       "name": "PriceFeed",
       "contracts": [
         {
-          "network": "develop",
+          "network": "naga-dev",
           "address_hash": "0x19F421a79401a75C1f850a4655479F952e38e00F",
           "inserted_at": "2025-01-29T00:49:19Z",
           "ABI": [
@@ -15251,4 +15167,4 @@ module.exports = {
     "litNodePort": 7470,
     "rocketPort": 7470
   }
-};
+} as const;

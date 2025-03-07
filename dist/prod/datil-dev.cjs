@@ -8,7 +8,7 @@ module.exports = {
         {
           "network": "datil-dev",
           "address_hash": "0x77F277D4858Ae589b2263FEfd50CaD7838fE4741",
-          "inserted_at": "2025-02-14T18:05:53Z",
+          "inserted_at": "2025-02-22T01:13:08Z",
           "ABI": [
             {
               "inputs": [
@@ -1256,7 +1256,7 @@ module.exports = {
         {
           "network": "datil-dev",
           "address_hash": "0xD4507CD392Af2c80919219d7896508728f6A623F",
-          "inserted_at": "2025-02-14T18:05:53Z",
+          "inserted_at": "2025-02-22T01:13:08Z",
           "ABI": [
             {
               "inputs": [
@@ -3927,7 +3927,7 @@ module.exports = {
         {
           "network": "datil-dev",
           "address_hash": "0x116eBFb474C6aa13e1B8b19253fd0E3f226A982f",
-          "inserted_at": "2025-02-14T18:05:53Z",
+          "inserted_at": "2025-02-22T01:13:08Z",
           "ABI": [
             {
               "anonymous": false,
@@ -4042,7 +4042,7 @@ module.exports = {
         {
           "network": "datil-dev",
           "address_hash": "0x81d8f0e945E3Bdc735dA3E19C4Df77a8B91046Cd",
-          "inserted_at": "2025-02-14T18:05:53Z",
+          "inserted_at": "2025-02-22T01:13:08Z",
           "ABI": [
             {
               "inputs": [
@@ -5096,7 +5096,7 @@ module.exports = {
         {
           "network": "datil-dev",
           "address_hash": "0xbc01f21C58Ca83f25b09338401D53D4c2344D1d9",
-          "inserted_at": "2025-02-14T18:05:53Z",
+          "inserted_at": "2025-02-22T01:13:08Z",
           "ABI": [
             {
               "inputs": [
@@ -5988,7 +5988,7 @@ module.exports = {
         {
           "network": "datil-dev",
           "address_hash": "0x02C4242F72d62c8fEF2b2DB088A35a9F4ec741C7",
-          "inserted_at": "2025-02-14T18:05:53Z",
+          "inserted_at": "2025-02-22T01:13:08Z",
           "ABI": [
             {
               "inputs": [
@@ -6518,6 +6518,19 @@ module.exports = {
               "inputs": [
                 {
                   "indexed": false,
+                  "internalType": "address",
+                  "name": "newTrustedForwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "TrustedForwarderSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
                   "internalType": "uint256",
                   "name": "amount",
                   "type": "uint256"
@@ -6771,6 +6784,19 @@ module.exports = {
             {
               "inputs": [],
               "name": "getStakingAddress",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getTrustedForwarder",
               "outputs": [
                 {
                   "internalType": "address",
@@ -7049,6 +7075,19 @@ module.exports = {
             {
               "inputs": [
                 {
+                  "internalType": "address",
+                  "name": "forwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "setTrustedForwarder",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "bytes4",
                   "name": "interfaceId",
                   "type": "bytes4"
@@ -7193,7 +7232,7 @@ module.exports = {
         {
           "network": "datil-dev",
           "address_hash": "0x1A12D5B3D6A52B3bDe0468900795D35ce994ac2b",
-          "inserted_at": "2025-02-14T18:05:53Z",
+          "inserted_at": "2025-02-22T01:13:08Z",
           "ABI": [
             {
               "inputs": [
@@ -8601,7 +8640,7 @@ module.exports = {
         {
           "network": "datil-dev",
           "address_hash": "0x3285402b15f557C496CD116235B1EC8217Cc62C2",
-          "inserted_at": "2025-02-14T18:05:53Z",
+          "inserted_at": "2025-02-22T01:13:08Z",
           "ABI": [
             {
               "inputs": [
@@ -9589,7 +9628,7 @@ module.exports = {
         {
           "network": "datil-dev",
           "address_hash": "0xf64638F1eb3b064f5443F7c9e2Dc050ed535D891",
-          "inserted_at": "2025-02-14T18:05:53Z",
+          "inserted_at": "2025-02-22T01:13:08Z",
           "ABI": [
             {
               "inputs": [
@@ -10144,6 +10183,19 @@ module.exports = {
               "type": "event"
             },
             {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "newTrustedForwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "TrustedForwarderSet",
+              "type": "event"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "uint256",
@@ -10545,6 +10597,19 @@ module.exports = {
               "type": "function"
             },
             {
+              "inputs": [],
+              "name": "getTrustedForwarder",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "uint256",
@@ -10805,6 +10870,19 @@ module.exports = {
             {
               "inputs": [
                 {
+                  "internalType": "address",
+                  "name": "forwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "setTrustedForwarder",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "uint256",
                   "name": "tokenId",
                   "type": "uint256"
@@ -10885,7 +10963,7 @@ module.exports = {
         {
           "network": "datil-dev",
           "address_hash": "0x784A743bBBB5f5225CeC7979A3304179be17D66d",
-          "inserted_at": "2025-02-14T18:05:53Z",
+          "inserted_at": "2025-02-22T01:13:08Z",
           "ABI": [
             {
               "inputs": [
@@ -11049,7 +11127,7 @@ module.exports = {
         {
           "network": "datil-dev",
           "address_hash": "0xC60051658E346554C1F572ef3Aa4bD8596E026b6",
-          "inserted_at": "2025-02-14T18:05:53Z",
+          "inserted_at": "2025-02-22T01:13:08Z",
           "ABI": [
             {
               "inputs": [],
@@ -11286,7 +11364,7 @@ module.exports = {
         {
           "network": "datil-dev",
           "address_hash": "0xbB23168855efe735cE9e6fD6877bAf13E02c410f",
-          "inserted_at": "2025-02-14T18:05:53Z",
+          "inserted_at": "2025-02-22T01:13:08Z",
           "ABI": [
             {
               "inputs": [
@@ -11897,6 +11975,572 @@ module.exports = {
               "name": "undelegatePaymentsBatch",
               "outputs": [],
               "stateMutability": "nonpayable",
+              "type": "function"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CloneNet",
+      "contracts": [
+        {
+          "network": "datil-dev",
+          "address_hash": "0x007f3Af7C6973af19599E8e1d99D23bfE1b973bc",
+          "inserted_at": "2025-02-22T01:13:08Z",
+          "ABI": [
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes4",
+                  "name": "_selector",
+                  "type": "bytes4"
+                }
+              ],
+              "name": "CannotAddFunctionToDiamondThatAlreadyExists",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes4[]",
+                  "name": "_selectors",
+                  "type": "bytes4[]"
+                }
+              ],
+              "name": "CannotAddSelectorsToZeroAddress",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes4",
+                  "name": "_selector",
+                  "type": "bytes4"
+                }
+              ],
+              "name": "CannotRemoveFunctionThatDoesNotExist",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes4",
+                  "name": "_selector",
+                  "type": "bytes4"
+                }
+              ],
+              "name": "CannotRemoveImmutableFunction",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes4",
+                  "name": "_selector",
+                  "type": "bytes4"
+                }
+              ],
+              "name": "CannotReplaceFunctionThatDoesNotExists",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes4",
+                  "name": "_selector",
+                  "type": "bytes4"
+                }
+              ],
+              "name": "CannotReplaceFunctionWithTheSameFunctionFromTheSameFacet",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes4[]",
+                  "name": "_selectors",
+                  "type": "bytes4[]"
+                }
+              ],
+              "name": "CannotReplaceFunctionsFromFacetWithZeroAddress",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes4",
+                  "name": "_selector",
+                  "type": "bytes4"
+                }
+              ],
+              "name": "CannotReplaceImmutableFunction",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint8",
+                  "name": "_action",
+                  "type": "uint8"
+                }
+              ],
+              "name": "IncorrectFacetCutAction",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_initializationContractAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "_calldata",
+                  "type": "bytes"
+                }
+              ],
+              "name": "InitializationFunctionReverted",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_contractAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "string",
+                  "name": "_message",
+                  "type": "string"
+                }
+              ],
+              "name": "NoBytecodeAtAddress",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_facetAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "NoSelectorsProvidedForFacetForCut",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_user",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_contractOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "NotContractOwner",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_facetAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "RemoveFacetAddressMustBeZeroAddress",
+              "type": "error"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "facetAddress",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "enum IDiamond.FacetCutAction",
+                      "name": "action",
+                      "type": "uint8"
+                    },
+                    {
+                      "internalType": "bytes4[]",
+                      "name": "functionSelectors",
+                      "type": "bytes4[]"
+                    }
+                  ],
+                  "indexed": false,
+                  "internalType": "struct IDiamond.FacetCut[]",
+                  "name": "_diamondCut",
+                  "type": "tuple[]"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "_init",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "bytes",
+                  "name": "_calldata",
+                  "type": "bytes"
+                }
+              ],
+              "name": "DiamondCut",
+              "type": "event"
+            },
+            {
+              "inputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "facetAddress",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "enum IDiamond.FacetCutAction",
+                      "name": "action",
+                      "type": "uint8"
+                    },
+                    {
+                      "internalType": "bytes4[]",
+                      "name": "functionSelectors",
+                      "type": "bytes4[]"
+                    }
+                  ],
+                  "internalType": "struct IDiamond.FacetCut[]",
+                  "name": "_diamondCut",
+                  "type": "tuple[]"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_init",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "_calldata",
+                  "type": "bytes"
+                }
+              ],
+              "name": "diamondCut",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes4",
+                  "name": "_functionSelector",
+                  "type": "bytes4"
+                }
+              ],
+              "name": "facetAddress",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "facetAddress_",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "facetAddresses",
+              "outputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "facetAddresses_",
+                  "type": "address[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_facet",
+                  "type": "address"
+                }
+              ],
+              "name": "facetFunctionSelectors",
+              "outputs": [
+                {
+                  "internalType": "bytes4[]",
+                  "name": "_facetFunctionSelectors",
+                  "type": "bytes4[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "facets",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "facetAddress",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "bytes4[]",
+                      "name": "functionSelectors",
+                      "type": "bytes4[]"
+                    }
+                  ],
+                  "internalType": "struct IDiamondLoupe.Facet[]",
+                  "name": "facets_",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes4",
+                  "name": "_interfaceId",
+                  "type": "bytes4"
+                }
+              ],
+              "name": "supportsInterface",
+              "outputs": [
+                {
+                  "internalType": "bool",
+                  "name": "",
+                  "type": "bool"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "previousOwner",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "OwnershipTransferred",
+              "type": "event"
+            },
+            {
+              "inputs": [],
+              "name": "owner",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "owner_",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "transferOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "CallerNotOwner",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "stakingContractAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "adminAddActiveStakingContract",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "stakingContractAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "adminRemoveActiveStakingContract",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getActiveStakingContracts",
+              "outputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "",
+                  "type": "address[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getAllActiveUnkickedValidatorStructsAndCounts",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "stakingContractAddress",
+                      "type": "address"
+                    },
+                    {
+                      "components": [
+                        {
+                          "components": [
+                            {
+                              "internalType": "uint256",
+                              "name": "epochLength",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "number",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "endTime",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "retries",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "timeout",
+                              "type": "uint256"
+                            }
+                          ],
+                          "internalType": "struct LibStakingStorage.Epoch",
+                          "name": "epoch",
+                          "type": "tuple"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "currentValidatorCountForConsensus",
+                          "type": "uint256"
+                        },
+                        {
+                          "components": [
+                            {
+                              "internalType": "uint32",
+                              "name": "ip",
+                              "type": "uint32"
+                            },
+                            {
+                              "internalType": "uint128",
+                              "name": "ipv6",
+                              "type": "uint128"
+                            },
+                            {
+                              "internalType": "uint32",
+                              "name": "port",
+                              "type": "uint32"
+                            },
+                            {
+                              "internalType": "address",
+                              "name": "nodeAddress",
+                              "type": "address"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "reward",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "senderPubKey",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "receiverPubKey",
+                              "type": "uint256"
+                            }
+                          ],
+                          "internalType": "struct LibStakingStorage.Validator[]",
+                          "name": "activeUnkickedValidators",
+                          "type": "tuple[]"
+                        }
+                      ],
+                      "internalType": "struct LibStakingStorage.StakingAggregateDetails",
+                      "name": "details",
+                      "type": "tuple"
+                    }
+                  ],
+                  "internalType": "struct LibStakingStorage.KeyedStakingAggregateDetails[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "numActiveStakingContracts",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
               "type": "function"
             }
           ]

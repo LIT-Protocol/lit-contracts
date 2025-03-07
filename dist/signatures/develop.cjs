@@ -133,12 +133,12 @@ const signatures = {
               },
               {
                 "internalType": "uint256",
-                "name": "delegatedStakeAmountNeedingAttribution",
+                "name": "delegatedStakeAmount",
                 "type": "uint256"
               },
               {
                 "internalType": "uint256",
-                "name": "delegatedStakeWeightNeedingAttribution",
+                "name": "delegatedStakeWeight",
                 "type": "uint256"
               }
             ],
@@ -241,12 +241,12 @@ const signatures = {
                   },
                   {
                     "internalType": "uint256",
-                    "name": "delegatedStakeAmountNeedingAttribution",
+                    "name": "delegatedStakeAmount",
                     "type": "uint256"
                   },
                   {
                     "internalType": "uint256",
-                    "name": "delegatedStakeWeightNeedingAttribution",
+                    "name": "delegatedStakeWeight",
                     "type": "uint256"
                   }
                 ],
@@ -719,6 +719,32 @@ const signatures = {
         "anonymous": false,
         "inputs": [
           {
+            "indexed": true,
+            "internalType": "address",
+            "name": "staker",
+            "type": "address"
+          }
+        ],
+        "name": "ValidatorBanned",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "staker",
+            "type": "address"
+          }
+        ],
+        "name": "ValidatorKickedFromNextEpoch",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
             "indexed": false,
             "internalType": "address",
             "name": "staker",
@@ -1071,25 +1097,6 @@ const signatures = {
           }
         ],
         "name": "RewardsDurationUpdated",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": true,
-            "internalType": "address",
-            "name": "staker",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "amountBurned",
-            "type": "uint256"
-          }
-        ],
-        "name": "ValidatorKickedFromNextEpoch",
         "type": "event"
       },
       {
@@ -1746,6 +1753,19 @@ const signatures = {
         "inputs": [
           {
             "indexed": false,
+            "internalType": "address",
+            "name": "newTrustedForwarder",
+            "type": "address"
+          }
+        ],
+        "name": "TrustedForwarderSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
             "internalType": "uint256",
             "name": "amount",
             "type": "uint256"
@@ -2121,6 +2141,76 @@ const signatures = {
         "stateMutability": "view",
         "type": "function"
       },
+      "getPermittedAuthMethodScopes": {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "authMethodType",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes",
+            "name": "id",
+            "type": "bytes"
+          },
+          {
+            "internalType": "uint256",
+            "name": "maxScopeId",
+            "type": "uint256"
+          }
+        ],
+        "name": "getPermittedAuthMethodScopes",
+        "outputs": [
+          {
+            "internalType": "bool[]",
+            "name": "",
+            "type": "bool[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      "getPermittedAuthMethods": {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          }
+        ],
+        "name": "getPermittedAuthMethods",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "authMethodType",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bytes",
+                "name": "id",
+                "type": "bytes"
+              },
+              {
+                "internalType": "bytes",
+                "name": "userPubkey",
+                "type": "bytes"
+              }
+            ],
+            "internalType": "struct LibPKPPermissionsStorage.AuthMethod[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
       "isPermittedAction": {
         "inputs": [
           {
@@ -2422,6 +2512,19 @@ const signatures = {
           }
         ],
         "name": "RootHashUpdated",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "newTrustedForwarder",
+            "type": "address"
+          }
+        ],
+        "name": "TrustedForwarderSet",
         "type": "event"
       }
     ]
