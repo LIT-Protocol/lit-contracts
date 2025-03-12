@@ -1764,11 +1764,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -1790,6 +1785,16 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -1950,11 +1955,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -1976,6 +1976,16 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -2817,6 +2827,16 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "minSelfStakeTimelock",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minValidatorCountToClampMinimumThreshold",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minThresholdToClampAt",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.GlobalConfig",
@@ -3237,6 +3257,37 @@ module.exports = {
                 {
                   "indexed": false,
                   "internalType": "uint256",
+                  "name": "rewards",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "fromEpoch",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "toEpoch",
+                  "type": "uint256"
+                }
+              ],
+              "name": "FixedCostRewardsClaimed",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
                   "name": "recordId",
                   "type": "uint256"
                 },
@@ -3335,6 +3386,37 @@ module.exports = {
               "anonymous": false,
               "inputs": [
                 {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "rewards",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "fromEpoch",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "toEpoch",
+                  "type": "uint256"
+                }
+              ],
+              "name": "ValidatorCommissionClaimed",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
                   "indexed": true,
                   "internalType": "address",
                   "name": "stakerAddress",
@@ -3409,6 +3491,24 @@ module.exports = {
                   "type": "uint256"
                 },
                 {
+                  "internalType": "uint256",
+                  "name": "maxNumberOfEpochsToClaim",
+                  "type": "uint256"
+                }
+              ],
+              "name": "claimFixedCostRewards",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
                   "internalType": "address",
                   "name": "stakerAddress",
                   "type": "address"
@@ -3430,7 +3530,18 @@ module.exports = {
               "type": "function"
             },
             {
-              "inputs": [],
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "maxNumberOfEpochsToClaim",
+                  "type": "uint256"
+                }
+              ],
               "name": "claimValidatorCommission",
               "outputs": [],
               "stateMutability": "nonpayable",
@@ -3504,7 +3615,17 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "totalRewards",
+                      "name": "totalStakeRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "validatorFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "validatorCommission",
                       "type": "uint256"
                     },
                     {
@@ -3575,7 +3696,17 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "totalRewards",
+                      "name": "totalStakeRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "validatorFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "validatorCommission",
                       "type": "uint256"
                     },
                     {
@@ -4952,6 +5083,11 @@ module.exports = {
                       "internalType": "address[]",
                       "name": "validatorsInCurrentEpoch",
                       "type": "address[]"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "actualEpochLength",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.RewardEpochGlobalStats",
@@ -5239,11 +5375,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -5265,6 +5396,16 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -5382,11 +5523,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -5408,6 +5544,16 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -5697,6 +5843,11 @@ module.exports = {
                       "internalType": "address[]",
                       "name": "validatorsInCurrentEpoch",
                       "type": "address[]"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "actualEpochLength",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.RewardEpochGlobalStats",
@@ -6312,11 +6463,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -6338,6 +6484,16 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -6403,11 +6559,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -6429,6 +6580,16 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -6494,11 +6655,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -6520,6 +6676,16 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -6674,6 +6840,16 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "minSelfStakeTimelock",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minValidatorCountToClampMinimumThreshold",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minThresholdToClampAt",
                       "type": "uint256"
                     }
                   ],
@@ -7176,11 +7352,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -7202,6 +7373,16 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -14935,11 +15116,6 @@ module.exports = {
                         },
                         {
                           "internalType": "uint256",
-                          "name": "commission",
-                          "type": "uint256"
-                        },
-                        {
-                          "internalType": "uint256",
                           "name": "commissionRate",
                           "type": "uint256"
                         },
@@ -14961,6 +15137,16 @@ module.exports = {
                         {
                           "internalType": "uint256",
                           "name": "delegatedStakeWeight",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "lastRewardEpochClaimedFixedCostRewards",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "lastRewardEpochClaimedCommission",
                           "type": "uint256"
                         }
                       ],

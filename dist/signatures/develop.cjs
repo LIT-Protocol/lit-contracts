@@ -113,11 +113,6 @@ const signatures = {
               },
               {
                 "internalType": "uint256",
-                "name": "commission",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
                 "name": "commissionRate",
                 "type": "uint256"
               },
@@ -140,127 +135,19 @@ const signatures = {
                 "internalType": "uint256",
                 "name": "delegatedStakeWeight",
                 "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "lastRewardEpochClaimedFixedCostRewards",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "lastRewardEpochClaimedCommission",
+                "type": "uint256"
               }
             ],
             "internalType": "struct LibStakingStorage.Validator[]",
-            "name": "",
-            "type": "tuple[]"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      "getNodesForRequest": {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "realmId",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256[]",
-            "name": "productIds",
-            "type": "uint256[]"
-          }
-        ],
-        "name": "getNodesForRequest",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          },
-          {
-            "components": [
-              {
-                "components": [
-                  {
-                    "internalType": "uint32",
-                    "name": "ip",
-                    "type": "uint32"
-                  },
-                  {
-                    "internalType": "uint128",
-                    "name": "ipv6",
-                    "type": "uint128"
-                  },
-                  {
-                    "internalType": "uint32",
-                    "name": "port",
-                    "type": "uint32"
-                  },
-                  {
-                    "internalType": "address",
-                    "name": "nodeAddress",
-                    "type": "address"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "reward",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "senderPubKey",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "receiverPubKey",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "lastActiveEpoch",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "commission",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "commissionRate",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "lastRewardEpoch",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "lastRealmId",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "delegatedStakeAmount",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
-                    "name": "delegatedStakeWeight",
-                    "type": "uint256"
-                  }
-                ],
-                "internalType": "struct LibStakingStorage.Validator",
-                "name": "validator",
-                "type": "tuple"
-              },
-              {
-                "internalType": "uint256[]",
-                "name": "prices",
-                "type": "uint256[]"
-              }
-            ],
-            "internalType": "struct LibPriceFeedStorage.NodeInfoAndPrices[]",
             "name": "",
             "type": "tuple[]"
           }
@@ -766,6 +653,37 @@ const signatures = {
           {
             "indexed": false,
             "internalType": "uint256",
+            "name": "rewards",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "fromEpoch",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "toEpoch",
+            "type": "uint256"
+          }
+        ],
+        "name": "FixedCostRewardsClaimed",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "stakerAddress",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
             "name": "recordId",
             "type": "uint256"
           },
@@ -858,6 +776,37 @@ const signatures = {
           }
         ],
         "name": "StakeRewardsClaimed",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "stakerAddress",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "rewards",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "fromEpoch",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "toEpoch",
+            "type": "uint256"
+          }
+        ],
+        "name": "ValidatorCommissionClaimed",
         "type": "event"
       },
       {
@@ -2525,6 +2474,248 @@ const signatures = {
           }
         ],
         "name": "TrustedForwarderSet",
+        "type": "event"
+      }
+    ]
+  },
+  "PriceFeed": {
+    "address": "0x19F421a79401a75C1f850a4655479F952e38e00F",
+    "methods": {
+      "getNodesForRequest": {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "realmId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256[]",
+            "name": "productIds",
+            "type": "uint256[]"
+          }
+        ],
+        "name": "getNodesForRequest",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "components": [
+                  {
+                    "internalType": "uint32",
+                    "name": "ip",
+                    "type": "uint32"
+                  },
+                  {
+                    "internalType": "uint128",
+                    "name": "ipv6",
+                    "type": "uint128"
+                  },
+                  {
+                    "internalType": "uint32",
+                    "name": "port",
+                    "type": "uint32"
+                  },
+                  {
+                    "internalType": "address",
+                    "name": "nodeAddress",
+                    "type": "address"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "reward",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "senderPubKey",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "receiverPubKey",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "lastActiveEpoch",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "commissionRate",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "lastRewardEpoch",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "lastRealmId",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "delegatedStakeAmount",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "delegatedStakeWeight",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "lastRewardEpochClaimedFixedCostRewards",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "lastRewardEpochClaimedCommission",
+                    "type": "uint256"
+                  }
+                ],
+                "internalType": "struct LibStakingStorage.Validator",
+                "name": "validator",
+                "type": "tuple"
+              },
+              {
+                "internalType": "uint256[]",
+                "name": "prices",
+                "type": "uint256[]"
+              }
+            ],
+            "internalType": "struct LibPriceFeedStorage.NodeInfoAndPrices[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    },
+    "events": [
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "facetAddress",
+                "type": "address"
+              },
+              {
+                "internalType": "enum IDiamond.FacetCutAction",
+                "name": "action",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes4[]",
+                "name": "functionSelectors",
+                "type": "bytes4[]"
+              }
+            ],
+            "indexed": false,
+            "internalType": "struct IDiamond.FacetCut[]",
+            "name": "_diamondCut",
+            "type": "tuple[]"
+          },
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "_init",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "bytes",
+            "name": "_calldata",
+            "type": "bytes"
+          }
+        ],
+        "name": "DiamondCut",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "previousOwner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "newPrice",
+            "type": "uint256"
+          }
+        ],
+        "name": "BaseNetworkPriceSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "newPrice",
+            "type": "uint256"
+          }
+        ],
+        "name": "MaxNetworkPriceSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "stakingAddress",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "usagePercent",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256[]",
+            "name": "newPrices",
+            "type": "uint256[]"
+          }
+        ],
+        "name": "UsageSet",
         "type": "event"
       }
     ]

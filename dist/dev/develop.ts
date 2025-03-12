@@ -1762,11 +1762,6 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -1788,6 +1783,16 @@ export const develop = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -1948,11 +1953,6 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -1974,6 +1974,16 @@ export const develop = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -2815,6 +2825,16 @@ export const develop = {
                       "internalType": "uint256",
                       "name": "minSelfStakeTimelock",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minValidatorCountToClampMinimumThreshold",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minThresholdToClampAt",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.GlobalConfig",
@@ -3235,6 +3255,37 @@ export const develop = {
                 {
                   "indexed": false,
                   "internalType": "uint256",
+                  "name": "rewards",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "fromEpoch",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "toEpoch",
+                  "type": "uint256"
+                }
+              ],
+              "name": "FixedCostRewardsClaimed",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
                   "name": "recordId",
                   "type": "uint256"
                 },
@@ -3333,6 +3384,37 @@ export const develop = {
               "anonymous": false,
               "inputs": [
                 {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "rewards",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "fromEpoch",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "toEpoch",
+                  "type": "uint256"
+                }
+              ],
+              "name": "ValidatorCommissionClaimed",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
                   "indexed": true,
                   "internalType": "address",
                   "name": "stakerAddress",
@@ -3407,6 +3489,24 @@ export const develop = {
                   "type": "uint256"
                 },
                 {
+                  "internalType": "uint256",
+                  "name": "maxNumberOfEpochsToClaim",
+                  "type": "uint256"
+                }
+              ],
+              "name": "claimFixedCostRewards",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
                   "internalType": "address",
                   "name": "stakerAddress",
                   "type": "address"
@@ -3428,7 +3528,18 @@ export const develop = {
               "type": "function"
             },
             {
-              "inputs": [],
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "maxNumberOfEpochsToClaim",
+                  "type": "uint256"
+                }
+              ],
               "name": "claimValidatorCommission",
               "outputs": [],
               "stateMutability": "nonpayable",
@@ -3502,7 +3613,17 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "totalRewards",
+                      "name": "totalStakeRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "validatorFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "validatorCommission",
                       "type": "uint256"
                     },
                     {
@@ -3573,7 +3694,17 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "totalRewards",
+                      "name": "totalStakeRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "validatorFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "validatorCommission",
                       "type": "uint256"
                     },
                     {
@@ -4950,6 +5081,11 @@ export const develop = {
                       "internalType": "address[]",
                       "name": "validatorsInCurrentEpoch",
                       "type": "address[]"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "actualEpochLength",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.RewardEpochGlobalStats",
@@ -5237,11 +5373,6 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -5263,6 +5394,16 @@ export const develop = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -5380,11 +5521,6 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -5406,6 +5542,16 @@ export const develop = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -5695,6 +5841,11 @@ export const develop = {
                       "internalType": "address[]",
                       "name": "validatorsInCurrentEpoch",
                       "type": "address[]"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "actualEpochLength",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.RewardEpochGlobalStats",
@@ -6310,11 +6461,6 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -6336,6 +6482,16 @@ export const develop = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -6401,11 +6557,6 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -6427,6 +6578,16 @@ export const develop = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -6492,11 +6653,6 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -6518,6 +6674,16 @@ export const develop = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -6672,6 +6838,16 @@ export const develop = {
                     {
                       "internalType": "uint256",
                       "name": "minSelfStakeTimelock",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minValidatorCountToClampMinimumThreshold",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minThresholdToClampAt",
                       "type": "uint256"
                     }
                   ],
@@ -7174,11 +7350,6 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -7200,6 +7371,16 @@ export const develop = {
                     {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
                       "type": "uint256"
                     }
                   ],
@@ -14933,11 +15114,6 @@ export const develop = {
                         },
                         {
                           "internalType": "uint256",
-                          "name": "commission",
-                          "type": "uint256"
-                        },
-                        {
-                          "internalType": "uint256",
                           "name": "commissionRate",
                           "type": "uint256"
                         },
@@ -14959,6 +15135,16 @@ export const develop = {
                         {
                           "internalType": "uint256",
                           "name": "delegatedStakeWeight",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "lastRewardEpochClaimedFixedCostRewards",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "lastRewardEpochClaimedCommission",
                           "type": "uint256"
                         }
                       ],

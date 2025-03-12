@@ -262,6 +262,64 @@ export const signatures = {
             "internalType": "bool",
             "name": "newRpcHealthcheckEnabled",
             "type": "bool"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timeoutMs",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "memoryLimitMb",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxCodeLength",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxResponseLength",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxFetchCount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxSignCount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxContractCallCount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxBroadcastAndCollectCount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxCallDepth",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxRetries",
+                "type": "uint256"
+              }
+            ],
+            "indexed": false,
+            "internalType": "struct LibStakingStorage.LitActionConfig",
+            "name": "newLitActionConfig",
+            "type": "tuple"
           }
         ],
         "name": "ConfigSet",

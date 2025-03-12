@@ -25,7 +25,9 @@ export const METHODS_TO_EXTRACT = [
 
   // Staking:
   "Staking.getActiveUnkickedValidatorStructsAndCounts",
-  "Staking.getNodesForRequest",
+
+  // PriceFeed:
+  "PriceFeed.getNodesForRequest",
 
   "PubkeyRouter.deriveEthAddressFromPubkey",
   "PubkeyRouter.ethAddressToPkpId",

@@ -163,6 +163,19 @@ const signatures = {
           {
             "indexed": false,
             "internalType": "uint256",
+            "name": "dataType",
+            "type": "uint256"
+          }
+        ],
+        "name": "ClearOfflinePhaseData",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
             "name": "reason",
             "type": "uint256"
           },
@@ -249,9 +262,93 @@ const signatures = {
             "internalType": "bool",
             "name": "newRpcHealthcheckEnabled",
             "type": "bool"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "timeoutMs",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "memoryLimitMb",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxCodeLength",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxResponseLength",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxFetchCount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxSignCount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxContractCallCount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxBroadcastAndCollectCount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxCallDepth",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "maxRetries",
+                "type": "uint256"
+              }
+            ],
+            "indexed": false,
+            "internalType": "struct LibStakingStorage.LitActionConfig",
+            "name": "newLitActionConfig",
+            "type": "tuple"
           }
         ],
         "name": "ConfigSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "dataType",
+            "type": "uint256"
+          }
+        ],
+        "name": "CountOfflinePhaseData",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "newDevopsAdmin",
+            "type": "address"
+          }
+        ],
+        "name": "DevopsAdminSet",
         "type": "event"
       },
       {
@@ -310,6 +407,45 @@ const signatures = {
           }
         ],
         "name": "KickPenaltyPercentSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "newResolverContractAddress",
+            "type": "address"
+          }
+        ],
+        "name": "ResolverContractAddressSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "newStakingTokenAddress",
+            "type": "address"
+          }
+        ],
+        "name": "StakingTokenSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "staker",
+            "type": "address"
+          }
+        ],
+        "name": "ValidatorRejoinedNextEpoch",
         "type": "event"
       },
       {
@@ -381,38 +517,12 @@ const signatures = {
         "inputs": [
           {
             "indexed": false,
-            "internalType": "address",
-            "name": "newResolverContractAddress",
-            "type": "address"
-          }
-        ],
-        "name": "ResolverContractAddressSet",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
             "internalType": "uint256",
             "name": "newDuration",
             "type": "uint256"
           }
         ],
         "name": "RewardsDurationUpdated",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "newStakingTokenAddress",
-            "type": "address"
-          }
-        ],
-        "name": "StakingTokenSet",
         "type": "event"
       },
       {
@@ -445,19 +555,6 @@ const signatures = {
           }
         ],
         "name": "ValidatorKickedFromNextEpoch",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "staker",
-            "type": "address"
-          }
-        ],
-        "name": "ValidatorRejoinedNextEpoch",
         "type": "event"
       },
       {
@@ -790,6 +887,11 @@ const signatures = {
             "internalType": "struct IPubkeyRouter.Signature[]",
             "name": "signatures",
             "type": "tuple[]"
+          },
+          {
+            "internalType": "address",
+            "name": "stakingContractAddress",
+            "type": "address"
           }
         ],
         "name": "claimAndMint",
@@ -1054,6 +1156,19 @@ const signatures = {
         "inputs": [
           {
             "indexed": false,
+            "internalType": "address",
+            "name": "newTrustedForwarder",
+            "type": "address"
+          }
+        ],
+        "name": "TrustedForwarderSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
             "internalType": "uint256",
             "name": "amount",
             "type": "uint256"
@@ -1065,7 +1180,7 @@ const signatures = {
     ]
   },
   "PKPHelper": {
-    "address": "0x341E5273E2E2ea3c4aDa4101F008b1261E58510D",
+    "address": "0x7E209fDFBBEe26Df3363354BC55C2Cc89DD030a9",
     "methods": {
       "claimAndMintNextAndAddAuthMethodsWithTypes": {
         "inputs": [
@@ -1800,6 +1915,19 @@ const signatures = {
           }
         ],
         "name": "RootHashUpdated",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "newTrustedForwarder",
+            "type": "address"
+          }
+        ],
+        "name": "TrustedForwarderSet",
         "type": "event"
       }
     ]
