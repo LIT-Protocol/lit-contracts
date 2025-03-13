@@ -19,10 +19,10 @@ import { METHODS_TO_EXTRACT } from "./config/methods";
 function generateAbiSignatures(networkData: NetworkCache) {
   console.log("\n📝 Generating ABI signatures...");
   const methodsByContract = new Map<string, string[]>();
-  
+
   // Group methods by contract
-  METHODS_TO_EXTRACT.forEach(methodString => {
-    const [contractName, methodName] = methodString.split('.');
+  METHODS_TO_EXTRACT.forEach((methodString) => {
+    const [contractName, methodName] = methodString.split(".");
     if (!methodsByContract.has(contractName)) {
       methodsByContract.set(contractName, []);
     }
@@ -30,32 +30,36 @@ function generateAbiSignatures(networkData: NetworkCache) {
   });
 
   // Extract methods for each contract
-  const signatures: Record<string, { 
-    address: string; 
-    methods: Record<string, any>;
-    events: any[];
-  }> = {};
-  
-  networkData.data.forEach(contractGroup => {
+  const signatures: Record<
+    string,
+    {
+      address: string;
+      methods: Record<string, any>;
+      events: any[];
+    }
+  > = {};
+
+  networkData.data.forEach((contractGroup) => {
     const contractName = contractGroup.name;
     if (methodsByContract.has(contractName)) {
       const methods = methodsByContract.get(contractName)!;
       const contractMethods = extractAbiMethods(networkData, methods);
-      
+
       if (Object.keys(contractMethods).length > 0) {
         const address = contractGroup.contracts[0].address_hash;
-        const events = contractGroup.contracts[0].ABI
-          .filter(item => item.type === 'event');
-        
+        const events = contractGroup.contracts[0].ABI.filter(
+          (item) => item.type === "event"
+        );
+
         signatures[contractName] = {
           address,
           methods: Object.fromEntries(
             Object.entries(contractMethods).map(([methodName, data]) => [
               methodName,
-              data.abi
+              data.abi,
             ])
           ),
-          events
+          events,
         };
       }
     }
@@ -113,13 +117,23 @@ function updatePackageJsonExports(networks: {
     };
   });
 
+  // Add custom network signatures
+  exports[`./custom-network-signatures`] = {
+    import: `./dist/custom-network-signatures.ts`, // FIXME: need to change to .js
+    require: `./dist/custom-network-signatures.ts`, // FIXME: need to change to .cjs
+    types: `./dist/custom-network-signatures.ts`,
+  };
+
   // Update package.json
   packageJson.exports = exports;
   packageJson.main = "./dist/index.cjs";
   packageJson.module = "./dist/index.js";
 
   // Write updated package.json
-  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + "\n");
+  fs.writeFileSync(
+    packageJsonPath,
+    JSON.stringify(packageJson, null, 2) + "\n"
+  );
   console.log("✅ Successfully updated package.json exports");
 }
 
@@ -146,7 +160,9 @@ function generateIndexFiles(failedNetworks: string[] = []): void {
     } else {
       exports.push(exportLine);
       // Add signature export
-      signatureExports.push(`export { signatures as ${formattedName}Signatures } from "./signatures/${network}";`);
+      signatureExports.push(
+        `export { signatures as ${formattedName}Signatures } from "./signatures/${network}";`
+      );
 
       // Generate signatures for this network
       try {
@@ -202,7 +218,9 @@ module.exports = {
     } else {
       exports.push(exportLine);
       // Add signature export
-      signatureExports.push(`export { signatures as ${formattedName}Signatures } from "./signatures/${network}";`);
+      signatureExports.push(
+        `export { signatures as ${formattedName}Signatures } from "./signatures/${network}";`
+      );
 
       // Generate signatures for this network
       try {
@@ -295,18 +313,21 @@ ${signatureExports
   // Generate CommonJS index
   const moduleNames = [
     ...exports
-      .filter(line => !line.startsWith("//"))
-      .map(line => line
-        .split(" from ")[0]
-        .replace("export { ", "")
-        .replace(" }", "")
-        .trim()),
-    ...signatureExports
-      .map(line => line
+      .filter((line) => !line.startsWith("//"))
+      .map((line) =>
+        line
+          .split(" from ")[0]
+          .replace("export { ", "")
+          .replace(" }", "")
+          .trim()
+      ),
+    ...signatureExports.map((line) =>
+      line
         .split(" from ")[0]
         .replace("export { signatures as ", "")
         .replace(" }", "")
-        .trim())
+        .trim()
+    ),
   ];
 
   const cjsContent = `/**
@@ -344,7 +365,7 @@ ${signatureExports
   .join("\n")}
 
 module.exports = {
-${moduleNames.map(name => `  ${name},`).join("\n")}
+${moduleNames.map((name) => `  ${name},`).join("\n")}
 };
 `;
 
