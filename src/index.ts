@@ -3,15 +3,16 @@
  * Main entry point for fetching and caching contract ABIs and addresses
  */
 
-import { NETWORKS } from "./config/networks";
-import { GitHubService } from "./services/github";
-import { ContractService } from "./services/contracts";
 import * as fs from "fs";
-import { formatNetworkName } from "./utils/format";
 import { env } from "./config/env";
-import { extractAbiMethods } from "./utils/abi-extractor";
-import type { NetworkCache } from "./types/contracts";
 import { METHODS_TO_EXTRACT } from "./config/methods";
+import { NETWORKS } from "./config/networks";
+import { ContractService } from "./services/contracts";
+import { GitHubService } from "./services/github";
+import type { NetworkCache } from "./types/contracts";
+import { extractAbiMethods } from "./utils/abi-extractor";
+import { formatNetworkName } from "./utils/format";
+import { runTypeChain, glob } from "typechain";
 
 /**
  * Generates ABI signatures for specified methods
@@ -54,10 +55,28 @@ function generateAbiSignatures(networkData: NetworkCache) {
         signatures[contractName] = {
           address,
           methods: Object.fromEntries(
-            Object.entries(contractMethods).map(([methodName, data]) => [
-              methodName,
-              data.abi,
-            ])
+            Object.entries(contractMethods).map(([methodName, data]) => {
+
+              // Disabled this because the point of using Viem is to infer the types directly from the abi and avoid typechain
+              // but in case we really need to generate the abi for the methods we could use the following code:
+              // use typechain to generate the abi for the method
+              // Create a temporary file with the ABI if it's not a file path
+              // const tempAbiPath = `./${contractName}-${methodName}.json`;
+              // fs.writeFileSync(tempAbiPath, JSON.stringify([data.abi]));
+
+              // const abi = runTypeChain({
+              //   cwd: process.cwd(),
+              //   filesToProcess: [tempAbiPath],
+              //   allFiles: [tempAbiPath], // Required parameter for incremental generation
+              //   outDir: "./dist/signatures",
+              //   target: "ethers-v6",
+              // });
+
+              // Clean up the temporary file
+              // fs.unlinkSync(tempAbiPath);
+
+              return [methodName, data.abi];
+            })
           ),
           events,
         };
