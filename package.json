@@ -24,11 +24,6 @@
       "require": "./dist/index.cjs",
       "types": "./dist/index.ts"
     },
-    "./custom-network-signatures": {
-      "import": "./src/custom-network-signatures.ts",
-      "require": "./src/custom-network-signatures.ts",
-      "types": "./src/custom-network-signatures.ts"
-    },
     "./prod/datil": {
       "import": "./dist/prod/datil.js",
       "require": "./dist/prod/datil.cjs",
@@ -78,6 +73,11 @@
       "import": "./dist/signatures/develop.js",
       "require": "./dist/signatures/develop.cjs",
       "types": "./dist/signatures/develop.ts"
+    },
+    "./custom-network-signatures": {
+      "import": "./dist/custom-network-signatures.ts",
+      "require": "./dist/custom-network-signatures.ts",
+      "types": "./dist/custom-network-signatures.ts"
     }
   },
   "types": "./dist/index.ts",
