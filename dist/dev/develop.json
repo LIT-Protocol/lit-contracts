@@ -1,10 +1,10 @@
-export const nagaDev = {
+{
   "data": [
     {
       "name": "Staking",
       "contracts": [
         {
-          "network": "naga-dev",
+          "network": "develop",
           "address_hash": "0x16702eBf72048cb79bfFaBce2938468b11663818",
           "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
@@ -974,12 +974,6 @@ export const nagaDev = {
                 },
                 {
                   "indexed": false,
-                  "internalType": "bool",
-                  "name": "permittedStakersOn",
-                  "type": "bool"
-                },
-                {
-                  "indexed": false,
                   "internalType": "uint256",
                   "name": "tokenPrice",
                   "type": "uint256"
@@ -1275,12 +1269,17 @@ export const nagaDev = {
             {
               "inputs": [
                 {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
                   "internalType": "address",
-                  "name": "staker",
+                  "name": "validator",
                   "type": "address"
                 }
               ],
-              "name": "addPermittedStaker",
+              "name": "addPermittedValidator",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -1489,12 +1488,17 @@ export const nagaDev = {
             {
               "inputs": [
                 {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
                   "internalType": "address",
-                  "name": "staker",
+                  "name": "validator",
                   "type": "address"
                 }
               ],
-              "name": "removePermittedStaker",
+              "name": "removePermittedValidator",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -1609,11 +1613,6 @@ export const nagaDev = {
                     {
                       "internalType": "bool",
                       "name": "enableStakeAutolock",
-                      "type": "bool"
-                    },
-                    {
-                      "internalType": "bool",
-                      "name": "permittedStakersOn",
                       "type": "bool"
                     },
                     {
@@ -1822,12 +1821,17 @@ export const nagaDev = {
             {
               "inputs": [
                 {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
                   "internalType": "bool",
-                  "name": "permittedStakersOn",
+                  "name": "permittedValidatorsOn",
                   "type": "bool"
                 }
               ],
-              "name": "setPermittedStakersOn",
+              "name": "setPermittedValidatorsOn",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -1875,6 +1879,11 @@ export const nagaDev = {
                       "internalType": "uint256",
                       "name": "minEpochForRewards",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "permittedValidatorsOn",
+                      "type": "bool"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.RealmConfig",
@@ -3051,17 +3060,6 @@ export const nagaDev = {
             {
               "inputs": [
                 {
-                  "internalType": "address",
-                  "name": "stakerAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "StakerNotPermitted",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
                   "internalType": "uint256",
                   "name": "yourBalance",
                   "type": "uint256"
@@ -3111,6 +3109,22 @@ export const nagaDev = {
                 }
               ],
               "name": "ValidatorNotInNextEpoch",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "validatorAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                }
+              ],
+              "name": "ValidatorNotPermitted",
               "type": "error"
             },
             {
@@ -3593,29 +3607,6 @@ export const nagaDev = {
                 }
               ],
               "name": "signalReadyForNextEpoch",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "realmId",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "timelock",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "stakeAndJoin",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -4412,6 +4403,19 @@ export const nagaDev = {
                 }
               ],
               "name": "getActiveUnkickedValidators",
+              "outputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "",
+                  "type": "address[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getAllReserveValidators",
               "outputs": [
                 {
                   "internalType": "address[]",
@@ -5689,11 +5693,6 @@ export const nagaDev = {
                       "type": "bool"
                     },
                     {
-                      "internalType": "bool",
-                      "name": "permittedStakersOn",
-                      "type": "bool"
-                    },
-                    {
                       "internalType": "uint256",
                       "name": "tokenPrice",
                       "type": "uint256"
@@ -6150,6 +6149,11 @@ export const nagaDev = {
                       "internalType": "uint256",
                       "name": "minEpochForRewards",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "permittedValidatorsOn",
+                      "type": "bool"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.RealmConfig",
@@ -6341,7 +6345,7 @@ export const nagaDev = {
       "name": "Multisender",
       "contracts": [
         {
-          "network": "naga-dev",
+          "network": "develop",
           "address_hash": "0xC72Ea565b9699294c627e0D31700b6F0Dd511D98",
           "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
@@ -6456,7 +6460,7 @@ export const nagaDev = {
       "name": "LITToken",
       "contracts": [
         {
-          "network": "naga-dev",
+          "network": "develop",
           "address_hash": "0xd78089bAAe410f5d0eae31D0D56157c73a3Ff98B",
           "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
@@ -7510,7 +7514,7 @@ export const nagaDev = {
       "name": "PubkeyRouter",
       "contracts": [
         {
-          "network": "naga-dev",
+          "network": "develop",
           "address_hash": "0xE6dc044530c8EC53E501B6a7a1777c0707781829",
           "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
@@ -8515,7 +8519,7 @@ export const nagaDev = {
       "name": "PKPNFT",
       "contracts": [
         {
-          "network": "naga-dev",
+          "network": "develop",
           "address_hash": "0x9148EDa53731a2bc679771A2891d022987C30C35",
           "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
@@ -9764,7 +9768,7 @@ export const nagaDev = {
       "name": "PKPHelper",
       "contracts": [
         {
-          "network": "naga-dev",
+          "network": "develop",
           "address_hash": "0x58969e65c5E953F3Eae3AeC40Bb0D7b805c0631E",
           "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
@@ -10752,7 +10756,7 @@ export const nagaDev = {
       "name": "PKPPermissions",
       "contracts": [
         {
-          "network": "naga-dev",
+          "network": "develop",
           "address_hash": "0xBa1c129bBFc8979bE67bE53A1e9e84fDd58dCD26",
           "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
@@ -12087,7 +12091,7 @@ export const nagaDev = {
       "name": "PKPNFTMetadata",
       "contracts": [
         {
-          "network": "naga-dev",
+          "network": "develop",
           "address_hash": "0x6C03499667C7d5818e26A67FDF5a9CB5B1Cf02ca",
           "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
@@ -12251,7 +12255,7 @@ export const nagaDev = {
       "name": "Allowlist",
       "contracts": [
         {
-          "network": "naga-dev",
+          "network": "develop",
           "address_hash": "0x0fe649f93f7B79Ed99A23c966A4A17073A87b10e",
           "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
@@ -12488,7 +12492,7 @@ export const nagaDev = {
       "name": "PaymentDelegation",
       "contracts": [
         {
-          "network": "naga-dev",
+          "network": "develop",
           "address_hash": "0xE4f54BE6FA465a04a955CB59D21bca98f009B0bA",
           "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
@@ -13124,7 +13128,7 @@ export const nagaDev = {
       "name": "PriceFeed",
       "contracts": [
         {
-          "network": "naga-dev",
+          "network": "develop",
           "address_hash": "0x7703a8C773e37aF3C09F27A516E495A216aA7608",
           "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
@@ -14075,4 +14079,4 @@ export const nagaDev = {
     "litNodePort": 7470,
     "rocketPort": 7470
   }
-} as const;
+}

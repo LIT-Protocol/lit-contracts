@@ -382,6 +382,12 @@ export class ContractService {
         2
       )};`
     );
+    
+    // .json support
+    fs.writeFileSync(
+      `${outputDir}/${network}.json`,
+      JSON.stringify(cache, null, 2)
+    );
   }
 
   /**

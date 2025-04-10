@@ -5,7 +5,7 @@
 
 export const signatures = {
   "Staking": {
-    "address": "0x1aD7Ad65Dd04dab562205d2e5FE58066BfDa822e",
+    "address": "0x16702eBf72048cb79bfFaBce2938468b11663818",
     "methods": {
       "getActiveUnkickedValidatorStructsAndCounts": {
         "inputs": [
@@ -113,11 +113,6 @@ export const signatures = {
               },
               {
                 "internalType": "uint256",
-                "name": "commission",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
                 "name": "commissionRate",
                 "type": "uint256"
               },
@@ -140,6 +135,21 @@ export const signatures = {
                 "internalType": "uint256",
                 "name": "delegatedStakeWeight",
                 "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "lastRewardEpochClaimedFixedCostRewards",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "lastRewardEpochClaimedCommission",
+                "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "operatorAddress",
+                "type": "address"
               }
             ],
             "internalType": "struct LibStakingStorage.Validator[]",
@@ -648,6 +658,37 @@ export const signatures = {
           {
             "indexed": false,
             "internalType": "uint256",
+            "name": "rewards",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "fromEpoch",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "toEpoch",
+            "type": "uint256"
+          }
+        ],
+        "name": "FixedCostRewardsClaimed",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "stakerAddress",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
             "name": "recordId",
             "type": "uint256"
           },
@@ -740,6 +781,50 @@ export const signatures = {
           }
         ],
         "name": "StakeRewardsClaimed",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "newTrustedForwarder",
+            "type": "address"
+          }
+        ],
+        "name": "TrustedForwarderSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "stakerAddress",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "rewards",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "fromEpoch",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "toEpoch",
+            "type": "uint256"
+          }
+        ],
+        "name": "ValidatorCommissionClaimed",
         "type": "event"
       },
       {
@@ -987,25 +1072,6 @@ export const signatures = {
           {
             "indexed": true,
             "internalType": "address",
-            "name": "staker",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "amountBurned",
-            "type": "uint256"
-          }
-        ],
-        "name": "ValidatorKickedFromNextEpoch",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": true,
-            "internalType": "address",
             "name": "reporter",
             "type": "address"
           },
@@ -1076,7 +1142,7 @@ export const signatures = {
     ]
   },
   "PubkeyRouter": {
-    "address": "0xDfBF547B76101025A9280a6F21778619313605C2",
+    "address": "0xE6dc044530c8EC53E501B6a7a1777c0707781829",
     "methods": {
       "deriveEthAddressFromPubkey": {
         "inputs": [
@@ -1341,11 +1407,24 @@ export const signatures = {
         ],
         "name": "ToggleEvent",
         "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "newTrustedForwarder",
+            "type": "address"
+          }
+        ],
+        "name": "TrustedForwarderSet",
+        "type": "event"
       }
     ]
   },
   "PKPNFT": {
-    "address": "0x10d0223524e5d599C11758cbB091F840ed2f49a6",
+    "address": "0x9148EDa53731a2bc679771A2891d022987C30C35",
     "methods": {
       "claimAndMint": {
         "inputs": [
@@ -1654,6 +1733,19 @@ export const signatures = {
         "inputs": [
           {
             "indexed": false,
+            "internalType": "address",
+            "name": "newTrustedForwarder",
+            "type": "address"
+          }
+        ],
+        "name": "TrustedForwarderSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
             "internalType": "uint256",
             "name": "amount",
             "type": "uint256"
@@ -1665,7 +1757,7 @@ export const signatures = {
     ]
   },
   "PKPHelper": {
-    "address": "0x0c2f4Deb242f14379C809BCc70DDE5e7c9B24Cb0",
+    "address": "0x58969e65c5E953F3Eae3AeC40Bb0D7b805c0631E",
     "methods": {
       "claimAndMintNextAndAddAuthMethodsWithTypes": {
         "inputs": [
@@ -1943,7 +2035,7 @@ export const signatures = {
     ]
   },
   "PKPPermissions": {
-    "address": "0x04938BF1d2D3Ec15Dd519e01EAfb0324F6589BBe",
+    "address": "0xBa1c129bBFc8979bE67bE53A1e9e84fDd58dCD26",
     "methods": {
       "addPermittedAction": {
         "inputs": [
@@ -2401,11 +2493,24 @@ export const signatures = {
         ],
         "name": "RootHashUpdated",
         "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "newTrustedForwarder",
+            "type": "address"
+          }
+        ],
+        "name": "TrustedForwarderSet",
+        "type": "event"
       }
     ]
   },
   "PriceFeed": {
-    "address": "0x19F421a79401a75C1f850a4655479F952e38e00F",
+    "address": "0x7703a8C773e37aF3C09F27A516E495A216aA7608",
     "methods": {
       "getNodesForRequest": {
         "inputs": [
@@ -2478,11 +2583,6 @@ export const signatures = {
                   },
                   {
                     "internalType": "uint256",
-                    "name": "commission",
-                    "type": "uint256"
-                  },
-                  {
-                    "internalType": "uint256",
                     "name": "commissionRate",
                     "type": "uint256"
                   },
@@ -2505,6 +2605,21 @@ export const signatures = {
                     "internalType": "uint256",
                     "name": "delegatedStakeWeight",
                     "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "lastRewardEpochClaimedFixedCostRewards",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "lastRewardEpochClaimedCommission",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "address",
+                    "name": "operatorAddress",
+                    "type": "address"
                   }
                 ],
                 "internalType": "struct LibStakingStorage.Validator",
@@ -2612,6 +2727,19 @@ export const signatures = {
           }
         ],
         "name": "MaxNetworkPriceSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "newTrustedForwarder",
+            "type": "address"
+          }
+        ],
+        "name": "TrustedForwarderSet",
         "type": "event"
       },
       {

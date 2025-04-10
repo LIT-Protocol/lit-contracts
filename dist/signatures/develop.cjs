@@ -5,7 +5,7 @@
 
 const signatures = {
   "Staking": {
-    "address": "0x1aD7Ad65Dd04dab562205d2e5FE58066BfDa822e",
+    "address": "0x16702eBf72048cb79bfFaBce2938468b11663818",
     "methods": {
       "getActiveUnkickedValidatorStructsAndCounts": {
         "inputs": [
@@ -145,6 +145,11 @@ const signatures = {
                 "internalType": "uint256",
                 "name": "lastRewardEpochClaimedCommission",
                 "type": "uint256"
+              },
+              {
+                "internalType": "address",
+                "name": "operatorAddress",
+                "type": "address"
               }
             ],
             "internalType": "struct LibStakingStorage.Validator[]",
@@ -339,12 +344,6 @@ const signatures = {
             "indexed": false,
             "internalType": "bool",
             "name": "enableStakeAutolock",
-            "type": "bool"
-          },
-          {
-            "indexed": false,
-            "internalType": "bool",
-            "name": "permittedStakersOn",
             "type": "bool"
           },
           {
@@ -784,6 +783,19 @@ const signatures = {
           {
             "indexed": false,
             "internalType": "address",
+            "name": "newTrustedForwarder",
+            "type": "address"
+          }
+        ],
+        "name": "TrustedForwarderSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
             "name": "stakerAddress",
             "type": "address"
           },
@@ -1124,7 +1136,7 @@ const signatures = {
     ]
   },
   "PubkeyRouter": {
-    "address": "0xDfBF547B76101025A9280a6F21778619313605C2",
+    "address": "0xE6dc044530c8EC53E501B6a7a1777c0707781829",
     "methods": {
       "deriveEthAddressFromPubkey": {
         "inputs": [
@@ -1389,11 +1401,24 @@ const signatures = {
         ],
         "name": "ToggleEvent",
         "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "newTrustedForwarder",
+            "type": "address"
+          }
+        ],
+        "name": "TrustedForwarderSet",
+        "type": "event"
       }
     ]
   },
   "PKPNFT": {
-    "address": "0x10d0223524e5d599C11758cbB091F840ed2f49a6",
+    "address": "0x9148EDa53731a2bc679771A2891d022987C30C35",
     "methods": {
       "claimAndMint": {
         "inputs": [
@@ -1726,7 +1751,7 @@ const signatures = {
     ]
   },
   "PKPHelper": {
-    "address": "0x0c2f4Deb242f14379C809BCc70DDE5e7c9B24Cb0",
+    "address": "0x58969e65c5E953F3Eae3AeC40Bb0D7b805c0631E",
     "methods": {
       "claimAndMintNextAndAddAuthMethodsWithTypes": {
         "inputs": [
@@ -2004,7 +2029,7 @@ const signatures = {
     ]
   },
   "PKPPermissions": {
-    "address": "0x04938BF1d2D3Ec15Dd519e01EAfb0324F6589BBe",
+    "address": "0xBa1c129bBFc8979bE67bE53A1e9e84fDd58dCD26",
     "methods": {
       "addPermittedAction": {
         "inputs": [
@@ -2479,7 +2504,7 @@ const signatures = {
     ]
   },
   "PriceFeed": {
-    "address": "0x19F421a79401a75C1f850a4655479F952e38e00F",
+    "address": "0x7703a8C773e37aF3C09F27A516E495A216aA7608",
     "methods": {
       "getNodesForRequest": {
         "inputs": [
@@ -2584,6 +2609,11 @@ const signatures = {
                     "internalType": "uint256",
                     "name": "lastRewardEpochClaimedCommission",
                     "type": "uint256"
+                  },
+                  {
+                    "internalType": "address",
+                    "name": "operatorAddress",
+                    "type": "address"
                   }
                 ],
                 "internalType": "struct LibStakingStorage.Validator",
@@ -2691,6 +2721,19 @@ const signatures = {
           }
         ],
         "name": "MaxNetworkPriceSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "newTrustedForwarder",
+            "type": "address"
+          }
+        ],
+        "name": "TrustedForwarderSet",
         "type": "event"
       },
       {

@@ -22,10 +22,8 @@
  */
 
 import * as fs from "fs";
-import { Interface } from "ethers";
-import path from "path";
+import path, { dirname } from "path";
 import { fileURLToPath } from "url";
-import { dirname } from "path";
 import { METHODS_TO_EXTRACT } from "./config/methods";
 import type { NetworkCache } from "./types/contracts";
 import { extractAbiMethods } from "./utils/abi-extractor";
@@ -84,7 +82,11 @@ function getBaseDirectory(
  * @param forceRelative - If true, always resolve relative to baseDir even if path is absolute
  * @returns The resolved absolute path
  */
-function resolvePath(relativePath: string, baseDir: string, forceRelative: boolean = false): string {
+function resolvePath(
+  relativePath: string,
+  baseDir: string,
+  forceRelative: boolean = false
+): string {
   if (path.isAbsolute(relativePath) && !forceRelative) {
     return relativePath;
   }
@@ -128,10 +130,10 @@ function convertToNetworkCache(
  */
 function generateAbiSignatures(networkData: NetworkCache) {
   const methodsByContract = new Map<string, string[]>();
-  
+
   // Group methods by contract
-  METHODS_TO_EXTRACT.forEach(methodString => {
-    const [contractName, methodName] = methodString.split('.');
+  METHODS_TO_EXTRACT.forEach((methodString) => {
+    const [contractName, methodName] = methodString.split(".");
     if (!methodsByContract.has(contractName)) {
       methodsByContract.set(contractName, []);
     }
@@ -139,32 +141,36 @@ function generateAbiSignatures(networkData: NetworkCache) {
   });
 
   // Extract methods for each contract
-  const signatures: Record<string, { 
-    address: string; 
-    methods: Record<string, any>;
-    events: any[];
-  }> = {};
-  
-  networkData.data.forEach(contractGroup => {
+  const signatures: Record<
+    string,
+    {
+      address: string;
+      methods: Record<string, any>;
+      events: any[];
+    }
+  > = {};
+
+  networkData.data.forEach((contractGroup) => {
     const contractName = contractGroup.name;
     if (methodsByContract.has(contractName)) {
       const methods = methodsByContract.get(contractName)!;
       const contractMethods = extractAbiMethods(networkData, methods);
-      
+
       if (Object.keys(contractMethods).length > 0) {
         const address = contractGroup.contracts[0].address_hash;
-        const events = contractGroup.contracts[0].ABI
-          .filter(item => item.type === 'event');
-        
+        const events = contractGroup.contracts[0].ABI.filter(
+          (item) => item.type === "event"
+        );
+
         signatures[contractName] = {
           address,
           methods: Object.fromEntries(
             Object.entries(contractMethods).map(([methodName, data]) => [
               methodName,
-              data.abi
+              data.abi,
             ])
           ),
-          events
+          events,
         };
       }
     }
@@ -191,7 +197,9 @@ export async function generateSignaturesFromContext(
 
   try {
     if (useScriptDirectory && !callerPath) {
-      throw new Error("callerPath (import.meta.url) is required when useScriptDirectory is true");
+      throw new Error(
+        "callerPath (import.meta.url) is required when useScriptDirectory is true"
+      );
     }
 
     const baseDir = getBaseDirectory(useScriptDirectory, callerPath);

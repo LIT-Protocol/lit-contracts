@@ -3,1260 +3,12 @@
 module.exports = {
   "data": [
     {
-      "name": "StakingBalances",
-      "contracts": [
-        {
-          "network": "naga-dev",
-          "address_hash": "0x7cA42eE181C8f033c2C800b32F97373a2C931343",
-          "inserted_at": "2025-01-29T00:49:19Z",
-          "ABI": [
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotAddFunctionToDiamondThatAlreadyExists",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4[]",
-                  "name": "_selectors",
-                  "type": "bytes4[]"
-                }
-              ],
-              "name": "CannotAddSelectorsToZeroAddress",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotRemoveFunctionThatDoesNotExist",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotRemoveImmutableFunction",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotReplaceFunctionThatDoesNotExists",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotReplaceFunctionWithTheSameFunctionFromTheSameFacet",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4[]",
-                  "name": "_selectors",
-                  "type": "bytes4[]"
-                }
-              ],
-              "name": "CannotReplaceFunctionsFromFacetWithZeroAddress",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotReplaceImmutableFunction",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint8",
-                  "name": "_action",
-                  "type": "uint8"
-                }
-              ],
-              "name": "IncorrectFacetCutAction",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_initializationContractAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "bytes",
-                  "name": "_calldata",
-                  "type": "bytes"
-                }
-              ],
-              "name": "InitializationFunctionReverted",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_contractAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "string",
-                  "name": "_message",
-                  "type": "string"
-                }
-              ],
-              "name": "NoBytecodeAtAddress",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_facetAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "NoSelectorsProvidedForFacetForCut",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_user",
-                  "type": "address"
-                },
-                {
-                  "internalType": "address",
-                  "name": "_contractOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "NotContractOwner",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_facetAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "RemoveFacetAddressMustBeZeroAddress",
-              "type": "error"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "components": [
-                    {
-                      "internalType": "address",
-                      "name": "facetAddress",
-                      "type": "address"
-                    },
-                    {
-                      "internalType": "enum IDiamond.FacetCutAction",
-                      "name": "action",
-                      "type": "uint8"
-                    },
-                    {
-                      "internalType": "bytes4[]",
-                      "name": "functionSelectors",
-                      "type": "bytes4[]"
-                    }
-                  ],
-                  "indexed": false,
-                  "internalType": "struct IDiamond.FacetCut[]",
-                  "name": "_diamondCut",
-                  "type": "tuple[]"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "_init",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "bytes",
-                  "name": "_calldata",
-                  "type": "bytes"
-                }
-              ],
-              "name": "DiamondCut",
-              "type": "event"
-            },
-            {
-              "inputs": [
-                {
-                  "components": [
-                    {
-                      "internalType": "address",
-                      "name": "facetAddress",
-                      "type": "address"
-                    },
-                    {
-                      "internalType": "enum IDiamond.FacetCutAction",
-                      "name": "action",
-                      "type": "uint8"
-                    },
-                    {
-                      "internalType": "bytes4[]",
-                      "name": "functionSelectors",
-                      "type": "bytes4[]"
-                    }
-                  ],
-                  "internalType": "struct IDiamond.FacetCut[]",
-                  "name": "_diamondCut",
-                  "type": "tuple[]"
-                },
-                {
-                  "internalType": "address",
-                  "name": "_init",
-                  "type": "address"
-                },
-                {
-                  "internalType": "bytes",
-                  "name": "_calldata",
-                  "type": "bytes"
-                }
-              ],
-              "name": "diamondCut",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_functionSelector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "facetAddress",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "facetAddress_",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "facetAddresses",
-              "outputs": [
-                {
-                  "internalType": "address[]",
-                  "name": "facetAddresses_",
-                  "type": "address[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_facet",
-                  "type": "address"
-                }
-              ],
-              "name": "facetFunctionSelectors",
-              "outputs": [
-                {
-                  "internalType": "bytes4[]",
-                  "name": "_facetFunctionSelectors",
-                  "type": "bytes4[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "facets",
-              "outputs": [
-                {
-                  "components": [
-                    {
-                      "internalType": "address",
-                      "name": "facetAddress",
-                      "type": "address"
-                    },
-                    {
-                      "internalType": "bytes4[]",
-                      "name": "functionSelectors",
-                      "type": "bytes4[]"
-                    }
-                  ],
-                  "internalType": "struct IDiamondLoupe.Facet[]",
-                  "name": "facets_",
-                  "type": "tuple[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_interfaceId",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "supportsInterface",
-              "outputs": [
-                {
-                  "internalType": "bool",
-                  "name": "",
-                  "type": "bool"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "previousOwner",
-                  "type": "address"
-                },
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "newOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "OwnershipTransferred",
-              "type": "event"
-            },
-            {
-              "inputs": [],
-              "name": "owner",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "owner_",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_newOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "transferOwnership",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "ActiveValidatorsCannotLeave",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "aliasAccount",
-                  "type": "address"
-                },
-                {
-                  "internalType": "address",
-                  "name": "stakerAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "AliasNotOwnedBySender",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "CallerNotOwner",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "aliasAccount",
-                  "type": "address"
-                }
-              ],
-              "name": "CannotRemoveAliasOfActiveValidator",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "CannotStakeZero",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "CannotWithdrawZero",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "aliasCount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "MaxAliasCountReached",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "sender",
-                  "type": "address"
-                }
-              ],
-              "name": "OnlyStakingContract",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "amountStaked",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "minimumStake",
-                  "type": "uint256"
-                }
-              ],
-              "name": "StakeMustBeGreaterThanMinimumStake",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "amountStaked",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "maximumStake",
-                  "type": "uint256"
-                }
-              ],
-              "name": "StakeMustBeLessThanMaximumStake",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "stakerAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "StakerNotPermitted",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "yourBalance",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "requestedWithdrawlAmount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "TryingToWithdrawMoreThanStaked",
-              "type": "error"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "aliasAccount",
-                  "type": "address"
-                }
-              ],
-              "name": "AliasAdded",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "aliasAccount",
-                  "type": "address"
-                }
-              ],
-              "name": "AliasRemoved",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newMaxAliasCount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "MaxAliasCountSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newMaximumStake",
-                  "type": "uint256"
-                }
-              ],
-              "name": "MaximumStakeSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newMinimumStake",
-                  "type": "uint256"
-                }
-              ],
-              "name": "MinimumStakeSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                }
-              ],
-              "name": "PermittedStakerAdded",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                }
-              ],
-              "name": "PermittedStakerRemoved",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "bool",
-                  "name": "permittedStakersOn",
-                  "type": "bool"
-                }
-              ],
-              "name": "PermittedStakersOnChanged",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "newResolverAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "ResolverContractAddressSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "reward",
-                  "type": "uint256"
-                }
-              ],
-              "name": "RewardPaid",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "Staked",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newTokenRewardPerTokenPerEpoch",
-                  "type": "uint256"
-                }
-              ],
-              "name": "TokenRewardPerTokenPerEpochSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "aliasAccount",
-                  "type": "address"
-                }
-              ],
-              "name": "ValidatorNotRewardedBecauseAlias",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "ValidatorRewarded",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "ValidatorTokensPenalized",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "Withdrawn",
-              "type": "event"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "aliasAccount",
-                  "type": "address"
-                }
-              ],
-              "name": "addAlias",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                }
-              ],
-              "name": "addPermittedStaker",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address[]",
-                  "name": "stakers",
-                  "type": "address[]"
-                }
-              ],
-              "name": "addPermittedStakers",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "account",
-                  "type": "address"
-                }
-              ],
-              "name": "balanceOf",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "account",
-                  "type": "address"
-                }
-              ],
-              "name": "checkStakingAmounts",
-              "outputs": [
-                {
-                  "internalType": "bool",
-                  "name": "",
-                  "type": "bool"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "contractResolver",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "account",
-                  "type": "address"
-                }
-              ],
-              "name": "getReward",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "getStakingAddress",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "getTokenAddress",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                }
-              ],
-              "name": "isPermittedStaker",
-              "outputs": [
-                {
-                  "internalType": "bool",
-                  "name": "",
-                  "type": "bool"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "maximumStake",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "minimumStake",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "account",
-                  "type": "address"
-                }
-              ],
-              "name": "penalizeTokens",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "permittedStakersOn",
-              "outputs": [
-                {
-                  "internalType": "bool",
-                  "name": "",
-                  "type": "bool"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "aliasAccount",
-                  "type": "address"
-                }
-              ],
-              "name": "removeAlias",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                }
-              ],
-              "name": "removePermittedStaker",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "balance",
-                  "type": "uint256"
-                }
-              ],
-              "name": "restakePenaltyTokens",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "account",
-                  "type": "address"
-                }
-              ],
-              "name": "rewardOf",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "account",
-                  "type": "address"
-                }
-              ],
-              "name": "rewardValidator",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "newResolverAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "setContractResolver",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "newMaxAliasCount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "setMaxAliasCount",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "newMaximumStake",
-                  "type": "uint256"
-                }
-              ],
-              "name": "setMaximumStake",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "newMinimumStake",
-                  "type": "uint256"
-                }
-              ],
-              "name": "setMinimumStake",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bool",
-                  "name": "permitted",
-                  "type": "bool"
-                }
-              ],
-              "name": "setPermittedStakersOn",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "account",
-                  "type": "address"
-                }
-              ],
-              "name": "stake",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "account",
-                  "type": "address"
-                },
-                {
-                  "internalType": "address",
-                  "name": "sender",
-                  "type": "address"
-                }
-              ],
-              "name": "stakeForValidator",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "totalStaked",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "balance",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "recipient",
-                  "type": "address"
-                }
-              ],
-              "name": "transferPenaltyTokens",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "address",
-                  "name": "account",
-                  "type": "address"
-                }
-              ],
-              "name": "withdraw",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "withdraw",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "balance",
-                  "type": "uint256"
-                }
-              ],
-              "name": "withdrawPenaltyTokens",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Staking",
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x1aD7Ad65Dd04dab562205d2e5FE58066BfDa822e",
-          "inserted_at": "2025-01-29T00:49:19Z",
+          "address_hash": "0x16702eBf72048cb79bfFaBce2938468b11663818",
+          "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
             {
               "inputs": [
@@ -1648,11 +400,6 @@ module.exports = {
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "CallerNotOwner",
-              "type": "error"
             },
             {
               "inputs": [
@@ -1717,6 +464,38 @@ module.exports = {
               "type": "function"
             },
             {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "getShawdowRealmIdForStakerAddress",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getUnassignedStakerAddresses",
+              "outputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "",
+                  "type": "address[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
               "inputs": [],
               "name": "getUnassignedValidators",
               "outputs": [
@@ -1764,11 +543,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -1791,6 +565,21 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "operatorAddress",
+                      "type": "address"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -1897,6 +686,19 @@ module.exports = {
               "type": "function"
             },
             {
+              "inputs": [],
+              "name": "numRealms",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "address",
@@ -1950,11 +752,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -1977,6 +774,21 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "operatorAddress",
+                      "type": "address"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator",
@@ -1986,6 +798,11 @@ module.exports = {
               ],
               "stateMutability": "view",
               "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "CallerNotOwner",
+              "type": "error"
             },
             {
               "inputs": [],
@@ -2000,6 +817,11 @@ module.exports = {
             {
               "inputs": [],
               "name": "InvalidNewSharePrice",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "InvalidSlashPercentage",
               "type": "error"
             },
             {
@@ -2544,6 +1366,29 @@ module.exports = {
               "inputs": [
                 {
                   "internalType": "uint256",
+                  "name": "source_realmId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "target_realmId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address[]",
+                  "name": "target_validators",
+                  "type": "address[]"
+                }
+              ],
+              "name": "adminSetupShadowSplicing",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
                   "name": "percentage",
                   "type": "uint256"
                 },
@@ -2812,6 +1657,16 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "minSelfStakeTimelock",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minValidatorCountToClampMinimumThreshold",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minThresholdToClampAt",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.GlobalConfig",
@@ -3035,6 +1890,19 @@ module.exports = {
               "type": "function"
             },
             {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "newTotalSupply",
+                  "type": "uint256"
+                }
+              ],
+              "name": "setTokenTotalSupplyStandIn",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
               "inputs": [],
               "name": "CallerNotContract",
               "type": "error"
@@ -3219,6 +2087,37 @@ module.exports = {
                 {
                   "indexed": false,
                   "internalType": "uint256",
+                  "name": "rewards",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "fromEpoch",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "toEpoch",
+                  "type": "uint256"
+                }
+              ],
+              "name": "FixedCostRewardsClaimed",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
                   "name": "recordId",
                   "type": "uint256"
                 },
@@ -3317,6 +2216,50 @@ module.exports = {
               "anonymous": false,
               "inputs": [
                 {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "newTrustedForwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "TrustedForwarderSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "rewards",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "fromEpoch",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "toEpoch",
+                  "type": "uint256"
+                }
+              ],
+              "name": "ValidatorCommissionClaimed",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
                   "indexed": true,
                   "internalType": "address",
                   "name": "stakerAddress",
@@ -3391,6 +2334,24 @@ module.exports = {
                   "type": "uint256"
                 },
                 {
+                  "internalType": "uint256",
+                  "name": "maxNumberOfEpochsToClaim",
+                  "type": "uint256"
+                }
+              ],
+              "name": "claimFixedCostRewards",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
                   "internalType": "address",
                   "name": "stakerAddress",
                   "type": "address"
@@ -3398,6 +2359,11 @@ module.exports = {
                 {
                   "internalType": "uint256",
                   "name": "stakeRecordId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "maxNumberOfEpochsToClaim",
                   "type": "uint256"
                 }
               ],
@@ -3407,7 +2373,18 @@ module.exports = {
               "type": "function"
             },
             {
-              "inputs": [],
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "maxNumberOfEpochsToClaim",
+                  "type": "uint256"
+                }
+              ],
               "name": "claimValidatorCommission",
               "outputs": [],
               "stateMutability": "nonpayable",
@@ -3481,7 +2458,17 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "totalRewards",
+                      "name": "totalStakeRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "validatorFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "validatorCommission",
                       "type": "uint256"
                     },
                     {
@@ -3552,7 +2539,17 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "totalRewards",
+                      "name": "totalStakeRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "validatorFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "validatorCommission",
                       "type": "uint256"
                     },
                     {
@@ -3595,6 +2592,19 @@ module.exports = {
               "type": "function"
             },
             {
+              "inputs": [],
+              "name": "getTrustedForwarder",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "address",
@@ -3608,7 +2618,7 @@ module.exports = {
                 },
                 {
                   "internalType": "uint256",
-                  "name": "amount",
+                  "name": "additionalAmount",
                   "type": "uint256"
                 }
               ],
@@ -3631,7 +2641,7 @@ module.exports = {
                 },
                 {
                   "internalType": "uint256",
-                  "name": "newTimeLock",
+                  "name": "additionalTimeLock",
                   "type": "uint256"
                 }
               ],
@@ -3687,6 +2697,19 @@ module.exports = {
                 }
               ],
               "name": "migrateStakeRecord",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "forwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "setTrustedForwarder",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -3862,6 +2885,11 @@ module.exports = {
               "type": "error"
             },
             {
+              "inputs": [],
+              "name": "InvalidAttestedAddress",
+              "type": "error"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "enum LibStakingStorage.States",
@@ -4015,6 +3043,11 @@ module.exports = {
                 }
               ],
               "name": "SignaledReadyForWrongEpochNumber",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "StakerAddressMismatch",
               "type": "error"
             },
             {
@@ -4306,25 +3339,6 @@ module.exports = {
                 {
                   "indexed": true,
                   "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "amountBurned",
-                  "type": "uint256"
-                }
-              ],
-              "name": "ValidatorKickedFromNextEpoch",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
                   "name": "reporter",
                   "type": "address"
                 },
@@ -4448,36 +3462,6 @@ module.exports = {
                   "internalType": "uint256",
                   "name": "realmId",
                   "type": "uint256"
-                },
-                {
-                  "internalType": "uint32",
-                  "name": "ip",
-                  "type": "uint32"
-                },
-                {
-                  "internalType": "uint128",
-                  "name": "ipv6",
-                  "type": "uint128"
-                },
-                {
-                  "internalType": "uint32",
-                  "name": "port",
-                  "type": "uint32"
-                },
-                {
-                  "internalType": "address",
-                  "name": "nodeAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "senderPubKey",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "receiverPubKey",
-                  "type": "uint256"
                 }
               ],
               "name": "requestToJoin",
@@ -4493,34 +3477,45 @@ module.exports = {
                   "type": "uint256"
                 },
                 {
-                  "internalType": "uint32",
-                  "name": "ip",
-                  "type": "uint32"
-                },
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "requestToJoinAsAdmin",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
                 {
-                  "internalType": "uint128",
-                  "name": "ipv6",
-                  "type": "uint128"
-                },
-                {
-                  "internalType": "uint32",
-                  "name": "port",
-                  "type": "uint32"
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
                 },
                 {
                   "internalType": "address",
                   "name": "stakerAddress",
                   "type": "address"
-                },
+                }
+              ],
+              "name": "requestToJoinAsForShadowSplicing",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
                 {
                   "internalType": "uint256",
-                  "name": "senderPubKey",
+                  "name": "realmId",
                   "type": "uint256"
                 },
                 {
-                  "internalType": "uint256",
-                  "name": "receiverPubKey",
-                  "type": "uint256"
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
                 }
               ],
               "name": "requestToJoinAsNode",
@@ -4567,7 +3562,7 @@ module.exports = {
                 },
                 {
                   "internalType": "address",
-                  "name": "nodeAddress",
+                  "name": "operatorAddress",
                   "type": "address"
                 },
                 {
@@ -4619,36 +3614,6 @@ module.exports = {
                 {
                   "internalType": "uint256",
                   "name": "amount",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint32",
-                  "name": "ip",
-                  "type": "uint32"
-                },
-                {
-                  "internalType": "uint128",
-                  "name": "ipv6",
-                  "type": "uint128"
-                },
-                {
-                  "internalType": "uint32",
-                  "name": "port",
-                  "type": "uint32"
-                },
-                {
-                  "internalType": "address",
-                  "name": "nodeAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "senderPubKey",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "receiverPubKey",
                   "type": "uint256"
                 }
               ],
@@ -4948,6 +3913,11 @@ module.exports = {
                       "internalType": "address[]",
                       "name": "validatorsInCurrentEpoch",
                       "type": "address[]"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "actualEpochLength",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.RewardEpochGlobalStats",
@@ -5235,11 +4205,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -5262,6 +4227,21 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "operatorAddress",
+                      "type": "address"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -5378,11 +4358,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -5405,6 +4380,21 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "operatorAddress",
+                      "type": "address"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -5671,6 +4661,25 @@ module.exports = {
               "inputs": [
                 {
                   "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getNonShadowValidators",
+              "outputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "",
+                  "type": "address[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
                   "name": "epochNumber",
                   "type": "uint256"
                 }
@@ -5693,6 +4702,11 @@ module.exports = {
                       "internalType": "address[]",
                       "name": "validatorsInCurrentEpoch",
                       "type": "address[]"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "actualEpochLength",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.RewardEpochGlobalStats",
@@ -5717,6 +4731,25 @@ module.exports = {
                   "internalType": "uint256",
                   "name": "",
                   "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getShadowValidators",
+              "outputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "",
+                  "type": "address[]"
                 }
               ],
               "stateMutability": "view",
@@ -6308,11 +5341,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -6335,6 +5363,21 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "operatorAddress",
+                      "type": "address"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -6399,11 +5442,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -6426,6 +5464,21 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "operatorAddress",
+                      "type": "address"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -6490,11 +5543,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -6517,6 +5565,21 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "operatorAddress",
+                      "type": "address"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -6671,11 +5734,45 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "minSelfStakeTimelock",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minValidatorCountToClampMinimumThreshold",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minThresholdToClampAt",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.GlobalConfig",
                   "name": "",
                   "type": "tuple"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "isActiveShadowValidator",
+              "outputs": [
+                {
+                  "internalType": "bool",
+                  "name": "",
+                  "type": "bool"
                 }
               ],
               "stateMutability": "view",
@@ -6945,6 +6042,25 @@ module.exports = {
             {
               "inputs": [
                 {
+                  "internalType": "address",
+                  "name": "operatorAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "operatorAddressToStakerAddress",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "uint256",
                   "name": "base",
                   "type": "uint256"
@@ -7172,11 +6288,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "commission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "commissionRate",
                       "type": "uint256"
                     },
@@ -7199,6 +6310,21 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "delegatedStakeWeight",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedFixedCostRewards",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lastRewardEpochClaimedCommission",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "operatorAddress",
+                      "type": "address"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator",
@@ -7218,8 +6344,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x2b1d47417a06989252889f80f89c264960DF09b4",
-          "inserted_at": "2025-01-29T00:49:19Z",
+          "address_hash": "0xC72Ea565b9699294c627e0D31700b6F0Dd511D98",
+          "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
             {
               "anonymous": false,
@@ -7334,7 +6460,7 @@ module.exports = {
         {
           "network": "naga-dev",
           "address_hash": "0xd78089bAAe410f5d0eae31D0D56157c73a3Ff98B",
-          "inserted_at": "2025-01-29T00:49:19Z",
+          "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
             {
               "inputs": [
@@ -8387,8 +7513,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0xDfBF547B76101025A9280a6F21778619313605C2",
-          "inserted_at": "2025-01-29T00:49:19Z",
+          "address_hash": "0xE6dc044530c8EC53E501B6a7a1777c0707781829",
+          "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
             {
               "inputs": [
@@ -8912,6 +8038,19 @@ module.exports = {
               "type": "event"
             },
             {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "newTrustedForwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "TrustedForwarderSet",
+              "type": "event"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "address",
@@ -9181,6 +8320,19 @@ module.exports = {
               "type": "function"
             },
             {
+              "inputs": [],
+              "name": "getTrustedForwarder",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "uint256",
@@ -9318,6 +8470,19 @@ module.exports = {
               "inputs": [
                 {
                   "internalType": "address",
+                  "name": "forwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "setTrustedForwarder",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
                   "name": "stakingContractAddress",
                   "type": "address"
                 },
@@ -9353,8 +8518,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x10d0223524e5d599C11758cbB091F840ed2f49a6",
-          "inserted_at": "2025-01-29T00:49:19Z",
+          "address_hash": "0x9148EDa53731a2bc679771A2891d022987C30C35",
+          "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
             {
               "inputs": [
@@ -9884,6 +9049,19 @@ module.exports = {
               "inputs": [
                 {
                   "indexed": false,
+                  "internalType": "address",
+                  "name": "newTrustedForwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "TrustedForwarderSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
                   "internalType": "uint256",
                   "name": "amount",
                   "type": "uint256"
@@ -10142,6 +9320,19 @@ module.exports = {
             {
               "inputs": [],
               "name": "getStakingAddress",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getTrustedForwarder",
               "outputs": [
                 {
                   "internalType": "address",
@@ -10420,6 +9611,19 @@ module.exports = {
             {
               "inputs": [
                 {
+                  "internalType": "address",
+                  "name": "forwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "setTrustedForwarder",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "bytes4",
                   "name": "interfaceId",
                   "type": "bytes4"
@@ -10559,396 +9763,12 @@ module.exports = {
       ]
     },
     {
-      "name": "RateLimitNFT",
-      "contracts": [
-        {
-          "network": "naga-dev",
-          "address_hash": "0xE5dABAbBdFC0eAa31834606022b0859dC204F39d",
-          "inserted_at": "2025-01-29T00:49:19Z",
-          "ABI": [
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotAddFunctionToDiamondThatAlreadyExists",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4[]",
-                  "name": "_selectors",
-                  "type": "bytes4[]"
-                }
-              ],
-              "name": "CannotAddSelectorsToZeroAddress",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotRemoveFunctionThatDoesNotExist",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotRemoveImmutableFunction",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotReplaceFunctionThatDoesNotExists",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotReplaceFunctionWithTheSameFunctionFromTheSameFacet",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4[]",
-                  "name": "_selectors",
-                  "type": "bytes4[]"
-                }
-              ],
-              "name": "CannotReplaceFunctionsFromFacetWithZeroAddress",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_selector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "CannotReplaceImmutableFunction",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint8",
-                  "name": "_action",
-                  "type": "uint8"
-                }
-              ],
-              "name": "IncorrectFacetCutAction",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_initializationContractAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "bytes",
-                  "name": "_calldata",
-                  "type": "bytes"
-                }
-              ],
-              "name": "InitializationFunctionReverted",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_contractAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "string",
-                  "name": "_message",
-                  "type": "string"
-                }
-              ],
-              "name": "NoBytecodeAtAddress",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_facetAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "NoSelectorsProvidedForFacetForCut",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_user",
-                  "type": "address"
-                },
-                {
-                  "internalType": "address",
-                  "name": "_contractOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "NotContractOwner",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_facetAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "RemoveFacetAddressMustBeZeroAddress",
-              "type": "error"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "components": [
-                    {
-                      "internalType": "address",
-                      "name": "facetAddress",
-                      "type": "address"
-                    },
-                    {
-                      "internalType": "enum IDiamond.FacetCutAction",
-                      "name": "action",
-                      "type": "uint8"
-                    },
-                    {
-                      "internalType": "bytes4[]",
-                      "name": "functionSelectors",
-                      "type": "bytes4[]"
-                    }
-                  ],
-                  "indexed": false,
-                  "internalType": "struct IDiamond.FacetCut[]",
-                  "name": "_diamondCut",
-                  "type": "tuple[]"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "_init",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "bytes",
-                  "name": "_calldata",
-                  "type": "bytes"
-                }
-              ],
-              "name": "DiamondCut",
-              "type": "event"
-            },
-            {
-              "inputs": [
-                {
-                  "components": [
-                    {
-                      "internalType": "address",
-                      "name": "facetAddress",
-                      "type": "address"
-                    },
-                    {
-                      "internalType": "enum IDiamond.FacetCutAction",
-                      "name": "action",
-                      "type": "uint8"
-                    },
-                    {
-                      "internalType": "bytes4[]",
-                      "name": "functionSelectors",
-                      "type": "bytes4[]"
-                    }
-                  ],
-                  "internalType": "struct IDiamond.FacetCut[]",
-                  "name": "_diamondCut",
-                  "type": "tuple[]"
-                },
-                {
-                  "internalType": "address",
-                  "name": "_init",
-                  "type": "address"
-                },
-                {
-                  "internalType": "bytes",
-                  "name": "_calldata",
-                  "type": "bytes"
-                }
-              ],
-              "name": "diamondCut",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes4",
-                  "name": "_functionSelector",
-                  "type": "bytes4"
-                }
-              ],
-              "name": "facetAddress",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "facetAddress_",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "facetAddresses",
-              "outputs": [
-                {
-                  "internalType": "address[]",
-                  "name": "facetAddresses_",
-                  "type": "address[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_facet",
-                  "type": "address"
-                }
-              ],
-              "name": "facetFunctionSelectors",
-              "outputs": [
-                {
-                  "internalType": "bytes4[]",
-                  "name": "_facetFunctionSelectors",
-                  "type": "bytes4[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "facets",
-              "outputs": [
-                {
-                  "components": [
-                    {
-                      "internalType": "address",
-                      "name": "facetAddress",
-                      "type": "address"
-                    },
-                    {
-                      "internalType": "bytes4[]",
-                      "name": "functionSelectors",
-                      "type": "bytes4[]"
-                    }
-                  ],
-                  "internalType": "struct IDiamondLoupe.Facet[]",
-                  "name": "facets_",
-                  "type": "tuple[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "previousOwner",
-                  "type": "address"
-                },
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "newOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "OwnershipTransferred",
-              "type": "event"
-            },
-            {
-              "inputs": [],
-              "name": "owner",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "owner_",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_newOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "transferOwnership",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "PKPHelper",
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x0c2f4Deb242f14379C809BCc70DDE5e7c9B24Cb0",
-          "inserted_at": "2025-01-29T00:49:19Z",
+          "address_hash": "0x58969e65c5E953F3Eae3AeC40Bb0D7b805c0631E",
+          "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
             {
               "inputs": [
@@ -11935,8 +10755,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x04938BF1d2D3Ec15Dd519e01EAfb0324F6589BBe",
-          "inserted_at": "2025-01-29T00:49:19Z",
+          "address_hash": "0xBa1c129bBFc8979bE67bE53A1e9e84fDd58dCD26",
+          "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
             {
               "inputs": [
@@ -12491,6 +11311,19 @@ module.exports = {
               "type": "event"
             },
             {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "newTrustedForwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "TrustedForwarderSet",
+              "type": "event"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "uint256",
@@ -12892,6 +11725,19 @@ module.exports = {
               "type": "function"
             },
             {
+              "inputs": [],
+              "name": "getTrustedForwarder",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "uint256",
@@ -13152,6 +11998,19 @@ module.exports = {
             {
               "inputs": [
                 {
+                  "internalType": "address",
+                  "name": "forwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "setTrustedForwarder",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "uint256",
                   "name": "tokenId",
                   "type": "uint256"
@@ -13231,8 +12090,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x7DC22567Ac489F2C579d9174fBEA0CDF4C3F3D2B",
-          "inserted_at": "2025-01-29T00:49:19Z",
+          "address_hash": "0x6C03499667C7d5818e26A67FDF5a9CB5B1Cf02ca",
+          "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
             {
               "inputs": [
@@ -13395,8 +12254,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x5bb7A9D6c00803c4C555D977a7c4b7cB51FC8aeB",
-          "inserted_at": "2025-01-29T00:49:19Z",
+          "address_hash": "0x0fe649f93f7B79Ed99A23c966A4A17073A87b10e",
+          "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
             {
               "inputs": [],
@@ -13632,8 +12491,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x63ecEea73cfA9D4B2cD4bbB0892A0fFcb62910a2",
-          "inserted_at": "2025-01-29T00:49:19Z",
+          "address_hash": "0xE4f54BE6FA465a04a955CB59D21bca98f009B0bA",
+          "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
             {
               "inputs": [
@@ -14268,8 +13127,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-dev",
-          "address_hash": "0x19F421a79401a75C1f850a4655479F952e38e00F",
-          "inserted_at": "2025-01-29T00:49:19Z",
+          "address_hash": "0x7703a8C773e37aF3C09F27A516E495A216aA7608",
+          "inserted_at": "2025-04-10T01:31:51Z",
           "ABI": [
             {
               "inputs": [
@@ -14707,6 +13566,19 @@ module.exports = {
               "anonymous": false,
               "inputs": [
                 {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "newTrustedForwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "TrustedForwarderSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
                   "indexed": true,
                   "internalType": "address",
                   "name": "stakingAddress",
@@ -14853,11 +13725,6 @@ module.exports = {
                         },
                         {
                           "internalType": "uint256",
-                          "name": "commission",
-                          "type": "uint256"
-                        },
-                        {
-                          "internalType": "uint256",
                           "name": "commissionRate",
                           "type": "uint256"
                         },
@@ -14880,6 +13747,21 @@ module.exports = {
                           "internalType": "uint256",
                           "name": "delegatedStakeWeight",
                           "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "lastRewardEpochClaimedFixedCostRewards",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "lastRewardEpochClaimedCommission",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "address",
+                          "name": "operatorAddress",
+                          "type": "address"
                         }
                       ],
                       "internalType": "struct LibStakingStorage.Validator",
@@ -14903,6 +13785,19 @@ module.exports = {
             {
               "inputs": [],
               "name": "getStakingAddress",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getTrustedForwarder",
               "outputs": [
                 {
                   "internalType": "address",
@@ -15086,6 +13981,19 @@ module.exports = {
                 }
               ],
               "name": "setNodeCapacityConfig",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "forwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "setTrustedForwarder",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"

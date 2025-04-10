@@ -1,4 +1,4 @@
-export const nagaDev = {
+{
   "data": [
     {
       "name": "Staking",
@@ -14075,4 +14075,4 @@ export const nagaDev = {
     "litNodePort": 7470,
     "rocketPort": 7470
   }
-} as const;
+}
