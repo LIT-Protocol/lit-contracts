@@ -1,7 +1,53 @@
+var __create = Object.create;
+var __getProtoOf = Object.getPrototypeOf;
+var __defProp = Object.defineProperty;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __toESM = (mod, isNodeMode, target) => {
+  target = mod != null ? __create(__getProtoOf(mod)) : {};
+  const to = isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target;
+  for (let key of __getOwnPropNames(mod))
+    if (!__hasOwnProp.call(to, key))
+      __defProp(to, key, {
+        get: () => mod[key],
+        enumerable: true
+      });
+  return to;
+};
+var __moduleCache = /* @__PURE__ */ new WeakMap;
+var __toCommonJS = (from) => {
+  var entry = __moduleCache.get(from), desc;
+  if (entry)
+    return entry;
+  entry = __defProp({}, "__esModule", { value: true });
+  if (from && typeof from === "object" || typeof from === "function")
+    __getOwnPropNames(from).map((key) => !__hasOwnProp.call(entry, key) && __defProp(entry, key, {
+      get: () => from[key],
+      enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+    }));
+  __moduleCache.set(from, entry);
+  return entry;
+};
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, {
+      get: all[name],
+      enumerable: true,
+      configurable: true,
+      set: (newValue) => all[name] = () => newValue
+    });
+};
+
 // src/custom-network-signatures.ts
-import * as fs from "fs";
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
+var exports_custom_network_signatures = {};
+__export(exports_custom_network_signatures, {
+  generateSignaturesFromContext: () => generateSignaturesFromContext
+});
+module.exports = __toCommonJS(exports_custom_network_signatures);
+var fs = __toESM(require("fs"));
+var import_path = __toESM(require("path"));
+var import_url = require("url");
 
 // src/config/methods.ts
 var METHODS_TO_EXTRACT = [
@@ -3974,7 +4020,7 @@ var __dirname = "/Users/anson/Projects/lit-contracts/src", __filename = "/Users/
 function getBaseDirectory(useScriptDirectory = false, callerPath) {
   if (useScriptDirectory) {
     if (callerPath) {
-      const callerDir = dirname(fileURLToPath(callerPath));
+      const callerDir = import_path.dirname(import_url.fileURLToPath(callerPath));
       console.log("Using caller directory:", callerDir);
       return callerDir;
     }
@@ -3982,7 +4028,7 @@ function getBaseDirectory(useScriptDirectory = false, callerPath) {
       console.log("Using __dirname:", __dirname);
       return __dirname;
     }
-    const moduleDir = dirname(fileURLToPath(import.meta.url));
+    const moduleDir = import_path.dirname(import_url.fileURLToPath(import.meta.url));
     console.log("Using module directory:", moduleDir);
     return moduleDir;
   }
@@ -3991,10 +4037,10 @@ function getBaseDirectory(useScriptDirectory = false, callerPath) {
   return cwd;
 }
 function resolvePath(relativePath, baseDir, forceRelative = false) {
-  if (path.isAbsolute(relativePath) && !forceRelative) {
+  if (import_path.default.isAbsolute(relativePath) && !forceRelative) {
     return relativePath;
   }
-  return path.resolve(baseDir, relativePath);
+  return import_path.default.resolve(baseDir, relativePath);
 }
 function convertToNetworkCache(rawJson, networkName) {
   const contractGroups = Object.entries(rawJson).map(([contractName, info]) => ({
@@ -4067,9 +4113,9 @@ async function generateSignaturesFromContext(options) {
     const jsonData = convertToNetworkCache(rawJsonData, networkName);
     console.log("\uD83D\uDCCA Generating signatures...");
     const signatures = generateAbiSignatures(jsonData);
-    const outputPath = path.join(resolvedOutputDir, `${networkName}.js`);
-    const outputPathCjs = path.join(resolvedOutputDir, `${networkName}.cjs`);
-    const outputPathTs = path.join(resolvedOutputDir, `${networkName}.ts`);
+    const outputPath = import_path.default.join(resolvedOutputDir, `${networkName}.js`);
+    const outputPathCjs = import_path.default.join(resolvedOutputDir, `${networkName}.cjs`);
+    const outputPathTs = import_path.default.join(resolvedOutputDir, `${networkName}.ts`);
     fs.writeFileSync(outputPathTs, `/**
  * Generated Contract Method Signatures for ${networkName}
  * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
@@ -4105,8 +4151,8 @@ module.exports = {
     throw error;
   }
 }
-var mainScriptPath = path.resolve(process.argv[1] || "");
-var currentScriptPath = fileURLToPath(import.meta.url);
+var mainScriptPath = import_path.default.resolve(process.argv[1] || "");
+var currentScriptPath = import_url.fileURLToPath(import.meta.url);
 if (mainScriptPath === currentScriptPath) {
   const jsonFilePath = process.argv[2];
   const networkName = process.argv[3];
@@ -4124,6 +4170,3 @@ if (mainScriptPath === currentScriptPath) {
     process.exit(1);
   });
 }
-export {
-  generateSignaturesFromContext
-};

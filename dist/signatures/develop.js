@@ -150,6 +150,11 @@ export const signatures = {
                 "internalType": "address",
                 "name": "operatorAddress",
                 "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "uniqueDelegatingStakerCount",
+                "type": "uint256"
               }
             ],
             "internalType": "struct LibStakingStorage.Validator[]",
@@ -221,6 +226,37 @@ export const signatures = {
           }
         ],
         "name": "OwnershipTransferred",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "userStakerAddress",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "operatorStakerAddress",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "timeLock",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "name": "AdminStakedForUser",
         "type": "event"
       },
       {
@@ -560,6 +596,37 @@ export const signatures = {
         "anonymous": false,
         "inputs": [
           {
+            "indexed": false,
+            "internalType": "address",
+            "name": "stakerAddress",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "recordId",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "stakerAddressClient",
+            "type": "address"
+          }
+        ],
+        "name": "StakeRecordCreated",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
             "indexed": true,
             "internalType": "address",
             "name": "staker",
@@ -669,37 +736,6 @@ export const signatures = {
           }
         ],
         "name": "FixedCostRewardsClaimed",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "stakerAddress",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "recordId",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "stakerAddressClient",
-            "type": "address"
-          }
-        ],
-        "name": "StakeRecordCreated",
         "type": "event"
       },
       {
@@ -2614,6 +2650,11 @@ export const signatures = {
                     "internalType": "address",
                     "name": "operatorAddress",
                     "type": "address"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "uniqueDelegatingStakerCount",
+                    "type": "uint256"
                   }
                 ],
                 "internalType": "struct LibStakingStorage.Validator",

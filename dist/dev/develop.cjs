@@ -483,114 +483,6 @@ module.exports = {
               "type": "function"
             },
             {
-              "inputs": [],
-              "name": "getUnassignedStakerAddresses",
-              "outputs": [
-                {
-                  "internalType": "address[]",
-                  "name": "",
-                  "type": "address[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "getUnassignedValidators",
-              "outputs": [
-                {
-                  "components": [
-                    {
-                      "internalType": "uint32",
-                      "name": "ip",
-                      "type": "uint32"
-                    },
-                    {
-                      "internalType": "uint128",
-                      "name": "ipv6",
-                      "type": "uint128"
-                    },
-                    {
-                      "internalType": "uint32",
-                      "name": "port",
-                      "type": "uint32"
-                    },
-                    {
-                      "internalType": "address",
-                      "name": "nodeAddress",
-                      "type": "address"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "reward",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "senderPubKey",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "receiverPubKey",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "lastActiveEpoch",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "commissionRate",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "lastRewardEpoch",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "lastRealmId",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "delegatedStakeAmount",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "delegatedStakeWeight",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "lastRewardEpochClaimedFixedCostRewards",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "lastRewardEpochClaimedCommission",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "address",
-                      "name": "operatorAddress",
-                      "type": "address"
-                    }
-                  ],
-                  "internalType": "struct LibStakingStorage.Validator[]",
-                  "name": "",
-                  "type": "tuple[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
               "inputs": [
                 {
                   "internalType": "address",
@@ -789,6 +681,11 @@ module.exports = {
                       "internalType": "address",
                       "name": "operatorAddress",
                       "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "uniqueDelegatingStakerCount",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator",
@@ -811,6 +708,11 @@ module.exports = {
             },
             {
               "inputs": [],
+              "name": "CannotModifyUnfrozen",
+              "type": "error"
+            },
+            {
+              "inputs": [],
               "name": "CannotStakeZero",
               "type": "error"
             },
@@ -827,12 +729,44 @@ module.exports = {
             {
               "inputs": [
                 {
+                  "internalType": "uint256",
+                  "name": "timeLock",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "minTimeLock",
+                  "type": "uint256"
+                }
+              ],
+              "name": "MinTimeLockNotMet",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "enum LibStakingStorage.States",
                   "name": "state",
                   "type": "uint8"
                 }
               ],
               "name": "MustBeInNextValidatorSetLockedOrReadyForNextEpochState",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "NoEmptyStakingSlot",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "amount",
+                  "type": "uint256"
+                }
+              ],
+              "name": "StakeAmountNotMet",
               "type": "error"
             },
             {
@@ -850,6 +784,37 @@ module.exports = {
               ],
               "name": "ValidatorIsNotInNextEpoch",
               "type": "error"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "userStakerAddress",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "operatorStakerAddress",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "timeLock",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "amount",
+                  "type": "uint256"
+                }
+              ],
+              "name": "AdminStakedForUser",
+              "type": "event"
             },
             {
               "anonymous": false,
@@ -1188,6 +1153,37 @@ module.exports = {
               "anonymous": false,
               "inputs": [
                 {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "recordId",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "amount",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "stakerAddressClient",
+                  "type": "address"
+                }
+              ],
+              "name": "StakeRecordCreated",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
                   "indexed": true,
                   "internalType": "address",
                   "name": "staker",
@@ -1365,6 +1361,24 @@ module.exports = {
               "inputs": [
                 {
                   "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address[]",
+                  "name": "validatorsForNextEpoch",
+                  "type": "address[]"
+                }
+              ],
+              "name": "adminSetValidatorsInNextEpoch",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
                   "name": "source_realmId",
                   "type": "uint256"
                 },
@@ -1406,7 +1420,12 @@ module.exports = {
               "inputs": [
                 {
                   "internalType": "address",
-                  "name": "staker",
+                  "name": "userStakerAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "operatorStakerAddress",
                   "type": "address"
                 },
                 {
@@ -1420,7 +1439,30 @@ module.exports = {
                   "type": "uint256"
                 }
               ],
-              "name": "adminStakeForValidator",
+              "name": "adminStakeForUser",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "userStakerAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "operatorStakerAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "stakeId",
+                  "type": "uint256"
+                }
+              ],
+              "name": "adminUnfreezeForUser",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -1923,11 +1965,6 @@ module.exports = {
             },
             {
               "inputs": [],
-              "name": "CannotModifyUnfrozen",
-              "type": "error"
-            },
-            {
-              "inputs": [],
               "name": "CannotWithdrawFrozen",
               "type": "error"
             },
@@ -1964,29 +2001,8 @@ module.exports = {
               "type": "error"
             },
             {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "timeLock",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "minTimeLock",
-                  "type": "uint256"
-                }
-              ],
-              "name": "MinTimeLockNotMet",
-              "type": "error"
-            },
-            {
               "inputs": [],
               "name": "NewTimeLockMustBeGreaterThanCurrent",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "NoEmptyStakingSlot",
               "type": "error"
             },
             {
@@ -2018,17 +2034,6 @@ module.exports = {
                 }
               ],
               "name": "SlashingMustOccurInSameRealm",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "StakeAmountNotMet",
               "type": "error"
             },
             {
@@ -2113,37 +2118,6 @@ module.exports = {
                 }
               ],
               "name": "FixedCostRewardsClaimed",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "stakerAddress",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "recordId",
-                  "type": "uint256"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "stakerAddressClient",
-                  "type": "address"
-                }
-              ],
-              "name": "StakeRecordCreated",
               "type": "event"
             },
             {
@@ -2786,7 +2760,7 @@ module.exports = {
               "inputs": [
                 {
                   "internalType": "address",
-                  "name": "stakerAddress",
+                  "name": "operatorStakerAddress",
                   "type": "address"
                 },
                 {
@@ -2804,7 +2778,7 @@ module.exports = {
               "inputs": [
                 {
                   "internalType": "address",
-                  "name": "stakerAddress",
+                  "name": "operatorStakerAddress",
                   "type": "address"
                 },
                 {
@@ -4233,6 +4207,11 @@ module.exports = {
                       "internalType": "address",
                       "name": "operatorAddress",
                       "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "uniqueDelegatingStakerCount",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -4386,6 +4365,11 @@ module.exports = {
                       "internalType": "address",
                       "name": "operatorAddress",
                       "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "uniqueDelegatingStakerCount",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -4743,6 +4727,25 @@ module.exports = {
             {
               "inputs": [
                 {
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "getSelfStakeRecordCount",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "uint256",
                   "name": "realmId",
                   "type": "uint256"
@@ -4844,12 +4847,12 @@ module.exports = {
               "inputs": [
                 {
                   "internalType": "address",
-                  "name": "user",
+                  "name": "userStakerAddress",
                   "type": "address"
                 },
                 {
                   "internalType": "address",
-                  "name": "stakerAddress",
+                  "name": "operatorStakerAddress",
                   "type": "address"
                 }
               ],
@@ -4868,16 +4871,16 @@ module.exports = {
               "inputs": [
                 {
                   "internalType": "address",
-                  "name": "user",
+                  "name": "userStakerAddress",
                   "type": "address"
                 },
                 {
                   "internalType": "address",
-                  "name": "stakerAddress",
+                  "name": "operatorStakerAddress",
                   "type": "address"
                 }
               ],
-              "name": "getStakeRecordsForValidator",
+              "name": "getStakeRecordsForUser",
               "outputs": [
                 {
                   "components": [
@@ -5382,6 +5385,11 @@ module.exports = {
                       "internalType": "address",
                       "name": "operatorAddress",
                       "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "uniqueDelegatingStakerCount",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -5483,6 +5491,11 @@ module.exports = {
                       "internalType": "address",
                       "name": "operatorAddress",
                       "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "uniqueDelegatingStakerCount",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -5584,6 +5597,11 @@ module.exports = {
                       "internalType": "address",
                       "name": "operatorAddress",
                       "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "uniqueDelegatingStakerCount",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -5919,6 +5937,25 @@ module.exports = {
             {
               "inputs": [
                 {
+                  "internalType": "address",
+                  "name": "validator",
+                  "type": "address"
+                }
+              ],
+              "name": "isValidatorBanned",
+              "outputs": [
+                {
+                  "internalType": "bool",
+                  "name": "",
+                  "type": "bool"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "uint256",
                   "name": "reason",
                   "type": "uint256"
@@ -6060,6 +6097,44 @@ module.exports = {
             {
               "inputs": [
                 {
+                  "internalType": "address",
+                  "name": "validator",
+                  "type": "address"
+                }
+              ],
+              "name": "permittedRealmsForValidator",
+              "outputs": [
+                {
+                  "internalType": "uint256[]",
+                  "name": "",
+                  "type": "uint256[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                }
+              ],
+              "name": "permittedValidators",
+              "outputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "",
+                  "type": "address[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "uint256",
                   "name": "base",
                   "type": "uint256"
@@ -6185,6 +6260,25 @@ module.exports = {
                   "internalType": "bool",
                   "name": "",
                   "type": "bool"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "staker",
+                  "type": "address"
+                }
+              ],
+              "name": "stakerToValidatorsTheyStakedTo",
+              "outputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "",
+                  "type": "address[]"
                 }
               ],
               "stateMutability": "view",
@@ -6329,6 +6423,11 @@ module.exports = {
                       "internalType": "address",
                       "name": "operatorAddress",
                       "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "uniqueDelegatingStakerCount",
+                      "type": "uint256"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator",
@@ -6417,6 +6516,29 @@ module.exports = {
                 }
               ],
               "name": "sendTokens",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "_recipients",
+                  "type": "address[]"
+                },
+                {
+                  "internalType": "address",
+                  "name": "tokenContract",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "amountPerRecipient",
+                  "type": "uint256"
+                }
+              ],
+              "name": "sendTokensExact",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -13766,6 +13888,11 @@ module.exports = {
                           "internalType": "address",
                           "name": "operatorAddress",
                           "type": "address"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "uniqueDelegatingStakerCount",
+                          "type": "uint256"
                         }
                       ],
                       "internalType": "struct LibStakingStorage.Validator",

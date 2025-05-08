@@ -320,6 +320,12 @@ const signatures = {
             "internalType": "struct LibStakingStorage.LitActionConfig",
             "name": "newLitActionConfig",
             "type": "tuple"
+          },
+          {
+            "indexed": false,
+            "internalType": "bool",
+            "name": "newHeliosEnabled",
+            "type": "bool"
           }
         ],
         "name": "ConfigSet",

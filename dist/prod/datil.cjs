@@ -1844,6 +1844,12 @@ module.exports = {
                   "internalType": "struct LibStakingStorage.LitActionConfig",
                   "name": "newLitActionConfig",
                   "type": "tuple"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "bool",
+                  "name": "newHeliosEnabled",
+                  "type": "bool"
                 }
               ],
               "name": "ConfigSet",
@@ -2217,6 +2223,11 @@ module.exports = {
                       "internalType": "struct LibStakingStorage.LitActionConfig",
                       "name": "litActionConfig",
                       "type": "tuple"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "heliosEnabled",
+                      "type": "bool"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Config",
@@ -3316,6 +3327,11 @@ module.exports = {
                       "internalType": "struct LibStakingStorage.LitActionConfig",
                       "name": "litActionConfig",
                       "type": "tuple"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "heliosEnabled",
+                      "type": "bool"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Config",
