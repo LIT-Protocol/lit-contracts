@@ -104,47 +104,70 @@ function updatePackageJsonExports(networks: {
     ".": {
       import: "./dist/index.js",
       require: "./dist/index.cjs",
-      types: "./dist/index.ts",
+      types: "./dist/index.d.ts",
     },
+  };
+
+  const typesVersions: Record<string, Record<string, string[]>> = {
+    "*": {},
   };
 
   // Add production network exports
   networks.prod.forEach((network) => {
-    exports[`./prod/${network}`] = {
-      import: `./dist/prod/${network}.js`,
-      require: `./dist/prod/${network}.cjs`,
-      types: `./dist/prod/${network}.ts`,
+    const prodNetworkPath = `prod/${network}`;
+    const sigNetworkPath = `signatures/${network}`;
+
+    exports[`./${prodNetworkPath}`] = {
+      import: `./dist/${prodNetworkPath}.js`,
+      require: `./dist/${prodNetworkPath}.cjs`,
+      types: `./dist/${prodNetworkPath}.d.ts`,
     };
-    exports[`./signatures/${network}`] = {
-      import: `./dist/signatures/${network}.js`,
-      require: `./dist/signatures/${network}.cjs`,
-      types: `./dist/signatures/${network}.ts`,
+    typesVersions["*"]![prodNetworkPath] = [`dist/${prodNetworkPath}.d.ts`];
+
+    exports[`./${sigNetworkPath}`] = {
+      import: `./dist/${sigNetworkPath}.js`,
+      require: `./dist/${sigNetworkPath}.cjs`,
+      types: `./dist/${sigNetworkPath}.d.ts`,
     };
+    typesVersions["*"]![sigNetworkPath] = [`dist/${sigNetworkPath}.d.ts`];
   });
 
   // Add development network exports
   networks.dev.forEach((network) => {
-    exports[`./dev/${network}`] = {
-      import: `./dist/dev/${network}.js`,
-      require: `./dist/dev/${network}.cjs`,
-      types: `./dist/dev/${network}.ts`,
+    const devNetworkPath = `dev/${network}`;
+    const sigNetworkPath = `signatures/${network}`;
+
+    exports[`./${devNetworkPath}`] = {
+      import: `./dist/${devNetworkPath}.js`,
+      require: `./dist/${devNetworkPath}.cjs`,
+      types: `./dist/${devNetworkPath}.d.ts`,
     };
-    exports[`./signatures/${network}`] = {
-      import: `./dist/signatures/${network}.js`,
-      require: `./dist/signatures/${network}.cjs`,
-      types: `./dist/signatures/${network}.ts`,
+    typesVersions["*"]![devNetworkPath] = [`dist/${devNetworkPath}.d.ts`];
+
+    // Note: Dev signatures might reuse prod signature paths or have their own
+    // Assuming they have their own for consistency in this example
+    exports[`./${sigNetworkPath}`] = {
+      import: `./dist/${sigNetworkPath}.js`,
+      require: `./dist/${sigNetworkPath}.cjs`,
+      types: `./dist/${sigNetworkPath}.d.ts`,
     };
+    typesVersions["*"]![sigNetworkPath] = [`dist/${sigNetworkPath}.d.ts`];
   });
 
   // Add custom network signatures
-  exports[`./custom-network-signatures`] = {
-    import: `./dist/custom-network-signatures.ts`, // FIXME: need to change to .js
-    require: `./dist/custom-network-signatures.ts`, // FIXME: need to change to .cjs
-    types: `./dist/custom-network-signatures.ts`,
+  const customNetworkSignaturesPath = "custom-network-signatures";
+  exports[`./${customNetworkSignaturesPath}`] = {
+    import: `./dist/${customNetworkSignaturesPath}.js`,
+    require: `./dist/${customNetworkSignaturesPath}.cjs`,
+    types: `./dist/${customNetworkSignaturesPath}.d.ts`,
   };
+  typesVersions["*"]![customNetworkSignaturesPath] = [
+    `dist/${customNetworkSignaturesPath}.d.ts`,
+  ];
 
   // Update package.json
   packageJson.exports = exports;
+  packageJson.typesVersions = typesVersions;
   packageJson.main = "./dist/index.cjs";
   packageJson.module = "./dist/index.js";
 

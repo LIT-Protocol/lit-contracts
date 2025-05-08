@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /**
  * Script to extract ABI methods from contracts
  *

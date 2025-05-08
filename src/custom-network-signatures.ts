@@ -282,8 +282,14 @@ module.exports = {
   }
 }
 
-// CLI entry point
-if (require.main === module) {
+// Determine if the script is being run directly
+// process.argv[0] is the bun executable
+// process.argv[1] is the script being run
+const mainScriptPath = path.resolve(process.argv[1] || '');
+const currentScriptPath = fileURLToPath(import.meta.url);
+
+if (mainScriptPath === currentScriptPath) {
+  // This means custom-network-signatures.ts was the script passed to `bun run`
   const jsonFilePath = process.argv[2];
   const networkName = process.argv[3];
 
@@ -301,7 +307,7 @@ if (require.main === module) {
     networkName,
     useScriptDirectory: false, // Use current working directory for CLI usage
   }).catch((error) => {
-    console.error(error);
+    console.error("Error in CLI execution of custom-network-signatures:", error);
     process.exit(1);
   });
 }
