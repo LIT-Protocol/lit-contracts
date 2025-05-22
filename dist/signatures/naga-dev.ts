@@ -1495,6 +1495,25 @@ export const signatures = {
         "stateMutability": "view",
         "type": "function"
       },
+      "mintNext": {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "keyType",
+            "type": "uint256"
+          }
+        ],
+        "name": "mintNext",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "payable",
+        "type": "function"
+      },
       "tokenOfOwnerByIndex": {
         "inputs": [
           {

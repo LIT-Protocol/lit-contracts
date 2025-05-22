@@ -471,7 +471,7 @@ module.exports = {
                   "type": "address"
                 }
               ],
-              "name": "getShawdowRealmIdForStakerAddress",
+              "name": "getShadowRealmIdForStakerAddress",
               "outputs": [
                 {
                   "internalType": "uint256",
@@ -686,6 +686,11 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "uniqueDelegatingStakerCount",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "registerAttestedWalletDisabled",
+                      "type": "bool"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator",
@@ -1023,6 +1028,12 @@ module.exports = {
                 {
                   "indexed": false,
                   "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
                   "name": "newEpochEndTime",
                   "type": "uint256"
                 }
@@ -1036,6 +1047,12 @@ module.exports = {
                 {
                   "indexed": false,
                   "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
                   "name": "newEpochLength",
                   "type": "uint256"
                 }
@@ -1046,6 +1063,12 @@ module.exports = {
             {
               "anonymous": false,
               "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
                 {
                   "indexed": false,
                   "internalType": "uint256",
@@ -1335,6 +1358,24 @@ module.exports = {
                 }
               ],
               "name": "adminResetEpoch",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "validatorAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "disabled",
+                  "type": "bool"
+                }
+              ],
+              "name": "adminSetValidatorRegisterAttestedWalletDisabled",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -1845,6 +1886,86 @@ module.exports = {
                 }
               ],
               "name": "setKickPenaltyPercent",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "timeoutMs",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "memoryLimitMb",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxCodeLength",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxResponseLength",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxConsoleLogLength",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxFetchCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxSignCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxContractCallCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxBroadcastAndCollectCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxCallDepth",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxRetries",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "asyncActionsEnabled",
+                      "type": "bool"
+                    }
+                  ],
+                  "internalType": "struct LibStakingStorage.LitActionConfig",
+                  "name": "newConfig",
+                  "type": "tuple"
+                }
+              ],
+              "name": "setLitActionConfig",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -3104,6 +3225,11 @@ module.exports = {
               "type": "error"
             },
             {
+              "inputs": [],
+              "name": "ValidatorRegisterAttestedWalletDisabled",
+              "type": "error"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "string",
@@ -3149,10 +3275,22 @@ module.exports = {
                   "type": "address"
                 },
                 {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "x",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "y",
+                      "type": "uint256"
+                    }
+                  ],
                   "indexed": true,
-                  "internalType": "uint256",
+                  "internalType": "struct LibStakingStorage.UncompressedK256Key",
                   "name": "attestedPubKey",
-                  "type": "uint256"
+                  "type": "tuple"
                 }
               ],
               "name": "AttestedWalletRegistered",
@@ -3389,6 +3527,25 @@ module.exports = {
               "inputs": [
                 {
                   "internalType": "address",
+                  "name": "attestedAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "getAttestedPubKey",
+              "outputs": [
+                {
+                  "internalType": "bytes",
+                  "name": "",
+                  "type": "bytes"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
                   "name": "validatorToKickStakerAddress",
                   "type": "address"
                 },
@@ -3434,9 +3591,9 @@ module.exports = {
                   "type": "address"
                 },
                 {
-                  "internalType": "uint256",
+                  "internalType": "bytes",
                   "name": "attestedPubKey",
-                  "type": "uint256"
+                  "type": "bytes"
                 }
               ],
               "name": "registerAttestedWallet",
@@ -4212,6 +4369,11 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "uniqueDelegatingStakerCount",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "registerAttestedWalletDisabled",
+                      "type": "bool"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -4370,6 +4532,11 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "uniqueDelegatingStakerCount",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "registerAttestedWalletDisabled",
+                      "type": "bool"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -4582,9 +4749,21 @@ module.exports = {
                       "type": "address"
                     },
                     {
-                      "internalType": "uint256",
+                      "components": [
+                        {
+                          "internalType": "uint256",
+                          "name": "x",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "y",
+                          "type": "uint256"
+                        }
+                      ],
+                      "internalType": "struct LibStakingStorage.UncompressedK256Key",
                       "name": "pubKey",
-                      "type": "uint256"
+                      "type": "tuple"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.PubKeyMapping[]",
@@ -5390,6 +5569,11 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "uniqueDelegatingStakerCount",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "registerAttestedWalletDisabled",
+                      "type": "bool"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -5496,6 +5680,11 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "uniqueDelegatingStakerCount",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "registerAttestedWalletDisabled",
+                      "type": "bool"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -5602,6 +5791,11 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "uniqueDelegatingStakerCount",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "registerAttestedWalletDisabled",
+                      "type": "bool"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator[]",
@@ -5967,6 +6161,87 @@ module.exports = {
                   "internalType": "uint256",
                   "name": "",
                   "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                }
+              ],
+              "name": "litActionsConfig",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "timeoutMs",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "memoryLimitMb",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxCodeLength",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxResponseLength",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxConsoleLogLength",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxFetchCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxSignCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxContractCallCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxBroadcastAndCollectCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxCallDepth",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxRetries",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "asyncActionsEnabled",
+                      "type": "bool"
+                    }
+                  ],
+                  "internalType": "struct LibStakingStorage.LitActionConfig",
+                  "name": "",
+                  "type": "tuple"
                 }
               ],
               "stateMutability": "view",
@@ -6428,6 +6703,11 @@ module.exports = {
                       "internalType": "uint256",
                       "name": "uniqueDelegatingStakerCount",
                       "type": "uint256"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "registerAttestedWalletDisabled",
+                      "type": "bool"
                     }
                   ],
                   "internalType": "struct LibStakingStorage.Validator",
@@ -13893,6 +14173,11 @@ module.exports = {
                           "internalType": "uint256",
                           "name": "uniqueDelegatingStakerCount",
                           "type": "uint256"
+                        },
+                        {
+                          "internalType": "bool",
+                          "name": "registerAttestedWalletDisabled",
+                          "type": "bool"
                         }
                       ],
                       "internalType": "struct LibStakingStorage.Validator",

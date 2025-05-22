@@ -19,6 +19,7 @@ export const METHODS_TO_EXTRACT = [
   "PKPNFT.mintCost",
 
   // PKP Write:
+  "PKPNFT.mintNext",
   "PKPNFT.claimAndMint",
   "PKPHelper.claimAndMintNextAndAddAuthMethodsWithTypes",
   "PKPHelper.mintNextAndAddAuthMethods",

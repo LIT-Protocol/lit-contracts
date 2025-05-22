@@ -17,6 +17,7 @@ var METHODS_TO_EXTRACT = [
   "PKPPermissions.removePermittedAddress",
   "PKPNFT.tokenOfOwnerByIndex",
   "PKPNFT.mintCost",
+  "PKPNFT.mintNext",
   "PKPNFT.claimAndMint",
   "PKPHelper.claimAndMintNextAndAddAuthMethodsWithTypes",
   "PKPHelper.mintNextAndAddAuthMethods",
@@ -29,7 +30,7 @@ var METHODS_TO_EXTRACT = [
 ];
 
 // node_modules/ethers/lib.esm/_version.js
-var version = "6.13.5";
+var version = "6.14.0";
 
 // node_modules/ethers/lib.esm/utils/properties.js
 function checkType(value, type, name) {

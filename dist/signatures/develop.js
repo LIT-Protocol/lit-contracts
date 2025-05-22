@@ -155,6 +155,11 @@ export const signatures = {
                 "internalType": "uint256",
                 "name": "uniqueDelegatingStakerCount",
                 "type": "uint256"
+              },
+              {
+                "internalType": "bool",
+                "name": "registerAttestedWalletDisabled",
+                "type": "bool"
               }
             ],
             "internalType": "struct LibStakingStorage.Validator[]",
@@ -466,6 +471,12 @@ export const signatures = {
           {
             "indexed": false,
             "internalType": "uint256",
+            "name": "realmId",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
             "name": "newEpochEndTime",
             "type": "uint256"
           }
@@ -479,6 +490,12 @@ export const signatures = {
           {
             "indexed": false,
             "internalType": "uint256",
+            "name": "realmId",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
             "name": "newEpochLength",
             "type": "uint256"
           }
@@ -489,6 +506,12 @@ export const signatures = {
       {
         "anonymous": false,
         "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "realmId",
+            "type": "uint256"
+          },
           {
             "indexed": false,
             "internalType": "uint256",
@@ -924,10 +947,22 @@ export const signatures = {
             "type": "address"
           },
           {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "x",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "y",
+                "type": "uint256"
+              }
+            ],
             "indexed": true,
-            "internalType": "uint256",
+            "internalType": "struct LibStakingStorage.UncompressedK256Key",
             "name": "attestedPubKey",
-            "type": "uint256"
+            "type": "tuple"
           }
         ],
         "name": "AttestedWalletRegistered",
@@ -1523,6 +1558,25 @@ export const signatures = {
           }
         ],
         "stateMutability": "view",
+        "type": "function"
+      },
+      "mintNext": {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "keyType",
+            "type": "uint256"
+          }
+        ],
+        "name": "mintNext",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "payable",
         "type": "function"
       },
       "tokenOfOwnerByIndex": {
@@ -2655,6 +2709,11 @@ export const signatures = {
                     "internalType": "uint256",
                     "name": "uniqueDelegatingStakerCount",
                     "type": "uint256"
+                  },
+                  {
+                    "internalType": "bool",
+                    "name": "registerAttestedWalletDisabled",
+                    "type": "bool"
                   }
                 ],
                 "internalType": "struct LibStakingStorage.Validator",
