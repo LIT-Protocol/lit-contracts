@@ -1531,6 +1531,34 @@ const signatures = {
         "stateMutability": "nonpayable",
         "type": "function"
       },
+      "addPermittedAuthMethodScope": {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "authMethodType",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes",
+            "name": "id",
+            "type": "bytes"
+          },
+          {
+            "internalType": "uint256",
+            "name": "scopeId",
+            "type": "uint256"
+          }
+        ],
+        "name": "addPermittedAuthMethodScope",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
       "getPermittedActions": {
         "inputs": [
           {

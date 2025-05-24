@@ -11,6 +11,7 @@ export const METHODS_TO_EXTRACT = [
   // Permissions Write:
   "PKPPermissions.addPermittedAction",
   "PKPPermissions.addPermittedAddress",
+  "PKPPermissions.addPermittedAuthMethodScope",
   "PKPPermissions.removePermittedAction",
   "PKPPermissions.removePermittedAddress",
 

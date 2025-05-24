@@ -1,6 +1,6 @@
 {
   "name": "@lit-protocol/contracts",
-  "version": "0.1.13",
+  "version": "0.1.15",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "type": "module",
