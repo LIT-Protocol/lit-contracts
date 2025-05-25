@@ -63,7 +63,9 @@ var METHODS_TO_EXTRACT = [
   "PKPPermissions.removePermittedAction",
   "PKPPermissions.removePermittedAddress",
   "PKPNFT.tokenOfOwnerByIndex",
+  "PKPNFT.getTokenIdsForAuthMethod",
   "PKPNFT.mintCost",
+  "PKPNFT.safeTransferFrom",
   "PKPNFT.mintNext",
   "PKPNFT.claimAndMint",
   "PKPHelper.claimAndMintNextAndAddAuthMethodsWithTypes",
@@ -77,7 +79,7 @@ var METHODS_TO_EXTRACT = [
 ];
 
 // node_modules/ethers/lib.esm/_version.js
-var version = "6.14.0";
+var version = "6.14.1";
 
 // node_modules/ethers/lib.esm/utils/properties.js
 function checkType(value, type, name) {
@@ -4001,7 +4003,13 @@ function extractAbiMethods(networkCache, methodNames) {
         if (abiItem.type === "function" && methodNames.includes(abiItem.name)) {
           try {
             const iface = new Interface(ABI);
-            const functionSignature = iface.getFunction(abiItem.name)?.format("full");
+            let functionFragment;
+            if (abiItem.name === "safeTransferFrom") {
+              functionFragment = iface.getFunction("safeTransferFrom(address,address,uint256)");
+            } else {
+              functionFragment = iface.getFunction(abiItem.name);
+            }
+            const functionSignature = functionFragment?.format("full");
             result[abiItem.name] = {
               contractName,
               address,

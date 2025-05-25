@@ -17,9 +17,11 @@ export const METHODS_TO_EXTRACT = [
 
   // PKP Read:
   "PKPNFT.tokenOfOwnerByIndex",
+  "PKPNFT.getTokenIdsForAuthMethod",
   "PKPNFT.mintCost",
 
   // PKP Write:
+  "PKPNFT.safeTransferFrom",
   "PKPNFT.mintNext",
   "PKPNFT.claimAndMint",
   "PKPHelper.claimAndMintNextAndAddAuthMethodsWithTypes",

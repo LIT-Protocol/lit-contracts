@@ -52,9 +52,16 @@ export function extractAbiMethods(
         if (abiItem.type === "function" && methodNames.includes(abiItem.name)) {
           try {
             const iface = new Interface(ABI);
-            const functionSignature = iface
-              .getFunction(abiItem.name)
-              ?.format("full")!;
+            
+            // Special case for safeTransferFrom - use the basic version to avoid ambiguity
+            let functionFragment;
+            if (abiItem.name === "safeTransferFrom") {
+              functionFragment = iface.getFunction("safeTransferFrom(address,address,uint256)");
+            } else {
+              functionFragment = iface.getFunction(abiItem.name);
+            }
+            
+            const functionSignature = functionFragment?.format("full")!;
 
             result[abiItem.name] = {
               contractName,
