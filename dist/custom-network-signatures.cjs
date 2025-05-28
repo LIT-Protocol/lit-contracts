@@ -62,6 +62,7 @@ var METHODS_TO_EXTRACT = [
   "PKPPermissions.addPermittedAuthMethodScope",
   "PKPPermissions.removePermittedAction",
   "PKPPermissions.removePermittedAddress",
+  "PKPPermissions.removePermittedAuthMethod",
   "PKPPermissions.getTokenIdsForAuthMethod",
   "PKPNFT.tokenOfOwnerByIndex",
   "PKPNFT.mintCost",

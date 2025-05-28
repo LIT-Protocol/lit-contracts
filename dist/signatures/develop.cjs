@@ -238,37 +238,6 @@ const signatures = {
         "inputs": [
           {
             "indexed": false,
-            "internalType": "address",
-            "name": "userStakerAddress",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "operatorStakerAddress",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "timeLock",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          }
-        ],
-        "name": "AdminStakedForUser",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
             "internalType": "uint256",
             "name": "dataType",
             "type": "uint256"
@@ -2253,6 +2222,29 @@ const signatures = {
           }
         ],
         "name": "removePermittedAddress",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      "removePermittedAuthMethod": {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "authMethodType",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes",
+            "name": "id",
+            "type": "bytes"
+          }
+        ],
+        "name": "removePermittedAuthMethod",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"

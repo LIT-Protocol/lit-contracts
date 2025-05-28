@@ -1802,6 +1802,29 @@ export const signatures = {
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
+      },
+      "removePermittedAuthMethod": {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "authMethodType",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes",
+            "name": "id",
+            "type": "bytes"
+          }
+        ],
+        "name": "removePermittedAuthMethod",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
       }
     },
     "events": [

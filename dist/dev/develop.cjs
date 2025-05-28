@@ -795,37 +795,6 @@ module.exports = {
               "inputs": [
                 {
                   "indexed": false,
-                  "internalType": "address",
-                  "name": "userStakerAddress",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "operatorStakerAddress",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "timeLock",
-                  "type": "uint256"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "amount",
-                  "type": "uint256"
-                }
-              ],
-              "name": "AdminStakedForUser",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
                   "internalType": "uint256",
                   "name": "dataType",
                   "type": "uint256"
@@ -4362,6 +4331,54 @@ module.exports = {
               "type": "function"
             },
             {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "validatorAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "limit",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "offset",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getDelegatedStakersWithUnfreezingStakes",
+              "outputs": [
+                {
+                  "internalType": "address[]",
+                  "name": "",
+                  "type": "address[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "validatorAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "getDelegatedStakersWithUnfreezingStakesCount",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
               "inputs": [],
               "name": "getKeyTypes",
               "outputs": [
@@ -5157,6 +5174,30 @@ module.exports = {
                   "name": "",
                   "type": "uint256"
                 },
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "userStakerAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "operatorStakerAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "getUnfrozenStakeCountForUser",
+              "outputs": [
                 {
                   "internalType": "uint256",
                   "name": "",
