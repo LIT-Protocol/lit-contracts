@@ -961,7 +961,7 @@ const signatures = {
             "type": "bool"
           }
         ],
-        "name": "ConfigSet",
+        "name": "ConfigSet_Duplicate_1",
         "type": "event"
       },
       {
@@ -1561,30 +1561,6 @@ const signatures = {
             "internalType": "uint256",
             "name": "",
             "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      "getTokenIdsForAuthMethod": {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "authMethodType",
-            "type": "uint256"
-          },
-          {
-            "internalType": "bytes",
-            "name": "id",
-            "type": "bytes"
-          }
-        ],
-        "name": "getTokenIdsForAuthMethod",
-        "outputs": [
-          {
-            "internalType": "uint256[]",
-            "name": "",
-            "type": "uint256[]"
           }
         ],
         "stateMutability": "view",
@@ -2285,6 +2261,30 @@ const signatures = {
             "internalType": "struct LibPKPPermissionsStorage.AuthMethod[]",
             "name": "",
             "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      "getTokenIdsForAuthMethod": {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "authMethodType",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes",
+            "name": "id",
+            "type": "bytes"
+          }
+        ],
+        "name": "getTokenIdsForAuthMethod",
+        "outputs": [
+          {
+            "internalType": "uint256[]",
+            "name": "",
+            "type": "uint256[]"
           }
         ],
         "stateMutability": "view",

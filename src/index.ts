@@ -48,9 +48,26 @@ function generateAbiSignatures(networkData: NetworkCache) {
 
       if (Object.keys(contractMethods).length > 0) {
         const address = contractGroup.contracts[0].address_hash;
-        const events = contractGroup.contracts[0].ABI.filter(
+        const rawEvents = contractGroup.contracts[0].ABI.filter(
           (item) => item.type === "event"
         );
+
+        // Handle duplicate event names by adding suffixes
+        const nameCount = new Map<string, number>();
+        const events = rawEvents.map((event) => {
+          const originalName = event.name;
+          const count = nameCount.get(originalName) || 0;
+          nameCount.set(originalName, count + 1);
+
+          // If this is a duplicate (count > 0), add suffix
+          if (count > 0) {
+            return {
+              ...event,
+              name: `${originalName}_Duplicate_${count}`
+            };
+          }
+          return event;
+        });
 
         signatures[contractName] = {
           address,

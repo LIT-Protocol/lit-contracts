@@ -14,10 +14,10 @@ export const METHODS_TO_EXTRACT = [
   "PKPPermissions.addPermittedAuthMethodScope",
   "PKPPermissions.removePermittedAction",
   "PKPPermissions.removePermittedAddress",
+  "PKPPermissions.getTokenIdsForAuthMethod",
 
   // PKP Read:
   "PKPNFT.tokenOfOwnerByIndex",
-  "PKPNFT.getTokenIdsForAuthMethod",
   "PKPNFT.mintCost",
 
   // PKP Write:
