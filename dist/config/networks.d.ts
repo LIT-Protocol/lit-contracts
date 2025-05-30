@@ -10,7 +10,9 @@ export declare const PROD_PATH_BY_NETWORK: {
     readonly datil: "datil-prod";
     readonly "datil-dev": "datil-dev";
     readonly "datil-test": "datil-test";
+    readonly "internal-dev": "internal-dev";
     readonly "naga-dev": "naga-dev";
+    readonly "naga-staging": "naga-staging";
 };
 export declare const DEV_PATH_BY_NETWORK: {
     readonly develop: "develop";
@@ -18,7 +20,7 @@ export declare const DEV_PATH_BY_NETWORK: {
 export type ProdNetworkName = keyof typeof PROD_PATH_BY_NETWORK;
 export type DevNetworkName = keyof typeof DEV_PATH_BY_NETWORK;
 export type NetworkName = ProdNetworkName | DevNetworkName;
-export type NetworkPath = typeof PROD_PATH_BY_NETWORK[ProdNetworkName] | typeof DEV_PATH_BY_NETWORK[DevNetworkName];
+export type NetworkPath = (typeof PROD_PATH_BY_NETWORK)[ProdNetworkName] | (typeof DEV_PATH_BY_NETWORK)[DevNetworkName];
 /**
  * Network path configuration for GitHub API requests
  *
@@ -40,7 +42,9 @@ export declare const NETWORK_PATHS: {
             readonly datil: "datil-prod";
             readonly "datil-dev": "datil-dev";
             readonly "datil-test": "datil-test";
+            readonly "internal-dev": "internal-dev";
             readonly "naga-dev": "naga-dev";
+            readonly "naga-staging": "naga-staging";
         };
         /**
          * Constructs the full path for production networks
@@ -73,6 +77,8 @@ export declare const NETWORKS: {
             readonly "datil-test": "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-test/deployed-lit-node-contracts-temp.json";
             readonly datil: "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-prod/deployed-lit-node-contracts-temp.json";
             readonly "naga-dev": "https://raw.githubusercontent.com/LIT-Protocol/networks/main/naga-dev/deployed-lit-node-contracts-temp.json";
+            readonly "naga-staging": "https://raw.githubusercontent.com/LIT-Protocol/networks/main/naga-staging/deployed-lit-node-contracts-temp.json";
+            readonly "internal-dev": "https://raw.githubusercontent.com/LIT-Protocol/networks/main/internal-dev/deployed-lit-node-contracts-temp.json";
         };
     };
     readonly dev: {

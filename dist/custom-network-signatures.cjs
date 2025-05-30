@@ -80,7 +80,7 @@ var METHODS_TO_EXTRACT = [
 ];
 
 // node_modules/ethers/lib.esm/_version.js
-var version = "6.14.1";
+var version = "6.13.5";
 
 // node_modules/ethers/lib.esm/utils/properties.js
 function checkType(value, type, name) {
@@ -982,7 +982,7 @@ class Reader {
   }
 }
 
-// node_modules/ethers/node_modules/@noble/hashes/esm/_assert.js
+// node_modules/@noble/hashes/esm/_assert.js
 function number(n) {
   if (!Number.isSafeInteger(n) || n < 0)
     throw new Error(`Wrong positive integer: ${n}`);
@@ -1007,7 +1007,7 @@ function output(out, instance) {
   }
 }
 
-// node_modules/ethers/node_modules/@noble/hashes/esm/_u64.js
+// node_modules/@noble/hashes/esm/_u64.js
 var U32_MASK64 = /* @__PURE__ */ BigInt(2 ** 32 - 1);
 var _32n = /* @__PURE__ */ BigInt(32);
 function fromBig(n, le = false) {
@@ -1029,7 +1029,7 @@ var rotlSL = (h, l, s) => l << s | h >>> 32 - s;
 var rotlBH = (h, l, s) => l << s - 32 | h >>> 64 - s;
 var rotlBL = (h, l, s) => h << s - 32 | l >>> 64 - s;
 
-// node_modules/ethers/node_modules/@noble/hashes/esm/utils.js
+// node_modules/@noble/hashes/esm/utils.js
 /*! noble-hashes - MIT License (c) 2022 Paul Miller (paulmillr.com) */
 var u8a = (a) => a instanceof Uint8Array;
 var u32 = (arr) => new Uint32Array(arr.buffer, arr.byteOffset, Math.floor(arr.byteLength / 4));
@@ -1071,7 +1071,7 @@ function wrapXOFConstructorWithOpts(hashCons) {
   return hashC;
 }
 
-// node_modules/ethers/node_modules/@noble/hashes/esm/sha3.js
+// node_modules/@noble/hashes/esm/sha3.js
 var [SHA3_PI, SHA3_ROTL, _SHA3_IOTA] = [[], [], []];
 var _0n = /* @__PURE__ */ BigInt(0);
 var _1n = /* @__PURE__ */ BigInt(1);

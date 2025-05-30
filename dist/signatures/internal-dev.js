@@ -1,11 +1,11 @@
 /**
- * Generated Contract Method Signatures for develop
+ * Generated Contract Method Signatures for internal-dev
  * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
  */
 
-const signatures = {
+export const signatures = {
   "Staking": {
-    "address": "0x60D38A99Ed0a82D53322E4EC9B19A4F7Edb24B4D",
+    "address": "0x27B629746BbD6DA1eC86B88A8Ab67DeacA467D4a",
     "methods": {
       "getActiveUnkickedValidatorStructsAndCounts": {
         "inputs": [
@@ -994,7 +994,7 @@ const signatures = {
     ]
   },
   "PubkeyRouter": {
-    "address": "0x1806d92606Bbf4ddBaFB757E9617A6Cce303f9E1",
+    "address": "0xBb6E21999e9D99d79D84dB71C91040159f34FdD6",
     "methods": {
       "deriveEthAddressFromPubkey": {
         "inputs": [
@@ -1276,7 +1276,7 @@ const signatures = {
     ]
   },
   "PKPNFT": {
-    "address": "0x0300c7333ed43f0E4A9DD314a74A7757c4Ac3943",
+    "address": "0xC212ab184C3F6B696B51cED5AE25bF3549E9bdA7",
     "methods": {
       "claimAndMint": {
         "inputs": [
@@ -1656,7 +1656,7 @@ const signatures = {
     ]
   },
   "PKPHelper": {
-    "address": "0x350415649C249c66d78636E9727113b4e6265964",
+    "address": "0xBf9Ac081A9d34d16Dda468cDBd854793C1C1aE95",
     "methods": {
       "claimAndMintNextAndAddAuthMethodsWithTypes": {
         "inputs": [
@@ -1934,7 +1934,7 @@ const signatures = {
     ]
   },
   "PKPPermissions": {
-    "address": "0xc219a06cecDC4c4C49Dc2d146739A898827842Db",
+    "address": "0x2A71A8E2Fe3E18D64C719477F8B8146494E20210",
     "methods": {
       "addPermittedAction": {
         "inputs": [
@@ -2484,7 +2484,7 @@ const signatures = {
     ]
   },
   "PriceFeed": {
-    "address": "0xeE8f1FC9b3ea27314b226E2aaF4AA384BF9063c9",
+    "address": "0xB301ca8D0D36151788fe22E205dfaA937B5E3616",
     "methods": {
       "getNodesForRequest": {
         "inputs": [
@@ -2753,8 +2753,4 @@ const signatures = {
       }
     ]
   }
-};
-
-module.exports = {
-  signatures
 };

@@ -5,7 +5,7 @@
 
 export const signatures = {
   "Staking": {
-    "address": "0x16702eBf72048cb79bfFaBce2938468b11663818",
+    "address": "0x60D38A99Ed0a82D53322E4EC9B19A4F7Edb24B4D",
     "methods": {
       "getActiveUnkickedValidatorStructsAndCounts": {
         "inputs": [
@@ -150,6 +150,16 @@ export const signatures = {
                 "internalType": "address",
                 "name": "operatorAddress",
                 "type": "address"
+              },
+              {
+                "internalType": "uint256",
+                "name": "uniqueDelegatingStakerCount",
+                "type": "uint256"
+              },
+              {
+                "internalType": "bool",
+                "name": "registerAttestedWalletDisabled",
+                "type": "bool"
               }
             ],
             "internalType": "struct LibStakingStorage.Validator[]",
@@ -242,174 +252,6 @@ export const signatures = {
           {
             "indexed": false,
             "internalType": "uint256",
-            "name": "reason",
-            "type": "uint256"
-          },
-          {
-            "components": [
-              {
-                "internalType": "uint256",
-                "name": "tolerance",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "intervalSecs",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "kickPenaltyPercent",
-                "type": "uint256"
-              },
-              {
-                "internalType": "uint256",
-                "name": "kickPenaltyDemerits",
-                "type": "uint256"
-              }
-            ],
-            "indexed": false,
-            "internalType": "struct LibStakingStorage.ComplaintConfig",
-            "name": "config",
-            "type": "tuple"
-          }
-        ],
-        "name": "ComplaintConfigSet",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "tokenRewardPerTokenPerEpoch",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256[]",
-            "name": "keyTypes",
-            "type": "uint256[]"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "minimumValidatorCount",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "rewardEpochDuration",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "maxTimeLock",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "minTimeLock",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "bmin",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "bmax",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "k",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "p",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "bool",
-            "name": "enableStakeAutolock",
-            "type": "bool"
-          },
-          {
-            "indexed": false,
-            "internalType": "bool",
-            "name": "permittedStakersOn",
-            "type": "bool"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "tokenPrice",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "profitMultiplier",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "usdCostPerMonth",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "maxEmissionRate",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "minStakeAmount",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "maxStakeAmount",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "minSelfStake",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "minSelfStakeTimelock",
-            "type": "uint256"
-          }
-        ],
-        "name": "ConfigSet",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "uint256",
             "name": "dataType",
             "type": "uint256"
           }
@@ -436,6 +278,12 @@ export const signatures = {
           {
             "indexed": false,
             "internalType": "uint256",
+            "name": "realmId",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
             "name": "newEpochEndTime",
             "type": "uint256"
           }
@@ -449,6 +297,12 @@ export const signatures = {
           {
             "indexed": false,
             "internalType": "uint256",
+            "name": "realmId",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
             "name": "newEpochLength",
             "type": "uint256"
           }
@@ -459,6 +313,12 @@ export const signatures = {
       {
         "anonymous": false,
         "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "realmId",
+            "type": "uint256"
+          },
           {
             "indexed": false,
             "internalType": "uint256",
@@ -493,60 +353,12 @@ export const signatures = {
         "inputs": [
           {
             "indexed": false,
-            "internalType": "uint256",
-            "name": "newTokenRewardPerTokenPerEpoch",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256[]",
-            "name": "newKeyTypes",
-            "type": "uint256[]"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "newMinimumValidatorCount",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "newMaxConcurrentRequests",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "newMaxPresignCount",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "newMinPresignCount",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "newPeerCheckingIntervalSecs",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "newMaxPresignConcurrency",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "bool",
-            "name": "newRpcHealthcheckEnabled",
-            "type": "bool"
+            "internalType": "address",
+            "name": "newResolverContractAddress",
+            "type": "address"
           }
         ],
-        "name": "RealmConfigSet",
+        "name": "ResolverContractAddressSet",
         "type": "event"
       },
       {
@@ -555,11 +367,29 @@ export const signatures = {
           {
             "indexed": false,
             "internalType": "address",
-            "name": "newResolverContractAddress",
+            "name": "stakerAddress",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "recordId",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "stakerAddressClient",
             "type": "address"
           }
         ],
-        "name": "ResolverContractAddressSet",
+        "name": "StakeRecordCreated",
         "type": "event"
       },
       {
@@ -579,19 +409,6 @@ export const signatures = {
           }
         ],
         "name": "Staked",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "newStakingTokenAddress",
-            "type": "address"
-          }
-        ],
-        "name": "StakingTokenSet",
         "type": "event"
       },
       {
@@ -675,37 +492,6 @@ export const signatures = {
           }
         ],
         "name": "FixedCostRewardsClaimed",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "stakerAddress",
-            "type": "address"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "recordId",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "amount",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "address",
-            "name": "stakerAddressClient",
-            "type": "address"
-          }
-        ],
-        "name": "StakeRecordCreated",
         "type": "event"
       },
       {
@@ -894,13 +680,66 @@ export const signatures = {
             "type": "address"
           },
           {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "x",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "y",
+                "type": "uint256"
+              }
+            ],
             "indexed": true,
-            "internalType": "uint256",
+            "internalType": "struct LibStakingStorage.UncompressedK256Key",
             "name": "attestedPubKey",
-            "type": "uint256"
+            "type": "tuple"
           }
         ],
         "name": "AttestedWalletRegistered",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "reason",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint256",
+                "name": "tolerance",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "intervalSecs",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "kickPenaltyPercent",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "kickPenaltyDemerits",
+                "type": "uint256"
+              }
+            ],
+            "indexed": false,
+            "internalType": "struct LibStakingStorage.ComplaintConfig",
+            "name": "config",
+            "type": "tuple"
+          }
+        ],
+        "name": "ComplaintConfigSet",
         "type": "event"
       },
       {
@@ -961,7 +800,7 @@ export const signatures = {
             "type": "bool"
           }
         ],
-        "name": "ConfigSet_Duplicate_1",
+        "name": "ConfigSet",
         "type": "event"
       },
       {
@@ -1070,6 +909,19 @@ export const signatures = {
         "anonymous": false,
         "inputs": [
           {
+            "indexed": false,
+            "internalType": "address",
+            "name": "newStakingTokenAddress",
+            "type": "address"
+          }
+        ],
+        "name": "StakingTokenSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
             "indexed": true,
             "internalType": "address",
             "name": "reporter",
@@ -1142,7 +994,7 @@ export const signatures = {
     ]
   },
   "PubkeyRouter": {
-    "address": "0xE6dc044530c8EC53E501B6a7a1777c0707781829",
+    "address": "0x1806d92606Bbf4ddBaFB757E9617A6Cce303f9E1",
     "methods": {
       "deriveEthAddressFromPubkey": {
         "inputs": [
@@ -1424,7 +1276,7 @@ export const signatures = {
     ]
   },
   "PKPNFT": {
-    "address": "0x9148EDa53731a2bc679771A2891d022987C30C35",
+    "address": "0x0300c7333ed43f0E4A9DD314a74A7757c4Ac3943",
     "methods": {
       "claimAndMint": {
         "inputs": [
@@ -1804,7 +1656,7 @@ export const signatures = {
     ]
   },
   "PKPHelper": {
-    "address": "0x58969e65c5E953F3Eae3AeC40Bb0D7b805c0631E",
+    "address": "0x350415649C249c66d78636E9727113b4e6265964",
     "methods": {
       "claimAndMintNextAndAddAuthMethodsWithTypes": {
         "inputs": [
@@ -2082,7 +1934,7 @@ export const signatures = {
     ]
   },
   "PKPPermissions": {
-    "address": "0xBa1c129bBFc8979bE67bE53A1e9e84fDd58dCD26",
+    "address": "0xc219a06cecDC4c4C49Dc2d146739A898827842Db",
     "methods": {
       "addPermittedAction": {
         "inputs": [
@@ -2632,7 +2484,7 @@ export const signatures = {
     ]
   },
   "PriceFeed": {
-    "address": "0x7703a8C773e37aF3C09F27A516E495A216aA7608",
+    "address": "0xeE8f1FC9b3ea27314b226E2aaF4AA384BF9063c9",
     "methods": {
       "getNodesForRequest": {
         "inputs": [
@@ -2742,6 +2594,16 @@ export const signatures = {
                     "internalType": "address",
                     "name": "operatorAddress",
                     "type": "address"
+                  },
+                  {
+                    "internalType": "uint256",
+                    "name": "uniqueDelegatingStakerCount",
+                    "type": "uint256"
+                  },
+                  {
+                    "internalType": "bool",
+                    "name": "registerAttestedWalletDisabled",
+                    "type": "bool"
                   }
                 ],
                 "internalType": "struct LibStakingStorage.Validator",

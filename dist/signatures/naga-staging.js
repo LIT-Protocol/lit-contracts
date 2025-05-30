@@ -1,11 +1,11 @@
 /**
- * Generated Contract Method Signatures for develop
+ * Generated Contract Method Signatures for naga-staging
  * This file is auto-generated. DO NOT EDIT UNLESS YOU KNOW WHAT YOU'RE DOING.
  */
 
-const signatures = {
+export const signatures = {
   "Staking": {
-    "address": "0x60D38A99Ed0a82D53322E4EC9B19A4F7Edb24B4D",
+    "address": "0x7fD7135FE923130669AeE7E8F93D6F3ebB33aea3",
     "methods": {
       "getActiveUnkickedValidatorStructsAndCounts": {
         "inputs": [
@@ -994,7 +994,7 @@ const signatures = {
     ]
   },
   "PubkeyRouter": {
-    "address": "0x1806d92606Bbf4ddBaFB757E9617A6Cce303f9E1",
+    "address": "0x399Ea8E261EF8372B6f2755c6d41FE2F07a42a4c",
     "methods": {
       "deriveEthAddressFromPubkey": {
         "inputs": [
@@ -1276,7 +1276,7 @@ const signatures = {
     ]
   },
   "PKPNFT": {
-    "address": "0x0300c7333ed43f0E4A9DD314a74A7757c4Ac3943",
+    "address": "0xe499d76F53Bf75840F01041Bcb8259d59a0c4333",
     "methods": {
       "claimAndMint": {
         "inputs": [
@@ -1656,7 +1656,7 @@ const signatures = {
     ]
   },
   "PKPHelper": {
-    "address": "0x350415649C249c66d78636E9727113b4e6265964",
+    "address": "0x040Dd3dD258D590280E455a3BCd348113f6f1bF9",
     "methods": {
       "claimAndMintNextAndAddAuthMethodsWithTypes": {
         "inputs": [
@@ -1934,7 +1934,7 @@ const signatures = {
     ]
   },
   "PKPPermissions": {
-    "address": "0xc219a06cecDC4c4C49Dc2d146739A898827842Db",
+    "address": "0x2b24e03F95A091E1b6Eb75E6b778451B463078bF",
     "methods": {
       "addPermittedAction": {
         "inputs": [
@@ -2484,7 +2484,7 @@ const signatures = {
     ]
   },
   "PriceFeed": {
-    "address": "0xeE8f1FC9b3ea27314b226E2aaF4AA384BF9063c9",
+    "address": "0xcb3e97a45C8E09D1bF68Fd97e1fd2b6AA355FC3f",
     "methods": {
       "getNodesForRequest": {
         "inputs": [
@@ -2753,8 +2753,4 @@ const signatures = {
       }
     ]
   }
-};
-
-module.exports = {
-  signatures
 };
