@@ -5,8 +5,8 @@ export const nagaStaging = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x7fD7135FE923130669AeE7E8F93D6F3ebB33aea3",
-          "inserted_at": "2025-05-28T07:39:20Z",
+          "address_hash": "0x21b7DBd0Af50507d3028Ddbe5F391f96EE79D3f9",
+          "inserted_at": "2025-05-30T18:28:43Z",
           "ABI": [
             {
               "inputs": [
@@ -6535,8 +6535,8 @@ export const nagaStaging = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x04A7bFf98B98F7C2234778c6FA42932a8ddCB8EA",
-          "inserted_at": "2025-05-28T07:39:20Z",
+          "address_hash": "0x82E5Cfe98ef484FAF19937956f8845c8A8Ce160C",
+          "inserted_at": "2025-05-30T18:28:43Z",
           "ABI": [
             {
               "anonymous": false,
@@ -6674,7 +6674,7 @@ export const nagaStaging = {
         {
           "network": "naga-staging",
           "address_hash": "0xd78089bAAe410f5d0eae31D0D56157c73a3Ff98B",
-          "inserted_at": "2025-05-28T07:39:20Z",
+          "inserted_at": "2025-05-30T18:28:43Z",
           "ABI": [
             {
               "inputs": [
@@ -7727,8 +7727,8 @@ export const nagaStaging = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x399Ea8E261EF8372B6f2755c6d41FE2F07a42a4c",
-          "inserted_at": "2025-05-28T07:39:20Z",
+          "address_hash": "0xFbD0f3606447c8B313db74CFc30e108f52C6E351",
+          "inserted_at": "2025-05-30T18:28:43Z",
           "ABI": [
             {
               "inputs": [
@@ -8732,8 +8732,8 @@ export const nagaStaging = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xe499d76F53Bf75840F01041Bcb8259d59a0c4333",
-          "inserted_at": "2025-05-28T07:39:20Z",
+          "address_hash": "0xECa5925531a5c261A1ac286aF59579717Ef9DBDd",
+          "inserted_at": "2025-05-30T18:28:43Z",
           "ABI": [
             {
               "inputs": [
@@ -9981,8 +9981,8 @@ export const nagaStaging = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x040Dd3dD258D590280E455a3BCd348113f6f1bF9",
-          "inserted_at": "2025-05-28T07:39:20Z",
+          "address_hash": "0x88c87f244056ddaB06115601Aaa18754034e1faA",
+          "inserted_at": "2025-05-30T18:28:43Z",
           "ABI": [
             {
               "inputs": [
@@ -10969,8 +10969,8 @@ export const nagaStaging = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x2b24e03F95A091E1b6Eb75E6b778451B463078bF",
-          "inserted_at": "2025-05-28T07:39:20Z",
+          "address_hash": "0x1575F38C4996794e474F4F5Ab5A0fa361EB7E1b0",
+          "inserted_at": "2025-05-30T18:28:43Z",
           "ABI": [
             {
               "inputs": [
@@ -12304,8 +12304,8 @@ export const nagaStaging = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xb94b328bf24D02516971063BA1407252a7c027dC",
-          "inserted_at": "2025-05-28T07:39:20Z",
+          "address_hash": "0xd4Aa13Bdf6fcE7C89Df4098AeEF482395089A1D5",
+          "inserted_at": "2025-05-30T18:28:43Z",
           "ABI": [
             {
               "inputs": [
@@ -12468,8 +12468,8 @@ export const nagaStaging = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x638EffA9541DEB97193A52469B5208A97Ee7902d",
-          "inserted_at": "2025-05-28T07:39:20Z",
+          "address_hash": "0xddF7f978620772338d6778B65BD5db4Bfc40E51A",
+          "inserted_at": "2025-05-30T18:28:43Z",
           "ABI": [
             {
               "inputs": [],
@@ -12705,8 +12705,8 @@ export const nagaStaging = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xB85937a7026682d400d7574A2741fFB9466bf381",
-          "inserted_at": "2025-05-28T07:39:20Z",
+          "address_hash": "0x26D5FEdED34855C69700C1D896ABBA059696f818",
+          "inserted_at": "2025-05-30T18:28:43Z",
           "ABI": [
             {
               "inputs": [
@@ -13341,8 +13341,8 @@ export const nagaStaging = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xcb3e97a45C8E09D1bF68Fd97e1fd2b6AA355FC3f",
-          "inserted_at": "2025-05-28T07:39:20Z",
+          "address_hash": "0x0fFe71ACd8468921EeEF6f51Bf993344779F0767",
+          "inserted_at": "2025-05-30T18:28:43Z",
           "ABI": [
             {
               "inputs": [

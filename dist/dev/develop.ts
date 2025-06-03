@@ -2462,11 +2462,6 @@ export const develop = {
             {
               "inputs": [
                 {
-                  "internalType": "uint256",
-                  "name": "realmId",
-                  "type": "uint256"
-                },
-                {
                   "internalType": "address",
                   "name": "operatorAddressToMigrateFrom",
                   "type": "address"

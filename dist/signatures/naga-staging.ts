@@ -5,7 +5,7 @@
 
 export const signatures = {
   "Staking": {
-    "address": "0x7fD7135FE923130669AeE7E8F93D6F3ebB33aea3",
+    "address": "0x21b7DBd0Af50507d3028Ddbe5F391f96EE79D3f9",
     "methods": {
       "getActiveUnkickedValidatorStructsAndCounts": {
         "inputs": [
@@ -994,7 +994,7 @@ export const signatures = {
     ]
   },
   "PubkeyRouter": {
-    "address": "0x399Ea8E261EF8372B6f2755c6d41FE2F07a42a4c",
+    "address": "0xFbD0f3606447c8B313db74CFc30e108f52C6E351",
     "methods": {
       "deriveEthAddressFromPubkey": {
         "inputs": [
@@ -1276,7 +1276,7 @@ export const signatures = {
     ]
   },
   "PKPNFT": {
-    "address": "0xe499d76F53Bf75840F01041Bcb8259d59a0c4333",
+    "address": "0xECa5925531a5c261A1ac286aF59579717Ef9DBDd",
     "methods": {
       "claimAndMint": {
         "inputs": [
@@ -1656,7 +1656,7 @@ export const signatures = {
     ]
   },
   "PKPHelper": {
-    "address": "0x040Dd3dD258D590280E455a3BCd348113f6f1bF9",
+    "address": "0x88c87f244056ddaB06115601Aaa18754034e1faA",
     "methods": {
       "claimAndMintNextAndAddAuthMethodsWithTypes": {
         "inputs": [
@@ -1934,7 +1934,7 @@ export const signatures = {
     ]
   },
   "PKPPermissions": {
-    "address": "0x2b24e03F95A091E1b6Eb75E6b778451B463078bF",
+    "address": "0x1575F38C4996794e474F4F5Ab5A0fa361EB7E1b0",
     "methods": {
       "addPermittedAction": {
         "inputs": [
@@ -2484,7 +2484,7 @@ export const signatures = {
     ]
   },
   "PriceFeed": {
-    "address": "0xcb3e97a45C8E09D1bF68Fd97e1fd2b6AA355FC3f",
+    "address": "0x0fFe71ACd8468921EeEF6f51Bf993344779F0767",
     "methods": {
       "getNodesForRequest": {
         "inputs": [
