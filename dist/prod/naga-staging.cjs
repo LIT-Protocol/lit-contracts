@@ -7,8 +7,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x21b7DBd0Af50507d3028Ddbe5F391f96EE79D3f9",
-          "inserted_at": "2025-05-30T18:28:43Z",
+          "address_hash": "0xB0BC7522DAe628B0118Fb1c478b65541321EE3AF",
+          "inserted_at": "2025-06-10T02:02:19Z",
           "ABI": [
             {
               "inputs": [
@@ -6537,8 +6537,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x82E5Cfe98ef484FAF19937956f8845c8A8Ce160C",
-          "inserted_at": "2025-05-30T18:28:43Z",
+          "address_hash": "0xe90726978FcfB01Eb218a750044c210cA0a8925A",
+          "inserted_at": "2025-06-10T02:02:19Z",
           "ABI": [
             {
               "anonymous": false,
@@ -6676,7 +6676,7 @@ module.exports = {
         {
           "network": "naga-staging",
           "address_hash": "0xd78089bAAe410f5d0eae31D0D56157c73a3Ff98B",
-          "inserted_at": "2025-05-30T18:28:43Z",
+          "inserted_at": "2025-06-10T02:02:19Z",
           "ABI": [
             {
               "inputs": [
@@ -7729,8 +7729,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xFbD0f3606447c8B313db74CFc30e108f52C6E351",
-          "inserted_at": "2025-05-30T18:28:43Z",
+          "address_hash": "0x7020F9643BA04fA895372FFfA9686F3c583FDa59",
+          "inserted_at": "2025-06-10T02:02:19Z",
           "ABI": [
             {
               "inputs": [
@@ -8734,8 +8734,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xECa5925531a5c261A1ac286aF59579717Ef9DBDd",
-          "inserted_at": "2025-05-30T18:28:43Z",
+          "address_hash": "0x125E91f9A8D50372a4560c5C4bd25ea0B8A2dc1d",
+          "inserted_at": "2025-06-10T02:02:19Z",
           "ABI": [
             {
               "inputs": [
@@ -9983,8 +9983,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x88c87f244056ddaB06115601Aaa18754034e1faA",
-          "inserted_at": "2025-05-30T18:28:43Z",
+          "address_hash": "0xdeE74a5bae82109E2D7A5Fa76823Cf0e7638527c",
+          "inserted_at": "2025-06-10T02:02:19Z",
           "ABI": [
             {
               "inputs": [
@@ -10971,8 +10971,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x1575F38C4996794e474F4F5Ab5A0fa361EB7E1b0",
-          "inserted_at": "2025-05-30T18:28:43Z",
+          "address_hash": "0xaaDa98C0D8E52A6C8F4bee4909D3145454f38169",
+          "inserted_at": "2025-06-10T02:02:19Z",
           "ABI": [
             {
               "inputs": [
@@ -12306,8 +12306,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xd4Aa13Bdf6fcE7C89Df4098AeEF482395089A1D5",
-          "inserted_at": "2025-05-30T18:28:43Z",
+          "address_hash": "0xB1e63aCC6c0EA9377eDfa21957D553694888203c",
+          "inserted_at": "2025-06-10T02:02:19Z",
           "ABI": [
             {
               "inputs": [
@@ -12470,8 +12470,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xddF7f978620772338d6778B65BD5db4Bfc40E51A",
-          "inserted_at": "2025-05-30T18:28:43Z",
+          "address_hash": "0xbB8cE5E5FC1729D35323aFf1f2FC654287e9e1fE",
+          "inserted_at": "2025-06-10T02:02:19Z",
           "ABI": [
             {
               "inputs": [],
@@ -12707,8 +12707,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x26D5FEdED34855C69700C1D896ABBA059696f818",
-          "inserted_at": "2025-05-30T18:28:43Z",
+          "address_hash": "0x98fC4D9FF9f1cc76F22F7F5fc8f6CC0697335BeA",
+          "inserted_at": "2025-06-10T02:02:19Z",
           "ABI": [
             {
               "inputs": [
@@ -13343,8 +13343,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x0fFe71ACd8468921EeEF6f51Bf993344779F0767",
-          "inserted_at": "2025-05-30T18:28:43Z",
+          "address_hash": "0xF6241e9D9DD5f0AbE7cEfB68E644865c52a2bFEF",
+          "inserted_at": "2025-06-10T02:02:19Z",
           "ABI": [
             {
               "inputs": [
