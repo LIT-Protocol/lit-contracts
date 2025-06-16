@@ -1,6 +1,6 @@
 {
   "name": "@lit-protocol/contracts",
-  "version": "0.1.29",
+  "version": "0.1.31",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "type": "module",
@@ -72,6 +72,16 @@
       "require": "./dist/signatures/naga-dev.cjs",
       "types": "./dist/signatures/naga-dev.d.ts"
     },
+    "./prod/naga-test": {
+      "import": "./dist/prod/naga-test.js",
+      "require": "./dist/prod/naga-test.cjs",
+      "types": "./dist/prod/naga-test.d.ts"
+    },
+    "./signatures/naga-test": {
+      "import": "./dist/signatures/naga-test.js",
+      "require": "./dist/signatures/naga-test.cjs",
+      "types": "./dist/signatures/naga-test.d.ts"
+    },
     "./prod/naga-staging": {
       "import": "./dist/prod/naga-staging.js",
       "require": "./dist/prod/naga-staging.cjs",
@@ -127,6 +137,12 @@
       ],
       "signatures/naga-dev": [
         "dist/signatures/naga-dev.d.ts"
+      ],
+      "prod/naga-test": [
+        "dist/prod/naga-test.d.ts"
+      ],
+      "signatures/naga-test": [
+        "dist/signatures/naga-test.d.ts"
       ],
       "prod/naga-staging": [
         "dist/prod/naga-staging.d.ts"

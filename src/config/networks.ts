@@ -15,6 +15,7 @@ export const PROD_PATH_BY_NETWORK = {
   "datil-dev": "datil-dev",
   "datil-test": "datil-test",
   "naga-dev": "naga-dev",
+  "naga-test": "naga-test",
   "naga-staging": "naga-staging",
 } as const;
 
@@ -27,7 +28,9 @@ export const DEV_PATH_BY_NETWORK = {
 export type ProdNetworkName = keyof typeof PROD_PATH_BY_NETWORK;
 export type DevNetworkName = keyof typeof DEV_PATH_BY_NETWORK;
 export type NetworkName = ProdNetworkName | DevNetworkName;
-export type NetworkPath = typeof PROD_PATH_BY_NETWORK[ProdNetworkName] | typeof DEV_PATH_BY_NETWORK[DevNetworkName];
+export type NetworkPath =
+  | (typeof PROD_PATH_BY_NETWORK)[ProdNetworkName]
+  | (typeof DEV_PATH_BY_NETWORK)[DevNetworkName];
 
 /**
  * Network path configuration for GitHub API requests
@@ -68,7 +71,8 @@ export const NETWORK_PATHS = {
      * Uses the content path directly without network subdirectory
      * Example: "rust/lit-core/blockchain/abis"
      */
-    getContentPath: (network: DevNetworkName, contentPath: string) => contentPath,
+    getContentPath: (network: DevNetworkName, contentPath: string) =>
+      contentPath,
   },
 } as const;
 
@@ -87,6 +91,8 @@ export const NETWORKS = {
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/naga-dev/deployed-lit-node-contracts-temp.json",
       "naga-staging":
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/naga-staging/deployed-lit-node-contracts-temp.json",
+      "naga-test":
+        "https://raw.githubusercontent.com/LIT-Protocol/networks/main/naga-test/deployed-lit-node-contracts-temp.json",
     },
   },
   dev: {

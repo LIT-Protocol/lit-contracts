@@ -13832,6 +13832,36 @@ module.exports = {
             },
             {
               "inputs": [],
+              "name": "getLitActionPriceConfigs",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "enum LibPriceFeedStorage.LitActionPriceComponent",
+                      "name": "priceComponent",
+                      "type": "uint8"
+                    },
+                    {
+                      "internalType": "enum LibPriceFeedStorage.NodePriceMeasurement",
+                      "name": "priceMeasurement",
+                      "type": "uint8"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "price",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct LibPriceFeedStorage.LitActionPriceConfig[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
               "name": "getNodeCapacityConfig",
               "outputs": [
                 {
@@ -14149,6 +14179,59 @@ module.exports = {
                 }
               ],
               "name": "setBaseNetworkPrices",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "enum LibPriceFeedStorage.LitActionPriceComponent",
+                  "name": "priceComponent",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "enum LibPriceFeedStorage.NodePriceMeasurement",
+                  "name": "priceMeasurement",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "new_price",
+                  "type": "uint256"
+                }
+              ],
+              "name": "setLitActionPriceConfig",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "enum LibPriceFeedStorage.LitActionPriceComponent",
+                      "name": "priceComponent",
+                      "type": "uint8"
+                    },
+                    {
+                      "internalType": "enum LibPriceFeedStorage.NodePriceMeasurement",
+                      "name": "priceMeasurement",
+                      "type": "uint8"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "price",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct LibPriceFeedStorage.LitActionPriceConfig[]",
+                  "name": "configs",
+                  "type": "tuple[]"
+                }
+              ],
+              "name": "setLitActionPriceConfigs",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
