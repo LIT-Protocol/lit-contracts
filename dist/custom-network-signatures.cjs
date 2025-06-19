@@ -76,7 +76,14 @@ var METHODS_TO_EXTRACT = [
   "PubkeyRouter.deriveEthAddressFromPubkey",
   "PubkeyRouter.ethAddressToPkpId",
   "PubkeyRouter.getPubkey",
-  "PubkeyRouter.getEthAddress"
+  "PubkeyRouter.getEthAddress",
+  "Ledger.deposit",
+  "Ledger.depositForUser",
+  "Ledger.balance",
+  "Ledger.stableBalance",
+  "Ledger.requestWithdraw",
+  "Ledger.latestWithdrawRequest",
+  "Ledger.userWithdrawDelay"
 ];
 
 // node_modules/ethers/lib.esm/_version.js

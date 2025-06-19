@@ -38,6 +38,15 @@ export const METHODS_TO_EXTRACT = [
   "PubkeyRouter.ethAddressToPkpId",
   "PubkeyRouter.getPubkey",
   "PubkeyRouter.getEthAddress",
+
+  // Ledger:
+  "Ledger.deposit",
+  "Ledger.depositForUser",
+  "Ledger.balance",
+  "Ledger.stableBalance",
+  "Ledger.requestWithdraw",
+  "Ledger.latestWithdrawRequest",
+  "Ledger.userWithdrawDelay",
 ] as const;
 
 // Type for contract names

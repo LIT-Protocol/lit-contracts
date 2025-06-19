@@ -122,6 +122,7 @@ export const CONTRACT_NAME_MAP = {
   paymentDelegationContractAddress: "PaymentDelegation",
   priceFeedContractAddress: "PriceFeed",
   cloneNetContractAddress: "CloneNet",
+  ledgerContractAddress: "Ledger",
 } as const;
 
 // Environment Configuration

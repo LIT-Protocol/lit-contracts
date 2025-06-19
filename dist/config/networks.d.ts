@@ -104,6 +104,7 @@ export declare const CONTRACT_NAME_MAP: {
     readonly paymentDelegationContractAddress: "PaymentDelegation";
     readonly priceFeedContractAddress: "PriceFeed";
     readonly cloneNetContractAddress: "CloneNet";
+    readonly ledgerContractAddress: "Ledger";
 };
 export declare const ENV_CONFIG: {
     readonly prod: {
