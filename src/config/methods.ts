@@ -47,6 +47,18 @@ export const METHODS_TO_EXTRACT = [
   "Ledger.requestWithdraw",
   "Ledger.latestWithdrawRequest",
   "Ledger.userWithdrawDelay",
+  "Ledger.withdraw",
+
+  // Payment Delegation:
+  "PaymentDelegation.getPayersAndRestrictions",
+  "PaymentDelegation.getUsers",
+  "PaymentDelegation.getRestriction",
+  "PaymentDelegation.getPayers",
+  "PaymentDelegation.delegatePayments",
+  "PaymentDelegation.undelegatePayments",
+  "PaymentDelegation.delegatePaymentsBatch",
+  "PaymentDelegation.undelegatePaymentsBatch",
+  "PaymentDelegation.setRestriction",
 ] as const;
 
 // Type for contract names

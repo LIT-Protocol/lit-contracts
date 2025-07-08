@@ -4940,6 +4940,25 @@ module.exports = {
             {
               "inputs": [
                 {
+                  "internalType": "uint256",
+                  "name": "nodeCount",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getThreshold",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "address",
                   "name": "stakerAddress",
                   "type": "address"
@@ -14939,6 +14958,11 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
+                      "name": "signSessionKeyMaxConcurrency",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
                       "name": "globalMaxCapacity",
                       "type": "uint256"
                     }
@@ -15327,6 +15351,11 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "litActionMaxConcurrency",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "signSessionKeyMaxConcurrency",
                       "type": "uint256"
                     },
                     {

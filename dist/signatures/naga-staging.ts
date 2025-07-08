@@ -2483,9 +2483,323 @@ export const signatures = {
       }
     ]
   },
+  "PaymentDelegation": {
+    "address": "0x98fC4D9FF9f1cc76F22F7F5fc8f6CC0697335BeA",
+    "methods": {
+      "delegatePayments": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "user",
+            "type": "address"
+          }
+        ],
+        "name": "delegatePayments",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      "delegatePaymentsBatch": {
+        "inputs": [
+          {
+            "internalType": "address[]",
+            "name": "users",
+            "type": "address[]"
+          }
+        ],
+        "name": "delegatePaymentsBatch",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      "getPayers": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "user",
+            "type": "address"
+          }
+        ],
+        "name": "getPayers",
+        "outputs": [
+          {
+            "internalType": "address[]",
+            "name": "",
+            "type": "address[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      "getPayersAndRestrictions": {
+        "inputs": [
+          {
+            "internalType": "address[]",
+            "name": "users",
+            "type": "address[]"
+          }
+        ],
+        "name": "getPayersAndRestrictions",
+        "outputs": [
+          {
+            "internalType": "address[][]",
+            "name": "",
+            "type": "address[][]"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint128",
+                "name": "totalMaxPrice",
+                "type": "uint128"
+              },
+              {
+                "internalType": "uint256",
+                "name": "requestsPerPeriod",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "periodSeconds",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct LibPaymentDelegationStorage.Restriction[][]",
+            "name": "",
+            "type": "tuple[][]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      "getRestriction": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "payer",
+            "type": "address"
+          }
+        ],
+        "name": "getRestriction",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint128",
+                "name": "totalMaxPrice",
+                "type": "uint128"
+              },
+              {
+                "internalType": "uint256",
+                "name": "requestsPerPeriod",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "periodSeconds",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct LibPaymentDelegationStorage.Restriction",
+            "name": "",
+            "type": "tuple"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      "getUsers": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "payer",
+            "type": "address"
+          }
+        ],
+        "name": "getUsers",
+        "outputs": [
+          {
+            "internalType": "address[]",
+            "name": "",
+            "type": "address[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      "setRestriction": {
+        "inputs": [
+          {
+            "components": [
+              {
+                "internalType": "uint128",
+                "name": "totalMaxPrice",
+                "type": "uint128"
+              },
+              {
+                "internalType": "uint256",
+                "name": "requestsPerPeriod",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "periodSeconds",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct LibPaymentDelegationStorage.Restriction",
+            "name": "r",
+            "type": "tuple"
+          }
+        ],
+        "name": "setRestriction",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      "undelegatePayments": {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "user",
+            "type": "address"
+          }
+        ],
+        "name": "undelegatePayments",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      "undelegatePaymentsBatch": {
+        "inputs": [
+          {
+            "internalType": "address[]",
+            "name": "users",
+            "type": "address[]"
+          }
+        ],
+        "name": "undelegatePaymentsBatch",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    },
+    "events": [
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "components": [
+              {
+                "internalType": "address",
+                "name": "facetAddress",
+                "type": "address"
+              },
+              {
+                "internalType": "enum IDiamond.FacetCutAction",
+                "name": "action",
+                "type": "uint8"
+              },
+              {
+                "internalType": "bytes4[]",
+                "name": "functionSelectors",
+                "type": "bytes4[]"
+              }
+            ],
+            "indexed": false,
+            "internalType": "struct IDiamond.FacetCut[]",
+            "name": "_diamondCut",
+            "type": "tuple[]"
+          },
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "_init",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "bytes",
+            "name": "_calldata",
+            "type": "bytes"
+          }
+        ],
+        "name": "DiamondCut",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "previousOwner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "payer",
+            "type": "address"
+          },
+          {
+            "components": [
+              {
+                "internalType": "uint128",
+                "name": "totalMaxPrice",
+                "type": "uint128"
+              },
+              {
+                "internalType": "uint256",
+                "name": "requestsPerPeriod",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "periodSeconds",
+                "type": "uint256"
+              }
+            ],
+            "indexed": false,
+            "internalType": "struct LibPaymentDelegationStorage.Restriction",
+            "name": "restriction",
+            "type": "tuple"
+          }
+        ],
+        "name": "RestrictionSet",
+        "type": "event"
+      }
+    ]
+  },
   "Ledger": {
     "address": "0xCC56A86eF6343Ed96Cd8Ff0AA2bdb3E598b66A03",
     "methods": {
+      "withdraw": {
+        "inputs": [
+          {
+            "internalType": "int256",
+            "name": "amount",
+            "type": "int256"
+          }
+        ],
+        "name": "withdraw",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
       "balance": {
         "inputs": [
           {

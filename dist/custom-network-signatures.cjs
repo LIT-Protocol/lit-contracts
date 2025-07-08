@@ -83,11 +83,21 @@ var METHODS_TO_EXTRACT = [
   "Ledger.stableBalance",
   "Ledger.requestWithdraw",
   "Ledger.latestWithdrawRequest",
-  "Ledger.userWithdrawDelay"
+  "Ledger.userWithdrawDelay",
+  "Ledger.withdraw",
+  "PaymentDelegation.getPayersAndRestrictions",
+  "PaymentDelegation.getUsers",
+  "PaymentDelegation.getRestriction",
+  "PaymentDelegation.getPayers",
+  "PaymentDelegation.delegatePayments",
+  "PaymentDelegation.undelegatePayments",
+  "PaymentDelegation.delegatePaymentsBatch",
+  "PaymentDelegation.undelegatePaymentsBatch",
+  "PaymentDelegation.setRestriction"
 ];
 
 // node_modules/ethers/lib.esm/_version.js
-var version = "6.13.5";
+var version = "6.15.0";
 
 // node_modules/ethers/lib.esm/utils/properties.js
 function checkType(value, type, name) {
@@ -123,12 +133,21 @@ function defineProperties(target, values, types) {
 }
 
 // node_modules/ethers/lib.esm/utils/errors.js
-function stringify(value) {
+function stringify(value, seen) {
   if (value == null) {
     return "null";
   }
+  if (seen == null) {
+    seen = new Set;
+  }
+  if (typeof value === "object") {
+    if (seen.has(value)) {
+      return "[Circular]";
+    }
+    seen.add(value);
+  }
   if (Array.isArray(value)) {
-    return "[ " + value.map(stringify).join(", ") + " ]";
+    return "[ " + value.map((v) => stringify(v, seen)).join(", ") + " ]";
   }
   if (value instanceof Uint8Array) {
     const HEX = "0123456789abcdef";
@@ -140,22 +159,21 @@ function stringify(value) {
     return result;
   }
   if (typeof value === "object" && typeof value.toJSON === "function") {
-    return stringify(value.toJSON());
+    return stringify(value.toJSON(), seen);
   }
   switch (typeof value) {
     case "boolean":
+    case "number":
     case "symbol":
       return value.toString();
     case "bigint":
       return BigInt(value).toString();
-    case "number":
-      return value.toString();
     case "string":
       return JSON.stringify(value);
     case "object": {
       const keys = Object.keys(value);
       keys.sort();
-      return "{ " + keys.map((k) => `${stringify(k)}: ${stringify(value[k])}`).join(", ") + " }";
+      return "{ " + keys.map((k) => `${stringify(k, seen)}: ${stringify(value[k], seen)}`).join(", ") + " }";
     }
   }
   return `[ COULD NOT SERIALIZE ]`;

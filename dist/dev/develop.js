@@ -4938,6 +4938,25 @@ export const develop = {
             {
               "inputs": [
                 {
+                  "internalType": "uint256",
+                  "name": "nodeCount",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getThreshold",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "address",
                   "name": "stakerAddress",
                   "type": "address"
@@ -14937,6 +14956,11 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
+                      "name": "signSessionKeyMaxConcurrency",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
                       "name": "globalMaxCapacity",
                       "type": "uint256"
                     }
@@ -15325,6 +15349,11 @@ export const develop = {
                     {
                       "internalType": "uint256",
                       "name": "litActionMaxConcurrency",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "signSessionKeyMaxConcurrency",
                       "type": "uint256"
                     },
                     {
