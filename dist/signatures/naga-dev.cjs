@@ -5,7 +5,7 @@
 
 const signatures = {
   "Staking": {
-    "address": "0x60D38A99Ed0a82D53322E4EC9B19A4F7Edb24B4D",
+    "address": "0x82583601283B6991cFbC7Ee27d1c209163000Fdd",
     "methods": {
       "getActiveUnkickedValidatorStructsAndCounts": {
         "inputs": [
@@ -994,7 +994,7 @@ const signatures = {
     ]
   },
   "PubkeyRouter": {
-    "address": "0x1806d92606Bbf4ddBaFB757E9617A6Cce303f9E1",
+    "address": "0xb9B498b07cEf55241502C0c0ff35257b95eF923F",
     "methods": {
       "deriveEthAddressFromPubkey": {
         "inputs": [
@@ -1276,7 +1276,7 @@ const signatures = {
     ]
   },
   "PKPNFT": {
-    "address": "0x0300c7333ed43f0E4A9DD314a74A7757c4Ac3943",
+    "address": "0x6166102B34ae20f08d85F4ef10897AF5CDB689AE",
     "methods": {
       "claimAndMint": {
         "inputs": [
@@ -1656,7 +1656,7 @@ const signatures = {
     ]
   },
   "PKPHelper": {
-    "address": "0x350415649C249c66d78636E9727113b4e6265964",
+    "address": "0xc1e764C93D764CC96D858EA4B473B69038455cdF",
     "methods": {
       "claimAndMintNextAndAddAuthMethodsWithTypes": {
         "inputs": [
@@ -1934,7 +1934,7 @@ const signatures = {
     ]
   },
   "PKPPermissions": {
-    "address": "0xc219a06cecDC4c4C49Dc2d146739A898827842Db",
+    "address": "0xF366cf06F90B42bD31d44111a6b17952a459D2AC",
     "methods": {
       "addPermittedAction": {
         "inputs": [
@@ -2484,7 +2484,7 @@ const signatures = {
     ]
   },
   "PaymentDelegation": {
-    "address": "0xeB41124adF4007E0383D7Ba81f1829d65E84BF6a",
+    "address": "0x4D4A1eB867Aa8f20F6a14EEb09D39d959D519fDE",
     "methods": {
       "delegatePayments": {
         "inputs": [
@@ -2785,7 +2785,7 @@ const signatures = {
     ]
   },
   "Ledger": {
-    "address": "0xE7f49bBBae7344d0C33E7B3de605afaf21dcD762",
+    "address": "0x6677C7F773f4d9040cb9aA7B644870708c7198D7",
     "methods": {
       "withdraw": {
         "inputs": [
@@ -3204,7 +3204,7 @@ const signatures = {
     ]
   },
   "PriceFeed": {
-    "address": "0xeE8f1FC9b3ea27314b226E2aaF4AA384BF9063c9",
+    "address": "0x5C031270A81d5c7d125Bd2A8fE866bfdB552d6E5",
     "methods": {
       "getNodesForRequest": {
         "inputs": [
