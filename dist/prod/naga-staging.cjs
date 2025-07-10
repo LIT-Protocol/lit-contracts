@@ -7,8 +7,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xB0BC7522DAe628B0118Fb1c478b65541321EE3AF",
-          "inserted_at": "2025-06-10T02:02:19Z",
+          "address_hash": "0x35d77b5D61F36C02e2e1177845FB6B933FFf7043",
+          "inserted_at": "2025-07-10T18:29:11Z",
           "ABI": [
             {
               "inputs": [
@@ -2463,11 +2463,6 @@ module.exports = {
             },
             {
               "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "realmId",
-                  "type": "uint256"
-                },
                 {
                   "internalType": "address",
                   "name": "operatorAddressToMigrateFrom",
@@ -6537,8 +6532,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xe90726978FcfB01Eb218a750044c210cA0a8925A",
-          "inserted_at": "2025-06-10T02:02:19Z",
+          "address_hash": "0xb21c1a8C75accBF9e5786a809A1d5CdAa071340f",
+          "inserted_at": "2025-07-10T18:29:11Z",
           "ABI": [
             {
               "anonymous": false,
@@ -6675,8 +6670,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xd78089bAAe410f5d0eae31D0D56157c73a3Ff98B",
-          "inserted_at": "2025-06-10T02:02:19Z",
+          "address_hash": "0x5E8db2E7af793f4095c4843C8cBD87C5D8604838",
+          "inserted_at": "2025-07-10T18:29:11Z",
           "ABI": [
             {
               "inputs": [
@@ -7729,8 +7724,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x7020F9643BA04fA895372FFfA9686F3c583FDa59",
-          "inserted_at": "2025-06-10T02:02:19Z",
+          "address_hash": "0xDefe7fb3D333dd0460113674F759eA575C1eC6b3",
+          "inserted_at": "2025-07-10T18:29:11Z",
           "ABI": [
             {
               "inputs": [
@@ -8734,8 +8729,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x125E91f9A8D50372a4560c5C4bd25ea0B8A2dc1d",
-          "inserted_at": "2025-06-10T02:02:19Z",
+          "address_hash": "0xf3E8659C240d4eC9a03c3CDe4539e3C265009Ab8",
+          "inserted_at": "2025-07-10T18:29:11Z",
           "ABI": [
             {
               "inputs": [
@@ -9983,8 +9978,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xdeE74a5bae82109E2D7A5Fa76823Cf0e7638527c",
-          "inserted_at": "2025-06-10T02:02:19Z",
+          "address_hash": "0xf757112631e6269A3B9bf78DB73fe0fEE83dE7b9",
+          "inserted_at": "2025-07-10T18:29:11Z",
           "ABI": [
             {
               "inputs": [
@@ -10971,8 +10966,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xaaDa98C0D8E52A6C8F4bee4909D3145454f38169",
-          "inserted_at": "2025-06-10T02:02:19Z",
+          "address_hash": "0x49e599515b22536fa033FFe45A87F053d96A6f84",
+          "inserted_at": "2025-07-10T18:29:11Z",
           "ABI": [
             {
               "inputs": [
@@ -12306,8 +12301,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xB1e63aCC6c0EA9377eDfa21957D553694888203c",
-          "inserted_at": "2025-06-10T02:02:19Z",
+          "address_hash": "0x1BF44950DB687ba4B3D886f6fA101612E113F41A",
+          "inserted_at": "2025-07-10T18:29:11Z",
           "ABI": [
             {
               "inputs": [
@@ -12470,8 +12465,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xbB8cE5E5FC1729D35323aFf1f2FC654287e9e1fE",
-          "inserted_at": "2025-06-10T02:02:19Z",
+          "address_hash": "0x3d97DA15c6665Fb6c976F0265bd7726A82F13920",
+          "inserted_at": "2025-07-10T18:29:11Z",
           "ABI": [
             {
               "inputs": [],
@@ -12707,8 +12702,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x98fC4D9FF9f1cc76F22F7F5fc8f6CC0697335BeA",
-          "inserted_at": "2025-06-10T02:02:19Z",
+          "address_hash": "0x195d5090469aE5376CC7D80F3462a1903f25b8Ab",
+          "inserted_at": "2025-07-10T18:29:11Z",
           "ABI": [
             {
               "inputs": [
@@ -13343,8 +13338,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xCC56A86eF6343Ed96Cd8Ff0AA2bdb3E598b66A03",
-          "inserted_at": "2025-06-10T02:02:19Z",
+          "address_hash": "0x09815849f59Fe4F7d94F6240a77AEf4Dc2f02873",
+          "inserted_at": "2025-07-10T18:29:11Z",
           "ABI": [
             {
               "inputs": [
@@ -14399,8 +14394,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xF6241e9D9DD5f0AbE7cEfB68E644865c52a2bFEF",
-          "inserted_at": "2025-06-10T02:02:19Z",
+          "address_hash": "0xA69f54bBfaAFff94e73e6CfD3642B4464036C9BA",
+          "inserted_at": "2025-07-10T18:29:11Z",
           "ABI": [
             {
               "inputs": [
@@ -14893,6 +14888,36 @@ module.exports = {
             },
             {
               "inputs": [],
+              "name": "getLitActionPriceConfigs",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "enum LibPriceFeedStorage.LitActionPriceComponent",
+                      "name": "priceComponent",
+                      "type": "uint8"
+                    },
+                    {
+                      "internalType": "enum LibPriceFeedStorage.NodePriceMeasurement",
+                      "name": "priceMeasurement",
+                      "type": "uint8"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "price",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct LibPriceFeedStorage.LitActionPriceConfig[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
               "name": "getNodeCapacityConfig",
               "outputs": [
                 {
@@ -15210,6 +15235,59 @@ module.exports = {
                 }
               ],
               "name": "setBaseNetworkPrices",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "enum LibPriceFeedStorage.LitActionPriceComponent",
+                  "name": "priceComponent",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "enum LibPriceFeedStorage.NodePriceMeasurement",
+                  "name": "priceMeasurement",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "new_price",
+                  "type": "uint256"
+                }
+              ],
+              "name": "setLitActionPriceConfig",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "enum LibPriceFeedStorage.LitActionPriceComponent",
+                      "name": "priceComponent",
+                      "type": "uint8"
+                    },
+                    {
+                      "internalType": "enum LibPriceFeedStorage.NodePriceMeasurement",
+                      "name": "priceMeasurement",
+                      "type": "uint8"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "price",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct LibPriceFeedStorage.LitActionPriceConfig[]",
+                  "name": "configs",
+                  "type": "tuple[]"
+                }
+              ],
+              "name": "setLitActionPriceConfigs",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
