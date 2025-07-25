@@ -12,9 +12,11 @@ export const METHODS_TO_EXTRACT = [
   "PKPPermissions.addPermittedAction",
   "PKPPermissions.addPermittedAddress",
   "PKPPermissions.addPermittedAuthMethodScope",
+  "PKPPermissions.addPermittedAuthMethod",
   "PKPPermissions.removePermittedAction",
   "PKPPermissions.removePermittedAddress",
   "PKPPermissions.removePermittedAuthMethod",
+  "PKPPermissions.removePermittedAuthMethodScope",
   "PKPPermissions.getTokenIdsForAuthMethod",
 
   // PKP Read:
