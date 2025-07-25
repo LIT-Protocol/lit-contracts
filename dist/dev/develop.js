@@ -2264,11 +2264,6 @@ export const develop = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "slopeIncrease",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "validatorSharePrice",
                       "type": "uint256"
                     },
@@ -2341,11 +2336,6 @@ export const develop = {
                     {
                       "internalType": "uint256",
                       "name": "slope",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "slopeIncrease",
                       "type": "uint256"
                     },
                     {
@@ -2827,7 +2817,23 @@ export const develop = {
               "type": "error"
             },
             {
-              "inputs": [],
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "senderAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "operatorAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                }
+              ],
               "name": "StakerAddressMismatch",
               "type": "error"
             },
@@ -3325,6 +3331,16 @@ export const develop = {
                   "internalType": "bytes",
                   "name": "attestedPubKey",
                   "type": "bytes"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "senderPubKey",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "receiverPubKey",
+                  "type": "uint256"
                 }
               ],
               "name": "registerAttestedWallet",
@@ -3440,19 +3456,9 @@ export const develop = {
                   "internalType": "address",
                   "name": "operatorAddress",
                   "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "senderPubKey",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "receiverPubKey",
-                  "type": "uint256"
                 }
               ],
-              "name": "setIpPortNodeAddressAndCommunicationPubKeys",
+              "name": "setIpPortNodeAddress",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"

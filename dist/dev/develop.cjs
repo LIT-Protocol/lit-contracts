@@ -2266,11 +2266,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "slopeIncrease",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "validatorSharePrice",
                       "type": "uint256"
                     },
@@ -2343,11 +2338,6 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "slope",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "slopeIncrease",
                       "type": "uint256"
                     },
                     {
@@ -2829,7 +2819,23 @@ module.exports = {
               "type": "error"
             },
             {
-              "inputs": [],
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "senderAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "operatorAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                }
+              ],
               "name": "StakerAddressMismatch",
               "type": "error"
             },
@@ -3327,6 +3333,16 @@ module.exports = {
                   "internalType": "bytes",
                   "name": "attestedPubKey",
                   "type": "bytes"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "senderPubKey",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "receiverPubKey",
+                  "type": "uint256"
                 }
               ],
               "name": "registerAttestedWallet",
@@ -3442,19 +3458,9 @@ module.exports = {
                   "internalType": "address",
                   "name": "operatorAddress",
                   "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "senderPubKey",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "receiverPubKey",
-                  "type": "uint256"
                 }
               ],
-              "name": "setIpPortNodeAddressAndCommunicationPubKeys",
+              "name": "setIpPortNodeAddress",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
