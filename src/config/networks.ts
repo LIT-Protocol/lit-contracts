@@ -11,16 +11,16 @@ export const LIT_ASSETS_REPO = "lit-assets";
 
 // Network path mapping - single source of truth
 export const PROD_PATH_BY_NETWORK = {
-  datil: "datil-prod",
-  "datil-dev": "datil-dev",
-  "datil-test": "datil-test",
+  // datil: "datil-prod",
+  // "datil-dev": "datil-dev",
+  // "datil-test": "datil-test",
   "naga-dev": "naga-dev",
   "naga-test": "naga-test",
   "naga-staging": "naga-staging",
 } as const;
 
 export const DEV_PATH_BY_NETWORK = {
-  develop: "develop",
+  // develop: "develop",
   // "datil-clone": "datil-clone",
 } as const;
 
