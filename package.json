@@ -1,187 +1,164 @@
 {
   "name": "@lit-protocol/contracts",
-  "version": "0.0.88",
+  "version": "0.4.0",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "type": "module",
   "scripts": {
-    "fetch": "bun run fetch-contracts.ts"
+    "start": "bun run ./src/index.ts",
+    "test": "./test/run-tests.sh",
+    "test:extract-methods": "bun run ./src/test-extract-methods.ts",
+    "clean": "rimraf dist",
+    "build:custom-signatures": "bun build ./src/custom-network-signatures.ts --outfile ./dist/custom-network-signatures.js --target node --format esm && bun build ./src/custom-network-signatures.ts --outfile ./dist/custom-network-signatures.cjs --target node --format cjs",
+    "declarations": "tsc --emitDeclarationOnly -p tsconfig.json",
+    "build": "bun run clean && bun run build:custom-signatures && bun run start && bun run declarations"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "typescript": "^5.0.0"
+    "rimraf": "^6.0.1",
+    "typescript": "^5.0.0",
+    "@t3-oss/env-core": "^0.12.0",
+    "@typechain/ethers-v6": "^0.5.1",
+    "ethers": "^6.13.5",
+    "viem": "^2.23.3",
+    "zod": "^3.24.2"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "exports": {
     ".": {
+      "import": "./dist/index.js",
       "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
+      "types": "./dist/index.d.ts"
     },
-    "./prod/manzano.json": {
-      "require": "./dist/prod/manzano.json",
-      "import": "./dist/prod/manzano.json",
-      "types": "./json.d.ts"
-    },
-    "./prod/internalDev.json": {
-      "require": "./dist/prod/internalDev.json",
-      "import": "./dist/prod/internalDev.json",
-      "types": "./json.d.ts"
-    },
-    "./prod/datil-test.json": {
-      "require": "./dist/prod/datil-test.json",
-      "import": "./dist/prod/datil-test.json",
-      "types": "./json.d.ts"
-    },
-    "./prod/datil-dev.json": {
-      "require": "./dist/prod/datil-dev.json",
-      "import": "./dist/prod/datil-dev.json",
-      "types": "./json.d.ts"
-    },
-    "./prod/datil.json": {
-      "require": "./dist/prod/datil.json",
-      "import": "./dist/prod/datil.json",
-      "types": "./json.d.ts"
-    },
-    "./prod/habanero.json": {
-      "require": "./dist/prod/habanero.json",
-      "import": "./dist/prod/habanero.json",
-      "types": "./json.d.ts"
-    },
-    "./prod/cayenne.json": {
-      "require": "./dist/prod/cayenne.json",
-      "import": "./dist/prod/cayenne.json",
-      "types": "./json.d.ts"
-    },
-    "./dev/manzano.json": {
-      "require": "./dist/dev/manzano.json",
-      "import": "./dist/dev/manzano.json",
-      "types": "./json.d.ts"
-    },
-    "./dev/internalDev.json": {
-      "require": "./dist/dev/internalDev.json",
-      "import": "./dist/dev/internalDev.json",
-      "types": "./json.d.ts"
-    },
-    "./dev/datil-test.json": {
-      "require": "./dist/dev/datil-test.json",
-      "import": "./dist/dev/datil-test.json",
-      "types": "./json.d.ts"
-    },
-    "./dev/datil-dev.json": {
-      "require": "./dist/dev/datil-dev.json",
-      "import": "./dist/dev/datil-dev.json",
-      "types": "./json.d.ts"
-    },
-    "./dev/datil.json": {
-      "require": "./dist/dev/datil.json",
-      "import": "./dist/dev/datil.json",
-      "types": "./json.d.ts"
-    },
-    "./dev/habanero.json": {
-      "require": "./dist/dev/habanero.json",
-      "import": "./dist/dev/habanero.json",
-      "types": "./json.d.ts"
-    },
-    "./dev/cayenne.json": {
-      "require": "./dist/dev/cayenne.json",
-      "import": "./dist/dev/cayenne.json",
-      "types": "./json.d.ts"
-    },
-    "./prod/manzano.js": {
-      "require": "./dist/prod/manzano.js",
-      "import": "./dist/prod/manzano.js",
-      "types": "./dist/prod/manzano.ts"
-    },
-    "./prod/habanero.js": {
-      "require": "./dist/prod/habanero.js",
-      "import": "./dist/prod/habanero.js",
-      "types": "./dist/prod/habanero.ts"
-    },
-    "./prod/datil-test.js": {
-      "require": "./dist/prod/datil-test.js",
-      "import": "./dist/prod/datil-test.js",
-      "types": "./dist/prod/datil-test.ts"
-    },
-    "./prod/internalDev.js": {
-      "require": "./dist/prod/internalDev.js",
-      "import": "./dist/prod/internalDev.js",
-      "types": "./dist/prod/internalDev.ts"
-    },
-    "./prod/datil-dev.js": {
-      "require": "./dist/prod/datil-dev.js",
-      "import": "./dist/prod/datil-dev.js",
-      "types": "./dist/prod/datil-dev.ts"
-    },
-    "./prod/datil.js": {
-      "require": "./dist/prod/datil.js",
+    "./prod/datil": {
       "import": "./dist/prod/datil.js",
-      "types": "./dist/prod/datil.ts"
+      "require": "./dist/prod/datil.cjs",
+      "types": "./dist/prod/datil.d.ts"
     },
-    "./prod/cayenne.js": {
-      "require": "./dist/prod/cayenne.js",
-      "import": "./dist/prod/cayenne.js",
-      "types": "./dist/prod/cayenne.ts"
+    "./signatures/datil": {
+      "import": "./dist/signatures/datil.js",
+      "require": "./dist/signatures/datil.cjs",
+      "types": "./dist/signatures/datil.d.ts"
     },
-    "./dev/manzano.js": {
-      "require": "./dist/dev/manzano.js",
-      "import": "./dist/dev/manzano.js",
-      "types": "./dist/dev/manzano.ts"
+    "./prod/datil-dev": {
+      "import": "./dist/prod/datil-dev.js",
+      "require": "./dist/prod/datil-dev.cjs",
+      "types": "./dist/prod/datil-dev.d.ts"
     },
-    "./dev/habanero.js": {
-      "require": "./dist/dev/habanero.js",
-      "import": "./dist/dev/habanero.js",
-      "types": "./dist/dev/habanero.ts"
+    "./signatures/datil-dev": {
+      "import": "./dist/signatures/datil-dev.js",
+      "require": "./dist/signatures/datil-dev.cjs",
+      "types": "./dist/signatures/datil-dev.d.ts"
     },
-    "./dev/datil-test.js": {
-      "require": "./dist/dev/datil-test.js",
-      "import": "./dist/dev/datil-test.js",
-      "types": "./dist/dev/datil-test.ts"
+    "./prod/datil-test": {
+      "import": "./dist/prod/datil-test.js",
+      "require": "./dist/prod/datil-test.cjs",
+      "types": "./dist/prod/datil-test.d.ts"
     },
-    "./dev/internalDev.js": {
-      "require": "./dist/dev/internalDev.js",
-      "import": "./dist/dev/internalDev.js",
-      "types": "./dist/dev/internalDev.ts"
+    "./signatures/datil-test": {
+      "import": "./dist/signatures/datil-test.js",
+      "require": "./dist/signatures/datil-test.cjs",
+      "types": "./dist/signatures/datil-test.d.ts"
     },
-    "./dev/datil-dev.js": {
-      "require": "./dist/dev/datil-dev.js",
-      "import": "./dist/dev/datil-dev.js",
-      "types": "./dist/dev/datil-dev.ts"
-    },
-    "./dev/datil.js": {
-      "require": "./dist/dev/datil.js",
-      "import": "./dist/dev/datil.js",
-      "types": "./dist/dev/datil.ts"
-    },
-    "./dev/cayenne.js": {
-      "require": "./dist/dev/cayenne.js",
-      "import": "./dist/dev/cayenne.js",
-      "types": "./dist/dev/cayenne.ts"
-    },
-    "./prod/naga-dev.json": {
-      "require": "./dist/prod/naga-dev.json",
-      "import": "./dist/prod/naga-dev.json",
-      "types": "./json.d.ts"
-    },
-    "./dev/naga-dev.json": {
-      "require": "./dist/dev/naga-dev.json",
-      "import": "./dist/dev/naga-dev.json",
-      "types": "./json.d.ts"
-    },
-    "./prod/naga-dev.js": {
-      "require": "./dist/prod/naga-dev.js",
+    "./prod/naga-dev": {
       "import": "./dist/prod/naga-dev.js",
-      "types": "./dist/prod/naga-dev.ts"
+      "require": "./dist/prod/naga-dev.cjs",
+      "types": "./dist/prod/naga-dev.d.ts"
     },
-    "./dev/naga-dev.js": {
-      "require": "./dist/dev/naga-dev.js",
-      "import": "./dist/dev/naga-dev.js",
-      "types": "./dist/dev/naga-dev.ts"
+    "./signatures/naga-dev": {
+      "import": "./dist/signatures/naga-dev.js",
+      "require": "./dist/signatures/naga-dev.cjs",
+      "types": "./dist/signatures/naga-dev.d.ts"
+    },
+    "./prod/naga-test": {
+      "import": "./dist/prod/naga-test.js",
+      "require": "./dist/prod/naga-test.cjs",
+      "types": "./dist/prod/naga-test.d.ts"
+    },
+    "./signatures/naga-test": {
+      "import": "./dist/signatures/naga-test.js",
+      "require": "./dist/signatures/naga-test.cjs",
+      "types": "./dist/signatures/naga-test.d.ts"
+    },
+    "./prod/naga-staging": {
+      "import": "./dist/prod/naga-staging.js",
+      "require": "./dist/prod/naga-staging.cjs",
+      "types": "./dist/prod/naga-staging.d.ts"
+    },
+    "./signatures/naga-staging": {
+      "import": "./dist/signatures/naga-staging.js",
+      "require": "./dist/signatures/naga-staging.cjs",
+      "types": "./dist/signatures/naga-staging.d.ts"
+    },
+    "./dev/develop": {
+      "import": "./dist/dev/develop.js",
+      "require": "./dist/dev/develop.cjs",
+      "types": "./dist/dev/develop.d.ts"
+    },
+    "./signatures/develop": {
+      "import": "./dist/signatures/develop.js",
+      "require": "./dist/signatures/develop.cjs",
+      "types": "./dist/signatures/develop.d.ts"
+    },
+    "./custom-network-signatures": {
+      "import": "./dist/custom-network-signatures.js",
+      "require": "./dist/custom-network-signatures.cjs",
+      "types": "./dist/custom-network-signatures.d.ts"
     }
   },
   "types": "./dist/index.ts",
   "publishConfig": {
     "access": "public"
+  },
+  "typesVersions": {
+    "*": {
+      "prod/datil": [
+        "dist/prod/datil.d.ts"
+      ],
+      "signatures/datil": [
+        "dist/signatures/datil.d.ts"
+      ],
+      "prod/datil-dev": [
+        "dist/prod/datil-dev.d.ts"
+      ],
+      "signatures/datil-dev": [
+        "dist/signatures/datil-dev.d.ts"
+      ],
+      "prod/datil-test": [
+        "dist/prod/datil-test.d.ts"
+      ],
+      "signatures/datil-test": [
+        "dist/signatures/datil-test.d.ts"
+      ],
+      "prod/naga-dev": [
+        "dist/prod/naga-dev.d.ts"
+      ],
+      "signatures/naga-dev": [
+        "dist/signatures/naga-dev.d.ts"
+      ],
+      "prod/naga-test": [
+        "dist/prod/naga-test.d.ts"
+      ],
+      "signatures/naga-test": [
+        "dist/signatures/naga-test.d.ts"
+      ],
+      "prod/naga-staging": [
+        "dist/prod/naga-staging.d.ts"
+      ],
+      "signatures/naga-staging": [
+        "dist/signatures/naga-staging.d.ts"
+      ],
+      "dev/develop": [
+        "dist/dev/develop.d.ts"
+      ],
+      "signatures/develop": [
+        "dist/signatures/develop.d.ts"
+      ],
+      "custom-network-signatures": [
+        "dist/custom-network-signatures.d.ts"
+      ]
+    }
   }
 }

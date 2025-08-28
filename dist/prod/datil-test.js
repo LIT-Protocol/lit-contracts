@@ -1,12 +1,4 @@
 export const datilTest = {
-  "config": {
-    "chainId": "175188",
-    "rpcUrl": "https://yellowstone-rpc.litprotocol.com",
-    "chainName": "yellowstone",
-    "litNodeDomainName": "127.0.0.1",
-    "litNodePort": 7470,
-    "rocketPort": 7470
-  },
   "data": [
     {
       "name": "StakingBalances",
@@ -14,7 +6,7 @@ export const datilTest = {
         {
           "network": "datil-test",
           "address_hash": "0xCa3c64e7D8cA743aeD2B2d20DCA3233f400710E2",
-          "inserted_at": "2024-11-02T02:50:47Z",
+          "inserted_at": "2025-05-05T05:49:58Z",
           "ABI": [
             {
               "inputs": [
@@ -1161,6 +1153,29 @@ export const datilTest = {
               "type": "function"
             },
             {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "amount",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "account",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "sender",
+                  "type": "address"
+                }
+              ],
+              "name": "stakeForValidator",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
               "inputs": [],
               "name": "totalStaked",
               "outputs": [
@@ -1239,7 +1254,7 @@ export const datilTest = {
         {
           "network": "datil-test",
           "address_hash": "0xdec37933239846834b3BfD408913Ed3dbEf6588F",
-          "inserted_at": "2024-11-02T02:50:47Z",
+          "inserted_at": "2025-05-05T05:49:58Z",
           "ABI": [
             {
               "inputs": [
@@ -1634,12 +1649,694 @@ export const datilTest = {
             },
             {
               "inputs": [],
-              "name": "ActiveValidatorsCannotLeave",
+              "name": "CallerNotOwner",
               "type": "error"
             },
             {
               "inputs": [],
-              "name": "CallerNotOwner",
+              "name": "CallerNotOwnerOrDevopsAdmin",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "enum LibStakingStorage.States",
+                  "name": "state",
+                  "type": "uint8"
+                }
+              ],
+              "name": "MustBeInActiveOrUnlockedOrPausedState",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "enum LibStakingStorage.States",
+                  "name": "state",
+                  "type": "uint8"
+                }
+              ],
+              "name": "MustBeInNextValidatorSetLockedOrReadyForNextEpochState",
+              "type": "error"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "dataType",
+                  "type": "uint256"
+                }
+              ],
+              "name": "ClearOfflinePhaseData",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "reason",
+                  "type": "uint256"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "tolerance",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "intervalSecs",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "kickPenaltyPercent",
+                      "type": "uint256"
+                    }
+                  ],
+                  "indexed": false,
+                  "internalType": "struct LibStakingStorage.ComplaintConfig",
+                  "name": "config",
+                  "type": "tuple"
+                }
+              ],
+              "name": "ComplaintConfigSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newTokenRewardPerTokenPerEpoch",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256[]",
+                  "name": "newKeyTypes",
+                  "type": "uint256[]"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newMinimumValidatorCount",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newMaxConcurrentRequests",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newMaxTripleCount",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newMinTripleCount",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newPeerCheckingIntervalSecs",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newMaxTripleConcurrency",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "bool",
+                  "name": "newRpcHealthcheckEnabled",
+                  "type": "bool"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "timeoutMs",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "memoryLimitMb",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxCodeLength",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxResponseLength",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxFetchCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxSignCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxContractCallCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxBroadcastAndCollectCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxCallDepth",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxRetries",
+                      "type": "uint256"
+                    }
+                  ],
+                  "indexed": false,
+                  "internalType": "struct LibStakingStorage.LitActionConfig",
+                  "name": "newLitActionConfig",
+                  "type": "tuple"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "bool",
+                  "name": "newHeliosEnabled",
+                  "type": "bool"
+                }
+              ],
+              "name": "ConfigSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "dataType",
+                  "type": "uint256"
+                }
+              ],
+              "name": "CountOfflinePhaseData",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "newDevopsAdmin",
+                  "type": "address"
+                }
+              ],
+              "name": "DevopsAdminSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newEpochEndTime",
+                  "type": "uint256"
+                }
+              ],
+              "name": "EpochEndTimeSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newEpochLength",
+                  "type": "uint256"
+                }
+              ],
+              "name": "EpochLengthSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newEpochTimeout",
+                  "type": "uint256"
+                }
+              ],
+              "name": "EpochTimeoutSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "reason",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newKickPenaltyPercent",
+                  "type": "uint256"
+                }
+              ],
+              "name": "KickPenaltyPercentSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "newResolverContractAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "ResolverContractAddressSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "newStakingTokenAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "StakingTokenSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "staker",
+                  "type": "address"
+                }
+              ],
+              "name": "ValidatorRejoinedNextEpoch",
+              "type": "event"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "validatorStakerAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "adminKickValidatorInNextEpoch",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "staker",
+                  "type": "address"
+                }
+              ],
+              "name": "adminRejoinValidator",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "adminResetEpoch",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "validatorStakerAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "amountToPenalize",
+                  "type": "uint256"
+                }
+              ],
+              "name": "adminSlashValidator",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "staker",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "amount",
+                  "type": "uint256"
+                }
+              ],
+              "name": "adminStakeForValidator",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "dataType",
+                  "type": "uint256"
+                }
+              ],
+              "name": "emitClearOfflinePhaseData",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "dataType",
+                  "type": "uint256"
+                }
+              ],
+              "name": "emitCountOfflinePhaseData",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "reason",
+                  "type": "uint256"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "tolerance",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "intervalSecs",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "kickPenaltyPercent",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct LibStakingStorage.ComplaintConfig",
+                  "name": "config",
+                  "type": "tuple"
+                }
+              ],
+              "name": "setComplaintConfig",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "tokenRewardPerTokenPerEpoch",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "DEPRECATED_complaintTolerance",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "DEPRECATED_complaintIntervalSecs",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256[]",
+                      "name": "keyTypes",
+                      "type": "uint256[]"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minimumValidatorCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxConcurrentRequests",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxTripleCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minTripleCount",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "peerCheckingIntervalSecs",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxTripleConcurrency",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "rpcHealthcheckEnabled",
+                      "type": "bool"
+                    },
+                    {
+                      "components": [
+                        {
+                          "internalType": "uint256",
+                          "name": "timeoutMs",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "memoryLimitMb",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxCodeLength",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxResponseLength",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxFetchCount",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxSignCount",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxContractCallCount",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxBroadcastAndCollectCount",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxCallDepth",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxRetries",
+                          "type": "uint256"
+                        }
+                      ],
+                      "internalType": "struct LibStakingStorage.LitActionConfig",
+                      "name": "litActionConfig",
+                      "type": "tuple"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "heliosEnabled",
+                      "type": "bool"
+                    }
+                  ],
+                  "internalType": "struct LibStakingStorage.Config",
+                  "name": "newConfig",
+                  "type": "tuple"
+                }
+              ],
+              "name": "setConfig",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newResolverAddress",
+                  "type": "address"
+                }
+              ],
+              "name": "setContractResolver",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newDevopsAdmin",
+                  "type": "address"
+                }
+              ],
+              "name": "setDevopsAdmin",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "newEpochEndTime",
+                  "type": "uint256"
+                }
+              ],
+              "name": "setEpochEndTime",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "newEpochLength",
+                  "type": "uint256"
+                }
+              ],
+              "name": "setEpochLength",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "enum LibStakingStorage.States",
+                  "name": "newState",
+                  "type": "uint8"
+                }
+              ],
+              "name": "setEpochState",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "newEpochTimeout",
+                  "type": "uint256"
+                }
+              ],
+              "name": "setEpochTimeout",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "reason",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "newKickPenaltyPercent",
+                  "type": "uint256"
+                }
+              ],
+              "name": "setKickPenaltyPercent",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "ActiveValidatorsCannotLeave",
               "type": "error"
             },
             {
@@ -1714,17 +2411,6 @@ export const datilTest = {
                   "type": "uint8"
                 }
               ],
-              "name": "MustBeInActiveOrUnlockedOrPausedState",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "enum LibStakingStorage.States",
-                  "name": "state",
-                  "type": "uint8"
-                }
-              ],
               "name": "MustBeInActiveOrUnlockedState",
               "type": "error"
             },
@@ -1737,17 +2423,6 @@ export const datilTest = {
                 }
               ],
               "name": "MustBeInNextValidatorSetLockedOrReadyForNextEpochOrRestoreState",
-              "type": "error"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "enum LibStakingStorage.States",
-                  "name": "state",
-                  "type": "uint8"
-                }
-              ],
-              "name": "MustBeInNextValidatorSetLockedOrReadyForNextEpochState",
               "type": "error"
             },
             {
@@ -1920,161 +2595,6 @@ export const datilTest = {
               "anonymous": false,
               "inputs": [
                 {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "reason",
-                  "type": "uint256"
-                },
-                {
-                  "components": [
-                    {
-                      "internalType": "uint256",
-                      "name": "tolerance",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "intervalSecs",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "kickPenaltyPercent",
-                      "type": "uint256"
-                    }
-                  ],
-                  "indexed": false,
-                  "internalType": "struct LibStakingStorage.ComplaintConfig",
-                  "name": "config",
-                  "type": "tuple"
-                }
-              ],
-              "name": "ComplaintConfigSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newTokenRewardPerTokenPerEpoch",
-                  "type": "uint256"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256[]",
-                  "name": "newKeyTypes",
-                  "type": "uint256[]"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newMinimumValidatorCount",
-                  "type": "uint256"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newMaxConcurrentRequests",
-                  "type": "uint256"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newMaxTripleCount",
-                  "type": "uint256"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newMinTripleCount",
-                  "type": "uint256"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newPeerCheckingIntervalSecs",
-                  "type": "uint256"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newMaxTripleConcurrency",
-                  "type": "uint256"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "bool",
-                  "name": "newRpcHealthcheckEnabled",
-                  "type": "bool"
-                }
-              ],
-              "name": "ConfigSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newEpochEndTime",
-                  "type": "uint256"
-                }
-              ],
-              "name": "EpochEndTimeSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newEpochLength",
-                  "type": "uint256"
-                }
-              ],
-              "name": "EpochLengthSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newEpochTimeout",
-                  "type": "uint256"
-                }
-              ],
-              "name": "EpochTimeoutSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "reason",
-                  "type": "uint256"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "newKickPenaltyPercent",
-                  "type": "uint256"
-                }
-              ],
-              "name": "KickPenaltyPercentSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
                   "indexed": true,
                   "internalType": "address",
                   "name": "staker",
@@ -2140,38 +2660,12 @@ export const datilTest = {
               "inputs": [
                 {
                   "indexed": false,
-                  "internalType": "address",
-                  "name": "newResolverContractAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "ResolverContractAddressSet",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
                   "internalType": "uint256",
                   "name": "newDuration",
                   "type": "uint256"
                 }
               ],
               "name": "RewardsDurationUpdated",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "newStakingTokenAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "StakingTokenSet",
               "type": "event"
             },
             {
@@ -2210,19 +2704,6 @@ export const datilTest = {
               "anonymous": false,
               "inputs": [
                 {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                }
-              ],
-              "name": "ValidatorRejoinedNextEpoch",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
                   "indexed": true,
                   "internalType": "address",
                   "name": "reporter",
@@ -2249,57 +2730,6 @@ export const datilTest = {
               ],
               "name": "VotedToKickValidatorInNextEpoch",
               "type": "event"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "validatorStakerAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "adminKickValidatorInNextEpoch",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "staker",
-                  "type": "address"
-                }
-              ],
-              "name": "adminRejoinValidator",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "adminResetEpoch",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "validatorStakerAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "amountToPenalize",
-                  "type": "uint256"
-                }
-              ],
-              "name": "adminSlashValidator",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
             },
             {
               "inputs": [],
@@ -2407,176 +2837,6 @@ export const datilTest = {
             {
               "inputs": [
                 {
-                  "internalType": "uint256",
-                  "name": "reason",
-                  "type": "uint256"
-                },
-                {
-                  "components": [
-                    {
-                      "internalType": "uint256",
-                      "name": "tolerance",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "intervalSecs",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "kickPenaltyPercent",
-                      "type": "uint256"
-                    }
-                  ],
-                  "internalType": "struct LibStakingStorage.ComplaintConfig",
-                  "name": "config",
-                  "type": "tuple"
-                }
-              ],
-              "name": "setComplaintConfig",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "components": [
-                    {
-                      "internalType": "uint256",
-                      "name": "tokenRewardPerTokenPerEpoch",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "DEPRECATED_complaintTolerance",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "DEPRECATED_complaintIntervalSecs",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256[]",
-                      "name": "keyTypes",
-                      "type": "uint256[]"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "minimumValidatorCount",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "maxConcurrentRequests",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "maxTripleCount",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "minTripleCount",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "peerCheckingIntervalSecs",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "maxTripleConcurrency",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "bool",
-                      "name": "rpcHealthcheckEnabled",
-                      "type": "bool"
-                    }
-                  ],
-                  "internalType": "struct LibStakingStorage.Config",
-                  "name": "newConfig",
-                  "type": "tuple"
-                }
-              ],
-              "name": "setConfig",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "newResolverAddress",
-                  "type": "address"
-                }
-              ],
-              "name": "setContractResolver",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "newEpochEndTime",
-                  "type": "uint256"
-                }
-              ],
-              "name": "setEpochEndTime",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "newEpochLength",
-                  "type": "uint256"
-                }
-              ],
-              "name": "setEpochLength",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "enum LibStakingStorage.States",
-                  "name": "newState",
-                  "type": "uint8"
-                }
-              ],
-              "name": "setEpochState",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "newEpochTimeout",
-                  "type": "uint256"
-                }
-              ],
-              "name": "setEpochTimeout",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
                   "internalType": "uint32",
                   "name": "ip",
                   "type": "uint32"
@@ -2608,24 +2868,6 @@ export const datilTest = {
                 }
               ],
               "name": "setIpPortNodeAddressAndCommunicationPubKeys",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "reason",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "newKickPenaltyPercent",
-                  "type": "uint256"
-                }
-              ],
-              "name": "setKickPenaltyPercent",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -3025,6 +3267,68 @@ export const datilTest = {
                     {
                       "internalType": "bool",
                       "name": "rpcHealthcheckEnabled",
+                      "type": "bool"
+                    },
+                    {
+                      "components": [
+                        {
+                          "internalType": "uint256",
+                          "name": "timeoutMs",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "memoryLimitMb",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxCodeLength",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxResponseLength",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxFetchCount",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxSignCount",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxContractCallCount",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxBroadcastAndCollectCount",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxCallDepth",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "maxRetries",
+                          "type": "uint256"
+                        }
+                      ],
+                      "internalType": "struct LibStakingStorage.LitActionConfig",
+                      "name": "litActionConfig",
+                      "type": "tuple"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "heliosEnabled",
                       "type": "bool"
                     }
                   ],
@@ -3809,7 +4113,7 @@ export const datilTest = {
         {
           "network": "datil-test",
           "address_hash": "0x1f4233b6C5b84978c458FA66412E4ae6d0561104",
-          "inserted_at": "2024-11-02T02:50:47Z",
+          "inserted_at": "2025-05-05T05:49:58Z",
           "ABI": [
             {
               "inputs": [
@@ -4285,11 +4589,6 @@ export const datilTest = {
                               "internalType": "uint256",
                               "name": "timeout",
                               "type": "uint256"
-                            },
-                            {
-                              "internalType": "uint256",
-                              "name": "startTime",
-                              "type": "uint256"
                             }
                           ],
                           "internalType": "struct LibStakingStorage.Epoch",
@@ -4337,11 +4636,6 @@ export const datilTest = {
                               "internalType": "uint256",
                               "name": "receiverPubKey",
                               "type": "uint256"
-                            },
-                            {
-                              "internalType": "uint256",
-                              "name": "lastActiveEpoch",
-                              "type": "uint256"
                             }
                           ],
                           "internalType": "struct LibStakingStorage.Validator[]",
@@ -4385,7 +4679,7 @@ export const datilTest = {
         {
           "network": "datil-test",
           "address_hash": "0x8281f3A62f7de320B3a634e6814BeC36a1AA92bd",
-          "inserted_at": "2024-11-02T02:50:47Z",
+          "inserted_at": "2025-05-05T05:49:58Z",
           "ABI": [
             {
               "anonymous": false,
@@ -4500,7 +4794,7 @@ export const datilTest = {
         {
           "network": "datil-test",
           "address_hash": "0xFA1208f5275a01Be1b4A6F6764d388FDcF5Bf85e",
-          "inserted_at": "2024-11-02T02:50:47Z",
+          "inserted_at": "2025-05-05T05:49:58Z",
           "ABI": [
             {
               "inputs": [
@@ -5554,7 +5848,7 @@ export const datilTest = {
         {
           "network": "datil-test",
           "address_hash": "0x65C3d057aef28175AfaC61a74cc6b27E88405583",
-          "inserted_at": "2024-11-02T02:50:47Z",
+          "inserted_at": "2025-05-05T05:49:58Z",
           "ABI": [
             {
               "inputs": [
@@ -6446,7 +6740,7 @@ export const datilTest = {
         {
           "network": "datil-test",
           "address_hash": "0x6a0f439f064B7167A8Ea6B22AcC07ae5360ee0d1",
-          "inserted_at": "2024-11-02T02:50:47Z",
+          "inserted_at": "2025-05-05T05:49:58Z",
           "ABI": [
             {
               "inputs": [
@@ -6976,6 +7270,19 @@ export const datilTest = {
               "inputs": [
                 {
                   "indexed": false,
+                  "internalType": "address",
+                  "name": "newTrustedForwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "TrustedForwarderSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
                   "internalType": "uint256",
                   "name": "amount",
                   "type": "uint256"
@@ -7067,6 +7374,11 @@ export const datilTest = {
                   "internalType": "struct IPubkeyRouter.Signature[]",
                   "name": "signatures",
                   "type": "tuple[]"
+                },
+                {
+                  "internalType": "address",
+                  "name": "stakingContractAddress",
+                  "type": "address"
                 }
               ],
               "name": "claimAndMint",
@@ -7224,6 +7536,19 @@ export const datilTest = {
             {
               "inputs": [],
               "name": "getStakingAddress",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getTrustedForwarder",
               "outputs": [
                 {
                   "internalType": "address",
@@ -7502,6 +7827,19 @@ export const datilTest = {
             {
               "inputs": [
                 {
+                  "internalType": "address",
+                  "name": "forwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "setTrustedForwarder",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "bytes4",
                   "name": "interfaceId",
                   "type": "bytes4"
@@ -7646,7 +7984,7 @@ export const datilTest = {
         {
           "network": "datil-test",
           "address_hash": "0xa17f11B7f828EEc97926E56D98D5AB63A0231b77",
-          "inserted_at": "2024-11-02T02:50:47Z",
+          "inserted_at": "2025-05-05T05:49:58Z",
           "ABI": [
             {
               "inputs": [
@@ -8390,6 +8728,19 @@ export const datilTest = {
               "inputs": [
                 {
                   "internalType": "address",
+                  "name": "owner",
+                  "type": "address"
+                }
+              ],
+              "name": "pruneExpired",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
                   "name": "from",
                   "type": "address"
                 },
@@ -9040,8 +9391,8 @@ export const datilTest = {
       "contracts": [
         {
           "network": "datil-test",
-          "address_hash": "0x341E5273E2E2ea3c4aDa4101F008b1261E58510D",
-          "inserted_at": "2024-11-02T02:50:47Z",
+          "address_hash": "0x7E209fDFBBEe26Df3363354BC55C2Cc89DD030a9",
+          "inserted_at": "2025-05-05T05:49:58Z",
           "ABI": [
             {
               "inputs": [
@@ -9410,6 +9761,126 @@ export const datilTest = {
               "type": "function"
             },
             {
+              "inputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "keyType",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "bytes32",
+                      "name": "derivedKeyId",
+                      "type": "bytes32"
+                    },
+                    {
+                      "components": [
+                        {
+                          "internalType": "bytes32",
+                          "name": "r",
+                          "type": "bytes32"
+                        },
+                        {
+                          "internalType": "bytes32",
+                          "name": "s",
+                          "type": "bytes32"
+                        },
+                        {
+                          "internalType": "uint8",
+                          "name": "v",
+                          "type": "uint8"
+                        }
+                      ],
+                      "internalType": "struct IPubkeyRouter.Signature[]",
+                      "name": "signatures",
+                      "type": "tuple[]"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "stakingContractAddress",
+                      "type": "address"
+                    }
+                  ],
+                  "internalType": "struct LibPKPNFTStorage.ClaimMaterialV2",
+                  "name": "claimMaterial",
+                  "type": "tuple"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "keyType",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "bytes[]",
+                      "name": "permittedIpfsCIDs",
+                      "type": "bytes[]"
+                    },
+                    {
+                      "internalType": "uint256[][]",
+                      "name": "permittedIpfsCIDScopes",
+                      "type": "uint256[][]"
+                    },
+                    {
+                      "internalType": "address[]",
+                      "name": "permittedAddresses",
+                      "type": "address[]"
+                    },
+                    {
+                      "internalType": "uint256[][]",
+                      "name": "permittedAddressScopes",
+                      "type": "uint256[][]"
+                    },
+                    {
+                      "internalType": "uint256[]",
+                      "name": "permittedAuthMethodTypes",
+                      "type": "uint256[]"
+                    },
+                    {
+                      "internalType": "bytes[]",
+                      "name": "permittedAuthMethodIds",
+                      "type": "bytes[]"
+                    },
+                    {
+                      "internalType": "bytes[]",
+                      "name": "permittedAuthMethodPubkeys",
+                      "type": "bytes[]"
+                    },
+                    {
+                      "internalType": "uint256[][]",
+                      "name": "permittedAuthMethodScopes",
+                      "type": "uint256[][]"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "addPkpEthAddressAsPermittedAddress",
+                      "type": "bool"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "sendPkpToItself",
+                      "type": "bool"
+                    }
+                  ],
+                  "internalType": "struct PKPHelper.AuthMethodData",
+                  "name": "authMethodData",
+                  "type": "tuple"
+                }
+              ],
+              "name": "claimAndMintNextAndAddAuthMethodsWithTypesV2",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "payable",
+              "type": "function"
+            },
+            {
               "inputs": [],
               "name": "contractResolver",
               "outputs": [
@@ -9501,6 +9972,19 @@ export const datilTest = {
                   "internalType": "bytes32",
                   "name": "",
                   "type": "bytes32"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getStakingAddress",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
                 }
               ],
               "stateMutability": "view",
@@ -9896,7 +10380,7 @@ export const datilTest = {
         {
           "network": "datil-test",
           "address_hash": "0x60C1ddC8b9e38F730F0e7B70A2F84C1A98A69167",
-          "inserted_at": "2024-11-02T02:50:47Z",
+          "inserted_at": "2025-05-05T05:49:58Z",
           "ABI": [
             {
               "inputs": [
@@ -10451,6 +10935,19 @@ export const datilTest = {
               "type": "event"
             },
             {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "newTrustedForwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "TrustedForwarderSet",
+              "type": "event"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "uint256",
@@ -10654,6 +11151,30 @@ export const datilTest = {
               "inputs": [
                 {
                   "internalType": "uint256",
+                  "name": "authMethodType",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "id",
+                  "type": "bytes"
+                }
+              ],
+              "name": "getPKPPubKeysByAuthMethod",
+              "outputs": [
+                {
+                  "internalType": "bytes[]",
+                  "name": "",
+                  "type": "bytes[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
                   "name": "tokenId",
                   "type": "uint256"
                 }
@@ -10822,6 +11343,19 @@ export const datilTest = {
                   "internalType": "uint256[]",
                   "name": "",
                   "type": "uint256[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getTrustedForwarder",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
                 }
               ],
               "stateMutability": "view",
@@ -11088,6 +11622,19 @@ export const datilTest = {
             {
               "inputs": [
                 {
+                  "internalType": "address",
+                  "name": "forwarder",
+                  "type": "address"
+                }
+              ],
+              "name": "setTrustedForwarder",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "uint256",
                   "name": "tokenId",
                   "type": "uint256"
@@ -11168,7 +11715,7 @@ export const datilTest = {
         {
           "network": "datil-test",
           "address_hash": "0xaC1d01692EBA0E457134Eb7EB8bb96ee9D91FcdD",
-          "inserted_at": "2024-11-02T02:50:47Z",
+          "inserted_at": "2025-05-05T05:49:58Z",
           "ABI": [
             {
               "inputs": [
@@ -11332,7 +11879,7 @@ export const datilTest = {
         {
           "network": "datil-test",
           "address_hash": "0x5DD7a0FD581aB11a5720bE7E388e63346bC266fe",
-          "inserted_at": "2024-11-02T02:50:47Z",
+          "inserted_at": "2025-05-05T05:49:58Z",
           "ABI": [
             {
               "inputs": [],
@@ -11569,7 +12116,7 @@ export const datilTest = {
         {
           "network": "datil-test",
           "address_hash": "0xd7188e0348F1dA8c9b3d6e614844cbA22329B99E",
-          "inserted_at": "2024-11-02T02:50:47Z",
+          "inserted_at": "2025-05-05T05:49:58Z",
           "ABI": [
             {
               "inputs": [
@@ -12186,5 +12733,13 @@ export const datilTest = {
         }
       ]
     }
-  ]
-}
+  ],
+  "config": {
+    "chainId": "175188",
+    "rpcUrl": "https://yellowstone-rpc.litprotocol.com",
+    "chainName": "yellowstone",
+    "litNodeDomainName": "127.0.0.1",
+    "litNodePort": 7470,
+    "rocketPort": 7470
+  }
+};
