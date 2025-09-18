@@ -6,7 +6,7 @@ export const datil = {
         {
           "network": "datil",
           "address_hash": "0x9c9D147dad75D8B9Bd327405098D65C727296B54",
-          "inserted_at": "2025-03-08T01:51:37Z",
+          "inserted_at": "2025-09-15T23:52:57Z",
           "ABI": [
             {
               "inputs": [
@@ -1254,7 +1254,7 @@ export const datil = {
         {
           "network": "datil",
           "address_hash": "0x21d636d95eE71150c0c3Ffa79268c989a329d1CE",
-          "inserted_at": "2025-03-08T01:51:37Z",
+          "inserted_at": "2025-09-15T23:52:57Z",
           "ABI": [
             {
               "inputs": [
@@ -4113,7 +4113,7 @@ export const datil = {
         {
           "network": "datil",
           "address_hash": "0xB87CcFf487B84b60c09DBE15337a46bf5a9e0680",
-          "inserted_at": "2025-03-08T01:51:37Z",
+          "inserted_at": "2025-09-15T23:52:57Z",
           "ABI": [
             {
               "anonymous": false,
@@ -4228,7 +4228,7 @@ export const datil = {
         {
           "network": "datil",
           "address_hash": "0xd78089bAAe410f5d0eae31D0D56157c73a3Ff98B",
-          "inserted_at": "2025-03-08T01:51:37Z",
+          "inserted_at": "2025-09-15T23:52:57Z",
           "ABI": [
             {
               "inputs": [
@@ -5282,7 +5282,7 @@ export const datil = {
         {
           "network": "datil",
           "address_hash": "0xF182d6bEf16Ba77e69372dD096D8B70Bc3d5B475",
-          "inserted_at": "2025-03-08T01:51:37Z",
+          "inserted_at": "2025-09-15T23:52:57Z",
           "ABI": [
             {
               "inputs": [
@@ -6174,7 +6174,7 @@ export const datil = {
         {
           "network": "datil",
           "address_hash": "0x487A9D096BB4B7Ac1520Cb12370e31e677B175EA",
-          "inserted_at": "2025-03-08T01:51:37Z",
+          "inserted_at": "2025-09-15T23:52:57Z",
           "ABI": [
             {
               "inputs": [
@@ -7418,7 +7418,7 @@ export const datil = {
         {
           "network": "datil",
           "address_hash": "0x01205d94Fee4d9F59A4aB24bf80D11d4DdAf6Eed",
-          "inserted_at": "2025-03-08T01:51:37Z",
+          "inserted_at": "2025-09-15T23:52:57Z",
           "ABI": [
             {
               "inputs": [
@@ -8826,7 +8826,7 @@ export const datil = {
         {
           "network": "datil",
           "address_hash": "0x9123438C2c7c78B53e5081d6d3eA5DFcf51B57f0",
-          "inserted_at": "2025-03-08T01:51:37Z",
+          "inserted_at": "2025-09-15T23:52:57Z",
           "ABI": [
             {
               "inputs": [
@@ -9814,7 +9814,7 @@ export const datil = {
         {
           "network": "datil",
           "address_hash": "0x213Db6E1446928E19588269bEF7dFc9187c4829A",
-          "inserted_at": "2025-03-08T01:51:37Z",
+          "inserted_at": "2025-09-15T23:52:57Z",
           "ABI": [
             {
               "inputs": [
@@ -11149,7 +11149,7 @@ export const datil = {
         {
           "network": "datil",
           "address_hash": "0x4BB8681d3a24F130cC746C7DC31167C93D72d32b",
-          "inserted_at": "2025-03-08T01:51:37Z",
+          "inserted_at": "2025-09-15T23:52:57Z",
           "ABI": [
             {
               "inputs": [
@@ -11313,7 +11313,7 @@ export const datil = {
         {
           "network": "datil",
           "address_hash": "0xE393BCD2a9099C903D28949Bac2C4cEd21E55415",
-          "inserted_at": "2025-03-08T01:51:37Z",
+          "inserted_at": "2025-09-15T23:52:57Z",
           "ABI": [
             {
               "inputs": [],
@@ -11550,7 +11550,7 @@ export const datil = {
         {
           "network": "datil",
           "address_hash": "0xF19ea8634969730cB51BFEe2E2A5353062053C14",
-          "inserted_at": "2025-03-08T01:51:37Z",
+          "inserted_at": "2025-09-15T23:52:57Z",
           "ABI": [
             {
               "inputs": [

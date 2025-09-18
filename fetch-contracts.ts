@@ -30,6 +30,7 @@ type ABISource = {
     datilTest: string;
     datilProd: string;
     nagaDev: string;
+    nagaStaging: string;
   };
 };
 
@@ -73,6 +74,8 @@ const LIT_ABI_SOURCE = {
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-prod/deployed-lit-node-contracts-temp.json",
       nagaDev:
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/naga-dev/deployed-lit-node-contracts-temp.json",
+      nagaStaging:
+        "https://raw.githubusercontent.com/LIT-Protocol/networks/main/naga-staging/deployed-lit-node-contracts-temp.json",
     },
   },
   prod: {
@@ -113,6 +116,8 @@ const LIT_ABI_SOURCE = {
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/datil-prod/deployed-lit-node-contracts-temp.json",
       nagaDev:
         "https://raw.githubusercontent.com/LIT-Protocol/networks/main/naga-dev/deployed-lit-node-contracts-temp.json",
+      nagaStaging:
+        "https://raw.githubusercontent.com/LIT-Protocol/networks/main/naga-staging/deployed-lit-node-contracts-temp.json",
     },
   },
 };
@@ -135,7 +140,8 @@ type LitNetwork =
   | "datil-dev"
   | "datil-test"
   | "datil"
-  | "naga-dev";
+  | "naga-dev"
+  | "naga-staging";
 
 const TOKEN = process.env.GH_LIT_ASSETS_READ_ONLY_API;
 const USERNAME = "LIT-Protocol";
@@ -282,6 +288,11 @@ async function updateContractsCache(network: LitNetwork): Promise<void> {
     case "naga-dev":
       filePath = extractPathAfterMain(source.deployedContract.nagaDev);
       API = source.deployedContract.nagaDev;
+      lastModified = await getLastModified(filePath, network);
+      break;
+    case "naga-staging":
+      filePath = extractPathAfterMain(source.deployedContract.nagaStaging);
+      API = source.deployedContract.nagaStaging;
       lastModified = await getLastModified(filePath, network);
       break;
   }
@@ -439,6 +450,7 @@ const litNetworks: LitNetwork[] = [
   "datil-test",
   "datil",
   "naga-dev",
+  "naga-staging",
 ];
 
 // Initial update for all items

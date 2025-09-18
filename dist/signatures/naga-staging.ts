@@ -5,7 +5,7 @@
 
 export const signatures = {
   "Staking": {
-    "address": "0x35d77b5D61F36C02e2e1177845FB6B933FFf7043",
+    "address": "0x781C6d227dA4D058890208B68DDA1da8f6EBbE54",
     "methods": {
       "getActiveUnkickedValidatorStructsAndCounts": {
         "inputs": [
@@ -650,6 +650,44 @@ export const signatures = {
         "inputs": [
           {
             "indexed": false,
+            "internalType": "bool",
+            "name": "exists",
+            "type": "bool"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "identifier",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "bytes32",
+            "name": "hashed",
+            "type": "bytes32"
+          }
+        ],
+        "name": "KeySetConfigSet",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "identifier",
+            "type": "string"
+          }
+        ],
+        "name": "KeySetConfigUpdated",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
             "internalType": "uint256",
             "name": "realmId",
             "type": "uint256"
@@ -994,7 +1032,7 @@ export const signatures = {
     ]
   },
   "PubkeyRouter": {
-    "address": "0xDefe7fb3D333dd0460113674F759eA575C1eC6b3",
+    "address": "0x280E5c534629FBdD4dC61c85695143B6ACc4790b",
     "methods": {
       "deriveEthAddressFromPubkey": {
         "inputs": [
@@ -1276,7 +1314,7 @@ export const signatures = {
     ]
   },
   "PKPNFT": {
-    "address": "0xf3E8659C240d4eC9a03c3CDe4539e3C265009Ab8",
+    "address": "0x991d56EdC98a0DAeb93E91F70588598f79875701",
     "methods": {
       "claimAndMint": {
         "inputs": [
@@ -1289,6 +1327,11 @@ export const signatures = {
             "internalType": "uint256",
             "name": "keyType",
             "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "keySetId",
+            "type": "string"
           },
           {
             "internalType": "bytes32",
@@ -1353,6 +1396,11 @@ export const signatures = {
             "internalType": "uint256",
             "name": "keyType",
             "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "keySetId",
+            "type": "string"
           }
         ],
         "name": "mintNext",
@@ -1656,7 +1704,7 @@ export const signatures = {
     ]
   },
   "PKPHelper": {
-    "address": "0xf757112631e6269A3B9bf78DB73fe0fEE83dE7b9",
+    "address": "0xe51357Cc58E8a718423CBa09b87879Ff7B18d279",
     "methods": {
       "claimAndMintNextAndAddAuthMethodsWithTypes": {
         "inputs": [
@@ -1779,6 +1827,11 @@ export const signatures = {
             "internalType": "uint256",
             "name": "keyType",
             "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "keySetId",
+            "type": "string"
           },
           {
             "internalType": "uint256[]",
@@ -1934,7 +1987,7 @@ export const signatures = {
     ]
   },
   "PKPPermissions": {
-    "address": "0x49e599515b22536fa033FFe45A87F053d96A6f84",
+    "address": "0x5632B35374DD73205B5aeBBcA3ecB02B3dc8B5fe",
     "methods": {
       "addPermittedAction": {
         "inputs": [
@@ -2552,7 +2605,7 @@ export const signatures = {
     ]
   },
   "PaymentDelegation": {
-    "address": "0x195d5090469aE5376CC7D80F3462a1903f25b8Ab",
+    "address": "0x700DB831292541C640c5Dbb9AaE1697faE188513",
     "methods": {
       "delegatePayments": {
         "inputs": [
@@ -2853,7 +2906,7 @@ export const signatures = {
     ]
   },
   "Ledger": {
-    "address": "0x09815849f59Fe4F7d94F6240a77AEf4Dc2f02873",
+    "address": "0x658F5ED32aE5EFBf79F7Ba36A9FA770FeA7662c8",
     "methods": {
       "withdraw": {
         "inputs": [
@@ -3272,7 +3325,7 @@ export const signatures = {
     ]
   },
   "PriceFeed": {
-    "address": "0xA69f54bBfaAFff94e73e6CfD3642B4464036C9BA",
+    "address": "0xB76744dC73AFC416e8cDbB7023ca89C862B86F05",
     "methods": {
       "getNodesForRequest": {
         "inputs": [
