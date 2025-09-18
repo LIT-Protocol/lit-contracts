@@ -7,8 +7,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x35d77b5D61F36C02e2e1177845FB6B933FFf7043",
-          "inserted_at": "2025-07-10T18:29:11Z",
+          "address_hash": "0x781C6d227dA4D058890208B68DDA1da8f6EBbE54",
+          "inserted_at": "2025-09-17T01:07:56Z",
           "ABI": [
             {
               "inputs": [
@@ -2266,11 +2266,6 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
-                      "name": "slopeIncrease",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
                       "name": "validatorSharePrice",
                       "type": "uint256"
                     },
@@ -2343,11 +2338,6 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "slope",
-                      "type": "uint256"
-                    },
-                    {
-                      "internalType": "uint256",
-                      "name": "slopeIncrease",
                       "type": "uint256"
                     },
                     {
@@ -2593,6 +2583,117 @@ module.exports = {
               "type": "function"
             },
             {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "bool",
+                  "name": "exists",
+                  "type": "bool"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "string",
+                  "name": "identifier",
+                  "type": "string"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "bytes32",
+                  "name": "hashed",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "KeySetConfigSet",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "string",
+                  "name": "identifier",
+                  "type": "string"
+                }
+              ],
+              "name": "KeySetConfigUpdated",
+              "type": "event"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "string",
+                  "name": "identifier",
+                  "type": "string"
+                }
+              ],
+              "name": "deleteKeySet",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "uint32",
+                      "name": "minimumThreshold",
+                      "type": "uint32"
+                    },
+                    {
+                      "internalType": "uint32",
+                      "name": "monetaryValue",
+                      "type": "uint32"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "completeIsolation",
+                      "type": "bool"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "identifier",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "description",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "uint256[]",
+                      "name": "realms",
+                      "type": "uint256[]"
+                    },
+                    {
+                      "internalType": "uint256[]",
+                      "name": "curves",
+                      "type": "uint256[]"
+                    },
+                    {
+                      "internalType": "uint256[]",
+                      "name": "counts",
+                      "type": "uint256[]"
+                    },
+                    {
+                      "internalType": "address[]",
+                      "name": "recoveryPartyMembers",
+                      "type": "address[]"
+                    }
+                  ],
+                  "internalType": "struct LibStakingStorage.KeySetConfig",
+                  "name": "update",
+                  "type": "tuple"
+                }
+              ],
+              "name": "setKeySet",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
               "inputs": [],
               "name": "ActiveValidatorsCannotLeave",
               "type": "error"
@@ -2829,7 +2930,23 @@ module.exports = {
               "type": "error"
             },
             {
-              "inputs": [],
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "senderAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "operatorAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "stakerAddress",
+                  "type": "address"
+                }
+              ],
               "name": "StakerAddressMismatch",
               "type": "error"
             },
@@ -3327,6 +3444,16 @@ module.exports = {
                   "internalType": "bytes",
                   "name": "attestedPubKey",
                   "type": "bytes"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "senderPubKey",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "receiverPubKey",
+                  "type": "uint256"
                 }
               ],
               "name": "registerAttestedWallet",
@@ -3442,19 +3569,9 @@ module.exports = {
                   "internalType": "address",
                   "name": "operatorAddress",
                   "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "senderPubKey",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "receiverPubKey",
-                  "type": "uint256"
                 }
               ],
-              "name": "setIpPortNodeAddressAndCommunicationPubKeys",
+              "name": "setIpPortNodeAddress",
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
@@ -4374,6 +4491,72 @@ module.exports = {
               "type": "function"
             },
             {
+              "inputs": [
+                {
+                  "internalType": "string",
+                  "name": "identifier",
+                  "type": "string"
+                }
+              ],
+              "name": "getKeySet",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "uint32",
+                      "name": "minimumThreshold",
+                      "type": "uint32"
+                    },
+                    {
+                      "internalType": "uint32",
+                      "name": "monetaryValue",
+                      "type": "uint32"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "completeIsolation",
+                      "type": "bool"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "identifier",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "description",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "uint256[]",
+                      "name": "realms",
+                      "type": "uint256[]"
+                    },
+                    {
+                      "internalType": "uint256[]",
+                      "name": "curves",
+                      "type": "uint256[]"
+                    },
+                    {
+                      "internalType": "uint256[]",
+                      "name": "counts",
+                      "type": "uint256[]"
+                    },
+                    {
+                      "internalType": "address[]",
+                      "name": "recoveryPartyMembers",
+                      "type": "address[]"
+                    }
+                  ],
+                  "internalType": "struct LibStakingStorage.KeySetConfig",
+                  "name": "",
+                  "type": "tuple"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
               "inputs": [],
               "name": "getKeyTypes",
               "outputs": [
@@ -4619,6 +4802,25 @@ module.exports = {
                   "internalType": "address[]",
                   "name": "",
                   "type": "address[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "realmId",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getNonShadowValidatorsInCurrentEpochLength",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
                 }
               ],
               "stateMutability": "view",
@@ -4940,6 +5142,25 @@ module.exports = {
             {
               "inputs": [
                 {
+                  "internalType": "uint256",
+                  "name": "nodeCount",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getThreshold",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
                   "internalType": "address",
                   "name": "stakerAddress",
                   "type": "address"
@@ -5235,25 +5456,6 @@ module.exports = {
                   "internalType": "address[]",
                   "name": "",
                   "type": "address[]"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "realmId",
-                  "type": "uint256"
-                }
-              ],
-              "name": "getValidatorsInCurrentEpochLength",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
                 }
               ],
               "stateMutability": "view",
@@ -5953,6 +6155,66 @@ module.exports = {
               "type": "function"
             },
             {
+              "inputs": [],
+              "name": "keySets",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "uint32",
+                      "name": "minimumThreshold",
+                      "type": "uint32"
+                    },
+                    {
+                      "internalType": "uint32",
+                      "name": "monetaryValue",
+                      "type": "uint32"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "completeIsolation",
+                      "type": "bool"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "identifier",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "description",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "uint256[]",
+                      "name": "realms",
+                      "type": "uint256[]"
+                    },
+                    {
+                      "internalType": "uint256[]",
+                      "name": "curves",
+                      "type": "uint256[]"
+                    },
+                    {
+                      "internalType": "uint256[]",
+                      "name": "counts",
+                      "type": "uint256[]"
+                    },
+                    {
+                      "internalType": "address[]",
+                      "name": "recoveryPartyMembers",
+                      "type": "address[]"
+                    }
+                  ],
+                  "internalType": "struct LibStakingStorage.KeySetConfig[]",
+                  "name": "",
+                  "type": "tuple[]"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
               "inputs": [
                 {
                   "internalType": "uint256",
@@ -6522,6 +6784,47 @@ module.exports = {
               ],
               "stateMutability": "view",
               "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "string",
+                  "name": "identifier",
+                  "type": "string"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "bytes",
+                      "name": "pubkey",
+                      "type": "bytes"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "keyType",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct IPubkeyRouter.RootKey[]",
+                  "name": "newRootKeys",
+                  "type": "tuple[]"
+                }
+              ],
+              "name": "verifyKeySetCounts",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
             }
           ]
         }
@@ -6532,8 +6835,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xb21c1a8C75accBF9e5786a809A1d5CdAa071340f",
-          "inserted_at": "2025-07-10T18:29:11Z",
+          "address_hash": "0x2001821a222713becB50B5976691AD723D6b640c",
+          "inserted_at": "2025-09-17T01:07:56Z",
           "ABI": [
             {
               "anonymous": false,
@@ -6671,7 +6974,7 @@ module.exports = {
         {
           "network": "naga-staging",
           "address_hash": "0x5E8db2E7af793f4095c4843C8cBD87C5D8604838",
-          "inserted_at": "2025-07-10T18:29:11Z",
+          "inserted_at": "2025-09-17T01:07:56Z",
           "ABI": [
             {
               "inputs": [
@@ -7724,8 +8027,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xDefe7fb3D333dd0460113674F759eA575C1eC6b3",
-          "inserted_at": "2025-07-10T18:29:11Z",
+          "address_hash": "0x280E5c534629FBdD4dC61c85695143B6ACc4790b",
+          "inserted_at": "2025-09-17T01:07:56Z",
           "ABI": [
             {
               "inputs": [
@@ -8124,6 +8427,38 @@ module.exports = {
               "type": "error"
             },
             {
+              "inputs": [
+                {
+                  "internalType": "string",
+                  "name": "identifier",
+                  "type": "string"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "hash",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "KeySetNotFound",
+              "type": "error"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "curveType",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "count",
+                  "type": "uint256"
+                }
+              ],
+              "name": "RootKeyMiscount",
+              "type": "error"
+            },
+            {
               "anonymous": false,
               "inputs": [
                 {
@@ -8267,6 +8602,11 @@ module.exports = {
                   "internalType": "address",
                   "name": "stakingContract",
                   "type": "address"
+                },
+                {
+                  "internalType": "string",
+                  "name": "keySetId",
+                  "type": "string"
                 }
               ],
               "name": "adminResetRootKeys",
@@ -8280,6 +8620,11 @@ module.exports = {
                   "internalType": "address",
                   "name": "stakingContract",
                   "type": "address"
+                },
+                {
+                  "internalType": "string",
+                  "name": "keySetId",
+                  "type": "string"
                 },
                 {
                   "components": [
@@ -8396,6 +8741,11 @@ module.exports = {
                   "type": "address"
                 },
                 {
+                  "internalType": "string",
+                  "name": "keySetId",
+                  "type": "string"
+                },
+                {
                   "internalType": "bytes32",
                   "name": "derivedKeyId",
                   "type": "bytes32"
@@ -8469,6 +8819,11 @@ module.exports = {
                   "internalType": "address",
                   "name": "stakingContract",
                   "type": "address"
+                },
+                {
+                  "internalType": "string",
+                  "name": "keySetId",
+                  "type": "string"
                 }
               ],
               "name": "getRootKeys",
@@ -8698,6 +9053,11 @@ module.exports = {
                   "type": "address"
                 },
                 {
+                  "internalType": "string",
+                  "name": "identifier",
+                  "type": "string"
+                },
+                {
                   "components": [
                     {
                       "internalType": "bytes",
@@ -8729,8 +9089,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xf3E8659C240d4eC9a03c3CDe4539e3C265009Ab8",
-          "inserted_at": "2025-07-10T18:29:11Z",
+          "address_hash": "0x991d56EdC98a0DAeb93E91F70588598f79875701",
+          "inserted_at": "2025-09-17T01:07:56Z",
           "ABI": [
             {
               "inputs": [
@@ -9344,6 +9704,11 @@ module.exports = {
                   "type": "uint256"
                 },
                 {
+                  "internalType": "string",
+                  "name": "keySetId",
+                  "type": "string"
+                },
+                {
                   "internalType": "bytes32",
                   "name": "derivedKeyId",
                   "type": "bytes32"
@@ -9606,6 +9971,11 @@ module.exports = {
                   "type": "uint256"
                 },
                 {
+                  "internalType": "string",
+                  "name": "keySetId",
+                  "type": "string"
+                },
+                {
                   "internalType": "bytes",
                   "name": "ipfsCID",
                   "type": "bytes"
@@ -9628,6 +9998,11 @@ module.exports = {
                   "internalType": "uint256",
                   "name": "keyType",
                   "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "keySetId",
+                  "type": "string"
                 }
               ],
               "name": "mintNext",
@@ -9978,8 +10353,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xf757112631e6269A3B9bf78DB73fe0fEE83dE7b9",
-          "inserted_at": "2025-07-10T18:29:11Z",
+          "address_hash": "0xe51357Cc58E8a718423CBa09b87879Ff7B18d279",
+          "inserted_at": "2025-09-17T01:07:56Z",
           "ABI": [
             {
               "inputs": [
@@ -10357,6 +10732,11 @@ module.exports = {
                       "type": "uint256"
                     },
                     {
+                      "internalType": "string",
+                      "name": "keySetId",
+                      "type": "string"
+                    },
+                    {
                       "internalType": "bytes32",
                       "name": "derivedKeyId",
                       "type": "bytes32"
@@ -10627,6 +11007,11 @@ module.exports = {
                   "type": "uint256"
                 },
                 {
+                  "internalType": "string",
+                  "name": "keySetId",
+                  "type": "string"
+                },
+                {
                   "internalType": "uint256[]",
                   "name": "permittedAuthMethodTypes",
                   "type": "uint256[]"
@@ -10671,59 +11056,71 @@ module.exports = {
             {
               "inputs": [
                 {
-                  "internalType": "uint256",
-                  "name": "keyType",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "bytes[]",
-                  "name": "permittedIpfsCIDs",
-                  "type": "bytes[]"
-                },
-                {
-                  "internalType": "uint256[][]",
-                  "name": "permittedIpfsCIDScopes",
-                  "type": "uint256[][]"
-                },
-                {
-                  "internalType": "address[]",
-                  "name": "permittedAddresses",
-                  "type": "address[]"
-                },
-                {
-                  "internalType": "uint256[][]",
-                  "name": "permittedAddressScopes",
-                  "type": "uint256[][]"
-                },
-                {
-                  "internalType": "uint256[]",
-                  "name": "permittedAuthMethodTypes",
-                  "type": "uint256[]"
-                },
-                {
-                  "internalType": "bytes[]",
-                  "name": "permittedAuthMethodIds",
-                  "type": "bytes[]"
-                },
-                {
-                  "internalType": "bytes[]",
-                  "name": "permittedAuthMethodPubkeys",
-                  "type": "bytes[]"
-                },
-                {
-                  "internalType": "uint256[][]",
-                  "name": "permittedAuthMethodScopes",
-                  "type": "uint256[][]"
-                },
-                {
-                  "internalType": "bool",
-                  "name": "addPkpEthAddressAsPermittedAddress",
-                  "type": "bool"
-                },
-                {
-                  "internalType": "bool",
-                  "name": "sendPkpToItself",
-                  "type": "bool"
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "keyType",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "keySetId",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "bytes[]",
+                      "name": "permittedIpfsCIDs",
+                      "type": "bytes[]"
+                    },
+                    {
+                      "internalType": "uint256[][]",
+                      "name": "permittedIpfsCIDScopes",
+                      "type": "uint256[][]"
+                    },
+                    {
+                      "internalType": "address[]",
+                      "name": "permittedAddresses",
+                      "type": "address[]"
+                    },
+                    {
+                      "internalType": "uint256[][]",
+                      "name": "permittedAddressesScopes",
+                      "type": "uint256[][]"
+                    },
+                    {
+                      "internalType": "uint256[]",
+                      "name": "permittedAuthMethodTypes",
+                      "type": "uint256[]"
+                    },
+                    {
+                      "internalType": "bytes[]",
+                      "name": "permittedAuthMethodIds",
+                      "type": "bytes[]"
+                    },
+                    {
+                      "internalType": "bytes[]",
+                      "name": "permittedAuthMethodPubkeys",
+                      "type": "bytes[]"
+                    },
+                    {
+                      "internalType": "uint256[][]",
+                      "name": "permittedAuthMethodScopes",
+                      "type": "uint256[][]"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "addPkpEthAddressAsPermittedAddress",
+                      "type": "bool"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "sendPkpToItself",
+                      "type": "bool"
+                    }
+                  ],
+                  "internalType": "struct PKPHelper.MintNextAndAddAuthMethodsWithTypesParams",
+                  "name": "params",
+                  "type": "tuple"
                 }
               ],
               "name": "mintNextAndAddAuthMethodsWithTypes",
@@ -10743,6 +11140,11 @@ module.exports = {
                   "internalType": "uint256",
                   "name": "keyType",
                   "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "keySetId",
+                  "type": "string"
                 },
                 {
                   "internalType": "uint256[]",
@@ -10966,8 +11368,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x49e599515b22536fa033FFe45A87F053d96A6f84",
-          "inserted_at": "2025-07-10T18:29:11Z",
+          "address_hash": "0x5632B35374DD73205B5aeBBcA3ecB02B3dc8B5fe",
+          "inserted_at": "2025-09-17T01:07:56Z",
           "ABI": [
             {
               "inputs": [
@@ -12301,8 +12703,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x1BF44950DB687ba4B3D886f6fA101612E113F41A",
-          "inserted_at": "2025-07-10T18:29:11Z",
+          "address_hash": "0x3346125bdaE8FDda08aaf14A67A7DdE465e8b7A6",
+          "inserted_at": "2025-09-17T01:07:56Z",
           "ABI": [
             {
               "inputs": [
@@ -12465,8 +12867,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x3d97DA15c6665Fb6c976F0265bd7726A82F13920",
-          "inserted_at": "2025-07-10T18:29:11Z",
+          "address_hash": "0xab292EC22a0b596F115725607Ada3F28980eAB36",
+          "inserted_at": "2025-09-17T01:07:56Z",
           "ABI": [
             {
               "inputs": [],
@@ -12702,8 +13104,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x195d5090469aE5376CC7D80F3462a1903f25b8Ab",
-          "inserted_at": "2025-07-10T18:29:11Z",
+          "address_hash": "0x700DB831292541C640c5Dbb9AaE1697faE188513",
+          "inserted_at": "2025-09-17T01:07:56Z",
           "ABI": [
             {
               "inputs": [
@@ -13338,8 +13740,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0x09815849f59Fe4F7d94F6240a77AEf4Dc2f02873",
-          "inserted_at": "2025-07-10T18:29:11Z",
+          "address_hash": "0x658F5ED32aE5EFBf79F7Ba36A9FA770FeA7662c8",
+          "inserted_at": "2025-09-17T01:07:56Z",
           "ABI": [
             {
               "inputs": [
@@ -14394,8 +14796,8 @@ module.exports = {
       "contracts": [
         {
           "network": "naga-staging",
-          "address_hash": "0xA69f54bBfaAFff94e73e6CfD3642B4464036C9BA",
-          "inserted_at": "2025-07-10T18:29:11Z",
+          "address_hash": "0xB76744dC73AFC416e8cDbB7023ca89C862B86F05",
+          "inserted_at": "2025-09-17T01:07:56Z",
           "ABI": [
             {
               "inputs": [
@@ -14939,6 +15341,11 @@ module.exports = {
                     },
                     {
                       "internalType": "uint256",
+                      "name": "signSessionKeyMaxConcurrency",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
                       "name": "globalMaxCapacity",
                       "type": "uint256"
                     }
@@ -15327,6 +15734,11 @@ module.exports = {
                     {
                       "internalType": "uint256",
                       "name": "litActionMaxConcurrency",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "signSessionKeyMaxConcurrency",
                       "type": "uint256"
                     },
                     {

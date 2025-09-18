@@ -68,7 +68,7 @@ src/
 ## Prerequisites
 
 - Node.js 16 or higher
-- GitHub Personal Access Token with read permissions
+- GitHub Personal Access Token with read permissions (eg. fine grained token for public repositories only)
 
 ## Environment Variables
 
@@ -106,21 +106,18 @@ console.log("Development contracts:", develop);
 1. Clone the repository
 2. Install dependencies:
    ```bash
-   yarn install
+   bun install
    ```
 3. Set up environment variables:
    ```bash
    export GH_API_KEY=your_github_token
+   export GH_LIT_ASSETS_READ_ONLY_API=your_github_token
    export LIT_ABI_SOURCE=prod  # or 'dev'
    ```
-4. Run the fetcher:
+4. Run:
 
    ```bash
-   # For default branch
-   bun run fetch-contracts.ts
-
-   # For specific branch
-   DEV_BRANCH=develop bun run fetch-contracts.ts
+   DEV_BRANCH=develop bun run start
    ```
 
 ## CI/CD Workflow
