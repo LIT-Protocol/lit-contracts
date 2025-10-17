@@ -1,3 +1,13 @@
+❗️The `@lit-protocol/contracts` repo has been moved into the monorepo’s Naga branch:
+
+🔗 https://github.com/LIT-Protocol/js-sdk/pull/857
+
+https://github.com/LIT-Protocol/js-sdk/tree/naga/packages/contracts
+
+The published package will now include both Naga and Datil ABIs and addresses.
+
+---
+
 # Fetch Lit contracts and have the same format as general-worker
 
 To run locally, use the following command:
